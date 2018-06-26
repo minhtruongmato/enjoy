@@ -152,7 +152,6 @@ function remove_image(controller, id, image, key){
                     }
                     location.reload();
                 }
-                console.log(response);
             },
             error: function(jqXHR, exception){
                 if(jqXHR.status == 404 &&  jqXHR.responseJSON.message != 'undefined '){

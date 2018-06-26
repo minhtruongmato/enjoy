@@ -107,6 +107,25 @@ if (!function_exists('handle_common_author_data')) {
                 'tripnodes' => 'Tripnodes(Trung Giản Thể)',
                 'detailsprice' => 'Detailsprice(Trung Giản Thể)'
             ),
+            'cn' => array(
+                'title' => 'Tiêu đề (Phồn thể)',
+                'metakeywords' => 'Từ khóa Meta (Phồn thể)',
+                'metadescription' => 'Mô tả Meta (Phồn thể)',
+                'description' => 'Giới Thiệu (Phồn thể)',
+                'content' => 'Nội Dung (Phồn thể)',
+                'tripnodes' => 'Ghi chú chuyến đi (Phồn thể)',
+                'detailsprice' => 'Chi tiết giá (Phồn thể)'
+            ),
+
+            'sc' => array(
+                'title' => 'Tiêu đề (Giản thể)',
+                'metakeywords' => 'Từ khóa Meta (Giản thể)',
+                'metadescription' => 'Mô tả Meta (Giản thể)',
+                'description' => 'Giới Thiệu (Giản thể)',
+                'content' => 'Nội Dung (Giản thể)',
+                'tripnodes' => 'Ghi chú chuyến đi (Giản thể)',
+                'detailsprice' => 'Chi tiết giá (Giản thể)'
+            ),
         );
         return $template;
     }

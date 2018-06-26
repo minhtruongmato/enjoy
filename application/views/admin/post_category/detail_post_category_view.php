@@ -85,6 +85,7 @@
                                 <div class="tab-content">
                                     <?php $i = 0; ?>
                                     <?php foreach ($template as $key => $value): ?>
+
                                         <div role="tabpanel" class="tab-pane <?php echo ($i == 0)? 'active' : '' ?>" id="<?php echo $key ?>">
                                             <?php foreach ($value as $k => $val): ?>
                                                 <div class="table-responsive">

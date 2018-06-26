@@ -33,15 +33,16 @@ class Localtion extends Admin_Controller {
         $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
-        $this->data['result'] = $this->localtion_model->get_all_with_pagination_search('desc','vi' , $per_page, $this->data['page'], $this->data['keyword']);
+        $this->data['result'] = $this->localtion_model->get_all_with_pagination_search('desc','en' , $per_page, $this->data['page'], $this->data['keyword']);
         $this->render('admin/localtion/list_localtion_view');
     }
     public function create(){
         $this->load->helper('form');
         if($this->input->post()){
             $this->load->library('form_validation');
-            $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
+            $this->form_validation->set_rules('title_cn', 'Tiêu đề (Phồn thể)', 'required');
             $this->form_validation->set_rules('title_en', 'Title', 'required');
+            $this->form_validation->set_rules('title_sc', 'Tiêu đề (Giản thể)', 'required');
             if($this->form_validation->run() == TRUE){
                 if(!empty($_FILES['image_localtion']['name'])){
                     $this->check_img($_FILES['image_localtion']['name'], $_FILES['image_localtion']['size']);
@@ -94,8 +95,9 @@ class Localtion extends Admin_Controller {
         $this->load->library('form_validation');
 
         if($this->input->post()){
-            $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
+            $this->form_validation->set_rules('title_cn', 'Tiêu đề (Phồn thể)', 'required');
             $this->form_validation->set_rules('title_en', 'Title', 'required');
+            $this->form_validation->set_rules('title_sc', 'Tiêu đề (Giản thể)', 'required');
             if($this->form_validation->run() === true){
                 $unique_slug = $this->data['detail']['slug'];
                 if($unique_slug !== $this->input->post('slug_localtion')){

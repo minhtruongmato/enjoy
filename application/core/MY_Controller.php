@@ -272,7 +272,6 @@ class Public_Controller extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->library('session');
         $this->load->helper('form');
         $this->load->library('ion_auth');
         
@@ -280,24 +279,27 @@ class Public_Controller extends MY_Controller {
         if($this->langAbbreviation == 'en' || $this->langAbbreviation == 'cn' || $this->langAbbreviation == 'sc' || $this->langAbbreviation == ''){
             $this->session->set_userdata('langAbbreviation', $this->langAbbreviation);
         }
-        if($this->session->userdata('langAbbreviation') == 'en'){
+        
+        if($this->session->userdata('langAbbreviation') == 'en' || $this->session->userdata('langAbbreviation') == ''){
             $langName = 'english';
             $this->config->set_item('language', $langName); 
             $this->session->set_userdata("langAbbreviation",'en');
             $this->lang->load('english_lang', 'english');
         }
-        // if($this->session->userdata('langAbbreviation') == 'cn'){
-        //     $langName = 'zh-cn';
-        //     $this->config->set_item('language', $langName); 
-        //     $this->session->set_userdata("langAbbreviation",'cn');
-        //     $this->lang->load('zh-cn_lang', 'zh-cn');
-        // }
-        // if($this->session->userdata('langAbbreviation') == 'sc'){
-        //     $langName = 'zh-tw';
-        //     $this->config->set_item('language', $langName); 
-        //     $this->session->set_userdata("langAbbreviation",'sc');
-        //     $this->lang->load('zh-tw_lang', 'zh-tw');
-        // }
+
+        if($this->session->userdata('langAbbreviation') == 'cn' || $this->session->userdata('langAbbreviation') == ''){
+            $langName = 'chinese';
+            $this->config->set_item('language', $langName); 
+            $this->session->set_userdata("langAbbreviation",'cn');
+            $this->lang->load('chinese_lang', 'chinese');
+        }
+
+        if($this->session->userdata('langAbbreviation') == 'sc' || $this->session->userdata('langAbbreviation') == ''){
+            $langName = 'simplified_chinese';
+            $this->config->set_item('language', $langName); 
+            $this->session->set_userdata("langAbbreviation",'sc');
+            $this->lang->load('simplified_chinese_lang.php', 'simplified_chinese');
+        }
         
     }
 

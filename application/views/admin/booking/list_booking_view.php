@@ -108,7 +108,7 @@
                                                     <?php if ($value['status'] == 2): ?>
                                                         <span class="label label-danger status-cancel" data-id="<?php echo $value['booking_id']; ?>" style="pointer-events: none; cursor: pointer;" >Hủy bỏ</span>
                                                     <?php else: ?>
-                                                        <span class="label label-danger status-cancel" data-id="<?php echo $value['booking_id']; ?>" style="cursor: pointer;" >Hủy bỏ</span>
+                                                        <span class="label label-danger status-cancel" data-controller="booking" data-id="<?php echo $value['booking_id']; ?>" style="cursor: pointer;" >Hủy bỏ</span>
                                                     <?php endif ?>
                                                     
                                                 </td>

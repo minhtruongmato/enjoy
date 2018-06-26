@@ -24,36 +24,14 @@ class Post_category extends Admin_Controller{
 	}
 
     public function index(){
-        $keywords = '';
-        if($this->input->get('search')){
-            $keywords = $this->input->get('search');
-        }
-        $total_rows  = $this->post_category_model->count_search('vi');
-        if($keywords != ''){
-            $total_rows  = $this->post_category_model->count_search('vi', $keywords);
-        }
 
-        
-        $this->load->library('pagination');
-        $config = array();
-        $base_url = base_url('admin/'. $this->controller .'/index');
-        $per_page = 10;
-        $uri_segment = 4;
-        foreach ($this->pagination_config($base_url, $total_rows, $per_page, $uri_segment) as $key => $value) {
-            $config[$key] = $value;
-        }
-        $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-        $this->pagination->initialize($config);
-        $this->data['page_links'] = $this->pagination->create_links();
-
-        $result = $this->post_category_model->get_all_with_pagination_and_sort_search('asc','vi' , $per_page, $this->data['page']);
-        if($keywords != ''){
-            $result = $this->post_category_model->get_all_with_pagination_and_sort_search('asc','vi' , $per_page, $this->data['page'], $keywords);
-        }
+        $result = $this->post_category_model->get_all_with_pagination_and_sort_search('asc','en');
         foreach ($result as $key => $value) {
             $parent_title = $this->build_parent_title($value['parent_id']);
             $result[$key]['parent_title'] = $parent_title;
         }
+        // echo '<pre>';
+        // print_r($result);die;
         $this->data['result'] = $result;
         $this->data['check'] = $this;
         
@@ -70,8 +48,9 @@ class Post_category extends Admin_Controller{
         $post_category = $this->post_category_model->get_by_parent_id(null,'asc');
         $this->data['post_category'] = $post_category;
 
-        $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
+        $this->form_validation->set_rules('title_cn', 'Tiêu đề (Phồn thể)', 'required');
         $this->form_validation->set_rules('title_en', 'Title', 'required');
+        $this->form_validation->set_rules('title_sc', 'Tiêu đề (Giản thể)', 'required');
 
         if ($this->form_validation->run() == FALSE) {
         	$this->render('admin/'. $this->controller .'/create_post_category_view');
@@ -137,6 +116,7 @@ class Post_category extends Admin_Controller{
 
         $this->data['detail'] = $detail;
         
+        // echo '<pre>';
         // print_r($detail);die;
 
         $this->render('admin/'. $this->controller .'/detail_post_category_view');
@@ -156,8 +136,9 @@ class Post_category extends Admin_Controller{
         $this->data['detail'] = $detail;
         
 
-        $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
+        $this->form_validation->set_rules('title_cn', 'Tiêu đề (Phồn thể)', 'required');
         $this->form_validation->set_rules('title_en', 'Title', 'required');
+        $this->form_validation->set_rules('title_sc', 'Tiêu đề (Giản thể)', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->render('admin/'. $this->controller .'/edit_post_category_view');
@@ -256,7 +237,10 @@ class Post_category extends Admin_Controller{
         $list_categories = $this->post_category_model->get_by_parent_id(null, 'asc');
         $detail_catrgory = $this->post_category_model->get_by_id($id, $this->request_language_template);
         $this->get_multiple_posts_with_category($list_categories, $detail_catrgory['id'], $ids);
-        $ids = array_unique($ids);
+        if($ids != null){
+            $ids = array_unique($ids);
+        }
+
 
         $data = array('is_activated' => 0);
 
@@ -287,6 +271,7 @@ class Post_category extends Admin_Controller{
     }
 
     public function deactive(){
+
         $this->load->model('post_model');
         $id = $this->input->post('id');
         $list_categories = $this->post_category_model->get_by_parent_id(null, 'asc');
@@ -299,7 +284,6 @@ class Post_category extends Admin_Controller{
         $this->db->trans_begin();
 
         $update = $this->post_category_model->multiple_update_by_ids($ids, $data);
-
         if ($update == 1) {
             $this->post_model->multiple_update_by_category_ids($ids, $data);
         }
@@ -325,13 +309,14 @@ class Post_category extends Admin_Controller{
 
     protected function build_parent_title($parent_id){
         $sub = $this->post_category_model->get_by_id($parent_id, array('title'));
+        // echo 1;die;
 
         if($parent_id != 0){
             $title = explode('|||', $sub['post_category_title']);
             $sub['title_en'] = $title[0];
-            $sub['title_vi'] = $title[1];
-
-            $title = $sub['title_vi'];
+            $sub['title_cn'] = $title[1];
+            $sub['title_sc'] = $title[2];
+            $title = $sub['title_en'];
         }else{
             $title = 'Danh mục gốc';
         }

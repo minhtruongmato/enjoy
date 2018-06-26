@@ -30,9 +30,9 @@ class Post extends Admin_Controller{
         if($this->input->get('search')){
             $keywords = $this->input->get('search');
         }
-        $total_rows  = $this->post_model->count_search('vi');
+        $total_rows  = $this->post_model->count_search('en');
         if($keywords != ''){
-            $total_rows  = $this->post_model->count_search('vi', $keywords);
+            $total_rows  = $this->post_model->count_search('en', $keywords);
         }
 
         $this->load->library('pagination');
@@ -47,9 +47,9 @@ class Post extends Admin_Controller{
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
 
-        $result = $this->post_model->get_all_with_pagination_search('desc','vi' , $per_page, $this->data['page']);
+        $result = $this->post_model->get_all_with_pagination_search('desc','en' , $per_page, $this->data['page']);
         if($keywords != ''){
-            $result = $this->post_model->get_all_with_pagination_search('desc','vi' , $per_page, $this->data['page'], $keywords);
+            $result = $this->post_model->get_all_with_pagination_search('desc','en' , $per_page, $this->data['page'], $keywords);
         }
         foreach ($result as $key => $value) {
             $parent_title = $this->build_parent_title($value['post_category_id']);
@@ -69,8 +69,10 @@ class Post extends Admin_Controller{
         $post_category = $this->post_category_model->get_by_parent_id(null,'asc');
         $this->data['post_category'] = $post_category;
 
-        $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
+        $this->form_validation->set_rules('title_cn', 'Tiêu đề (Phồn thể)', 'required');
         $this->form_validation->set_rules('title_en', 'Title', 'required');
+        $this->form_validation->set_rules('title_sc', 'Tiêu đề (Giản thể)', 'required');
+        $this->form_validation->set_rules('parent_id_shared', 'Danh mục', 'required');
 
         if ($this->form_validation->run() == FALSE) {
         	$this->render('admin/post/create_post_view');
@@ -152,8 +154,10 @@ class Post extends Admin_Controller{
         $this->data['detail'] = $detail;
         // print_r($category);die;
 
-        $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
+        $this->form_validation->set_rules('title_cn', 'Tiêu đề (Phồn thể)', 'required');
         $this->form_validation->set_rules('title_en', 'Title', 'required');
+        $this->form_validation->set_rules('title_sc', 'Tiêu đề (Giản thể)', 'required');
+        $this->form_validation->set_rules('parent_id_shared', 'Danh mục', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->render('admin/post/edit_post_view');
@@ -240,9 +244,9 @@ class Post extends Admin_Controller{
         if($parent_id != 0){
             $title = explode('|||', $sub['post_category_title']);
             $sub['title_en'] = $title[0];
-            $sub['title_vi'] = $title[1];
-
-            $title = $sub['title_vi'];
+            $sub['title_cn'] = $title[1];
+            $sub['title_sc'] = $title[2];
+            $title = $sub['title_en'];
         }else{
             $title = 'Danh mục gốc';
         }
