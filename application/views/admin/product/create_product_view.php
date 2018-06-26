@@ -219,10 +219,12 @@
                         </div>
                     </div>
                     <div class="hidden">
-                        <input type="text" name="datetitle_vi[]" value=""/>
-                        <input type="text" name="datecontent_vi[]" value=""/>
                         <input type="text" name="datetitle_en[]" value=""/>
                         <input type="text" name="datecontent_en[]" value=""/>
+                        <input type="text" name="datetitle_cn[]" value=""/>
+                        <input type="text" name="datecontent_cn[]" value=""/>
+                        <input type="text" name="datetitle_sc[]" value=""/>
+                        <input type="text" name="datecontent_sc[]" value=""/>
                         <input type="file" name="dateimg[]" multiple="">
                         <input type="text" name="librarylocaltion[]">
                     </div>

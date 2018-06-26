@@ -82,15 +82,6 @@ if (!function_exists('handle_common_author_data')) {
 if (!function_exists('handle_common_author_data')) {
     function build_template(){
         $template = array(
-            'vi' => array(
-                'title' => 'Tiêu đề',
-                'metakeywords' => 'Từ khóa Meta',
-                'metadescription' => 'Mô tả Meta',
-                'description' => 'Giới Thiệu',
-                'content' => 'Nội Dung',
-                'tripnodes' => 'Ghi chú chuyến đi',
-                'detailsprice' => 'Chi tiết giá'
-            ),
             'en' => array(
                 'title' => 'Title',
                 'metakeywords' => 'Meta keywords',
@@ -99,6 +90,22 @@ if (!function_exists('handle_common_author_data')) {
                 'content' => 'Content',
                 'tripnodes' => 'Trip nodes',
                 'detailsprice' => 'Details price'
+            ),'cn' => array(
+                'title' => 'Title(Trung Phồn Thể)',
+                'metakeywords' => 'Metakeywords(Trung Phồn Thể)',
+                'metadescription' => 'Metadescription(Trung Phồn Thể)',
+                'description' => 'Description(Trung Phồn Thể)',
+                'content' => 'Content(Trung Phồn Thể)',
+                'tripnodes' => 'Tripnodes(Trung Phồn Thể)',
+                'detailsprice' => 'Detailsprice(Trung Phồn Thể)'
+            ),'sc' => array(
+                'title' => 'Title(Trung Giản Thể)',
+                'metakeywords' => 'Metakeywords(Trung Giản Thể)',
+                'metadescription' => 'Metadescription(Trung Giản Thể)',
+                'description' => 'Description(Trung Giản Thể)',
+                'content' => 'Content(Trung Giản Thể)',
+                'tripnodes' => 'Tripnodes(Trung Giản Thể)',
+                'detailsprice' => 'Detailsprice(Trung Giản Thể)'
             ),
         );
         return $template;
@@ -114,7 +121,7 @@ if (!function_exists('handle_common_author_data')) {
     function build_language($controller, $detail, $select = array(), $page_languages){
         foreach ($select as $key => $value) {
             $result = explode('|||', $detail[$controller .'_'. $value]);
-            foreach (array_reverse($page_languages) as $k => $val) {
+            foreach ($page_languages as $k => $val) {
                 // echo $val;die;
                 $detail[$value. '_'. $val] = $result[$k];
             }
