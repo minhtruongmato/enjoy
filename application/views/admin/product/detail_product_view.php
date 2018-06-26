@@ -7,14 +7,14 @@
         <h1>
             Chi tiết
             <small>
-                Thực Đơn
+                Tour
             </small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li><a href="#"><i class="fa fa-dashboard"></i> Chi tiết</a></li>
             <li class="active">
-                Thực Đơn
+                Tour
             </li>
         </ol>
     </section>
@@ -66,6 +66,8 @@
                                     <div class="detail-info col-sm-12">
                                         <div class="table-responsive">
                                             <label>Thông tin</label>
+                                            <?php echo ($detail['is_top'] == 1)? '<h3>TOP 10 Tour</h3>' : '' ?>
+                                            
                                             <table class="table table-striped">
                                                 <tr>
                                                     <th>Đánh Giá</th>

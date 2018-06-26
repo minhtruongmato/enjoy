@@ -28,12 +28,12 @@ class Banner extends Admin_Controller{
         }
         $this->load->library('pagination');
         $per_page = 10;
-        $total_rows  = $this->banner_model->count_search('vi', $this->data['keyword']);
+        $total_rows  = $this->banner_model->count_search('en', $this->data['keyword']);
         $config = $this->pagination_config(base_url('admin/'.$this->data['controller'].'/index'), $total_rows, $per_page, 4);
         $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
-        $this->data['result'] = $this->banner_model->get_all_with_pagination_search('desc','vi' , $per_page, $this->data['page'], $this->data['keyword']);
+        $this->data['result'] = $this->banner_model->get_all_with_pagination_search('desc','en' , $per_page, $this->data['page'], $this->data['keyword']);
         $this->render('admin/banner/list_banner_view');
     }
 
@@ -41,8 +41,9 @@ class Banner extends Admin_Controller{
 		$this->load->helper('form');
         if($this->input->post()){
             $this->load->library('form_validation');
-            $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
+            $this->form_validation->set_rules('title_cn', 'Tiêu đề (Phồn thể)', 'required');
             $this->form_validation->set_rules('title_en', 'Title', 'required');
+            $this->form_validation->set_rules('title_sc', 'Tiêu đề (Giản thể)', 'required');
             if($this->form_validation->run() == TRUE){
                 if(empty($_FILES['image_shared']['name'])){
                     $this->session->set_flashdata('message_error', MESSAGE_EMPTY_IMAGE_ERROR);
