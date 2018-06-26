@@ -26,9 +26,9 @@ class Product_category extends Admin_Controller{
         if($this->input->get('search')){
             $keywords = $this->input->get('search');
         }
-        $total_rows  = $this->product_category_model->count_search('vi');
+        $total_rows  = $this->product_category_model->count_search('en');
         if($keywords != ''){
-            $total_rows  = $this->product_category_model->count_search('vi', $keywords);
+            $total_rows  = $this->product_category_model->count_search('en', $keywords);
         }
 
         
@@ -44,9 +44,9 @@ class Product_category extends Admin_Controller{
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
 
-        $result = $this->product_category_model->get_all_with_pagination_and_sort_search('asc','vi' , $per_page, $this->data['page']);
+        $result = $this->product_category_model->get_all_with_pagination_and_sort_search('asc','en' , $per_page, $this->data['page']);
         if($keywords != ''){
-            $result = $this->product_category_model->get_all_with_pagination_and_sort_search('asc','vi' , $per_page, $this->data['page'], $keywords);
+            $result = $this->product_category_model->get_all_with_pagination_and_sort_search('asc','en' , $per_page, $this->data['page'], $keywords);
         }
         foreach ($result as $key => $value) {
             $parent_title = $this->build_parent_title($value['parent_id']);
@@ -68,8 +68,9 @@ class Product_category extends Admin_Controller{
         $this->build_new_category($product_category,0,$this->data['product_category']);
         if($this->input->post()){
             $this->load->library('form_validation');
-            $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
-            $this->form_validation->set_rules('title_en', 'Title', 'required');
+            $this->form_validation->set_rules('title_en', 'Tiêu đề', 'required');
+            $this->form_validation->set_rules('title_cn', 'Title', 'required');
+            $this->form_validation->set_rules('title_sc', 'Title', 'required');
             if($this->form_validation->run() == TRUE){
                 if(!empty($_FILES['image_shared']['name'])){
                     $this->check_img($_FILES['image_shared']['name'], $_FILES['image_shared']['size']);
@@ -129,8 +130,9 @@ class Product_category extends Admin_Controller{
             $this->data['detail'] = build_language($this->data['controller'], $detail, array('title', 'content', 'metakeywords', 'metadescription'), $this->page_languages);
             if($this->input->post()){
                 $this->load->library('form_validation');
-                $this->form_validation->set_rules('title_vi', 'Tiêu đề', 'required');
                 $this->form_validation->set_rules('title_en', 'Title', 'required');
+                $this->form_validation->set_rules('title_cn', 'Title', 'required');
+                $this->form_validation->set_rules('title_sc', 'Title', 'required');
                 if($this->form_validation->run() == TRUE){
                     if(!empty($_FILES['image_shared']['name'])){
                         $this->check_img($_FILES['image_shared']['name'], $_FILES['image_shared']['size']);
@@ -244,10 +246,8 @@ class Product_category extends Admin_Controller{
                 return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ERROR_ACTIVE_CATEGORY);
             }
         }
-
         $data = array('is_activated' => 0);
-        $update = $this->product_category_model->multiple_update_by_ids($id, $data);
-
+        $update = $this->product_category_model->common_update($id,array_merge($data,$this->author_data));
         if ($update == 1) {
             $reponse = array(
                 'csrf_hash' => $this->security->get_csrf_hash()
@@ -256,33 +256,30 @@ class Product_category extends Admin_Controller{
         }
         return $this->return_api(HTTP_BAD_REQUEST);
     }
-
     public function deactive(){
         $this->load->model('product_model');
         $id = $this->input->post('id');
         $list_categories = $this->product_category_model->get_by_parent_id(null, 'asc');
         $this->get_multiple_products_with_category($list_categories, $id, $ids);
         $ids = array_unique($ids);
-
-        $data = array('is_activated' => 1);
-
-        $this->db->trans_begin();
-
-        $update = $this->product_category_model->multiple_update_by_ids($ids, $data);
-
-        if ($update == 1) {
-            $this->product_model->multiple_update_by_category_ids($ids, $data);
+        if(count($ids)>1){
+            return $this->return_api(HTTP_NOT_FOUND,MESSAGE_DEACTIVE_ERROR);
+        }else{
+            $product_category = $this->product_category_model->get_by_id($id,array('title'));
+            if($product_category['parent_id'] == 0 && ($product_category['slug'] == 'tour-dac-biet' || $product_category['slug'] == 'trong-nuoc' || $product_category['slug'] == 'nuoc-ngoai')){
+                return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ERROR_DEACTIVE_CATEGORY);
+            }
+            if(!empty($this->product_model->get_by_product_category_id($id))){
+                return $this->return_api(HTTP_NOT_FOUND,MESSAGE_DEACTIVE_ERROR);
+            }
         }
-
-        if ($this->db->trans_status() === false) {
-            $this->db->trans_rollback();
-            return $this->return_api(HTTP_BAD_REQUEST);
-        } else {
-            $this->db->trans_commit();
+        $data = array('is_activated' => 1);
+        $update = $this->product_category_model->common_update($id,array_merge($data,$this->author_data));
+        if ($update == 1) {
             $reponse = array(
                 'csrf_hash' => $this->security->get_csrf_hash()
             );
-            return $this->return_api(HTTP_SUCCESS,'',$reponse);
+            return $this->return_api(HTTP_SUCCESS,MESSAGE_DEACTIVE_SUCCESS,$reponse);
         }
     }
 
@@ -293,9 +290,10 @@ class Product_category extends Admin_Controller{
         if($parent_id != 0){
             $title = explode('|||', $sub['product_category_title']);
             $sub['title_en'] = $title[0];
-            $sub['title_vi'] = $title[1];
+            $sub['title_cn'] = $title[1];
+            $sub['title_sc'] = $title[2];
 
-            $title = $sub['title_vi'];
+            $title = $sub['title_en'];
         }else{
             $title = 'Danh mục gốc';
         }

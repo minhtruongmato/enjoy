@@ -4,8 +4,8 @@ class MY_Controller extends CI_Controller {
 
     protected $data = array();
     protected $author_info = array();
-    protected $page_languages = array('vi', 'en');
-    protected $langAbbreviation = 'vi';
+    protected $page_languages = array('en', 'cn', 'sc');
+    protected $langAbbreviation = 'en';
 
     function __construct() {
         parent::__construct();
@@ -158,7 +158,7 @@ class Admin_Controller extends MY_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->data['page_languages'] = array('vi' => 'Tiếng Việt', 'en' => 'English');
+        $this->data['page_languages'] = array('en' => 'English', 'cn' => 'Tiếng Trung phồn thể', 'sc' => 'Tiếng Trung giản thể');
         $this->load->library('ion_auth');
         if (!$this->ion_auth->logged_in() || $this->ion_auth->is_admin()===FALSE) {
             //redirect them to the login page
@@ -276,24 +276,28 @@ class Public_Controller extends MY_Controller {
         $this->load->helper('form');
         $this->load->library('ion_auth');
         
-        $this->langAbbreviation = $this->uri->segment(1) ? $this->uri->segment(1) : 'vi';
-        if($this->langAbbreviation == 'vi' || $this->langAbbreviation == 'en' || $this->langAbbreviation == ''){
+        $this->langAbbreviation = $this->uri->segment(1) ? $this->uri->segment(1) : 'en';
+        if($this->langAbbreviation == 'en' || $this->langAbbreviation == 'cn' || $this->langAbbreviation == 'sc' || $this->langAbbreviation == ''){
             $this->session->set_userdata('langAbbreviation', $this->langAbbreviation);
         }
-        
-        if($this->session->userdata('langAbbreviation') == 'vi'){
-            $langName = 'vietnamese';
-            $this->config->set_item('language', $langName); 
-            $this->session->set_userdata("langAbbreviation",'vi');
-            $this->lang->load('vietnamese_lang', 'vietnamese');
-        }
-        
-        if($this->session->userdata('langAbbreviation') == 'en' || $this->session->userdata('langAbbreviation') == ''){
+        if($this->session->userdata('langAbbreviation') == 'en'){
             $langName = 'english';
             $this->config->set_item('language', $langName); 
             $this->session->set_userdata("langAbbreviation",'en');
             $this->lang->load('english_lang', 'english');
         }
+        // if($this->session->userdata('langAbbreviation') == 'cn'){
+        //     $langName = 'zh-cn';
+        //     $this->config->set_item('language', $langName); 
+        //     $this->session->set_userdata("langAbbreviation",'cn');
+        //     $this->lang->load('zh-cn_lang', 'zh-cn');
+        // }
+        // if($this->session->userdata('langAbbreviation') == 'sc'){
+        //     $langName = 'zh-tw';
+        //     $this->config->set_item('language', $langName); 
+        //     $this->session->set_userdata("langAbbreviation",'sc');
+        //     $this->lang->load('zh-tw_lang', 'zh-tw');
+        // }
         
     }
 

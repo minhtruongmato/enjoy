@@ -1,6 +1,6 @@
 var csrf_hash = $("input[name='csrf_myielts_token']").val();
 switch(window.location.origin){
-    case 'http://enjoy.vn':
+    case 'http://myielts.vn':
         var HOSTNAME = 'http://enjoy.vn/';
         break;
     default:
@@ -34,7 +34,10 @@ $("#nav-product li#add-date").click(function(){
 			$(element).removeClass("input-error");
 		},
 		rules: {
-			title_vi: {
+			title_cn: {
+				required: true
+			},
+			title_sc: {
 				required: true
 			},
 			title_en: {
@@ -45,32 +48,66 @@ $("#nav-product li#add-date").click(function(){
 			}
 		}, 
 		messages: {
-			title_vi: {
-				required: "Tiêu đề không được trống."
+			title_cn: {
+				required: "標題字段是必需的。"
+			},
+			title_sc: {
+				required: "标题字段是必需的。"
 			},
 			title_en: {
 				required: "Title field is required."
 			},
 			parent_id_shared: {
-				required: "Vui lòng chọn danh mục cha."
+				required: "Please select the parent category."
 			}
 		},
 
 	});
 	if ($('#register-form').valid() === false){
+		console.log($(".col-xs-12.has-errors input").length);
+		console.log($("#home ul.language .active a").attr("aria-controls"));
+		console.log($(".col-xs-12.has-errors input")[0].id.indexOf($("#home ul.language .active a").attr("aria-controls")));
 		if($(".col-xs-12.has-errors input").length >0 && $(".col-xs-12.has-errors input")[0].id.indexOf($("#home ul.language .active a").attr("aria-controls")) == "-1"){
 			$("#home ul.language .active a").attr("aria-expanded","false");
 			$("#"+$("#home ul.language .active a").attr("aria-controls")).removeClass('active');
-			if($("#home ul.language .active a").attr("aria-controls") == "vi"){
-				$("#home ul.language .active").removeClass('active');
-				$("a[aria-controls=en]").parent().addClass("active");
-				$("#home ul.language .active a").attr("aria-expanded","true");
-				$("#en").addClass('active');
-			}else if($("#home ul.language .active a").attr("aria-controls") == "en"){
-				$("#home ul.language .active").removeClass('active');
-				$("a[aria-controls=vi]").parent().addClass("active");
-				$("#home ul.language .active a").attr("aria-expanded","true");
-				$("#vi").addClass('active');
+			console.log($("#home ul.language .active a").attr("aria-controls"));
+			if($("#home ul.language .active a").attr("aria-controls") == "en"){
+				if($("#title_cn").val() == ''){
+					$("#home ul.language .active").removeClass('active');
+					$("a[aria-controls=cn]").parent().addClass("active");
+					$("#home ul.language .active a").attr("aria-expanded","true");
+					$("#cn").addClass('active');
+				}else if($("#title_sc").val() == ''){
+					$("#home ul.language .active").removeClass('active');
+					$("a[aria-controls=sc]").parent().addClass("active");
+					$("#home ul.language .active a").attr("aria-expanded","true");
+					$("#sc").addClass('active');
+				}
+			}else if($("#home ul.language .active a").attr("aria-controls") == "cn"){
+				console.log(1);
+				if($("#title_en").val() == ''){
+					$("#home ul.language .active").removeClass('active');
+					$("a[aria-controls=en]").parent().addClass("active");
+					$("#home ul.language .active a").attr("aria-expanded","true");
+					$("#en").addClass('active');
+				}else if($("#title_sc").val() == ''){
+					$("#home ul.language .active").removeClass('active');
+					$("a[aria-controls=sc]").parent().addClass("active");
+					$("#home ul.language .active a").attr("aria-expanded","true");
+					$("#sc").addClass('active');
+				}
+			}else if($("#home ul.language .active a").attr("aria-controls") == "sc"){
+				if($("#title_en").val() == ''){
+					$("#home ul.language .active").removeClass('active');
+					$("a[aria-controls=en]").parent().addClass("active");
+					$("#home ul.language .active a").attr("aria-expanded","true");
+					$("#en").addClass('active');
+				}else if($("#title_cn").val() == ''){
+					$("#home ul.language .active").removeClass('active');
+					$("a[aria-controls=cn]").parent().addClass("active");
+					$("#home ul.language .active a").attr("aria-expanded","true");
+					$("#cn").addClass('active');
+				}
 			}
 		}
 		if($("select[name=parent_id_shared]").parent().attr("class") == "col-xs-12 has-errors"){
@@ -153,10 +190,12 @@ $("#submit-shared,#content-home").click(function(event) {
 		}
 	});
 	$('[name^=title_date_]').each(function(e) {
-		if($(this)[0].name.indexOf("vi") != "-1"){
-			messages = "Tiêu đề không được trống.";
-		}else{
+		if($(this)[0].name.indexOf("en") != "-1"){
 			messages = "Title field is required.";
+		}else if($(this)[0].name.indexOf("cn") != "-1"){
+			messages = "标题字段是必需的。";
+		}else{
+			messages = "標題字段是必需的。";
 		}
 		$("[name="+$(this)[0].name+"]").rules('add', {
 			required: true,
@@ -234,10 +273,12 @@ $("#submit-shared,#content-home").click(function(event) {
 				}
 				post.append('vehicles[]',$('#vehicles_'+k).val());
 				post.append('librarylocaltion[]',$('#go-place_'+k).val());
-				post.append('datetitle_vi[]',$('#title_date_vi_'+k).val());
 				post.append('datetitle_en[]',$('#title_date_en_'+k).val());
-				post.append('datecontent_vi[]',tinymce.get("content_date_vi_"+k).getContent());
+				post.append('datetitle_cn[]',$('#title_date_cn_'+k).val());
+				post.append('datetitle_sc[]',$('#title_date_sc_'+k).val());
 				post.append('datecontent_en[]',tinymce.get("content_date_en_"+k).getContent());
+				post.append('datecontent_cn[]',tinymce.get("content_date_cn_"+k).getContent());
+				post.append('datecontent_sc[]',tinymce.get("content_date_sc_"+k).getContent());
 			}
 			post.append('price',$('#price').val());
 			post.append('date',$('#datepicker').val());
@@ -249,22 +290,29 @@ $("#submit-shared,#content-home").click(function(event) {
 			post.append('image_shared',document.getElementById("image_shared").files[0]);
 			post.append('image_localtion',document.getElementById("image_localtion").files[0]);
 			post.append('number',($(".title-content-date.date [name^=title_date_]").length));
-			post.append('title_vi',$('#title_vi').val());
 			post.append('title_en',$('#title_en').val());
-			post.append('metakeywords_vi',$('#metakeywords_vi').val());
+			post.append('title_cn',$('#title_cn').val());
+			post.append('title_sc',$('#title_sc').val());
 			post.append('metakeywords_en',$('#metakeywords_en').val());
-			post.append('metadescription_vi',$('#metadescription_vi').val());
+			post.append('metakeywords_cn',$('#metakeywords_cn').val());
+			post.append('metakeywords_sc',$('#metakeywords_sc').val());
 			post.append('metadescription_en',$('#metadescription_en').val());
+			post.append('metadescription_cn',$('#metadescription_cn').val());
+			post.append('metadescription_sc',$('#metadescription_sc').val());
 			post.append('slug_shared',$('#slug_shared').val());
 			post.append('parent_id_shared',$('#parent_id_shared').val());
-			post.append('description_vi',$('#description_vi').val());
 			post.append('description_en',$('#description_en').val());
-			post.append('content_vi',tinymce.get("content_vi").getContent());
+			post.append('description_cn',$('#description_cn').val());
+			post.append('description_sc',$('#description_sc').val());
 			post.append('content_en',tinymce.get("content_en").getContent());
-			post.append('tripnodes_vi',tinymce.get("tripnodes_vi").getContent());
+			post.append('content_cn',tinymce.get("content_cn").getContent());
+			post.append('content_sc',tinymce.get("content_sc").getContent());
 			post.append('tripnodes_en',tinymce.get("tripnodes_en").getContent());
-			post.append('detailsprice_vi',tinymce.get("detailsprice_vi").getContent());
+			post.append('tripnodes_cn',tinymce.get("tripnodes_cn").getContent());
+			post.append('tripnodes_sc',tinymce.get("tripnodes_sc").getContent());
 			post.append('detailsprice_en',tinymce.get("detailsprice_en").getContent());
+			post.append('detailsprice_cn',tinymce.get("detailsprice_cn").getContent());
+			post.append('detailsprice_sc',tinymce.get("detailsprice_sc").getContent());
 			post.append('csrf_myielts_token',csrf_hash);
 			$.ajax({
 				method: "post",
@@ -292,7 +340,7 @@ $("#submit-shared,#content-home").click(function(event) {
 	}
 });
 $("#button-numberdate,#append-date").click(function(){
-	numberdates = $(".title-content-date.showdate.vi .title-content-date.date").length;
+	numberdates = $(".title-content-date.showdate.en .title-content-date.date").length;
 	if($(this).attr("id") == 'append-date'){
 		$("#numberdate").val($("#content-full-date .title-content-date.date").length+1);
 	}

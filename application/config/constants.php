@@ -236,3 +236,10 @@ defined('MESSAGE_CREATE_BOOKING_ERROR') OR define('MESSAGE_CREATE_BOOKING_ERROR'
 defined('MESSAGE_CREATE_ERROR_REQUIRE') OR define('MESSAGE_CREATE_ERROR_REQUIRE', 'Vui lòng nhập đầy đủ thông tin.');
 defined('MESSAGE_EDIT_ERROR_VALIDATE') OR define('MESSAGE_EDIT_ERROR_VALIDATE', 'Lỗi sửa tour vui lòng thao tác lại.');
 defined('MESSAGE_CREATE_ERROR_VALIDATE') OR define('MESSAGE_CREATE_ERROR_VALIDATE', 'Lỗi tạo mới tour vui lòng thao tác lại.');
+/**
+ * Message deactive tour,tour category
+ */
+defined('MESSAGE_DEACTIVE_ERROR') OR define('MESSAGE_DEACTIVE_ERROR', 'Bạn phải tắt tất cả danh mục con và tour thuộc danh mục!');
+defined('MESSAGE_DEACTIVE_POST_ERROR') OR define('MESSAGE_DEACTIVE_POST_ERROR', 'Bạn phải tắt tất cả danh mục con và bài viết thuộc danh mục!');
+defined('MESSAGE_DEACTIVE_SUCCESS') OR define('MESSAGE_DEACTIVE_SUCCESS', 'Tắt danh mục thành công!');
+defined('MESSAGE_ERROR_DEACTIVE_CATEGORY') OR define('MESSAGE_ERROR_DEACTIVE_CATEGORY', 'Danh mục này không thể tắt!');
