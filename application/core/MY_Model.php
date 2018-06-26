@@ -113,23 +113,33 @@ class MY_Model extends CI_Model {
         
         return $this->db->get()->row_array();
     }
+    public function multiple_update_by_ids($ids = array(), $data) {
+        $this->db->where_in('id', $ids);
 
+        return $this->db->update($this->table, $data);
+    }
+
+    public function multiple_update_by_category_ids($category_ids = array(), $data) {
+        $this->db->where_in($this->table .'_category_id', $category_ids);
+
+        return $this->db->update($this->table, $data);
+    }
     public function get_by_slug($slug, $select = array('title', 'description', 'content'), $lang = 'vi') {
         $this->db->query('SET SESSION group_concat_max_len = 10000000');
         $this->db->select($this->table .'.*');
         if(in_array('title', $select)){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.title ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_title');
+            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.title ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. $this->table .'_title');
         }
         if(in_array('description', $select)){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.description ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_description');
+            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.description ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. $this->table .'_description');
         }
         if(in_array('content', $select)){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.content ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_content');
+            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.content ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. $this->table .'_content');
         }
         if($select == null){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.title ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_title');
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.description ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_description');
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.content ORDER BY '. $this->table_lang .'.language separator \' ||| \') as '. $this->table .'_content');
+            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.title ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. $this->table .'_title');
+            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.description ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. $this->table .'_description');
+            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.content ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. $this->table .'_content');
         }
         
         $this->db->from($this->table);

@@ -158,7 +158,7 @@ class Admin_Controller extends MY_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->data['page_languages'] = array('en' => 'English', 'cn' => 'Chinese', 'sc' => 'Simply Chinese');
+        $this->data['page_languages'] = array('en' => 'English', 'cn' => 'Tiếng Trung phồn thể', 'sc' => 'Tiếng Trung giản thể');
         $this->load->library('ion_auth');
         if (!$this->ion_auth->logged_in() || $this->ion_auth->is_admin()===FALSE) {
             //redirect them to the login page

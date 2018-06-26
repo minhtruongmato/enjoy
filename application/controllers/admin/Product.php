@@ -38,12 +38,12 @@ class Product extends Admin_Controller{
         }
         $this->load->library('pagination');
         $per_page = 10;
-        $total_rows  = $this->product_model->count_search('vi', $this->data['keyword']);
+        $total_rows  = $this->product_model->count_search('en', $this->data['keyword']);
         $config = $this->pagination_config(base_url('admin/'.$this->data['controller'].'/index'), $total_rows, $per_page, 4);
         $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
-        $this->data['result'] = $this->product_model->get_all_with_pagination_search('desc','vi' , $per_page, $this->data['page'], $this->data['keyword']);
+        $this->data['result'] = $this->product_model->get_all_with_pagination_search('desc','en' , $per_page, $this->data['page'], $this->data['keyword']);
         foreach ($this->data['result'] as $key => $value) {
             $parent_title = $this->build_parent_title($value['product_category_id']);
             $this->data['result'][$key]['parent_title'] = $parent_title;
@@ -56,11 +56,11 @@ class Product extends Admin_Controller{
         $product_category = $this->product_category_model->get_by_parent_id_when_active(null,'asc');
         $this->build_new_category($product_category,0,$this->data['product_category']);
         if($this->input->post()){
-            if($this->input->post('parent_id_shared') == '' || $this->input->post('title_vi') == '' || $this->input->post('title_en') == ''){
+            if($this->input->post('parent_id_shared') == '' || $this->input->post('title_en') == '' || $this->input->post('title_cn') == '' || $this->input->post('title_sc') == ''){
                         return $this->return_api(HTTP_NOT_FOUND,MESSAGE_CREATE_ERROR_VALIDATE);
             }
             foreach ($this->page_languages as $key => $value) {
-                for ($i=0; $i < count($this->input->post('datetitle_vi')); $i++) {
+                for ($i=0; $i < count($this->input->post('datetitle_en')); $i++) {
                     if($this->input->post('datetitle_'.$value)[$i] == ''){
                         return $this->return_api(HTTP_NOT_FOUND,MESSAGE_CREATE_ERROR_VALIDATE);
                     }
@@ -99,7 +99,7 @@ class Product extends Admin_Controller{
             $dateimage_full = array();
             if(!empty($_FILES['dateimg']['name'])){
                 $dateimage = $this->upload_file('./assets/upload/product/'.$unique_slug, 'dateimg', 'assets/upload/product/'. $unique_slug .'/thumb');
-                for ($i=0; $i < count($this->input->post('datetitle_vi')); $i++) { 
+                for ($i=0; $i < count($this->input->post('datetitle_en')); $i++) { 
                     if(array_key_exists($i,array_flip($img_array))){
                         $dateimage_full[] = "";
                     }else{
@@ -107,7 +107,7 @@ class Product extends Admin_Controller{
                     }
                 }
             }else{
-                for ($i=0; $i < count($this->input->post('datetitle_vi')); $i++) {
+                for ($i=0; $i < count($this->input->post('datetitle_en')); $i++) {
                     $dateimage_full[] = "";
                 }
             }
@@ -166,10 +166,12 @@ class Product extends Admin_Controller{
                 $detail = build_language($this->data['controller'], $product, array('title', 'description', 'content','metakeywords','metadescription','tripnodes','detailsprice','datetitle','datecontent'), $this->page_languages);
                 $parent_title = $this->build_parent_title($detail['product_category_id']);
                 $detail['parent_title'] = $parent_title;
-                $detail['datetitle_vi'] = json_decode($detail['datetitle_vi']);
                 $detail['datetitle_en'] = json_decode($detail['datetitle_en']);
-                $detail['datecontent_vi'] = json_decode($detail['datecontent_vi']);
+                $detail['datetitle_cn'] = json_decode($detail['datetitle_cn']);
+                $detail['datetitle_sc'] = json_decode($detail['datetitle_sc']);
                 $detail['datecontent_en'] = json_decode($detail['datecontent_en']);
+                $detail['datecontent_cn'] = json_decode($detail['datecontent_cn']);
+                $detail['datecontent_sc'] = json_decode($detail['datecontent_sc']);
                 $detail['vehicles'] = json_decode($detail['vehicles']);
                 $librarylocaltion = json_decode($detail['librarylocaltion']);
                 if(!empty($librarylocaltion)){
@@ -215,7 +217,7 @@ class Product extends Admin_Controller{
     public function ajax_form($numberdate,$numbercurrent = 0){
         $reponse = '';
         for ($i=$numbercurrent; $i < $numberdate; $i++) {
-            $reponse .= '<div class="vi">';
+            $reponse .= '<div class="en">';
             $reponse .='<div role="tabpanel" class="tab-pane active" id="'.$i.'"><div class="title-content-date showdate '.$i.'">';
             $reponse .= '<div class="btn btn-primary col-xs-12 btn-margin" type="button" data-toggle="collapse" href="#showdatecontent_'.$i.'" aria-expanded="true" aria-controls="messageContent" style="padding:10px 0px;margin-bottom:3px;">';
             $reponse .= '<div class="col-xs-11">Nội dung Đầy đủ Ngày '.($i+1).'</div>';
@@ -244,14 +246,14 @@ class Product extends Admin_Controller{
             }
             $number = 0;
             $reponse .= '<ul></div><div class="tab-content">';
-            foreach ($this->data['page_languages'] as $key => $value) {
+            foreach ($this->data['template'] as $key => $value) {
                 $active = ($number == 0)?'active':'';
                 $reponse .= '<div role="tabpanel" class="tab-pane '.$active.'" id="'.$key.$i.'">';
                 $reponse .= '<div class="col-xs-12" style="padding:0px">';
-                $reponse .= form_label(($key == 'vi')?'Tiêu đề ngày '.($i+1):'Title date '.($i+1), 'title_date_'.$i.'_'. $key,'class="title_date"   id="label_title_date_'.$key.'_'.$i.'" ');
+                $reponse .= form_label($value['title'].' '.($i+1), 'title_date_'.$i.'_'. $key,'class="title_date"   id="label_title_date_'.$key.'_'.$i.'" ');
                 $reponse .= form_error('title_date_'.$i.'_'. $key);
                 $reponse .= form_input('title_date_'.$i.'_'. $key,"", 'class="form-control" id="title_date_'.$key.'_'.$i.'"');
-                $reponse .= form_label(($key == 'vi')?'Nội dung ngày '.($i+1):'Content date '.($i+1),'content_date_'.$i.'_'. $key,'class="content_date"  id="label_content_date_'.$key.'_'.$i.'" ');
+                $reponse .= form_label($value['content'].' '.($i+1),'content_date_'.$i.'_'. $key,'class="content_date"  id="label_content_date_'.$key.'_'.$i.'" ');
                 $reponse .= form_error('content_date_'.$i.'_'. $key);
                 $reponse .= form_textarea('content_date_'.$i.'_'. $key,"", 'class="tinymce-area form-control" id="content_date_'.$key.'_'.$i.'" rows="3"');
                 $reponse .= '</div></div>';
@@ -294,10 +296,12 @@ class Product extends Admin_Controller{
             $subs = $this->product_model->get_by_parent_id($id, 'asc');
             $this->build_new_category($product_category,0,$this->data['product_category'],$subs['product_category_id']);
             $this->data['detail'] = build_language($this->data['controller'], $detail, array('title','description','content','metakeywords','metadescription','datetitle','datecontent','tripnodes','detailsprice'), $this->page_languages);
-            $this->data['detail']['datetitle_vi'] = json_decode($this->data['detail']['datetitle_vi']);
             $this->data['detail']['datetitle_en'] = json_decode($this->data['detail']['datetitle_en']);
-            $this->data['detail']['datecontent_vi'] = json_decode($this->data['detail']['datecontent_vi']);
+            $this->data['detail']['datetitle_cn'] = json_decode($this->data['detail']['datetitle_cn']);
+            $this->data['detail']['datetitle_sc'] = json_decode($this->data['detail']['datetitle_sc']);
             $this->data['detail']['datecontent_en'] = json_decode($this->data['detail']['datecontent_en']);
+            $this->data['detail']['datecontent_cn'] = json_decode($this->data['detail']['datecontent_cn']);
+            $this->data['detail']['datecontent_sc'] = json_decode($this->data['detail']['datecontent_sc']);
             $this->data['detail']['vehicles'] = json_decode($this->data['detail']['vehicles']);
             if($this->data['detail']['date'] != "0000-00-00 00:00:00" && $this->data['detail']['date'] != "1970-01-01 08:00:00"){
                 $rmtime = str_replace(" 00:00:00","",$this->data['detail']['date']);
@@ -327,11 +331,11 @@ class Product extends Admin_Controller{
             }
             $dateimg_array = json_decode($detail['dateimg']);
             if($this->input->post()){
-                if($this->input->post('parent_id_shared') == '' || $this->input->post('title_vi') == '' || $this->input->post('title_en') == ''){
+                if($this->input->post('parent_id_shared') == '' || $this->input->post('title_en') == '' || $this->input->post('title_cn') == '' || $this->input->post('title_sc') == ''){
                             return $this->return_api(HTTP_NOT_FOUND,MESSAGE_EDIT_ERROR_VALIDATE);
                 }
                 foreach ($this->page_languages as $key => $value) {
-                    for ($i=0; $i < count($this->input->post('datetitle_vi')); $i++) {
+                    for ($i=0; $i < count($this->input->post('datetitle_en')); $i++) {
                         if($this->input->post('datetitle_'.$value)[$i] == ''){
                             return $this->return_api(HTTP_NOT_FOUND,MESSAGE_EDIT_ERROR_VALIDATE);
                         }
@@ -368,7 +372,7 @@ class Product extends Admin_Controller{
                 if(!empty($_FILES['dateimg']['name'])){
                     $this->check_imgs($_FILES['dateimg']['name'], $_FILES['dateimg']['size']);
                     $dateimage = $this->upload_file('./assets/upload/product/'.$unique_slug, 'dateimg', 'assets/upload/product/'. $unique_slug .'/thumb');
-                    for ($i=0; $i < count($this->input->post('datetitle_vi')); $i++) { 
+                    for ($i=0; $i < count($this->input->post('datetitle_en')); $i++) { 
                         if(array_key_exists($i,array_flip($img_array))){
                             $dateimage_full[$i] = $dateimg_array[$i];
                         }else{
@@ -421,7 +425,7 @@ class Product extends Admin_Controller{
                 } else {
                     $this->db->trans_commit();
                     if(isset($dateimage_json) && !empty($this->data['detail']['dateimg'])) {
-                        $this->remove_img_date($this->input->post('datetitle_vi'),$dateimg_array,$unique_slug,$img_array);
+                        $this->remove_img_date($this->input->post('datetitle_en'),$dateimg_array,$unique_slug,$img_array);
                     }
                     if(isset($localtionimage) && !empty($this->data['detail']['imglocaltion'])) {
                         $this->remove_img($unique_slug,$this->data['detail']['imglocaltion']);
@@ -537,9 +541,10 @@ class Product extends Admin_Controller{
         if($parent_id != 0){
             $title = explode('|||', $sub['product_category_title']);
             $sub['title_en'] = $title[0];
-            $sub['title_vi'] = $title[1];
+            $sub['title_cn'] = $title[1];
+            $sub['title_sc'] = $title[1];
 
-            $title = $sub['title_vi'];
+            $title = $sub['title_en'];
         }else{
             $title = 'Danh mục gốc';
         }
@@ -601,7 +606,7 @@ class Product extends Admin_Controller{
         }
     }
     function remove_img_date($numberdate=array(),$dateimg_array=array(),$unique_slug = '',$dateimg= ''){
-        for ($i=0; $i < count($this->input->post('datetitle_vi')); $i++) { 
+        for ($i=0; $i < count($this->input->post('datetitle_en')); $i++) { 
             if(!array_key_exists($i,array_flip($dateimg)) && !empty($dateimg_array[$i])){
                 if(file_exists('assets/upload/'. $this->data['controller'] .'/'.$unique_slug.'/'.$dateimg_array[$i])){
                     unlink('assets/upload/'. $this->data['controller'] .'/'.$unique_slug.'/'.$dateimg_array[$i]);

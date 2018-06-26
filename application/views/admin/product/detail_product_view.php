@@ -86,7 +86,7 @@
                                                 </tr>
                                                 <tr>
                                                     <th>Số ngày tour</th>
-                                                    <td><?php echo count($detail['datetitle_vi']) ?></td>
+                                                    <td><?php echo count($detail['datetitle_en']) ?></td>
                                                 </tr>
                                                 <tr>
                                                     <th>Giá</th>
@@ -189,7 +189,7 @@
                                                 $detailimg = json_decode($detail['dateimg']);
                                             }
                                         ?>
-                                        <?php for ($i=0; $i < count($detail['datetitle_vi']); $i++): ?>
+                                        <?php for ($i=0; $i < count($detail['datetitle_en']); $i++): ?>
                                             <div role="tabpanel" class="tab-pane active" id="<?php echo $i; ?>">
                                                 <div class="title-content-date showdate <?php echo $i; ?>">
                                                     <div class="btn btn-primary col-xs-12 btn-margin collapsed" type="button" data-toggle="collapse" href="#showdatecontent_<?php echo $i; ?>" aria-expanded="false" aria-controls="messageContent" style="padding:10px 0px;margin-bottom:3px;">
@@ -234,13 +234,12 @@
                                                                             <div class="table-responsive" style="border:1px solid gray;margin: 10px auto;">
                                                                                 <table class="table table-striped">
                                                                                     <tbody>
-
                                                                                         <tr>
-                                                                                            <th style="width: 150px"><?php echo ($key == 'vi')?'Tiêu đề ngày '.($i+1):'Title date '.($i+1); ?>: </th>
+                                                                                            <th style="width: 150px"><?php echo $value['title'].' '.($i+1); ?>: </th>
                                                                                             <td><?php echo $detail['datetitle_'.$key][$i]; ?></td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th style="width: 150px"><?php echo ($key == 'vi')?'Nội dung ngày '.($i+1):'Content date '.($i+1); ?>: </th>
+                                                                                            <th style="width: 150px"><?php echo $value['content'].' '.($i+1); ?>: </th>
                                                                                             <td><?php echo $detail['datecontent_'.$key][$i]; ?></td>
                                                                                         </tr>
                                                                                     </tbody>

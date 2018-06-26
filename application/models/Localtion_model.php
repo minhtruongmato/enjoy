@@ -39,6 +39,7 @@ class Localtion_model extends MY_Model {
     public function get_librarylocaltion_by_id_array($librarylocaltion = array()){
         $this->db->select('*');
         $this->db->from($this->table);
+        $this->db->where('is_deleted', 0);
         $this->db->where_in('id', $librarylocaltion);
         return $result = $this->db->get()->result_array();
     }
@@ -46,6 +47,7 @@ class Localtion_model extends MY_Model {
         $this->db->select('*');
         $this->db->from($this->table);
         $this->db->where('area', $area);
+        $this->db->where('is_deleted', 0);
         $this->db->where_not_in('id', $notlibrarylocaltion);
         return $result = $this->db->get()->result_array();
     }

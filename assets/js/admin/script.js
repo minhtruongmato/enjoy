@@ -1,5 +1,5 @@
 switch(window.location.origin){
-    case 'http://enjoy.vn':
+    case 'http://myielts.vn':
         var HOSTNAME = 'http://enjoy.vn/';
         break;
     default:

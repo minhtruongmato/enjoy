@@ -199,7 +199,7 @@
                                     <div class="col-md-10" style="margin-top:5px;">
                                         <div class="col-xs-12" style="padding: 0px">
                                             <?php  
-                                                echo form_input("number", (int)count($detail['datetitle_vi']), 'class="form-control" onkeypress=" return isNumberKey(event)" id="numberdate"');
+                                                echo form_input("number", (int)count($detail['datetitle_en']), 'class="form-control" onkeypress=" return isNumberKey(event)" id="numberdate"');
                                             ?>
                                         </div>
                                     </div>
@@ -208,13 +208,13 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12" id="content-full-date">
-                                    <?php for ($i=0; $i < count($detail['datecontent_vi']); $i++): ?>
+                                    <?php for ($i=0; $i < count($detail['datecontent_en']); $i++): ?>
                                         <div class="vi">
                                             <div role="tabpanel" class="tab-pane active" id="<?php echo $i; ?>">
                                                 <div class="title-content-date showdate <?php echo $i; ?>">
                                                     <div class="btn btn-primary col-xs-12 btn-margin" type="button" data-toggle="collapse" href="#showdatecontent_<?php echo $i; ?>" aria-expanded="true" aria-controls="messageContent" style="padding:10px 0px;margin-bottom:3px;">
                                                         <div class="col-xs-11">Nội dung Đầy đủ Ngày <?php echo $i+1; ?></div>
-                                                        <?php echo ((count($detail['datecontent_vi']) -1) > 0 && $i == (count($detail['datecontent_vi']) -1))?"<span class='col-xs-1 remove' style='float:right;padding:0px;z-index:9999;' onclick='removeDate();'><i class='glyphicon glyphicon-remove'></i></span>":""; ?>
+                                                        <?php echo ((count($detail['datecontent_en']) -1) > 0 && $i == (count($detail['datecontent_en']) -1))?"<span class='col-xs-1 remove' style='float:right;padding:0px;z-index:9999;' onclick='removeDate();'><i class='glyphicon glyphicon-remove'></i></span>":""; ?>
                                                     </div>
                                                     <div class="no_border">
                                                         <div class="collapse in" id="showdatecontent_<?php echo $i; ?>">
@@ -268,15 +268,15 @@
                                                                     </ul>
                                                                 </div>
                                                                 <div class="tab-content">
-                                                                    <?php foreach ($page_languages as $key => $value) : ?>
+                                                                    <?php foreach ($template as $key => $value) : ?>
                                                                         <?php $active = ($number == 0)?'active':''; ?>
                                                                         <div role="tabpanel" class="tab-pane <?php echo $active;?>" id="<?php echo $key.$i; ?>">
                                                                             <div class="col-xs-12" style="padding:0px">
                                                                             <?php
-                                                                                echo form_label(($key == 'vi')?'Tiêu đề ngày '.($i+1):'Title date '.($i+1), 'title_date_'.$i.'_'. $key,'class="title_date"   id="label_title_date_'.$key.'_'.$i.'" ');
+                                                                                echo form_label($value['title'].' '.($i+1), 'title_date_'.$i.'_'. $key,'class="title_date"   id="label_title_date_'.$key.'_'.$i.'" ');
                                                                                 echo form_error('title_date_'.$i.'_'. $key);
                                                                                 echo form_input('title_date_'.$i.'_'. $key,$detail['datetitle_'.$key][$i], 'class="form-control" id="title_date_'.$key.'_'.$i.'"');
-                                                                                echo form_label(($key == 'vi')?'Nội dung ngày '.($i+1):'Content date '.($i+1),'content_date_'.$i.'_'. $key,'class="content_date"  id="label_content_date_'.$key.'_'.$i.'" ');
+                                                                                echo form_label($value['content'].' '.($i+1),'content_date_'.$i.'_'. $key,'class="content_date"  id="label_content_date_'.$key.'_'.$i.'" ');
                                                                                 echo form_error('content_date_'.$i.'_'. $key);
                                                                                 echo form_textarea('content_date_'.$i.'_'. $key,$detail['datecontent_'.$key][$i], 'class="tinymce-area form-control" id="content_date_'.$key.'_'.$i.'" rows="3"');
                                                                             ?>
@@ -312,11 +312,13 @@
                     </div>
                 </div>
                 <div class="hidden">
-                    <input type="text" name="titledate_vi[]" value=""/>
-                    <input type="text" name="contentdate_vi[]" value=""/>
                     <input type="text" name="titledate_en[]" value=""/>
                     <input type="text" name="contentdate_en[]" value=""/>
-                    <input type="text" name="numberdatehidden" value="<?php echo count($detail['datecontent_vi']);?>"/>
+                    <input type="text" name="titledate_cn[]" value=""/>
+                    <input type="text" name="contentdate_cn[]" value=""/>
+                    <input type="text" name="titledate_sc[]" value=""/>
+                    <input type="text" name="contentdate_sc[]" value=""/>
+                    <input type="text" name="numberdatehidden" value="<?php echo count($detail['datecontent_en']);?>"/>
                     <input type="file" name="dateimg[]" multiple="">
                     <input type="text" name="librarylocaltion[]">
                 </div>
