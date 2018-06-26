@@ -57,6 +57,15 @@
                                     ?>
                                 </div>
                                 <div class="col-xs-12">
+                                    <?php
+                                    echo form_label('Sản phẩm top 10', 'is_top');
+                                    echo form_error('is_top');
+                                    echo '<br />';
+                                    echo form_checkbox('is_top', '', false ,'id="is_top" data-url="'. base_url('admin/product/check_top') .'" data-id="null" ');
+                                    ?>
+                                    <span class="check_top_error"></span>
+                                </div>
+                                <div class="col-xs-12">
                                     <label>Date:</label>
                                     <div class="input-group date">
                                       <div class="input-group-addon">

@@ -199,18 +199,6 @@ class MY_Model extends CI_Model {
         return $result = $this->db->get()->result_array();
     }
 
-    public function multiple_update_by_ids($ids = array(), $data) {
-        $this->db->where_in('id', $ids);
-
-        return $this->db->update($this->table, $data);
-    }
-
-    public function multiple_update_by_category_ids($category_ids = array(), $data) {
-        $this->db->where_in($this->table .'_category_id', $category_ids);
-
-        return $this->db->update($this->table, $data);
-    }
-
     public function count_active(){
         $query = $this->db->from($this->table)->where('is_activated', 1)->get();
         return $query->num_rows();
@@ -251,6 +239,13 @@ class MY_Model extends CI_Model {
         $this->db->order_by($this->table .".sort", $order);
 
         return $result = $this->db->get()->result_array();
+    }
+
+    public function count_is_top($is_top){
+        $this->db->from($this->table);
+        $this->db->where('is_top', $is_top);
+        $this->db->where('is_deleted', 0);
+        return $this->db->count_all_results();
     }
     
     public function find_rows($data=array()){

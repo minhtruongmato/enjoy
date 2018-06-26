@@ -243,3 +243,9 @@ defined('MESSAGE_DEACTIVE_ERROR') OR define('MESSAGE_DEACTIVE_ERROR', 'Bạn ph�
 defined('MESSAGE_DEACTIVE_POST_ERROR') OR define('MESSAGE_DEACTIVE_POST_ERROR', 'Bạn phải tắt tất cả danh mục con và bài viết thuộc danh mục!');
 defined('MESSAGE_DEACTIVE_SUCCESS') OR define('MESSAGE_DEACTIVE_SUCCESS', 'Tắt danh mục thành công!');
 defined('MESSAGE_ERROR_DEACTIVE_CATEGORY') OR define('MESSAGE_ERROR_DEACTIVE_CATEGORY', 'Danh mục này không thể tắt!');
+/**
+ *
+ * Message check top 10
+ *
+ */
+defined('MESSAGE_CHECK_TOP_ERROR') OR define('MESSAGE_CHECK_TOP_ERROR', 'Hiện tại đã có đủ 10 tour thuộc TOP 10 TOUR. Vui lòng tắt 1 Tour thuộc danh sác TOP 10 TOUR và thực hiện lại thao tác!');

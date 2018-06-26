@@ -263,6 +263,12 @@ $("#submit-shared,#content-home").click(function(event) {
 			}else{
 				var url = HOSTNAME + 'admin/product/create';
 			}
+
+			if ($('#is_top').is(':checked')) {
+				var is_top = 1;
+			}else{
+				var is_top = 0;
+			}
 			var post = new FormData();
 			numberdates = $(".title-content-date.date").length;
 			for (var k = 0; k < numberdates; k++) {
@@ -281,6 +287,7 @@ $("#submit-shared,#content-home").click(function(event) {
 				post.append('datecontent_sc[]',tinymce.get("content_date_sc_"+k).getContent());
 			}
 			post.append('price',$('#price').val());
+			post.append('is_top',is_top);
 			post.append('date',$('#datepicker').val());
 			post.append('priceadults',$('#priceadults').val());
 			post.append('pricechildren',$('#pricechildren').val());
@@ -443,3 +450,31 @@ $("#button-numberdate,#append-date").click(function(){
 		}
 	});
 });
+
+$('#is_top').change(function(){
+	if($(this).is(':checked')){
+		var url = $(this).data('url');
+		var id = $(this).data('id');
+		console.log(id);
+		$.ajax({
+            method: "get",
+            url: url,
+            data: {
+            	id : id
+            },
+            success: function(response){
+                if(response.isExisted == false){
+                	$('.check_top_error').text(response.message);
+                	$('#is_top').prop('checked',false);
+                }
+            },
+            error: function(jqXHR, exception){
+                console.log(errorHandle(jqXHR, exception));
+                if(jqXHR.status == 404 && jqXHR.responseJSON.message != 'undefined'){
+                    alert(jqXHR.responseJSON.message);
+                    location.reload();
+                }
+            }
+        });
+	}
+})

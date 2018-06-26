@@ -122,7 +122,8 @@ class Product extends Admin_Controller{
                 'product_category_id' => $this->input->post('parent_id_shared'),
                 'dateimg' => json_encode($dateimage_full),
                 'vehicles' => json_encode($this->input->post('vehicles')),
-                'librarylocaltion' => json_encode($this->input->post('librarylocaltion'))
+                'librarylocaltion' => json_encode($this->input->post('librarylocaltion')),
+                'is_top' => $this->input->post('is_top')
             );
             if($this->input->post('date') !== null){
                 $date= explode("/",$this->input->post('date'));
@@ -283,6 +284,7 @@ class Product extends Admin_Controller{
         return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ID_ERROR);
     }
     public function edit($id){
+
         if($id &&  is_numeric($id) && ($id > 0)){
             $this->data['area_selected'] = $this->localtion_model->get_all_group_by();
             $this->data['localtion_all'] = $this->localtion_model->get_all_localtion();
@@ -319,6 +321,7 @@ class Product extends Admin_Controller{
                 for($i=0;$i < count($librarylocaltion);$i++){
                     $librarylocaltions = explode(',',$librarylocaltion[$i]);
                     $library[$i] = $this->localtion_model->get_librarylocaltion_by_id_array($librarylocaltions);
+                    $notlibrary[$i] = array();
                     if(!empty($library[$i])){
                         $notlibrary[$i] = $this->localtion_model->get_librarylocaltion_by_not_id_array($librarylocaltions,$library[$i][0]['area']);
                     }
@@ -390,7 +393,8 @@ class Product extends Admin_Controller{
                     'localtion' => $this->input->post('localtion'),
                     'product_category_id' => $this->input->post('parent_id_shared'),
                     'vehicles' => json_encode($this->input->post('vehicles')),
-                    'librarylocaltion' => json_encode($this->input->post('librarylocaltion'))
+                    'librarylocaltion' => json_encode($this->input->post('librarylocaltion')),
+                    'is_top' => $this->input->post('is_top')
                 );
                 if($unique_slug != $this->data['detail']['slug']){
                     $shared_request['slug'] = $unique_slug;
@@ -410,6 +414,9 @@ class Product extends Admin_Controller{
                 }
                 if(isset($dateimage_json)){
                     $shared_request['dateimg'] = $dateimage_json;
+                }else{
+                    $dateimg = json_decode($this->data['detail']['dateimg']);
+                    $shared_request['dateimg'] = json_encode(array_slice($dateimg, 0,count($this->input->post('vehicles'))));
                 }
                 $this->db->trans_begin();
                 $update = $this->product_model->common_update($id,array_merge($shared_request,$this->author_data));
@@ -650,5 +657,21 @@ class Product extends Admin_Controller{
             'content' => $result
         );
         return $this->return_api(HTTP_SUCCESS,'',$reponse);
+    }
+
+    public function check_top(){
+        $id = $this->input->get('id');
+        $total = $this->product_model->count_is_top(1);
+        if(is_numeric($id)){
+            $detail = $this->product_model->find($id);
+            if($detail['is_top'] == 1){
+                $total = $total - 1;
+            }
+        }
+        if($total >= 2){
+            return $this->return_api(HTTP_SUCCESS,MESSAGE_CHECK_TOP_ERROR,'', false);
+        }else{
+            return $this->return_api(HTTP_SUCCESS,'','', true);
+        }
     }
 }
