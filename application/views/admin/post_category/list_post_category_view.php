@@ -43,16 +43,6 @@
                         <div class="col-md-6">
                             <a href="<?php echo base_url('admin/'.$controller.'/create') ?>" class="btn btn-primary" role="button">Thêm mới</a>
                         </div>
-                        <div class="col-md-6">
-                            <form action="<?php echo base_url('admin/'.$controller.'/index') ?>" method="get">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Tìm kiếm ..." name="search" value="">
-                                    <span class="input-group-btn">
-                                        <input type="submit" class="btn btn-block btn-primary" value="Tìm kiếm">
-                                    </span>
-                                </div>
-                            </form>
-                        </div>
                     </div>
 
                     <!-- /.box-header -->
@@ -96,7 +86,7 @@
                             </table>
                         </div>
                         <div class="col-md-6 col-md-offset-5 page">
-                            <?php echo $page_links ?>
+                            
                         </div>
                     </div>
                     <!-- /.box-body -->
