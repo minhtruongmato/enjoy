@@ -15,7 +15,7 @@ class Booking_model extends MY_Model {
     	$this->db->join('product', $this->table .'.product_id = product.id');
     	$this->db->join('product_lang', 'product.id = product_lang.product_id');
     	$this->db->where($this->table .'.is_deleted', 0);
-    	$this->db->where('product_lang.language', 'vi');
+    	$this->db->where('product_lang.language', 'en');
 		$this->db->where($this->table .'.status', $status);
 		$this->db->group_start();
     	$this->db->like($this->table .'.first_name', $keywords);

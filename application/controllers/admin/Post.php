@@ -30,14 +30,13 @@ class Post extends Admin_Controller{
         if($this->input->get('search')){
             $keywords = $this->input->get('search');
         }
-        $total_rows  = $this->post_model->count_search('en');
+        $total_rows  = $this->post_model->count_search();
         if($keywords != ''){
-            $total_rows  = $this->post_model->count_search('en', $keywords);
+            $total_rows  = $this->post_model->count_search($keywords);
         }
-
         $this->load->library('pagination');
         $config = array();
-        $base_url = base_url('admin/'. $this->controller .'/index');
+        $base_url = base_url('admin/post/index');
         $per_page = 10;
         $uri_segment = 4;
         foreach ($this->pagination_config($base_url, $total_rows, $per_page, $uri_segment) as $key => $value) {
@@ -55,7 +54,6 @@ class Post extends Admin_Controller{
             $parent_title = $this->build_parent_title($value['post_category_id']);
             $result[$key]['parent_title'] = $parent_title;
         }
-        // print_r($result);die;
         $this->data['result'] = $result;
         
         

@@ -46,7 +46,7 @@ class Customize extends Admin_Controller {
 
         $this->load->library('pagination');
         $config = array();
-        $base_url = base_url('admin/booking/' .$page);
+        $base_url = base_url('admin/customize/' .$page);
         $per_page = 10;
         $uri_segment = 4;
         foreach ($this->pagination_config($base_url, $total_rows, $per_page, $uri_segment) as $key => $value) {
@@ -64,6 +64,7 @@ class Customize extends Admin_Controller {
         if($this->input->get('search_date') != ''){
             $result = $this->customize_model->get_all_customize_with_pagination_search($status, $per_page, $this->data['page'], $keywords, $date_from, $date_to);
         }
+        // print_r($result);die;
         foreach($result as $key => $value){
             $array_date = array_combine(json_decode($value['datetitle']), json_decode($value['content']));
             $result[$key]['array_date'] = $array_date;
@@ -142,9 +143,10 @@ class Customize extends Admin_Controller {
         if($parent_id != 0){
             $title = explode('|||', $sub['product_category_title']);
             $sub['title_en'] = $title[0];
-            $sub['title_vi'] = $title[1];
+            $sub['title_cn'] = $title[1];
+            $sub['title_sc'] = $title[1];
 
-            $title = $sub['title_vi'];
+            $title = $sub['title_en'];
         }else{
             $title = 'Danh mục gốc';
         }

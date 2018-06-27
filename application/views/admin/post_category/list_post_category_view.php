@@ -65,7 +65,7 @@
                                 
                                 <?php if($result): ?>
 
-                                <?php build_new_category($result, 0, $controller, $check) ?>
+                                <?php build_new_category($result, 0, $controller, $check, $fix_data) ?>
 
                                 <?php else: ?>
                                     <tr>
@@ -128,7 +128,7 @@
     })
 </script>
 <?php 
-    function build_new_category($categorie, $parent_id = 0, $controller, $check, $sort = 1){
+    function build_new_category($categorie, $parent_id = 0, $controller, $check, $fix_data, $sort = 1){
         $cate_child = array();
         foreach ($categorie as $key => $item){
             if ($item['parent_id'] == $parent_id){
@@ -170,7 +170,10 @@
                         &nbsp&nbsp&nbsp
                         <a href="<?php echo base_url('admin/'.$controller.'/edit/'. $value['id']) ?>" class="dataActionEdit"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
                         &nbsp&nbsp&nbsp
-                        <a href="javascript:void(0);" onclick="remove('post_category', <?php echo $value['id'] ?>)" class="dataActionDelete"><i class="fa fa-remove" aria-hidden="true"></i> </a>
+                        <?php if (!in_array($value['id'], $fix_data)): ?>
+                            <a href="javascript:void(0);" onclick="remove('post_category', <?php echo $value['id'] ?>)" class="dataActionDelete"><i class="fa fa-remove" aria-hidden="true"></i> </a>
+                        <?php endif ?>
+                        
                     </td>
                 </tr>
                 <tr>
@@ -190,7 +193,7 @@
                                                 <th>Detail</th>
                                                 <th>Action</th>
                                             </tr>
-                                            <?php build_new_category($categorie, $value['id'], $controller, $check, $sort + 1); ?>
+                                            <?php build_new_category($categorie, $value['id'], $controller, $check, $fix_data, $sort + 1); ?>
                                         <?php endif ?>
                                     </table>
                                 </div>

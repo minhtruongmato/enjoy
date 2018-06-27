@@ -50,7 +50,6 @@ class Booking extends Admin_Controller {
         if($keywords != ''){
             $result = $this->booking_model->get_all_booking_with_pagination_search($status, $per_page, $this->data['page'], $keywords);
         }
-
         $this->data['booking'] = $result;
         $this->render('admin/booking/list_booking_view');
     }
