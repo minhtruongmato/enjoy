@@ -38,7 +38,7 @@ class Product extends Admin_Controller{
         }
         $this->load->library('pagination');
         $per_page = 10;
-        $total_rows  = $this->product_model->count_search('en', $this->data['keyword']);
+        $total_rows  = $this->product_model->count_search($this->data['keyword']);
         $config = $this->pagination_config(base_url('admin/'.$this->data['controller'].'/index'), $total_rows, $per_page, 4);
         $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $this->pagination->initialize($config);
@@ -125,7 +125,7 @@ class Product extends Admin_Controller{
                 'librarylocaltion' => json_encode($this->input->post('librarylocaltion')),
                 'is_top' => $this->input->post('is_top')
             );
-            if($this->input->post('date') !== null){
+            if($this->input->post('date') != ''){
                 $date= explode("/",$this->input->post('date'));
                 $datetime=date('Y-m-d H:i:s', strtotime($date[1]."/".$date[0]."/".$date[2]));
             }

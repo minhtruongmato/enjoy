@@ -30,13 +30,9 @@ class Post_category extends Admin_Controller{
             $parent_title = $this->build_parent_title($value['parent_id']);
             $result[$key]['parent_title'] = $parent_title;
         }
-        // echo '<pre>';
-        // print_r($result);die;
+        $this->data['fix_data'] = $this->fix_data;
         $this->data['result'] = $result;
         $this->data['check'] = $this;
-        
-
-        // print_r($result);die;
         
         $this->render('admin/'. $this->controller .'/list_post_category_view');
     }
@@ -115,9 +111,6 @@ class Post_category extends Admin_Controller{
         $detail['parent_title'] = $parent_title;
 
         $this->data['detail'] = $detail;
-        
-        // echo '<pre>';
-        // print_r($detail);die;
 
         $this->render('admin/'. $this->controller .'/detail_post_category_view');
     }
@@ -129,7 +122,6 @@ class Post_category extends Admin_Controller{
         $detail = $this->post_category_model->get_by_id($id, array('title', 'content'));
         $detail = build_language($this->controller, $detail, array('title', 'content'), $this->page_languages);
         $category = $this->post_category_model->get_by_parent_id(null,'asc');
-        // print_r($detail);die;
 
         $this->data['category'] = $category;
         
@@ -153,7 +145,6 @@ class Post_category extends Admin_Controller{
                     $unique_slug = $this->post_category_model->build_unique_slug($slug, $id);
                     $image = $this->upload_image('image_shared', $_FILES['image_shared']['name'], 'assets/upload/'. $this->controller .'', 'assets/upload/'. $this->controller .'/thumb');
                     $shared_request = array(
-                        'slug' => $unique_slug,
                         'parent_id' => $this->input->post('parent_id_shared'),
                         'type' => $this->input->post('type_shared'),
                         'created_at' => $this->author_data['created_at'],
@@ -163,6 +154,10 @@ class Post_category extends Admin_Controller{
                     );
                     if($image){
                         $shared_request['image'] = $image;
+                    }
+
+                    if(!in_array($id, $this->fix_data)){
+                        $shared_request['slug'] = $unique_slug;
                     }
                     $this->db->trans_begin();
 
@@ -198,6 +193,12 @@ class Post_category extends Admin_Controller{
     public function remove(){
         $this->load->model('post_model');
         $id = $this->input->post('id');
+        if(in_array($id, $this->fix_data)){
+            return $this->output
+                ->set_content_type('application/json')
+                ->set_status_header(HTTP_BAD_REQUEST)
+                ->set_output(json_encode(array('status' => HTTP_BAD_REQUEST)));
+        }
         $list_categories = $this->post_category_model->get_by_parent_id(null, 'asc');
         $detail_catrgory = $this->post_category_model->get_by_id($id, $this->request_language_template);
         $this->get_multiple_posts_with_category($list_categories, $detail_catrgory['id'], $ids);
@@ -342,8 +343,6 @@ class Post_category extends Admin_Controller{
     public function sort(){
         $params = array();
         parse_str($this->input->get('sort'), $params);
-        // echo '<pre>';
-        // print_r($params);die;
         $i = 1;
         foreach($params as $value){
             $this->post_category_model->update_sort($i, $value[0]);

@@ -6,6 +6,7 @@ class MY_Controller extends CI_Controller {
     protected $author_info = array();
     protected $page_languages = array('en', 'cn', 'sc');
     protected $langAbbreviation = 'en';
+    protected $fix_data = array();
 
     function __construct() {
         parent::__construct();
@@ -176,6 +177,8 @@ class Admin_Controller extends MY_Controller {
             'modified' => date('Y-m-d H:i:s', now()),
             'modified_by' => $this->ion_auth->user()->row()->username
         );
+
+        $this->fix_data = array(25);
     } 
     
     function return_api($status, $message='', $data = null,$isExisted= true){

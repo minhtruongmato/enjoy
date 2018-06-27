@@ -17,12 +17,12 @@ class Customize_model extends MY_Model {
         $this->db->like('product_lang.title', $keywords);
     	$this->db->where($this->table .'.is_deleted', 0);
         $this->db->where($this->table .'.status', $status);
-        $this->db->where('product_lang.language', 'vi');
+        $this->db->where('product_lang.language', 'en');
         if($date_from != ''){
-            $this->db->where($this->table .'.created_at >=', $date_from);
+            $this->db->where($this->table .'.time >=', $date_from);
         }
         if($date_to != ''){
-            $this->db->where($this->table .'.created_at <=', $date_to);
+            $this->db->where($this->table .'.time <=', $date_to);
         }
     	$this->db->limit($limit, $start);
     	$this->db->order_by($this->table .'.id', 'desc');
@@ -37,7 +37,7 @@ class Customize_model extends MY_Model {
         $this->db->like('product_lang.title', $keywords);
         $this->db->where($this->table .'.is_deleted', 0);
         $this->db->where($this->table .'.status', $status);
-        $this->db->where('product_lang.language', 'vi');
+        $this->db->where('product_lang.language', 'en');
         $this->db->where($this->table .'.is_deleted', 0);
         if($date_from != ''){
             $this->db->where($this->table .'.created_at >=', $date_from);
