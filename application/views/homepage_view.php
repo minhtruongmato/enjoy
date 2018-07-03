@@ -1,5 +1,7 @@
 <!-- Homepage Stylesheet -->
-<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>homepage.min.css">
+<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>homepage.css">
+<!-- Slider JS -->
+<script src="<?php echo site_url('assets/js/slider.js') ?>"></script>
 
 <section id="slider" class="container-fluid">
 	<div id="homepage-slider" class="carousel slide" data-ride="carousel">
@@ -171,7 +173,7 @@
 					<div><?php echo $domestic['content']; ?></div>
 				</div>
 				<div class="foot">
-					<a href="<?php echo base_url('/danhmuc/'.$domestic['slug']) ?>" class="btn btn-primary" role="button">
+					<a href="<?php echo base_url('/danh-muc/'.$domestic['slug']) ?>" class="btn btn-primary" role="button">
                         <?php echo $this->lang->line('see-all') ?>
 					</a>
 				</div>
@@ -211,7 +213,7 @@
 					<div><?php echo $international['content']; ?></div>
 				</div>
 				<div class="foot">
-					<a href="<?php echo base_url('/danhmuc/'.$international['slug']) ?>" class="btn btn-primary" role="button">
+					<a href="<?php echo base_url('/danh-muc/'.$international['slug']) ?>" class="btn btn-primary" role="button">
                         <?php echo $this->lang->line('see-all') ?>
 					</a>
 				</div>
