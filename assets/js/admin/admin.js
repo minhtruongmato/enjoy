@@ -455,12 +455,13 @@ $('#is_top').change(function(){
 	if($(this).is(':checked')){
 		var url = $(this).data('url');
 		var id = $(this).data('id');
+		var value = $("#parent_id_shared").val();
 		console.log(id);
 		$.ajax({
             method: "get",
             url: url,
             data: {
-            	id : id
+            	id : id,value: value
             },
             success: function(response){
                 if(response.isExisted == false){
@@ -477,4 +478,32 @@ $('#is_top').change(function(){
             }
         });
 	}
-})
+});
+$("#box_is_top").css("display","none");
+$('#parent_id_shared').change(function(){
+	var url = $(this).data('url');
+	var id = $(this).val();
+	$.ajax({
+        method: "get",
+        url: url,
+        data: {
+        	id : id
+        },
+        success: function(response){
+        	$('.check_top_error').text('');
+            $('#is_top').prop('checked',false);
+            if(response.isExisted == false){
+            	$("#box_is_top").fadeOut();
+            }else{
+            	$("#box_is_top").fadeIn();
+            }
+        },
+        error: function(jqXHR, exception){
+            console.log(errorHandle(jqXHR, exception));
+            if(jqXHR.status == 404 && jqXHR.responseJSON.message != 'undefined'){
+                alert(jqXHR.responseJSON.message);
+                location.reload();
+            }
+        }
+    });
+});

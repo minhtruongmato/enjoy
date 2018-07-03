@@ -55,20 +55,24 @@
 						</tr>
 						<tr>
 							<td>
-								<div class="captcha-image image"></div>
-								<div class="captcha-input">
-									<input type="hidden" name="re_captcha" id="re_captcha" class="show-re-captcha" value="">
-									<input placeholder="Nhập mã" name="captcha" id="captcha" type="text" value="" style="border-radius: 4px; border: none; width: 48%; margin-right: 5%; color: black">  
-									<a class="refresh" href="javascript:void(0)" title="Lấy mã mới"><i class="fa fa-refresh" aria-hidden="true"></i></a>    
+								<div class="captcha-image image col-md-6"></div>
+
+								<div class="captcha-input input-group col-md-6"> 
+									<input type="hidden" name="re_captcha" id="re_captcha" class="show-re-captcha" value="" >
+									<input placeholder="Nhập mã" name="captcha" id="captcha" type="text" value="" class="form-control" aria-describedby="captcha" style="border: none;margin-right: 5%; color: black;height: 35px;"> 
+									<span class="input-group-addon" id="basic-addon1"><a class="refresh" href="javascript:void(0)" title="Lấy mã mới"><i class="fa fa-refresh" aria-hidden="true"></i></a></span>
+								</div>
+								<div class="captcha-input col-md-7"> 
+									    
 								</div>
 								<div>
 									<span class="message"></span>
 								</div>
 							</td>
 							<td>
-								<input type="hidden" name="created_captcha" class="created_captcha" value="<?php echo base_url('tours/created_captcha'); ?>">
-								<input type="hidden" name="created_rating" class="created_rating" value="<?php echo base_url('tours/created_rating'); ?>">
-								<input type="hidden" name="product_id" class="product_id" value="91">
+								<input type="hidden" name="created_captcha" class="created_captcha" value="<?php echo base_url('created_captcha'); ?>">
+								<input type="hidden" name="created_rating" class="created_rating" value="<?php echo base_url('created_rating'); ?>">
+								<input type="hidden" name="product_id" class="product_id" value="<?php echo $detail['id']; ?>">
 								<button class="btn btn-default btn-rating" <?php echo ($check_session == true)? 'disabled' : '' ?> >
                                     <?php echo $this->lang->line('booking') ?>
 								</button>
@@ -116,22 +120,18 @@
 						<div role="tabpanel" class="tab-pane active" id="overview">
 							<div class="row">
 								<div class="schedule col-sm-8 col-xs-12">
-                                    <?php $daily = array(
-                                    		'number' => array('1','2','3','4','5','6','7'),
-											'icon' => array ('fa-plane', 'fa-bus', 'fa-ship', 'fa-train', 'fa-motorcycle', 'fa-bicycle', 'fa-blind')
-									) ?>
 									<div class="panel-group" id="schedule" role="tablist" aria-multiselectable="true">
                                         <?php for($i = 0; $i < count($detail['dateimg']); $i++): ?>
 											<div class="panel panel-primary">
-												<div class="panel-heading" role="tab" id="day-<?php echo $daily['number'][$i]; ?>-heading">
+												<div class="panel-heading" role="tab" id="day-<?php echo $i+1; ?>-heading">
 													<h4 class="panel-title">
-														<a role="button" data-toggle="collapse" data-parent="#schedule" href="#day-<?php echo $daily['number'][$i]; ?>" aria-expanded="false" aria-controls="day-<?php echo $daily['number'][$i]; ?>">
+														<a role="button" data-toggle="collapse" data-parent="#schedule" href="#day-<?php echo $i+1; ?>" aria-expanded="false" aria-controls="day-<?php echo $i+1; ?>">
 															Day <?php echo $i+1; ?>: <?php echo $detail['datetitle'][$i];?>
 														</a>
 														<i class="fa <?php echo $request_vehicles_icon[$detail['vehicles'][$i]]; ?> pull-right" aria-hidden="true"></i>
 													</h4>
 												</div>
-												<div id="day-<?php echo $daily['number'][$i]; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="day-<?php echo $daily['number'][$i]; ?>-heading">
+												<div id="day-<?php echo $i+1; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="day-<?php echo $i+1; ?>-heading">
 													<div class="panel-body">
 														<div class="media">
 															<div class="media-left">
@@ -161,19 +161,13 @@
 						<div role="tabpanel" class="tab-pane" id="gallery">
 							<div class="row">
 								<div class="col-xs-12">
-                                    <?php $daily = array(
-                                        'number' => array('1','2','3','4','5','6','7'),
-                                        'icon' => array ('fa-plane', 'fa-bus', 'fa-ship', 'fa-train', 'fa-motorcycle', 'fa-bicycle', 'fa-blind')
-                                    );
-                                    ?>
-
 
 									<div class="panel-group" id="gallery-list" role="tablist" aria-multiselectable="true">
                                         <?php for($i = 0; $i < count($detail['librarylocaltion']); $i++): ?>
 											<div class="panel panel-primary">
 												<div class="panel-heading" role="tab" id="day-1-heading">
 													<h4 class="panel-title">
-														<a role="button" data-toggle="collapse" data-parent="#gallery-list" href="#gallery-<?php echo $daily['number'][$i]; ?>" aria-expanded="false" aria-controls="gallery-<?php echo $daily['number'][$i]; ?>">
+														<a role="button" data-toggle="collapse" data-parent="#gallery-list" href="#gallery-<?php echo $i+1; ?>" aria-expanded="false" aria-controls="gallery-<?php echo $i+1; ?>">
 															Day <?php echo $i+1; ?>: <?php echo $detail['datetitle'][$i];?>
 														</a>
 														<i class="fa <?php echo $request_vehicles_icon[$detail['vehicles'][$i]]; ?> pull-right" aria-hidden="true"></i>
@@ -382,7 +376,7 @@
 	                                    <?php
 	                                    echo form_label($this->lang->line('form-title') .' (*)', 'inquire_title');
 	                                    echo form_error('inquire_title');
-	                                    echo form_dropdown('inquire_title', $options =array('Mr' => 'Mr', 'Mrs' => 'Mrs', 'Ms' => 'Ms', 'Dr' => 'Dr'), set_value('inquire_title'), 'class="form-control" id="inquire_title"')
+	                                    echo form_dropdown('inquire_title', $options =array('Mr' => 'Mr', 'Mrs' => 'Mrs', 'Ms' => 'Ms', 'Dr' => 'Dr'), set_value('inquire_title'), 'class="form-control" id="customize_title"')
 	                                    ?>
 									</div>
 									<div class="form-group col-sm-4 col-xs-12">

@@ -241,10 +241,12 @@ class MY_Model extends CI_Model {
         return $result = $this->db->get()->result_array();
     }
 
-    public function count_is_top($is_top){
+    public function count_is_top($id_array = array(),$is_top){
+        $this->db->select('*');
         $this->db->from($this->table);
         $this->db->where('is_top', $is_top);
         $this->db->where('is_deleted', 0);
+        $this->db->where_in('product_category_id', $id_array);
         return $this->db->count_all_results();
     }
     

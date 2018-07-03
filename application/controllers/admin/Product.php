@@ -14,7 +14,8 @@ class Product extends Admin_Controller{
         'Chọn phương tiện','Không xác định','Máy bay','Tàu thủy','Tàu hỏa','Ô tô','Xe máy','Xe đạp','Đi bộ'
     );
     private $author_data = array();
-
+    protected $id_array_packages = array(FIXED_TOUR_PACKAGES_CATEGORY_ID);
+    protected $id_array_backpack = array(FIXED_BACKPACK_TRAVEL_CATEGORY_ID);
 	function __construct(){
 		parent::__construct();
 		$this->load->model('product_model');
@@ -29,9 +30,12 @@ class Product extends Admin_Controller{
         $this->data['request_vehicles'] = $this->request_vehicles;
         $this->data['controller'] = $this->product_model->table;
 		$this->author_data = handle_author_common_data();
+        $category = $this->product_category_model->get_all();
+        $this->get_multiple_products_with_category_id($category,FIXED_TOUR_PACKAGES_CATEGORY_ID,$this->id_array_packages);
+        $this->get_multiple_products_with_category_id($category,FIXED_BACKPACK_TRAVEL_CATEGORY_ID,$this->id_array_backpack);
 	}
 
-    public function index(){
+        public function index(){
         $this->data['keyword'] = '';
         if($this->input->get('search')){
             $this->data['keyword'] = $this->input->get('search');
@@ -661,17 +665,40 @@ class Product extends Admin_Controller{
 
     public function check_top(){
         $id = $this->input->get('id');
-        $total = $this->product_model->count_is_top(1);
+        $value = $this->input->get('value');
+        $total =10;
+        if(in_array($value, $this->id_array_packages)){
+            $total = $this->product_model->count_is_top($this->id_array_packages,1);
+        }
+        if(in_array($value, $this->id_array_backpack)){
+            $total = $this->product_model->count_is_top($this->id_array_backpack,1);
+        }
         if(is_numeric($id)){
             $detail = $this->product_model->find($id);
             if($detail['is_top'] == 1){
                 $total = $total - 1;
             }
         }
-        if($total >= 2){
+        if($total >=10){
             return $this->return_api(HTTP_SUCCESS,MESSAGE_CHECK_TOP_ERROR,'', false);
         }else{
             return $this->return_api(HTTP_SUCCESS,'','', true);
+        }
+    }
+    public function check_category(){
+        $id = $this->input->get('id');
+        if(!in_array($id, $this->id_array_packages) && !in_array($id, $this->id_array_backpack)){
+            return $this->return_api(HTTP_SUCCESS,'','', false);
+        }
+        return $this->return_api(HTTP_SUCCESS,'','', true);
+    }
+    function get_multiple_products_with_category_id($categories, $parent_id = 0, &$ids){
+        foreach ($categories as $key => $item){
+            if ($item['parent_id'] == $parent_id){
+                $ids[] = $item['id'];
+                unset($categories[$key]);
+                $this->get_multiple_products_with_category_id($categories, $item['id'], $ids);
+            }
         }
     }
 }
