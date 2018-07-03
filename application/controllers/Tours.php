@@ -10,6 +10,7 @@ class Tours extends Public_Controller {
     public function __construct() {
         parent::__construct();
         $this->data['lang'] = $this->session->userdata('langAbbreviation');
+        $this->data['langs'] = 'sc';//test
         $this->load->model('product_model');
         $this->load->model('product_category_model');
         $this->load->model('localtion_model');
@@ -33,24 +34,24 @@ class Tours extends Public_Controller {
         }
     }
     public function category($slug) {
-        $detail = $this->product_category_model->get_by_slug_lang($slug,array(),'vi');
-        $this->get_multiple_products_with_category($this->product_category_model->get_all_lang(),$detail['parent_id'],$sub);
+        $detail = $this->product_category_model->get_by_slug_lang($slug,array(),$this->data['langs']);
+        $this->get_multiple_products_with_category($this->product_category_model->get_all_lang(array(),$this->data['langs']),$detail['parent_id'],$sub);
         if(empty($sub)){
             $detail['sub'] = $sub;
         }else{
             $detail['sub'] = array_reverse($sub);
         }
-        $this->get_multiple_products_with_category_id($this->product_category_model->get_all_lang(), $detail['id'], $ids);
+        $this->get_multiple_products_with_category_id($this->product_category_model->get_all_lang(array(),$this->data['langs']), $detail['id'], $ids);
         if(empty($ids)){
             $ids = array();
         }
         array_unshift($ids,$detail['id']);
         $check = 0;
         for ($i=0; $i < count($ids); $i++) {
-             $tour =$this->product_model->get_by_product_category_id_array($ids[$i],array('title'),'vi');
+             $tour =$this->product_model->get_by_product_category_id_array($ids[$i],array('title'),$this->data['langs']);
              if($tour['id'] != ''){
-                $product_array[$check] = $this->product_model->get_by_product_category_id_array($ids[$i],array('title'),'vi');
-                $product_array[$check]['parent'] = $this->product_category_model->get_by_id_lang($product_array[$check]['product_category_id']);
+                $product_array[$check] = $this->product_model->get_by_product_category_id_array($ids[$i],array('title'),$this->data['langs']);
+                $product_array[$check]['parent'] = $this->product_category_model->get_by_id_lang($product_array[$check]['product_category_id'],array(),$this->data['langs']);
                 $check++;
                 if($check == 3){
                     break;
@@ -76,10 +77,11 @@ class Tours extends Public_Controller {
         if($this->product_model->find_rows(array('slug' => $slug,'is_deleted' => 0)) != 0){
             $this->load->helper('form');
             $this->load->library('form_validation');
-            $detail = $this->product_model->get_by_slug_lang($slug,array());
-            $parent_title = $this->build_parent_title($detail['product_category_id']);
-            $this->get_multiple_products_with_category($this->product_category_model->get_all_lang(),$detail['product_category_id'],$sub);
-            $detail['parent_title'] = $parent_title;
+            $detail = $this->product_model->get_by_slug_lang($slug,array(),$this->data['langs']);
+            //$parent_title = $this->build_parent_title($detail['product_category_id']);
+            //$this->product_category_model->get_by_id($detail['product_category_id'], array('title'),'en')['title'];
+            $this->get_multiple_products_with_category($this->product_category_model->get_all_lang(array(),$this->data['langs']),$detail['product_category_id'],$sub);
+            //$detail['parent_title'] = $parent_title;
             if(empty($sub)){
                 $detail['sub'] = $sub;
             }else{
@@ -94,7 +96,7 @@ class Tours extends Public_Controller {
                     $librarylocaltions = explode(',',$librarylocaltion[$i]);
                     if(!empty($librarylocaltions)){
                         for($j=0;$j < count($librarylocaltions);$j++){
-                            $library= $this->localtion_model->get_by_id_array_lang($librarylocaltions[$j]);
+                            $library= $this->localtion_model->get_by_id_array_lang($librarylocaltions[$j],array(),$this->data['langs']);
                             if(!empty($library['id'])){
                                 $librarys[$i][] =$library;
                             }else{
@@ -156,19 +158,19 @@ class Tours extends Public_Controller {
             redirect('/', 'refresh');
         }
     }
-    protected function build_parent_title($parent_id){
-        $sub = $this->product_category_model->get_by_id($parent_id, array('title'));
+    // protected function build_parent_title($parent_id){
+    //     $sub = $this->product_category_model->get_by_id($parent_id, array('title'));
 
-        if($parent_id != 0){
-            $title = explode('|||', $sub['product_category_title']);
-            $sub['title_en'] = $title[0];
-            $sub['title_vi'] = $title[1];
-            $title = $sub['title_vi'];
-        }else{
-            $title = 'Danh mục gốc';
-        }
-        return $sub;
-    }
+    //     if($parent_id != 0){
+    //         $title = explode('|||', $sub['product_category_title']);
+    //         $sub['title_en'] = $title[0];
+    //         $sub['title_vi'] = $title[1];
+    //         $title = $sub['title_vi'];
+    //     }else{
+    //         $title = 'Danh mục gốc';
+    //     }
+    //     return $sub;
+    // }
 
     public function created_rating(){
         $isExits = false;
