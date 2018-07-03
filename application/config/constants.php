@@ -13,6 +13,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 defined('SHOW_DEBUG_BACKTRACE') OR define('SHOW_DEBUG_BACKTRACE', TRUE);
 
+/**
+ * FIXED TOUR CATEGORIES ID
+ */
+defined('FIXED_TOUR_PACKAGES_CATEGORY_ID') OR define('FIXED_TOUR_PACKAGES_CATEGORY_ID', 1);
+defined('FIXED_BACKPACK_TRAVEL_CATEGORY_ID') OR define('FIXED_BACKPACK_TRAVEL_CATEGORY_ID', 2);
+
 /*
 |--------------------------------------------------------------------------
 | File and Directory Modes
@@ -248,4 +254,4 @@ defined('MESSAGE_ERROR_DEACTIVE_CATEGORY') OR define('MESSAGE_ERROR_DEACTIVE_CAT
  * Message check top 10
  *
  */
-defined('MESSAGE_CHECK_TOP_ERROR') OR define('MESSAGE_CHECK_TOP_ERROR', 'Hiện tại đã có đủ 10 tour thuộc TOP 10 TOUR. Vui lòng tắt 1 Tour thuộc danh sác TOP 10 TOUR và thực hiện lại thao tác!');
+defined('MESSAGE_CHECK_TOP_ERROR') OR define('MESSAGE_CHECK_TOP_ERROR', 'Hiện tại đã có đủ 10 tour thuộc TOP 10 TOUR của danh mục hiện tại. Vui lòng tắt 1 Tour thuộc danh mục hiên tại nếu bạn muốn thêm tour vào TOP 10!');

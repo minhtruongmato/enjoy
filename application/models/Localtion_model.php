@@ -51,7 +51,7 @@ class Localtion_model extends MY_Model {
         $this->db->where_not_in('id', $notlibrarylocaltion);
         return $result = $this->db->get()->result_array();
     }
-    public function get_by_id_array($id = array(), $select = array('title','content'), $lang = '') {
+    public function get_by_id_array($id, $select = array('title','content'), $lang = '') {
         $this->db->query('SET SESSION group_concat_max_len = 10000000');
         $this->db->select($this->table .'.*');
         if(in_array('title', $select)){
@@ -68,13 +68,13 @@ class Localtion_model extends MY_Model {
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id', 'left');
         if($lang != ''){
-            $this->db->where($this->table_lang .'.id', $lang);
+            $this->db->where($this->table_lang .'.language', $lang);
         }
         $this->db->where($this->table .'.is_deleted', 0);
-        $this->db->where_in($this->table .'.id', $id);
+        $this->db->where($this->table .'.id', $id);
         return $this->db->get()->row_array();
     }
-    public function get_by_id_array_lang($id = array(), $select = array('title','content'), $lang = 'vi') {
+    public function get_by_id_array_lang($id, $select = array('title','content'), $lang = 'en') {
         $this->db->query('SET SESSION group_concat_max_len = 10000000');
         $this->db->select($this->table .'.*');
         if(in_array('title', $select)){
@@ -91,10 +91,22 @@ class Localtion_model extends MY_Model {
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id', 'left');
         if($lang != ''){
-            $this->db->where($this->table_lang .'.id', $lang);
+            $this->db->where($this->table_lang .'.language', $lang);
         }
         $this->db->where($this->table .'.is_deleted', 0);
-        $this->db->where_in($this->table .'.id', $id);
+        $this->db->where($this->table .'.id', $id);
+        return $this->db->get()->row_array();
+    }
+
+    public function get_by_id_lang($id, $lang = 'en') {
+        $this->db->select($this->table .'.*, localtion_lang.title as title, localtion_lang.content as content');
+        $this->db->from($this->table);
+        $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id', 'left');
+        if($lang != ''){
+            $this->db->where($this->table_lang .'.language', $lang);
+        }
+        $this->db->where($this->table .'.is_deleted', 0);
+        $this->db->where($this->table .'.id', $id);
         return $this->db->get()->row_array();
     }
 }

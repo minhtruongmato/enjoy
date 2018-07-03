@@ -73,6 +73,7 @@ class Tours extends Public_Controller {
         }
     }
     public function detail($slug){
+        $this->output->enable_profiler(TRUE);
         $this->load->model('rating_model');
         if($this->product_model->find_rows(array('slug' => $slug,'is_deleted' => 0)) != 0){
             $this->load->helper('form');
@@ -95,8 +96,11 @@ class Tours extends Public_Controller {
                 for($i=0;$i < count($librarylocaltion);$i++){
                     $librarylocaltions = explode(',',$librarylocaltion[$i]);
                     if(!empty($librarylocaltions)){
+                        echo '<pre>';
+                        print_r($librarylocaltions);
+                        echo '</pre>';
                         for($j=0;$j < count($librarylocaltions);$j++){
-                            $library= $this->localtion_model->get_by_id_array_lang($librarylocaltions[$j],array(),$this->data['langs']);
+                            $library= $this->localtion_model->get_by_id_lang($librarylocaltions[$j],$this->data['langs']);
                             if(!empty($library['id'])){
                                 $librarys[$i][] =$library;
                             }else{
@@ -207,7 +211,7 @@ class Tours extends Public_Controller {
     public function created_captcha(){
         $vals = array(
             'img_path' => './captcha/',
-            'img_url' => 'http://localhost/tourist1/captcha',
+            'img_url' => base_url().'/captcha',
             'img_width' => '120',
             'img_height' => 34,
             'expiration' => 0,
