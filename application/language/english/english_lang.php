@@ -111,5 +111,7 @@ $lang['form-adults'] = 'Adults';
 $lang['form-children-u11'] = 'Children (2-11 years old)';
 $lang['form-children-u2'] = 'Children (Under 2 years old)';
 $lang['form-message'] = 'Message';
+$lang['top-packages'] = 'Top 10 Vietnam Tours';
+$lang['top-backpack'] = 'Top 10 Tours';
 
 

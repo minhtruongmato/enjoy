@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 27, 2018 at 12:20 PM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th7 03, 2018 lúc 04:44 PM
+-- Phiên bản máy phục vụ: 10.1.22-MariaDB
+-- Phiên bản PHP: 7.1.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `enjoy_db`
+-- Cơ sở dữ liệu: `enjoy_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `about`
+-- Cấu trúc bảng cho bảng `about`
 --
 
 CREATE TABLE `about` (
@@ -43,7 +43,7 @@ CREATE TABLE `about` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `about`
+-- Đang đổ dữ liệu cho bảng `about`
 --
 
 INSERT INTO `about` (`id`, `slug`, `avatar`, `image`, `is_deleted`, `facebook`, `instagram`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
@@ -52,7 +52,7 @@ INSERT INTO `about` (`id`, `slug`, `avatar`, `image`, `is_deleted`, `facebook`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `about_lang`
+-- Cấu trúc bảng cho bảng `about_lang`
 --
 
 CREATE TABLE `about_lang` (
@@ -65,7 +65,7 @@ CREATE TABLE `about_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `about_lang`
+-- Đang đổ dữ liệu cho bảng `about_lang`
 --
 
 INSERT INTO `about_lang` (`id`, `about_id`, `title`, `description`, `content`, `language`) VALUES
@@ -75,7 +75,7 @@ INSERT INTO `about_lang` (`id`, `about_id`, `title`, `description`, `content`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `banner`
+-- Cấu trúc bảng cho bảng `banner`
 --
 
 CREATE TABLE `banner` (
@@ -90,7 +90,7 @@ CREATE TABLE `banner` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `banner`
+-- Đang đổ dữ liệu cho bảng `banner`
 --
 
 INSERT INTO `banner` (`id`, `image`, `created_at`, `created_by`, `updated_at`, `updated_by`, `is_activated`, `is_deleted`) VALUES
@@ -99,7 +99,7 @@ INSERT INTO `banner` (`id`, `image`, `created_at`, `created_by`, `updated_at`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `banner_lang`
+-- Cấu trúc bảng cho bảng `banner_lang`
 --
 
 CREATE TABLE `banner_lang` (
@@ -111,7 +111,7 @@ CREATE TABLE `banner_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `banner_lang`
+-- Đang đổ dữ liệu cho bảng `banner_lang`
 --
 
 INSERT INTO `banner_lang` (`id`, `banner_id`, `title`, `description`, `language`) VALUES
@@ -122,7 +122,7 @@ INSERT INTO `banner_lang` (`id`, `banner_id`, `title`, `description`, `language`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `blog`
+-- Cấu trúc bảng cho bảng `blog`
 --
 
 CREATE TABLE `blog` (
@@ -142,7 +142,7 @@ CREATE TABLE `blog` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `blog`
+-- Đang đổ dữ liệu cho bảng `blog`
 --
 
 INSERT INTO `blog` (`id`, `category_id`, `type`, `slug`, `image`, `meta_keywords`, `meta_description`, `is_deleted`, `created_at`, `created_by`, `updated_at`, `updated_by`, `viewed`) VALUES
@@ -152,7 +152,7 @@ INSERT INTO `blog` (`id`, `category_id`, `type`, `slug`, `image`, `meta_keywords
 -- --------------------------------------------------------
 
 --
--- Table structure for table `blog_lang`
+-- Cấu trúc bảng cho bảng `blog_lang`
 --
 
 CREATE TABLE `blog_lang` (
@@ -165,7 +165,7 @@ CREATE TABLE `blog_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `blog_lang`
+-- Đang đổ dữ liệu cho bảng `blog_lang`
 --
 
 INSERT INTO `blog_lang` (`id`, `blog_id`, `title`, `description`, `content`, `language`) VALUES
@@ -177,7 +177,7 @@ INSERT INTO `blog_lang` (`id`, `blog_id`, `title`, `description`, `content`, `la
 -- --------------------------------------------------------
 
 --
--- Table structure for table `booking`
+-- Cấu trúc bảng cho bảng `booking`
 --
 
 CREATE TABLE `booking` (
@@ -202,19 +202,10 @@ CREATE TABLE `booking` (
   `updated_by` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `booking`
---
-
-INSERT INTO `booking` (`id`, `product_id`, `title`, `first_name`, `last_name`, `email`, `phone`, `time`, `country`, `adults`, `children`, `infants`, `status`, `content`, `is_deleted`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
-(1, 96, 'Mrs', 'Nguyễn', 'Quyền', '12quyen12@gmail.com', '01628299929', '2018-06-29 00:00:00', 'Việt Nam', 2, 2, 2, 1, 'ok đấy', 0, '2018-06-22 17:21:37', 'administrator', '2018-06-22 17:21:37', 'administrator'),
-(2, 96, 'Mr', 'Nguyễn Văn', 'Quyền', '12quyen12@gmail.com', '01628299929', '2018-06-29 00:00:00', 'Việt nam', 2, 2, 5, 2, 'ok được', 0, '2018-06-22 17:25:00', 'administrator', '2018-06-22 17:25:00', 'administrator'),
-(3, 96, 'Ms', 'Ngô', 'Quyền', '12quyen12@gmail.com', '01628299929', '2018-06-21 00:00:00', 'Việt Nam', 2, 2, 2, 2, 'Ok rồi', 0, '2018-06-23 00:02:39', 'administrator', '2018-06-23 00:02:39', 'administrator');
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ci_sessions`
+-- Cấu trúc bảng cho bảng `ci_sessions`
 --
 
 CREATE TABLE `ci_sessions` (
@@ -225,7 +216,7 @@ CREATE TABLE `ci_sessions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `ci_sessions`
+-- Đang đổ dữ liệu cho bảng `ci_sessions`
 --
 
 INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
@@ -234,7 +225,7 @@ INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customize`
+-- Cấu trúc bảng cho bảng `customize`
 --
 
 CREATE TABLE `customize` (
@@ -260,18 +251,10 @@ CREATE TABLE `customize` (
   `infants` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `customize`
---
-
-INSERT INTO `customize` (`id`, `product_id`, `status`, `content`, `adults`, `children`, `time`, `message`, `title`, `first_name`, `last_name`, `email`, `phone`, `country`, `is_deleted`, `created_at`, `created_by`, `updated_at`, `updated_by`, `infants`) VALUES
-(1, 96, 0, '[\"\\u0110\\u01b0\\u1ee3c \\u0111\\u1ea5y\"]', 2, 2, '2018-06-15 00:00:00', 'Rất là ok đấy', 'Dr', 'Hoàng', 'Quy', 'Quy@gmail.com', '01628299920', 'Việt Nam', 0, '2018-06-22 23:08:29', 'administrator', '2018-06-22 23:08:29', 'administrator', 3),
-(2, 96, 0, '[\"T\\u00f4i kh\\u00f4ng th\\u00edch th\\u1ebf n\\u00e0y\"]', 5, 5, '2018-06-28 00:00:00', 'Quang Huy', 'Mrs', 'Quang', 'Huy', 'quanghuy@gmail.com', '01628222922', 'Việt Nam', 0, '2018-06-23 00:03:35', 'administrator', '2018-06-23 00:03:35', 'administrator', 5);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `groups`
+-- Cấu trúc bảng cho bảng `groups`
 --
 
 CREATE TABLE `groups` (
@@ -281,7 +264,7 @@ CREATE TABLE `groups` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `groups`
+-- Đang đổ dữ liệu cho bảng `groups`
 --
 
 INSERT INTO `groups` (`id`, `name`, `description`) VALUES
@@ -291,7 +274,7 @@ INSERT INTO `groups` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `localtion`
+-- Cấu trúc bảng cho bảng `localtion`
 --
 
 CREATE TABLE `localtion` (
@@ -308,17 +291,36 @@ CREATE TABLE `localtion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `localtion`
+-- Đang đổ dữ liệu cho bảng `localtion`
 --
 
 INSERT INTO `localtion` (`id`, `slug`, `image`, `localtion`, `area`, `is_deleted`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
-(11, 'en', '0ab2fb6cb36ae564c04f0559b12a0530.jpg', 'Abc', 'Hà Nội', 0, '2018-06-25 17:16:32', 'administrator', '2018-06-25 17:16:32', 'administrator'),
-(12, 'asd', 'de6cd8da802d0412453ee510e4777955.jpg', 'Abc', 'Hà Nội', 0, '2018-06-27 17:04:31', 'administrator', '2018-06-27 17:04:31', 'administrator');
+(1, 'taipei-hanoi-da-nang-indigo-bay-marble-moutain-my-khe-beach-hoi-an', 'a8aafe544ff205513892433f1751fe96.png', 'Taipei Hanoi Da nang (Indigo Bay) (Marble Moutain) 、My Khe Beach Hoi An', 'Miền trung', 0, '2018-07-02 16:06:04', 'administrator', '2018-07-02 16:06:04', 'administrator'),
+(2, 'my-khe', 'f9ff69c9209e4bcd6bce712a376daef4.png', 'My Khe', 'Miền trung', 0, '2018-07-02 16:07:37', 'administrator', '2018-07-02 16:07:37', 'administrator'),
+(3, 'champa', 'f3da6c873fda848f3bc5306531c59781.png', 'Champa', 'Miền trung', 0, '2018-07-02 16:09:45', 'administrator', '2018-07-02 16:09:45', 'administrator'),
+(4, 'cam-nam-village', 'c9ff4f59637a1508b049f33b02edf8d7.png', 'Cam Nam Village', 'Miền trung', 0, '2018-07-02 16:10:29', 'administrator', '2018-07-02 16:10:29', 'administrator'),
+(5, 'hoi-an', '084833e703f6cd11731b24931f712cbb.png', 'Hoi An', 'Miền trung', 0, '2018-07-02 16:11:30', 'administrator', '2018-07-02 16:11:30', 'administrator'),
+(6, 'the-perfume-rivervietnamese-song-huong-or-huong-giang', 'b5d6f316d3c79909f83d036d1f15edb8.png', 'The Perfume River(Vietnamese: Sông Hương or Hương Giang)', 'Miền trung', 0, '2018-07-02 16:12:21', 'administrator', '2018-07-02 16:12:21', 'administrator'),
+(7, 'located-beside-the-picturesque-huong-river-thien-mu-pagoda', 'f34047a5e9c3b7ae77c0c012888c4e34.png', 'Located beside the picturesque Huong River, Thien Mu Pagoda', 'Miền trung', 0, '2018-07-02 16:13:07', 'administrator', '2018-07-02 16:13:07', 'administrator'),
+(8, 'khai-dinh', 'e3cb9e0d0dce85c1c1716668ebac3dc5.png', 'Khai Dinh', 'Miền trung', 0, '2018-07-02 16:13:58', 'administrator', '2018-07-02 16:13:58', 'administrator'),
+(9, 'tu-duc', 'feb6716be44220e083daab6a7b661d0b.png', 'Tu Duc', 'Mien Trung', 0, '2018-07-02 16:15:57', 'administrator', '2018-07-02 16:15:57', 'administrator'),
+(10, 'hue', 'e15bbf32126f228cd35defc31293616c.png', 'Hue', 'Mien Trung', 0, '2018-07-02 16:16:54', 'administrator', '2018-07-02 16:16:54', 'administrator'),
+(11, 'hue-dong-ba-market-ho-chi-minh-city-red-churh-museum-of-american-war-crimes-centennial-post-office-town-hall-reunification-palace-sai-gon-river', '395b011199fe9570de10a8433468a7ac.png', 'Hue Dong Ba Market Ho Chi Minh City Red churh Museum of American War Crimes Centennial Post Office Town Hall Reunification Palace Sai gon River	', 'Mien Nam', 0, '2018-07-02 16:18:53', 'administrator', '2018-07-02 16:18:53', 'administrator'),
+(12, 'ho-chi-minh', 'e7a3b1b5edc26d915852abd345abc640.png', 'Ho Chi Minh', 'Mien Nam', 0, '2018-07-02 16:20:13', 'administrator', '2018-07-02 16:20:13', 'administrator'),
+(13, 'red-church', 'c0a52bf23f0239847dfaeeab489eb219.png', 'Red Church', 'Mien Nam', 0, '2018-07-02 16:23:14', 'administrator', '2018-07-02 16:23:14', 'administrator'),
+(14, 'the-saigon-central-post-office', 'fff73a085ae5c3c9396a23d5304a3ab4.png', 'The Saigon Central Post Office', 'Mien Nam', 0, '2018-07-02 16:24:28', 'administrator', '2018-07-02 16:24:28', 'administrator'),
+(15, 'saigon-city-hall', '3d35f8dfbb51d77e8d04811cb1c75f37.png', 'Saigon City Hall', 'Mien Nam', 0, '2018-07-02 16:25:54', 'administrator', '2018-07-02 16:25:54', 'administrator'),
+(16, 'independence-palace-dinh-doc-lap', 'd0ee71ebc0be125336de96a0e70d759f.png', 'Independence Palace (Dinh Doc Lap)', 'Mien Nam', 0, '2018-07-02 16:26:53', 'administrator', '2018-07-02 16:26:53', 'administrator'),
+(17, 'saigon-river', 'ddbcede41f36ee0368ad29d49efe020b.png', 'Saigon River', 'Mien Nam', 0, '2018-07-02 16:28:04', 'administrator', '2018-07-02 16:28:04', 'administrator'),
+(18, 'the-mekong', '0132e85a20869665c642a90e12411337.png', 'The Mekong', 'Mien Nam', 0, '2018-07-02 16:28:58', 'administrator', '2018-07-02 16:28:58', 'administrator'),
+(19, 'vinh-trang-chua', 'f86078efd535499f36946e5df2edb6b0.png', 'Vinh Trang Chua', 'Mien Nam', 0, '2018-07-02 16:29:47', 'administrator', '2018-07-02 16:29:47', 'administrator'),
+(20, 'an-dong-market', 'a2cfb5029d398f5227faa82447501f79.png', 'An Dong Market', 'Mien Nam', 0, '2018-07-02 16:30:30', 'administrator', '2018-07-02 16:30:30', 'administrator'),
+(21, 'built-by-the-viet-cong', 'b9d360d5fab24dd7c97067175a4b6ee8.png', 'Built by the Viet Cong', 'Mien Nam', 0, '2018-07-02 16:31:28', 'administrator', '2018-07-02 16:31:28', 'administrator');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `localtion_lang`
+-- Cấu trúc bảng cho bảng `localtion_lang`
 --
 
 CREATE TABLE `localtion_lang` (
@@ -330,21 +332,78 @@ CREATE TABLE `localtion_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `localtion_lang`
+-- Đang đổ dữ liệu cho bảng `localtion_lang`
 --
 
 INSERT INTO `localtion_lang` (`id`, `localtion_id`, `title`, `content`, `language`) VALUES
-(18, 11, 'en', '', 'en'),
-(19, 11, 'cn', '', 'cn'),
-(20, 11, 'sn', '', 'sc'),
-(21, 12, 'asd', '', 'en'),
-(22, 12, 'asda', '', 'cn'),
-(23, 12, 'asdasd', '', 'sc');
+(1, 1, 'Taipei Hanoi Da nang (Indigo Bay) (Marble Moutain) 、My Khe Beach Hoi An', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Driving 9km south of Danang city center on the famous beachfront boulevard Truong Sa, travelers can find one of the most popular attractions of the region, the Marble mountains. It is a group of five marble and limestone mountains, named after the five elements of the ancient oriental philosophy: metal, wood, water, fire and earth.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'en'),
+(2, 1, 'Taipei Hanoi Da nang (Indigo Bay) (Marble Moutain) 、My Khe Beach Hoi An', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Driving 9km south of Danang city center on the famous beachfront boulevard Truong Sa, travelers can find one of the most popular attractions of the region, the Marble mountains. It is a group of five marble and limestone mountains, named after the five elements of the ancient oriental philosophy: metal, wood, water, fire and earth.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'cn'),
+(3, 1, 'Taipei Hanoi Da nang (Indigo Bay) (Marble Moutain) 、My Khe Beach Hoi An', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Driving 9km south of Danang city center on the famous beachfront boulevard Truong Sa, travelers can find one of the most popular attractions of the region, the Marble mountains. It is a group of five marble and limestone mountains, named after the five elements of the ancient oriental philosophy: metal, wood, water, fire and earth.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'sc'),
+(4, 2, 'My Khe', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">My Khe is long well-known for its beauty among many locals and international tourists and now its fame has been confirmed by the American leading economic magazine Forbes: the 900m long beach is claimed as one of the six most attractive beaches on the planet.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'en'),
+(5, 2, 'My Khe', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">My Khe is long well-known for its beauty among many locals and international tourists and now its fame has been confirmed by the American leading economic magazine Forbes: the 900m long beach is claimed as one of the six most attractive beaches on the planet.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'cn'),
+(6, 2, 'My Khe', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">My Khe is long well-known for its beauty among many locals and international tourists and now its fame has been confirmed by the American leading economic magazine Forbes: the 900m long beach is claimed as one of the six most attractive beaches on the planet.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'sc'),
+(7, 3, 'Champa', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Champa culture had great influences on Vietnam&rsquo;s cultural values of significance. The former capital of the Champa Kingdom from 4th to 15th century was My Son Sanctuary (My Son Holy Land) in Quang Nam province, central Vietnam. </td>\r\n</tr>\r\n</tbody>\r\n</table>', 'en'),
+(8, 3, 'Champa', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Champa culture had great influences on Vietnam&rsquo;s cultural values of significance. The former capital of the Champa Kingdom from 4th to 15th century was My Son Sanctuary (My Son Holy Land) in Quang Nam province, central Vietnam. </td>\r\n</tr>\r\n</tbody>\r\n</table>', 'cn'),
+(9, 3, 'Champa', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Champa culture had great influences on Vietnam&rsquo;s cultural values of significance. The former capital of the Champa Kingdom from 4th to 15th century was My Son Sanctuary (My Son Holy Land) in Quang Nam province, central Vietnam. </td>\r\n</tr>\r\n</tbody>\r\n</table>', 'sc'),
+(10, 4, 'Cam Nam Village', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Cam Nam Village, just a bridge away from Hoi An&lsquo;s&nbsp; Old Quarter, is a nice getaway from the hectic pace of central Old Town. This tranquil destination, which welcomes hundreds of guest everyday, typifies the sort of gastronomically experience available to both foreign and local visitors. Walking around the village, following a beautiful tranquil river lined with starfruit trees, people can explore the local rustic food specialties of the area in dozens of little restaurants.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'en'),
+(11, 4, 'Cam Nam Village', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Cam Nam Village, just a bridge away from Hoi An&lsquo;s&nbsp; Old Quarter, is a nice getaway from the hectic pace of central Old Town. This tranquil destination, which welcomes hundreds of guest everyday, typifies the sort of gastronomically experience available to both foreign and local visitors. Walking around the village, following a beautiful tranquil river lined with starfruit trees, people can explore the local rustic food specialties of the area in dozens of little restaurants.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'cn'),
+(12, 4, 'Cam Nam Village', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Cam Nam Village, just a bridge away from Hoi An&lsquo;s&nbsp; Old Quarter, is a nice getaway from the hectic pace of central Old Town. This tranquil destination, which welcomes hundreds of guest everyday, typifies the sort of gastronomically experience available to both foreign and local visitors. Walking around the village, following a beautiful tranquil river lined with starfruit trees, people can explore the local rustic food specialties of the area in dozens of little restaurants.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'sc'),
+(13, 5, 'Hoi An', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\"><br />Hoi An Old Town is located 30km south of Danang City, and 60km northeast of Tam Ky. Hoi An used to be an international trade center by sea on the east area in the 16th and 17th centuries. It was the busiest trading port in Dang Trong region of Vietnam during the reign of Nguyen as merchants f-rom Japan, China, Portugal, Spain, Holland...often stopped over to exchange and purchase commodities.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'en'),
+(14, 5, 'Hoi An', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\"><br />Hoi An Old Town is located 30km south of Danang City, and 60km northeast of Tam Ky. Hoi An used to be an international trade center by sea on the east area in the 16th and 17th centuries. It was the busiest trading port in Dang Trong region of Vietnam during the reign of Nguyen as merchants f-rom Japan, China, Portugal, Spain, Holland...often stopped over to exchange and purchase commodities.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'cn'),
+(15, 5, 'Hoi An', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\"><br />Hoi An Old Town is located 30km south of Danang City, and 60km northeast of Tam Ky. Hoi An used to be an international trade center by sea on the east area in the 16th and 17th centuries. It was the busiest trading port in Dang Trong region of Vietnam during the reign of Nguyen as merchants f-rom Japan, China, Portugal, Spain, Holland...often stopped over to exchange and purchase commodities.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'sc'),
+(16, 6, 'The Perfume River(Vietnamese: Sông Hương or Hương Giang)', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">The&nbsp;Perfume River(Vietnamese: S&ocirc;ng Hương or Hương Giang) is a river that crosses the capital city of Hue, in the central Vietnamese province of Thua Thien Hue. Perfume or Huong River is around 80 kilometers long, and owes its name to the fact that it flows through many forests of aromatic plants before reaching Hue, bringing with it a pure and fresh aroma.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'en'),
+(17, 6, 'The Perfume River(Vietnamese: Sông Hương or Hương Giang)', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">The&nbsp;Perfume River(Vietnamese: S&ocirc;ng Hương or Hương Giang) is a river that crosses the capital city of Hue, in the central Vietnamese province of Thua Thien Hue. Perfume or Huong River is around 80 kilometers long, and owes its name to the fact that it flows through many forests of aromatic plants before reaching Hue, bringing with it a pure and fresh aroma.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'cn'),
+(18, 6, 'The Perfume River(Vietnamese: Sông Hương or Hương Giang)', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">The&nbsp;Perfume River(Vietnamese: S&ocirc;ng Hương or Hương Giang) is a river that crosses the capital city of Hue, in the central Vietnamese province of Thua Thien Hue. Perfume or Huong River is around 80 kilometers long, and owes its name to the fact that it flows through many forests of aromatic plants before reaching Hue, bringing with it a pure and fresh aroma.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'sc'),
+(19, 7, 'Located beside the picturesque Huong River, Thien Mu Pagoda', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">\r\n<table>\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Located beside the picturesque Huong River, Thien Mu Pagoda, with its ancient architecture, adds its charm to this beautiful natural setting. The sound of Thien Mu bell is like the soul of Hue, ever resounding over the Huong River flow winding its way in front of the Citadel to the sea, resonating in the hearts and minds of the people and of visitors to Hue, the ancient capital.</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'en'),
+(20, 7, 'Located beside the picturesque Huong River, Thien Mu Pagoda', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">\r\n<table>\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Located beside the picturesque Huong River, Thien Mu Pagoda, with its ancient architecture, adds its charm to this beautiful natural setting. The sound of Thien Mu bell is like the soul of Hue, ever resounding over the Huong River flow winding its way in front of the Citadel to the sea, resonating in the hearts and minds of the people and of visitors to Hue, the ancient capital.</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'cn'),
+(21, 7, 'Located beside the picturesque Huong River, Thien Mu Pagoda', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">\r\n<table>\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Located beside the picturesque Huong River, Thien Mu Pagoda, with its ancient architecture, adds its charm to this beautiful natural setting. The sound of Thien Mu bell is like the soul of Hue, ever resounding over the Huong River flow winding its way in front of the Citadel to the sea, resonating in the hearts and minds of the people and of visitors to Hue, the ancient capital.</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'sc'),
+(22, 8, 'Khai Dinh', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Khai Dinh ordered a tomb that had heavy French elements within its design. Unlike to his predecessors&rsquo;, Khai Dinh&rsquo;s tomb is built like a monument &ndash; built mainly of concrete, preceded by a wrought-iron triple gate; inside, guests will find a riotous battle between Eastern and Western design elements, colorfully decorated with pieces of broken glass and porcelain.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'en'),
+(23, 8, 'Khai Dinh', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Khai Dinh ordered a tomb that had heavy French elements within its design. Unlike to his predecessors&rsquo;, Khai Dinh&rsquo;s tomb is built like a monument &ndash; built mainly of concrete, preceded by a wrought-iron triple gate; inside, guests will find a riotous battle between Eastern and Western design elements, colorfully decorated with pieces of broken glass and porcelain.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'cn'),
+(24, 8, 'Khai Dinh', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Khai Dinh ordered a tomb that had heavy French elements within its design. Unlike to his predecessors&rsquo;, Khai Dinh&rsquo;s tomb is built like a monument &ndash; built mainly of concrete, preceded by a wrought-iron triple gate; inside, guests will find a riotous battle between Eastern and Western design elements, colorfully decorated with pieces of broken glass and porcelain.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'sc'),
+(25, 9, 'Tu Duc', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\"><br />The opulence of Tu Duc&rsquo;s tomb stands in contrast to the tragic length of his life. Tu Duc reigned longest among the Nguyens, dying childless after 35 years on the throne and cursing the French for their growing influence.<br /><br />Tu Duc is the only Emperor who moved his household into his own tomb, building a Forbidden City of his own on the grounds. Some believe this was due to the smallpox that rendered him infertile; in fact, out of the Emperors who built their tombs in Hue, Tu Duc is the only emperor who wrote his own stele, as he had no son to do this essential duty.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'en'),
+(26, 9, 'Tu Duc', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\"><br />The opulence of Tu Duc&rsquo;s tomb stands in contrast to the tragic length of his life. Tu Duc reigned longest among the Nguyens, dying childless after 35 years on the throne and cursing the French for their growing influence.<br /><br />Tu Duc is the only Emperor who moved his household into his own tomb, building a Forbidden City of his own on the grounds. Some believe this was due to the smallpox that rendered him infertile; in fact, out of the Emperors who built their tombs in Hue, Tu Duc is the only emperor who wrote his own stele, as he had no son to do this essential duty.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'cn'),
+(27, 9, 'Tu Duc', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\"><br />The opulence of Tu Duc&rsquo;s tomb stands in contrast to the tragic length of his life. Tu Duc reigned longest among the Nguyens, dying childless after 35 years on the throne and cursing the French for their growing influence.<br /><br />Tu Duc is the only Emperor who moved his household into his own tomb, building a Forbidden City of his own on the grounds. Some believe this was due to the smallpox that rendered him infertile; in fact, out of the Emperors who built their tombs in Hue, Tu Duc is the only emperor who wrote his own stele, as he had no son to do this essential duty.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'sc'),
+(28, 10, 'Hue', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Famously being one of&nbsp;Vietnam&rsquo;s seven UNESCO World Heritage Sites, the Imperial City of Hue has long been a must-see attraction for tourists visiting a hidden charm of Vietnam. The Imperial City of Hue was actually a walled fortress and palace belonged to the&nbsp;ancient city of Hue&nbsp;which was a capital city of the&nbsp;Nguyen Dynasty&nbsp;for 140 years date back from 1805 until 1945.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'en'),
+(29, 10, 'Hue', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Famously being one of&nbsp;Vietnam&rsquo;s seven UNESCO World Heritage Sites, the Imperial City of Hue has long been a must-see attraction for tourists visiting a hidden charm of Vietnam. The Imperial City of Hue was actually a walled fortress and palace belonged to the&nbsp;ancient city of Hue&nbsp;which was a capital city of the&nbsp;Nguyen Dynasty&nbsp;for 140 years date back from 1805 until 1945.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'cn'),
+(30, 10, 'Hue', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Famously being one of&nbsp;Vietnam&rsquo;s seven UNESCO World Heritage Sites, the Imperial City of Hue has long been a must-see attraction for tourists visiting a hidden charm of Vietnam. The Imperial City of Hue was actually a walled fortress and palace belonged to the&nbsp;ancient city of Hue&nbsp;which was a capital city of the&nbsp;Nguyen Dynasty&nbsp;for 140 years date back from 1805 until 1945.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'sc'),
+(31, 11, 'Hue Dong Ba Market Ho Chi Minh City Red churh Museum of American War Crimes Centennial Post Office Town Hall Reunification Palace Sai gon River', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">The Vietnamese government-run War Remnants Museum in Ho Chi Minh City, also known as Saigon, is one of Vietnam\'s most popular museums. It draws 500,000 visitors annually, according to Christina Schwenkel, who wrote about the museum in her 2009 book \"The American War In Contemporary Vietnam: Transnational Remembrance and Representation.\" Foreigners comprise two-thirds of the visitors.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'en'),
+(32, 11, 'Hue Dong Ba Market Ho Chi Minh City Red churh Museum of American War Crimes Centennial Post Office Town Hall Reunification Palace Sai gon River', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">The Vietnamese government-run War Remnants Museum in Ho Chi Minh City, also known as Saigon, is one of Vietnam\'s most popular museums. It draws 500,000 visitors annually, according to Christina Schwenkel, who wrote about the museum in her 2009 book \"The American War In Contemporary Vietnam: Transnational Remembrance and Representation.\" Foreigners comprise two-thirds of the visitors.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'cn'),
+(33, 11, 'Hue Dong Ba Market Ho Chi Minh City Red churh Museum of American War Crimes Centennial Post Office Town Hall Reunification Palace Sai gon River', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">The Vietnamese government-run War Remnants Museum in Ho Chi Minh City, also known as Saigon, is one of Vietnam\'s most popular museums. It draws 500,000 visitors annually, according to Christina Schwenkel, who wrote about the museum in her 2009 book \"The American War In Contemporary Vietnam: Transnational Remembrance and Representation.\" Foreigners comprise two-thirds of the visitors.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'sc'),
+(34, 12, 'Ho Chi Minh', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Ho Chi Minh City (HCMC) is Vietnam at its most dizzying: a high-octane city of commerce and culture that has driven the country forward with its pulsating energy. A chaotic whirl, the city breathes life and vitality into all who settle here, and visitors cannot help but be hauled along for the ride.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'en'),
+(35, 12, 'Ho Chi Minh', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Ho Chi Minh City (HCMC) is Vietnam at its most dizzying: a high-octane city of commerce and culture that has driven the country forward with its pulsating energy. A chaotic whirl, the city breathes life and vitality into all who settle here, and visitors cannot help but be hauled along for the ride.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'cn'),
+(36, 12, 'Ho Chi Minh', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Ho Chi Minh City (HCMC) is Vietnam at its most dizzying: a high-octane city of commerce and culture that has driven the country forward with its pulsating energy. A chaotic whirl, the city breathes life and vitality into all who settle here, and visitors cannot help but be hauled along for the ride.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'sc'),
+(37, 13, 'Red Church', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">\r\n<table>\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Red Church (Notre Dame Cathedral) is the must-see church in Ho Chi Minh City, it is also one of the initial catholic churches in Ho Chi Minh City. Since 1865, Notre Dame Cathedral was the biggest church of France&rsquo;s constructions in Vietnam, built with Marseille brick, stained glass, steel frame from France and blue stone of Bien Hoa, constructed by the commander Bonard. Notre Dame has established the electric system at the beginning, instead of candles as other churches.<br /><br />Read more: Top famous Churches in Ho Chi Minh City&nbsp;</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'en'),
+(38, 13, 'Red Church', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">\r\n<table>\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Red Church (Notre Dame Cathedral) is the must-see church in Ho Chi Minh City, it is also one of the initial catholic churches in Ho Chi Minh City. Since 1865, Notre Dame Cathedral was the biggest church of France&rsquo;s constructions in Vietnam, built with Marseille brick, stained glass, steel frame from France and blue stone of Bien Hoa, constructed by the commander Bonard. Notre Dame has established the electric system at the beginning, instead of candles as other churches.<br /><br />Read more: Top famous Churches in Ho Chi Minh City&nbsp;</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'cn'),
+(39, 13, 'Red Church', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">\r\n<table>\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Red Church (Notre Dame Cathedral) is the must-see church in Ho Chi Minh City, it is also one of the initial catholic churches in Ho Chi Minh City. Since 1865, Notre Dame Cathedral was the biggest church of France&rsquo;s constructions in Vietnam, built with Marseille brick, stained glass, steel frame from France and blue stone of Bien Hoa, constructed by the commander Bonard. Notre Dame has established the electric system at the beginning, instead of candles as other churches.<br /><br />Read more: Top famous Churches in Ho Chi Minh City&nbsp;</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'sc'),
+(40, 14, 'The Saigon Central Post Office', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">The Saigon Central Post Office, at 2 Paris Commune Street opposite Notre-Dame cathedral is one of Vietnam&rsquo;s most beautiful examples of French colonial architecture.&nbsp;</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'en'),
+(41, 14, 'The Saigon Central Post Office', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">The Saigon Central Post Office, at 2 Paris Commune Street opposite Notre-Dame cathedral is one of Vietnam&rsquo;s most beautiful examples of French colonial architecture.&nbsp;</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'cn'),
+(42, 14, 'The Saigon Central Post Office', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">The Saigon Central Post Office, at 2 Paris Commune Street opposite Notre-Dame cathedral is one of Vietnam&rsquo;s most beautiful examples of French colonial architecture.&nbsp;</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'sc'),
+(43, 15, 'Saigon City Hall', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">\r\n<table>\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Beautiful by day, stunning by night, Saigon City Hall is another excellent example of French colonial architecture in Ho Chi Minh City. Built between 1902 and 1908, the building was originally called Hotel de Ville de Saigon. Since 1975, the building has been the headquarters of the Peoples Committee in Ho Chi Minh City and is unfortunately not open to the general public. Only civil servants and cleaners are allowed.</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'en'),
+(44, 15, 'Saigon City Hall', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">\r\n<table>\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Beautiful by day, stunning by night, Saigon City Hall is another excellent example of French colonial architecture in Ho Chi Minh City. Built between 1902 and 1908, the building was originally called Hotel de Ville de Saigon. Since 1975, the building has been the headquarters of the Peoples Committee in Ho Chi Minh City and is unfortunately not open to the general public. Only civil servants and cleaners are allowed.</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'cn'),
+(45, 15, 'Saigon City Hall', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">\r\n<table>\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Beautiful by day, stunning by night, Saigon City Hall is another excellent example of French colonial architecture in Ho Chi Minh City. Built between 1902 and 1908, the building was originally called Hotel de Ville de Saigon. Since 1975, the building has been the headquarters of the Peoples Committee in Ho Chi Minh City and is unfortunately not open to the general public. Only civil servants and cleaners are allowed.</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'sc'),
+(46, 16, 'Independence Palace (Dinh Doc Lap)', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Independence Palace (Dinh Độc Lập), also known as Reunification Palace (Vietnamese: Dinh Thống Nhất), built on the site of the former Norodom Palace. This is the place marking the complete victory of anti-American resistance war, libration of the South and national reunification</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'en'),
+(47, 16, 'Independence Palace (Dinh Doc Lap)', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Independence Palace (Dinh Độc Lập), also known as Reunification Palace (Vietnamese: Dinh Thống Nhất), built on the site of the former Norodom Palace. This is the place marking the complete victory of anti-American resistance war, libration of the South and national reunification</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'cn'),
+(48, 16, 'Independence Palace (Dinh Doc Lap)', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Independence Palace (Dinh Độc Lập), also known as Reunification Palace (Vietnamese: Dinh Thống Nhất), built on the site of the former Norodom Palace. This is the place marking the complete victory of anti-American resistance war, libration of the South and national reunification</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'sc'),
+(49, 17, 'Saigon River', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">&nbsp;Take a leisurely evening dinner cruise down the Saigon River, far away from the honking cars of the city. There will be a sumptuous feast, live jazz performances, fire dancing, and gorgeous night views to make the night comfortable and memorable.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'en'),
+(50, 17, 'Saigon River', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">&nbsp;Take a leisurely evening dinner cruise down the Saigon River, far away from the honking cars of the city. There will be a sumptuous feast, live jazz performances, fire dancing, and gorgeous night views to make the night comfortable and memorable.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'cn'),
+(51, 17, 'Saigon River', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">&nbsp;Take a leisurely evening dinner cruise down the Saigon River, far away from the honking cars of the city. There will be a sumptuous feast, live jazz performances, fire dancing, and gorgeous night views to make the night comfortable and memorable.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'sc'),
+(52, 18, 'The Mekong', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">The Mekong rises in the Himalayas in China, in an area called the &lsquo;three-rivers area&rsquo;. The other two rivers that rise here are the Yangtze (6,300 km) and Yellow (5,464 km) rivers.<br /><br />In terms of discharge, the Mekong is the 14th largest river in the world. It discharges 475 km&sup3; of water into the South China Sea every year &ndash; that&rsquo;s about 25 billion swimming pools. The Lao Peoples&rsquo; Democratic Republic (Lao PDR) contributes some 35% of this water, followed by Thailand and Cambodia (18% each), China (16%), Vietnam (11%) and Myanmar (2%).。</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'en'),
+(53, 18, 'The Mekong', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">The Mekong rises in the Himalayas in China, in an area called the &lsquo;three-rivers area&rsquo;. The other two rivers that rise here are the Yangtze (6,300 km) and Yellow (5,464 km) rivers.<br /><br />In terms of discharge, the Mekong is the 14th largest river in the world. It discharges 475 km&sup3; of water into the South China Sea every year &ndash; that&rsquo;s about 25 billion swimming pools. The Lao Peoples&rsquo; Democratic Republic (Lao PDR) contributes some 35% of this water, followed by Thailand and Cambodia (18% each), China (16%), Vietnam (11%) and Myanmar (2%).。</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'cn'),
+(54, 18, 'The Mekong', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">The Mekong rises in the Himalayas in China, in an area called the &lsquo;three-rivers area&rsquo;. The other two rivers that rise here are the Yangtze (6,300 km) and Yellow (5,464 km) rivers.<br /><br />In terms of discharge, the Mekong is the 14th largest river in the world. It discharges 475 km&sup3; of water into the South China Sea every year &ndash; that&rsquo;s about 25 billion swimming pools. The Lao Peoples&rsquo; Democratic Republic (Lao PDR) contributes some 35% of this water, followed by Thailand and Cambodia (18% each), China (16%), Vietnam (11%) and Myanmar (2%).。</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'sc'),
+(55, 19, 'Vinh Trang Chua', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Vĩnh Tr&agrave;ng Ch&ugrave;a is a Buddhist temple near Mỹ Tho in the Mekong Delta region of southern Vietnam. It is one of the best-known temples in the region.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'en'),
+(56, 19, 'Vinh Trang Chua', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Vĩnh Tr&agrave;ng Ch&ugrave;a is a Buddhist temple near Mỹ Tho in the Mekong Delta region of southern Vietnam. It is one of the best-known temples in the region.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'cn'),
+(57, 19, 'Vinh Trang Chua', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">Vĩnh Tr&agrave;ng Ch&ugrave;a is a Buddhist temple near Mỹ Tho in the Mekong Delta region of southern Vietnam. It is one of the best-known temples in the region.</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'sc'),
+(58, 20, 'An Dong Market', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">An Dong Market Ho Chi Minh houses a variety of fashion wholesalers and handicrafts stalls. Located in District 5, this indoor market opens daily from 08:00 until 14:00. Divided into four levels, fashion enthusiasts can find an extensive collection of clothing, textiles, shoes, handbags, and accessories on the first two floors. The top floor is dedicated to quality handicrafts and trinkets made by skilled local artisans.<br /><br /></td>\r\n</tr>\r\n</tbody>\r\n</table>', 'en'),
+(59, 20, 'An Dong Market', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">An Dong Market Ho Chi Minh houses a variety of fashion wholesalers and handicrafts stalls. Located in District 5, this indoor market opens daily from 08:00 until 14:00. Divided into four levels, fashion enthusiasts can find an extensive collection of clothing, textiles, shoes, handbags, and accessories on the first two floors. The top floor is dedicated to quality handicrafts and trinkets made by skilled local artisans.<br /><br /></td>\r\n</tr>\r\n</tbody>\r\n</table>', 'cn'),
+(60, 20, 'An Dong Market', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td width=\"538\">An Dong Market Ho Chi Minh houses a variety of fashion wholesalers and handicrafts stalls. Located in District 5, this indoor market opens daily from 08:00 until 14:00. Divided into four levels, fashion enthusiasts can find an extensive collection of clothing, textiles, shoes, handbags, and accessories on the first two floors. The top floor is dedicated to quality handicrafts and trinkets made by skilled local artisans.<br /><br /></td>\r\n</tr>\r\n</tbody>\r\n</table>', 'sc'),
+(61, 21, 'Built by the Viet Cong', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td rowspan=\"3\" width=\"538\">Built by the Viet Cong in the 1940s as protection from French air raids during the Indochina conflict, the Cu Chi Tunnels extend underground for more than 155 miles (250 km) in the vicinity of Ho Chi Minh City alone. This network of subterranean passageways later provided vital access to and strategic control over the rural areas surrounding the city during the Vietnam War (also known as the Second Indochina War or the American War), when the tunnels housed living quarters, hospitals, booby traps, and storage facilities for the Viet Cong.&nbsp;</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'en'),
+(62, 21, 'Built by the Viet Cong', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td rowspan=\"3\" width=\"538\">Built by the Viet Cong in the 1940s as protection from French air raids during the Indochina conflict, the Cu Chi Tunnels extend underground for more than 155 miles (250 km) in the vicinity of Ho Chi Minh City alone. This network of subterranean passageways later provided vital access to and strategic control over the rural areas surrounding the city during the Vietnam War (also known as the Second Indochina War or the American War), when the tunnels housed living quarters, hospitals, booby traps, and storage facilities for the Viet Cong.&nbsp;</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'cn'),
+(63, 21, 'Built by the Viet Cong', '<table width=\"538\">\r\n<tbody>\r\n<tr>\r\n<td rowspan=\"3\" width=\"538\">Built by the Viet Cong in the 1940s as protection from French air raids during the Indochina conflict, the Cu Chi Tunnels extend underground for more than 155 miles (250 km) in the vicinity of Ho Chi Minh City alone. This network of subterranean passageways later provided vital access to and strategic control over the rural areas surrounding the city during the Vietnam War (also known as the Second Indochina War or the American War), when the tunnels housed living quarters, hospitals, booby traps, and storage facilities for the Viet Cong.&nbsp;</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'sc');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `login_attempts`
+-- Cấu trúc bảng cho bảng `login_attempts`
 --
 
 CREATE TABLE `login_attempts` (
@@ -357,7 +416,7 @@ CREATE TABLE `login_attempts` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `post`
+-- Cấu trúc bảng cho bảng `post`
 --
 
 CREATE TABLE `post` (
@@ -375,17 +434,16 @@ CREATE TABLE `post` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `post`
+-- Đang đổ dữ liệu cho bảng `post`
 --
 
 INSERT INTO `post` (`id`, `post_category_id`, `slug`, `avatar`, `image`, `created_at`, `created_by`, `updated_at`, `updated_by`, `is_deleted`, `is_activated`) VALUES
-(19, 26, 'about-us', '', '7183e3432ade365207fc219f086479fe.jpg', '2018-06-25 16:00:34', 'administrator', '2018-06-25 16:00:34', 'administrator', 0, 0),
-(20, 27, 'product---service', '', 'a75213ca0e3a03d4898727a6dcc71709.jpg', '2018-06-25 16:11:02', 'administrator', '2018-06-25 16:11:02', 'administrator', 0, 0);
+(1, 1, 'lorem-ipsum', '', 'af0a9309c4f3ee9f6a03ac9c94d5f6e1.png', '2018-07-03 16:30:57', 'administrator', '2018-07-03 16:30:57', 'administrator', 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `post_category`
+-- Cấu trúc bảng cho bảng `post_category`
 --
 
 CREATE TABLE `post_category` (
@@ -405,19 +463,21 @@ CREATE TABLE `post_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `post_category`
+-- Đang đổ dữ liệu cho bảng `post_category`
 --
 
 INSERT INTO `post_category` (`id`, `slug`, `parent_id`, `project`, `image`, `sort`, `type`, `is_activated`, `is_deleted`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
-(25, 'about', 0, '', '50e478aaba906b7bdf2cb23813b80fa2.jpg', NULL, 0, 0, 0, '2018-06-27 11:37:52', 'administrator', '2018-06-27 11:37:52', 'administrator'),
-(26, 'about-us-1', 25, '', 'd1360632d98f56b81e51db03a002891c.jpg', NULL, 0, 0, 0, '2018-06-27 11:39:04', 'administrator', '2018-06-27 11:39:04', 'administrator'),
-(27, 'product---service', 25, '', '095239c9c81fd3aba9b4e4e71d93d496.jpg', NULL, 0, 0, 0, '2018-06-25 15:51:39', 'administrator', '2018-06-25 15:51:39', 'administrator'),
-(28, 'test-en', 25, '', 'f129b907e74e776835276af3c26a5779.jpg', NULL, 0, 0, 0, '2018-06-25 16:46:47', 'administrator', '2018-06-25 16:46:47', 'administrator');
+(1, 'visa', 0, '', '64ca9cd9af4ebedaa555ec43b2843171.jpg', NULL, 0, 0, 0, '2018-07-03 16:24:36', 'administrator', '2018-07-03 16:24:36', 'administrator'),
+(2, 'news', 0, '', '879665a3e6363e7131dcf07eb96b2333.jpg', NULL, 0, 0, 0, '2018-07-03 16:25:08', 'administrator', '2018-07-03 16:25:08', 'administrator'),
+(3, 'blog', 0, '', '7f31f87be4bd75e4e8161c4a2bcfe4ab.jpg', NULL, 0, 0, 0, '2018-07-03 16:25:29', 'administrator', '2018-07-03 16:25:29', 'administrator'),
+(4, 'destination', 3, '', '3b729d3ae1d6f0614daa4bb809e4d53f.jpg', NULL, 0, 0, 0, '2018-07-03 16:28:15', 'administrator', '2018-07-03 16:28:15', 'administrator'),
+(5, 'travel-tips', 3, '', '2298a56c1c99a6b06b4b63eded77ed39.jpg', NULL, 0, 0, 0, '2018-07-03 16:28:30', 'administrator', '2018-07-03 16:28:30', 'administrator'),
+(6, 'diary', 3, '', '6b758b8cf63391fc236c6e3fb4e7a2d4.jpg', NULL, 0, 0, 0, '2018-07-03 16:28:57', 'administrator', '2018-07-03 16:28:57', 'administrator');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `post_category_lang`
+-- Cấu trúc bảng cho bảng `post_category_lang`
 --
 
 CREATE TABLE `post_category_lang` (
@@ -429,27 +489,33 @@ CREATE TABLE `post_category_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `post_category_lang`
+-- Đang đổ dữ liệu cho bảng `post_category_lang`
 --
 
 INSERT INTO `post_category_lang` (`id`, `post_category_id`, `title`, `content`, `language`) VALUES
-(58, 25, 'About 1 2', '', 'en'),
-(59, 25, '  關於  ', '', 'cn'),
-(60, 25, '  关于', '', 'sc'),
-(61, 26, 'About Us  1', '', 'en'),
-(62, 26, ' 關於我們 ', '', 'cn'),
-(63, 26, ' 关于我们', '', 'sc'),
-(64, 27, 'Product - Service', '', 'en'),
-(65, 27, '產品 - 服務', '', 'cn'),
-(66, 27, '产品 - 服务', '', 'sc'),
-(67, 28, 'test en', '', 'en'),
-(68, 28, 'test cn', '', 'cn'),
-(69, 28, 'test sc', '', 'sc');
+(1, 1, 'Visa', '<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'en'),
+(2, 1, '簽證', 'Lorem Ipsum phon the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'cn'),
+(3, 1, '签证', 'Lorem Ipsum gian the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'sc'),
+(4, 2, 'News', '<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'en'),
+(5, 2, '新聞', 'Lorem Ipsum phon the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'cn'),
+(6, 2, '新闻', 'Lorem Ipsum gian the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'sc'),
+(7, 3, 'Blog', '<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'en'),
+(8, 3, '博客', 'Lorem Ipsum phon the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'cn'),
+(9, 3, '博客', 'Lorem Ipsum gian the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'sc'),
+(10, 4, 'Destination', '<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'en'),
+(11, 4, '景點', 'Lorem Ipsum phon the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'cn'),
+(12, 4, '景点', 'Lorem Ipsum gian the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'sc'),
+(13, 5, 'Travel Tips', '<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'en'),
+(14, 5, '旅遊攻略', 'Lorem Ipsum phon the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'cn'),
+(15, 5, '旅游攻略', 'Lorem Ipsum gian the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'sc'),
+(16, 6, 'Diary', '<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'en'),
+(17, 6, '行程日記', 'Lorem Ipsum phon the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'cn'),
+(18, 6, '行程日记', 'Lorem Ipsum gian the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'sc');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `post_lang`
+-- Cấu trúc bảng cho bảng `post_lang`
 --
 
 CREATE TABLE `post_lang` (
@@ -462,21 +528,18 @@ CREATE TABLE `post_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `post_lang`
+-- Đang đổ dữ liệu cho bảng `post_lang`
 --
 
 INSERT INTO `post_lang` (`id`, `post_id`, `title`, `description`, `content`, `language`) VALUES
-(31, 19, 'About Us', '', '<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'en'),
-(32, 19, '關於我們', '', '<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'cn'),
-(33, 19, '关于我们', '', '<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'scn'),
-(34, 20, 'Product - Service', '', '', 'en'),
-(35, 20, '產品 - 服務', '', '', 'cn'),
-(36, 20, '产品 - 服务', '', '', 'sc');
+(1, 1, 'Lorem Ipsum', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'en'),
+(2, 1, 'Lorem Ipsum phon the', 'Lorem Ipsum phon the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，”Leatraset”公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件”Aldus PageMaker”也通过同样的方式使Lorem Ipsum落入大众的视野。', 'Lorem Ipsum phon the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'cn'),
+(3, 1, 'Lorem Ipsum gian the', 'Lorem Ipsum gian the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，”Leatraset”公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件”Aldus PageMaker”也通过同样的方式使Lorem Ipsum落入大众的视野。', 'Lorem Ipsumgian the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'sc');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Cấu trúc bảng cho bảng `product`
 --
 
 CREATE TABLE `product` (
@@ -508,18 +571,16 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `product`
+-- Đang đổ dữ liệu cho bảng `product`
 --
 
 INSERT INTO `product` (`id`, `product_category_id`, `slug`, `avatar`, `image`, `is_deleted`, `is_activated`, `dateimg`, `vehicles`, `price`, `priceadults`, `pricechildren`, `priceinfants`, `percen`, `imglocaltion`, `localtion`, `librarylocaltion`, `date`, `created_at`, `created_by`, `updated_at`, `updated_by`, `total_rating`, `count_rating`, `is_top`) VALUES
-(95, 31, 'en', '', '', 0, 0, '[null]', '[\"1\"]', '0', '0', '0', '0', 0, '', '', '[\"\"]', '2018-06-30 00:00:00', '2018-06-26 16:26:38', 'administrator', '2018-06-26 16:26:38', 'administrator', NULL, NULL, 0),
-(96, 31, 'en-1', '', 'c307ec5eacc3a8968e44bf41a819a9de.jpg', 0, 1, '[\"b9dd7fa183747fa7a9baff25ce537bad.jpg\"]', '[\"2\"]', '0', '0', '0', '0', 0, 'de93fecf7c5589360337427cd796e573.jpg', '', '[\"\"]', '2018-06-30 00:00:00', '2018-06-26 16:31:53', 'administrator', '2018-06-26 16:31:53', 'administrator', NULL, NULL, 1),
-(97, 31, 'en-2', '', '770b42afbd69938ae85b70aa5afcd4c0.jpg', 0, 0, '[\"8aeb05db0057f1197ee77a980095a78a.jpg\"]', '[\"1\"]', '10', '5', '5', '5', 5, '1303ebb556dd4fa25f588218de6b8ca1.jpg', 'asdasd', '[\"11\"]', '2018-06-30 00:00:00', '2018-06-26 16:44:37', 'administrator', '2018-06-26 16:44:37', 'administrator', NULL, NULL, 1);
+(1, 5, 'central-vietnam-with-world-heritage-tour-6-days', '', '6d705497eddd7aca2b7c0d18982dd262.png', 0, 0, '[\"eb8ccfb0e5a6683d0b132c57960b9402.png\",\"12bfaca10bd4a255841202be41fd8da8.png\",\"bcb48213fc821ee54b54d226f7d634c0.png\",\"32b07690ad987526afc35a6fd933186c.png\",\"d5b44808796ae43e3224f02e0ffd5d0b.png\",\"6566339083e4eda1db4fd6404d003273.png\"]', '[\"2\",\"5\",\"5\",\"5\",\"5\",\"2\"]', '10000', '100', '85', '30', 0, NULL, 'Viet Nam', '[\"1,2\",\"4,5\",\"5,8,9,10\",\"11\",\"12,19,20\",\"12\"]', '2018-07-12 00:00:00', '2018-07-03 20:23:53', 'administrator', '2018-07-03 20:23:53', 'administrator', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_category`
+-- Cấu trúc bảng cho bảng `product_category`
 --
 
 CREATE TABLE `product_category` (
@@ -538,16 +599,27 @@ CREATE TABLE `product_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `product_category`
+-- Đang đổ dữ liệu cho bảng `product_category`
 --
 
 INSERT INTO `product_category` (`id`, `slug`, `parent_id`, `is_deleted`, `created_at`, `created_by`, `updated_at`, `updated_by`, `project`, `image`, `sort`, `is_activated`) VALUES
-(31, 'en', 0, 0, '2018-06-26 12:18:41', 'administrator', '2018-06-26 12:18:41', 'administrator', '', '18db9206eda7398af05ce75fec4ac004.jpg', NULL, 0);
+(1, 'tour-packages', 0, 0, '2018-07-03 10:48:29', 'administrator', '2018-07-03 10:48:29', 'administrator', '', '8eb6a02efecbd7e34a7afbb9e412eb7d.jpg', NULL, 0),
+(2, 'backpack-travel', 0, 0, '2018-07-03 10:49:32', 'administrator', '2018-07-03 10:49:32', 'administrator', '', 'ca4feae4a48ed61fe5af5ebef1a55cda.jpg', NULL, 0),
+(3, 'vietnam-overview', 0, 0, '2018-07-03 10:50:05', 'administrator', '2018-07-03 10:50:05', 'administrator', '', '4407733b793155f0013f832edd694243.jpg', NULL, 0),
+(4, 'top-10-vietnam-tours', 1, 1, '2018-07-03 10:51:04', 'administrator', '2018-07-03 10:51:04', 'administrator', '', 'f3805a15d5e4a3474ee0afcb30947f31.jpg', NULL, 0),
+(5, 'vietnam-classic-tours', 1, 0, '2018-07-03 10:51:53', 'administrator', '2018-07-03 10:51:53', 'administrator', '', '6cf479bd2330e1243031d25f6add4e4c.jpg', NULL, 0),
+(6, 'top-10-tours', 2, 1, '2018-07-03 10:52:52', 'administrator', '2018-07-03 10:52:52', 'administrator', '', '0ba13cec52e3c1d0e1edb83aa337522b.jpg', NULL, 0),
+(7, 'classic-tours', 2, 0, '2018-07-03 10:53:20', 'administrator', '2018-07-03 10:53:20', 'administrator', '', '7045318381425ec13babc05678eebccc.jpg', NULL, 0),
+(8, 'history', 3, 0, '2018-07-03 10:54:15', 'administrator', '2018-07-03 10:54:15', 'administrator', '', '39d4fce5fb466aa99d000b8c534e575d.jpg', NULL, 0),
+(9, 'geography', 3, 0, '2018-07-03 10:55:21', 'administrator', '2018-07-03 10:55:21', 'administrator', '', 'c39c972a3c726a5c29c94c04e0442a5a.jpg', NULL, 0),
+(10, 'culture', 3, 0, '2018-07-03 10:56:07', 'administrator', '2018-07-03 10:56:07', 'administrator', '', 'a8e781593a6ac1be5bf7bac1e6a0f9d3.jpg', NULL, 0),
+(11, 'cuisine', 3, 0, '2018-07-03 10:56:37', 'administrator', '2018-07-03 10:56:37', 'administrator', '', 'efbccb277b8d0accfdf81591e3d194c0.jpg', NULL, 0),
+(12, 'weather', 3, 0, '2018-07-03 10:57:14', 'administrator', '2018-07-03 10:57:14', 'administrator', '', '2cf81e189441c5d3f1e7d77e3ea278c4.jpg', NULL, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_category_lang`
+-- Cấu trúc bảng cho bảng `product_category_lang`
 --
 
 CREATE TABLE `product_category_lang` (
@@ -561,18 +633,51 @@ CREATE TABLE `product_category_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `product_category_lang`
+-- Đang đổ dữ liệu cho bảng `product_category_lang`
 --
 
 INSERT INTO `product_category_lang` (`id`, `product_category_id`, `title`, `content`, `language`, `metakeywords`, `metadescription`) VALUES
-(105, 31, 'en', '', 'en', ' ', ' '),
-(106, 31, 'cn', '', 'cn', '  ', '  '),
-(107, 31, 'sc', '', 'sc', ' ', ' ');
+(1, 1, 'Tour Packages', '<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'en', 'Tour Packages', 'Tour Packages'),
+(2, 1, '團體旅遊', 'Lorem Ipsum phon the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'cn', '團體旅遊', '團體旅遊'),
+(3, 1, '團體旅遊', 'Lorem Ipsum gian the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'sc', '團體旅遊', '團體旅遊'),
+(4, 2, 'Backpack travel', '<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'en', 'Backpack travel', 'Backpack travel'),
+(5, 2, '自由行', 'Lorem Ipsum phon the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'cn', '自由行', '自由行'),
+(6, 2, '自由行', 'Lorem Ipsum gian the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'sc', '自由行', '自由行'),
+(7, 3, 'Vietnam overview', '<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'en', 'Vietnam overview', 'Vietnam overview'),
+(8, 3, '越南概況', 'Lorem Ipsum phon the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'cn', '越南概況', '越南概況'),
+(9, 3, '越南概况', 'Lorem Ipsum gian the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'sc', '越南概况', '越南概况'),
+(10, 4, 'Top 10 Vietnam Tours', '<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'en', 'Top 10 Vietnam Tours', 'Top 10 Vietnam Tours'),
+(11, 4, '越南十大旅遊行程', 'Lorem Ipsum phon the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'cn', '越南十大旅遊行程', '越南十大旅遊行程'),
+(12, 4, '越南十大旅游行程', 'Lorem Ipsum gian the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'sc', '越南十大旅游行程', '越南十大旅游行程'),
+(13, 5, 'Vietnam classic Tours', '<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'en', 'Vietnam classic Tours', 'Vietnam classic Tours'),
+(14, 5, '越南旅遊經典行程', 'Lorem Ipsum phon the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'cn', ' 越南旅遊經典行程 ', ' 越南旅遊經典行程 '),
+(15, 5, '越南旅游经典行程', 'Lorem Ipsum gian the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'sc', ' 越南旅游经典行程', ' 越南旅游经典行程'),
+(16, 6, 'Top 10 Tours', '<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'en', 'Top 10 Tours', 'Top 10 Tours'),
+(17, 6, '十大旅遊行程', 'Lorem Ipsum phon the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'cn', '十大旅遊行程', '十大旅遊行程'),
+(18, 6, '十大旅游行程', 'Lorem Ipsum gian the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'sc', '十大旅游行程', '十大旅游行程'),
+(19, 7, 'Classic Tours', '<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'en', 'Classic Tours', 'Classic Tours'),
+(20, 7, '經典行程', 'Lorem Ipsum phon the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'cn', '經典行程', '經典行程'),
+(21, 7, '经典行程', 'Lorem Ipsum gian the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'sc', '经典行程', '经典行程'),
+(22, 8, 'History', '<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'en', 'History', 'History'),
+(23, 8, '歷史', 'Lorem Ipsum phon the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'cn', ' 歷史 ', ' 歷史 '),
+(24, 8, '历史', 'Lorem Ipsum gian the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'sc', ' 历史', ' 历史'),
+(25, 9, 'Geography', '<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'en', 'Geography', 'Geography'),
+(26, 9, '地理', 'Lorem Ipsum phon the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'cn', '地理', '地理'),
+(27, 9, '地理', 'Lorem Ipsum gian the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'sc', '地理', '地理'),
+(28, 10, 'Culture', '<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'en', 'Culture', 'Culture'),
+(29, 10, '文化', 'Lorem Ipsum phon the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'cn', '文化', '文化'),
+(30, 10, '文化', 'Lorem Ipsum gian the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'sc', '文化', '文化'),
+(31, 11, 'Cuisine', '<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'en', 'Cuisine', 'Cuisine'),
+(32, 11, '飲食', 'Lorem Ipsum phon the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'cn', '飲食', '飲食'),
+(33, 11, '饮食', 'Lorem Ipsum gian the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'sc', '饮食', '饮食'),
+(34, 12, 'Weather', '<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'en', 'Weather', 'Weather'),
+(35, 12, '天氣', 'Lorem Ipsum phon the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'cn', '天氣', '天氣'),
+(36, 12, '天气', 'Lorem Ipsum gian the，也称乱数假文或者哑元文本， 是印刷及排版领域所常用的虚拟文字。由于曾经一台匿名的打印机刻意打乱了一盒印刷字体从而造出一本字体样品书，Lorem Ipsum从西元15世纪起就被作为此领域的标准文本使用。它不仅延续了五个世纪，还通过了电子排版的挑战，其雏形却依然保存至今。在1960年代，&rdquo;Leatraset&rdquo;公司发布了印刷着Lorem Ipsum段落的纸张，从而广泛普及了它的使用。最近，计算机桌面出版软件&rdquo;Aldus PageMaker&rdquo;也通过同样的方式使Lorem Ipsum落入大众的视野。', 'sc', '天气', '天气');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_lang`
+-- Cấu trúc bảng cho bảng `product_lang`
 --
 
 CREATE TABLE `product_lang` (
@@ -591,24 +696,18 @@ CREATE TABLE `product_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `product_lang`
+-- Đang đổ dữ liệu cho bảng `product_lang`
 --
 
 INSERT INTO `product_lang` (`id`, `product_id`, `title`, `description`, `content`, `language`, `metakeywords`, `metadescription`, `datetitle`, `datecontent`, `tripnodes`, `detailsprice`) VALUES
-(185, 95, 'en', '', '', 'en', '', '', '[\"en1\"]', '[\"\"]', '', ''),
-(186, 95, 'cn', '', '', 'cn', '', '', '[\"cn1\"]', '[\"\"]', '', ''),
-(187, 95, 'sc', '', '', 'sc', '', '', '[\"sc1\"]', '[\"\"]', '', ''),
-(188, 96, 'en', '', '', 'en', '', '', '[\"en1\"]', '[\"\"]', '', ''),
-(189, 96, 'cn', '', '', 'cn', '', '', '[\"cn1\"]', '[\"\"]', '', ''),
-(190, 96, 'sc', '', '', 'sc', '', '', '[\"sc1\"]', '[\"\"]', '', ''),
-(191, 97, 'en', '', '', 'en', '', '', '[\"en\"]', '[\"\"]', '', ''),
-(192, 97, 'cn', '', '', 'cn', '', '', '[\"cn\"]', '[\"\"]', '', ''),
-(193, 97, 'sc', '', '', 'sc', '', '', '[\"sc\"]', '[\"\"]', '', '');
+(1, 1, 'Central Vietnam with World Heritage Tour 6 Days', '\"Five Vietnam’s diverse and fascinating cultural heritage are listed as UNESCO World Heritage \r\nIn addition to Ha Long Bay, the famous heritage of North VietNam, the remaining four world heritage sites are located in central Vietnam. According to the division of UNESCO, the remains of Hue Imperial City, Hoi An Ancient Town, and My Son Site belong to the “Cultural Heritage Site”, while Ha Long Bay and Phong Nha Cave are attributed to “Natural Heritage Site”. The current market is the only itinerary, a six-day tour of three World Heritage sites, one of the six largest beaches in the world and experience of the Mekong River Ecotourism.\r\n\"', '<table width=\"480\">\r\n<tbody>\r\n<tr>\r\n<td colspan=\"2\" width=\"480\">Visiting Hue Imperial City, The representative building of Vietnamese architecture in the early 20th century--Khai Ding Mausoleum, Perfume River Cruise, Thien Mu Temple<br />Special arrangements for visits to Marble Mountain<br />&nbsp;Arrange visits to the Ancient Champa Kingdom Religious Center - Mt.<br />Special arrangement of French style buildings such as Ho Chi Minh landmark Red Church, Centennial Post Office and City Hall<br />Mekong Delta Ecotourism<br />A complimentary bottle of mineral water per person per day<br />Give a Vietnamese group photo B<br />Complimentary traditional Vietnamese top<br />NO SHOPPING all the way, not go shopping</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'en', '', '', '[\"Taipei Hanoi Da nang (Indigo Bay) (Marble Moutain) \\u3001My Khe Beach Hoi An\",\"Hoi An My Son Holy Land(Vietnam Cultural Heritage)  Cam Nam Island\",\"Hoi An Hue (Hai Van Pass)\\u3001(Boat tour of Perfume River, Thien Mu Temple)  Khai Ding Tombs v Tu Duc Tombs Hue Imperial City\",\"Hue Dong Ba Market Ho Chi Minh City - Red churh Museum of American War Crimes Centennial Post Office Town Hall Reunification Palace  Sai gon River \",\"Ho Chi Minh City My Tho Thai Son Island Cruise Vinh Trang temple Ho Chi Minh City Thien Hau Temple An dong Market\",\"Ho Chi Minh City Cu Chi Tunnels Ho Chi Minh City Taipei    \\t\"]', '[\"<table width=\\\"774\\\">\\r\\n<tbody>\\r\\n<tr>\\r\\n<td colspan=\\\"2\\\" width=\\\"774\\\">Gathering at Taoyuan Zhongzheng International Airport, taking a Vietnam Airlines flight to Hanoi for a follow-on flight to central Vietnam\'s largest city, Da Nang. Da Nang has a population of about 1 million people, making it the largest deep-water port and business in the Central region center. Due to its good location and good port conditions, it has been an important international port and transit station since ancient times and it has been very prosperous. In addition, Da Nang is also the capital of the kingdom of Champa in the 2nd and 15th centuries. There are still remnants of the Champa period in the urban and suburban areas.<\\/td>\\r\\n<\\/tr>\\r\\n<\\/tbody>\\r\\n<\\/table>\",\"\",\"<table width=\\\"774\\\">\\r\\n<tbody>\\r\\n<tr>\\r\\n<td colspan=\\\"2\\\" width=\\\"774\\\"><br \\/>After having breakfast, we will go to Central Vietnam, the ancient capital of Hue, Vietnam&rsquo;s most mysterious coastline&mdash;you can admire the scenery of the beautiful coastline and enjoy the tense atmosphere of the Vietnam army during the Vietnam War. We will pass through Hai Van Pass. It is an important demarcation site for geography, transportation, climate and history in Vietnam. It was listed as a World Heritage Site in 2009. It is also considered by the National Geographic magazine as \\\" 50 Incredible Travel Experiences To Have Once In Your Life&rdquo;<br \\/><br \\/><br \\/><\\/td>\\r\\n<\\/tr>\\r\\n<\\/tbody>\\r\\n<\\/table>\",\"<table width=\\\"774\\\">\\r\\n<tbody>\\r\\n<tr>\\r\\n<td colspan=\\\"2\\\" width=\\\"774\\\">After breakfast, we will go to Dongba Market near Dongcheng Gate. This market has been an important distribution center on the banks of the Perfume River since ancient times. It is also the ideal place to buy gifts, and it is also proper for you to understand the ancient customs of Hue. Among the important attractions, it is worth mentioning that Hue\'s famous products include poetry, embroidery, shrimp paste, and fish sauce.<\\/td>\\r\\n<\\/tr>\\r\\n<\\/tbody>\\r\\n<\\/table>\",\"<table width=\\\"774\\\">\\r\\n<tbody>\\r\\n<tr>\\r\\n<td colspan=\\\"2\\\" width=\\\"774\\\">After breakfast, a shuttle bus will take you to the My Tho. From Ho Chi Minh City, take the national highway No. 1 to the southwest and take about 1.5 hours.<br \\/>Return to the ferryboat before lunch to enjoy the \\\" Osphronemidae fried fish\\\" at the My Tho City Restaurant, a specialty of the Mekong River.<\\/td>\\r\\n<\\/tr>\\r\\n<\\/tbody>\\r\\n<\\/table>\",\"<table width=\\\"774\\\">\\r\\n<tbody>\\r\\n<tr>\\r\\n<td colspan=\\\"2\\\" width=\\\"774\\\">After breakfast, head to Tay Ninh Province in the west of Ho Chi Minh City and visit the world-famous Vietnam War trail, the Cu Chi Tunnel, with a total length of 200 kilometers. The tanks, helicopters, and sculptures, etc. It is like being exposed to the Vietnam War scene and experiencing the horror and cruelty of the war. After lunch,we will transfer to the airport and take a flight back to Tai Pei.<\\/td>\\r\\n<\\/tr>\\r\\n<\\/tbody>\\r\\n<\\/table>\"]', '<table width=\"1254\">\r\n<tbody>\r\n<tr>\r\n<td colspan=\"3\" width=\"716\">Taking part in the tour\'s condition</td>\r\n<td width=\"538\"><br />Breaking up the contract\'s condition&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"3\" width=\"716\">Your healthy is good<br />Booking Procedure: Only once you are completely happy with any holiday itinerary we create for you will we ask for a payment. In order that we can secure availability for your booking we would typically require a deposit of 50%.<br />Pay all the fee before the departure 20 days<br />Passport period is at least 6 months</td>\r\n<td width=\"538\">After the deposit: the default fee is 15% of the total amount<br />Before the departure 30 days: The default fee is 25% of the total amount<br />Before the departure 8 - 29 days ago: The default fee is 35% of the total amount<br />Before the departure 7 days ago: The default fee is 70% of the total amount</td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"4\" width=\"1254\">Before deciding to participate in the itinerary, visitors are advised to refer to the itinerary, fees, included and non-payments, and breach of terms as stated above. In the case of asking others for help, please ask the person who has helped you for the relevant information.<br />Customers who are over 70 years old need to commit with us about health issues<br />Since voyages are scheduled on a per-flight basis, sometimes voyages may change time and visitors are not notified in advance<br />In the collective situation, the order of visits to tourist attractions may change, and our agency promises visitors all the attractions included in the tour itinerary.<br />In the event of natural disasters; safety problem ; aviation accidents and other issues, Diamond Travel Agency will also pay tourist fees (after dividing the visa fee).<br /><br /><br /><br /></td>\r\n</tr>\r\n</tbody>\r\n</table>', '<table width=\"1254\">\r\n<tbody>\r\n<tr>\r\n<td colspan=\"3\" width=\"716\">Detailed Intinerary</td>\r\n<td width=\"538\">Customize</td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"3\" width=\"716\">Day 1: Taipei QHanoiQDa nang (Indigo Bay) (Marble Moutain) 、My Khe BeachvHoi An</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"3\" width=\"716\">Day 2:Hoi AnvMy Son Holy Land(Vietnam Cultural Heritage)v Cam Nam Island</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"3\" width=\"716\">Day 3:Hoi Anv Hue (Hai Van Pass)、(Boat tour of Perfume River, Thien Mu Temple) vKhai Ding Tombs v Tu Duc Tombsv Hue Imperial City</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"3\">Day 4: HuevDong Ba Market vHo Chi Minh Cityv Red churh vMuseum of American War Crimes vCentennial Post Office vTown HallvReunification Palacev Sai gon River&nbsp;&nbsp;</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"3\" width=\"716\">Day 5: Ho Chi Minh City vMy ThovThai Son Island CruisevVinh Trang temple vHo Chi Minh City<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vThien Hau Temple vAn dong Market<br /><br /></td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"3\">Day 6: Ho Chi Minh CityvCu Chi TunnelsvHo Chi Minh CityQTaipei&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n</tbody>\r\n</table>'),
+(2, 1, 'Central Vietnam with World Heritage Tour 6 Days(phồn thể)', '\"Five Vietnam’s diverse and fascinating cultural heritage are listed as UNESCO World Heritage \r\nIn addition to Ha Long Bay, the famous heritage of North VietNam, the remaining four world heritage sites are located in central Vietnam. According to the division of UNESCO, the remains of Hue Imperial City, Hoi An Ancient Town, and My Son Site belong to the “Cultural Heritage Site”, while Ha Long Bay and Phong Nha Cave are attributed to “Natural Heritage Site”. The current market is the only itinerary, a six-day tour of three World Heritage sites, one of the six largest beaches in the world and experience of the Mekong River Ecotourism.\r\n\"', '<table width=\"480\">\r\n<tbody>\r\n<tr>\r\n<td colspan=\"2\" width=\"480\">Visiting Hue Imperial City, The representative building of Vietnamese architecture in the early 20th century--Khai Ding Mausoleum, Perfume River Cruise, Thien Mu Temple<br />Special arrangements for visits to Marble Mountain<br />&nbsp;Arrange visits to the Ancient Champa Kingdom Religious Center - Mt.<br />Special arrangement of French style buildings such as Ho Chi Minh landmark Red Church, Centennial Post Office and City Hall<br />Mekong Delta Ecotourism<br />A complimentary bottle of mineral water per person per day<br />Give a Vietnamese group photo B<br />Complimentary traditional Vietnamese top<br />NO SHOPPING all the way, not go shopping</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'cn', '', '', '[\"Taipei Hanoi Da nang (Indigo Bay) (Marble Moutain) \\u3001My Khe Beach Hoi An\",\"Hoi An My Son Holy Land(Vietnam Cultural Heritage)  Cam Nam Island\",\"Hoi An Hue (Hai Van Pass)\\u3001(Boat tour of Perfume River, Thien Mu Temple)  Khai Ding Tombs v Tu Duc Tombs Hue Imperial City\",\"Hue Dong Ba Market Ho Chi Minh City - Red churh Museum of American War Crimes Centennial Post Office Town Hall Reunification Palace  Sai gon River \",\"Ho Chi Minh City My Tho Thai Son Island Cruise Vinh Trang temple Ho Chi Minh City Thien Hau Temple An dong Market\",\"Ho Chi Minh City Cu Chi Tunnels Ho Chi Minh City Taipei    \\t\"]', '[\"<table width=\\\"774\\\">\\r\\n<tbody>\\r\\n<tr>\\r\\n<td colspan=\\\"2\\\" width=\\\"774\\\">Gathering at Taoyuan Zhongzheng International Airport, taking a Vietnam Airlines flight to Hanoi for a follow-on flight to central Vietnam\'s largest city, Da Nang. Da Nang has a population of about 1 million people, making it the largest deep-water port and business in the Central region center. Due to its good location and good port conditions, it has been an important international port and transit station since ancient times and it has been very prosperous. In addition, Da Nang is also the capital of the kingdom of Champa in the 2nd and 15th centuries. There are still remnants of the Champa period in the urban and suburban areas.<\\/td>\\r\\n<\\/tr>\\r\\n<\\/tbody>\\r\\n<\\/table>\",\"\",\"<table width=\\\"774\\\">\\r\\n<tbody>\\r\\n<tr>\\r\\n<td colspan=\\\"2\\\" width=\\\"774\\\"><br \\/>After having breakfast, we will go to Central Vietnam, the ancient capital of Hue, Vietnam&rsquo;s most mysterious coastline&mdash;you can admire the scenery of the beautiful coastline and enjoy the tense atmosphere of the Vietnam army during the Vietnam War. We will pass through Hai Van Pass. It is an important demarcation site for geography, transportation, climate and history in Vietnam. It was listed as a World Heritage Site in 2009. It is also considered by the National Geographic magazine as \\\" 50 Incredible Travel Experiences To Have Once In Your Life&rdquo;<br \\/><br \\/><br \\/><\\/td>\\r\\n<\\/tr>\\r\\n<\\/tbody>\\r\\n<\\/table>\",\"<table width=\\\"774\\\">\\r\\n<tbody>\\r\\n<tr>\\r\\n<td colspan=\\\"2\\\" width=\\\"774\\\">After breakfast, we will go to Dongba Market near Dongcheng Gate. This market has been an important distribution center on the banks of the Perfume River since ancient times. It is also the ideal place to buy gifts, and it is also proper for you to understand the ancient customs of Hue. Among the important attractions, it is worth mentioning that Hue\'s famous products include poetry, embroidery, shrimp paste, and fish sauce.<\\/td>\\r\\n<\\/tr>\\r\\n<\\/tbody>\\r\\n<\\/table>\",\"<table width=\\\"774\\\">\\r\\n<tbody>\\r\\n<tr>\\r\\n<td colspan=\\\"2\\\" width=\\\"774\\\">After breakfast, a shuttle bus will take you to the My Tho. From Ho Chi Minh City, take the national highway No. 1 to the southwest and take about 1.5 hours.<br \\/>Return to the ferryboat before lunch to enjoy the \\\" Osphronemidae fried fish\\\" at the My Tho City Restaurant, a specialty of the Mekong River.<\\/td>\\r\\n<\\/tr>\\r\\n<\\/tbody>\\r\\n<\\/table>\",\"<table width=\\\"774\\\">\\r\\n<tbody>\\r\\n<tr>\\r\\n<td colspan=\\\"2\\\" width=\\\"774\\\">After breakfast, head to Tay Ninh Province in the west of Ho Chi Minh City and visit the world-famous Vietnam War trail, the Cu Chi Tunnel, with a total length of 200 kilometers. The tanks, helicopters, and sculptures, etc. It is like being exposed to the Vietnam War scene and experiencing the horror and cruelty of the war. After lunch,we will transfer to the airport and take a flight back to Tai Pei.<\\/td>\\r\\n<\\/tr>\\r\\n<\\/tbody>\\r\\n<\\/table>\"]', '<table width=\"1254\">\r\n<tbody>\r\n<tr>\r\n<td colspan=\"3\" width=\"716\">Taking part in the tour\'s condition</td>\r\n<td width=\"538\"><br />Breaking up the contract\'s condition&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"3\" width=\"716\">Your healthy is good<br />Booking Procedure: Only once you are completely happy with any holiday itinerary we create for you will we ask for a payment. In order that we can secure availability for your booking we would typically require a deposit of 50%.<br />Pay all the fee before the departure 20 days<br />Passport period is at least 6 months</td>\r\n<td width=\"538\">After the deposit: the default fee is 15% of the total amount<br />Before the departure 30 days: The default fee is 25% of the total amount<br />Before the departure 8 - 29 days ago: The default fee is 35% of the total amount<br />Before the departure 7 days ago: The default fee is 70% of the total amount</td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"4\" width=\"1254\">Before deciding to participate in the itinerary, visitors are advised to refer to the itinerary, fees, included and non-payments, and breach of terms as stated above. In the case of asking others for help, please ask the person who has helped you for the relevant information.<br />Customers who are over 70 years old need to commit with us about health issues<br />Since voyages are scheduled on a per-flight basis, sometimes voyages may change time and visitors are not notified in advance<br />In the collective situation, the order of visits to tourist attractions may change, and our agency promises visitors all the attractions included in the tour itinerary.<br />In the event of natural disasters; safety problem ; aviation accidents and other issues, Diamond Travel Agency will also pay tourist fees (after dividing the visa fee).<br /><br /><br /><br /></td>\r\n</tr>\r\n</tbody>\r\n</table>', '<table width=\"1254\">\r\n<tbody>\r\n<tr>\r\n<td colspan=\"3\" width=\"716\">Detailed Intinerary</td>\r\n<td width=\"538\">Customize</td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"3\" width=\"716\">Day 1: Taipei QHanoiQDa nang (Indigo Bay) (Marble Moutain) 、My Khe BeachvHoi An</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"3\" width=\"716\">Day 2:Hoi AnvMy Son Holy Land(Vietnam Cultural Heritage)v Cam Nam Island</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"3\" width=\"716\">Day 3:Hoi Anv Hue (Hai Van Pass)、(Boat tour of Perfume River, Thien Mu Temple) vKhai Ding Tombs v Tu Duc Tombsv Hue Imperial City</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"3\">Day 4: HuevDong Ba Market vHo Chi Minh Cityv Red churh vMuseum of American War Crimes vCentennial Post Office vTown HallvReunification Palacev Sai gon River&nbsp;&nbsp;</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"3\" width=\"716\">Day 5: Ho Chi Minh City vMy ThovThai Son Island CruisevVinh Trang temple vHo Chi Minh City<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vThien Hau Temple vAn dong Market<br /><br /></td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"3\">Day 6: Ho Chi Minh CityvCu Chi TunnelsvHo Chi Minh CityQTaipei&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n</tbody>\r\n</table>'),
+(3, 1, 'Central Vietnam with World Heritage Tour 6 Days(giản thể)', '\"Five Vietnam’s diverse and fascinating cultural heritage are listed as UNESCO World Heritage \r\nIn addition to Ha Long Bay, the famous heritage of North VietNam, the remaining four world heritage sites are located in central Vietnam. According to the division of UNESCO, the remains of Hue Imperial City, Hoi An Ancient Town, and My Son Site belong to the “Cultural Heritage Site”, while Ha Long Bay and Phong Nha Cave are attributed to “Natural Heritage Site”. The current market is the only itinerary, a six-day tour of three World Heritage sites, one of the six largest beaches in the world and experience of the Mekong River Ecotourism.\r\n\"', '<table width=\"480\">\r\n<tbody>\r\n<tr>\r\n<td colspan=\"2\" width=\"480\">Visiting Hue Imperial City, The representative building of Vietnamese architecture in the early 20th century--Khai Ding Mausoleum, Perfume River Cruise, Thien Mu Temple<br />Special arrangements for visits to Marble Mountain<br />&nbsp;Arrange visits to the Ancient Champa Kingdom Religious Center - Mt.<br />Special arrangement of French style buildings such as Ho Chi Minh landmark Red Church, Centennial Post Office and City Hall<br />Mekong Delta Ecotourism<br />A complimentary bottle of mineral water per person per day<br />Give a Vietnamese group photo B<br />Complimentary traditional Vietnamese top<br />NO SHOPPING all the way, not go shopping</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'sc', '', '', '[\"Taipei Hanoi Da nang (Indigo Bay) (Marble Moutain) \\u3001My Khe Beach Hoi An\",\"Hoi An My Son Holy Land(Vietnam Cultural Heritage)  Cam Nam Island\",\"Hoi An Hue (Hai Van Pass)\\u3001(Boat tour of Perfume River, Thien Mu Temple)  Khai Ding Tombs v Tu Duc Tombs Hue Imperial City\",\"Hue Dong Ba Market Ho Chi Minh City - Red churh Museum of American War Crimes Centennial Post Office Town Hall Reunification Palace  Sai gon River \",\"Ho Chi Minh City My Tho Thai Son Island Cruise Vinh Trang temple Ho Chi Minh City Thien Hau Temple An dong Market\",\"Ho Chi Minh City Cu Chi Tunnels Ho Chi Minh City Taipei    \\t\"]', '[\"<table width=\\\"774\\\">\\r\\n<tbody>\\r\\n<tr>\\r\\n<td colspan=\\\"2\\\" width=\\\"774\\\">Gathering at Taoyuan Zhongzheng International Airport, taking a Vietnam Airlines flight to Hanoi for a follow-on flight to central Vietnam\'s largest city, Da Nang. Da Nang has a population of about 1 million people, making it the largest deep-water port and business in the Central region center. Due to its good location and good port conditions, it has been an important international port and transit station since ancient times and it has been very prosperous. In addition, Da Nang is also the capital of the kingdom of Champa in the 2nd and 15th centuries. There are still remnants of the Champa period in the urban and suburban areas.<\\/td>\\r\\n<\\/tr>\\r\\n<\\/tbody>\\r\\n<\\/table>\",\"\",\"<table width=\\\"774\\\">\\r\\n<tbody>\\r\\n<tr>\\r\\n<td colspan=\\\"2\\\" width=\\\"774\\\"><br \\/>After having breakfast, we will go to Central Vietnam, the ancient capital of Hue, Vietnam&rsquo;s most mysterious coastline&mdash;you can admire the scenery of the beautiful coastline and enjoy the tense atmosphere of the Vietnam army during the Vietnam War. We will pass through Hai Van Pass. It is an important demarcation site for geography, transportation, climate and history in Vietnam. It was listed as a World Heritage Site in 2009. It is also considered by the National Geographic magazine as \\\" 50 Incredible Travel Experiences To Have Once In Your Life&rdquo;<br \\/><br \\/><br \\/><\\/td>\\r\\n<\\/tr>\\r\\n<\\/tbody>\\r\\n<\\/table>\",\"<table width=\\\"774\\\">\\r\\n<tbody>\\r\\n<tr>\\r\\n<td colspan=\\\"2\\\" width=\\\"774\\\">After breakfast, we will go to Dongba Market near Dongcheng Gate. This market has been an important distribution center on the banks of the Perfume River since ancient times. It is also the ideal place to buy gifts, and it is also proper for you to understand the ancient customs of Hue. Among the important attractions, it is worth mentioning that Hue\'s famous products include poetry, embroidery, shrimp paste, and fish sauce.<\\/td>\\r\\n<\\/tr>\\r\\n<\\/tbody>\\r\\n<\\/table>\",\"<table width=\\\"774\\\">\\r\\n<tbody>\\r\\n<tr>\\r\\n<td colspan=\\\"2\\\" width=\\\"774\\\">After breakfast, a shuttle bus will take you to the My Tho. From Ho Chi Minh City, take the national highway No. 1 to the southwest and take about 1.5 hours.<br \\/>Return to the ferryboat before lunch to enjoy the \\\" Osphronemidae fried fish\\\" at the My Tho City Restaurant, a specialty of the Mekong River.<\\/td>\\r\\n<\\/tr>\\r\\n<\\/tbody>\\r\\n<\\/table>\",\"<table width=\\\"774\\\">\\r\\n<tbody>\\r\\n<tr>\\r\\n<td colspan=\\\"2\\\" width=\\\"774\\\">After breakfast, head to Tay Ninh Province in the west of Ho Chi Minh City and visit the world-famous Vietnam War trail, the Cu Chi Tunnel, with a total length of 200 kilometers. The tanks, helicopters, and sculptures, etc. It is like being exposed to the Vietnam War scene and experiencing the horror and cruelty of the war. After lunch,we will transfer to the airport and take a flight back to Tai Pei.<\\/td>\\r\\n<\\/tr>\\r\\n<\\/tbody>\\r\\n<\\/table>\"]', '<table width=\"1254\">\r\n<tbody>\r\n<tr>\r\n<td colspan=\"3\" width=\"716\">Taking part in the tour\'s condition</td>\r\n<td width=\"538\"><br />Breaking up the contract\'s condition&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"3\" width=\"716\">Your healthy is good<br />Booking Procedure: Only once you are completely happy with any holiday itinerary we create for you will we ask for a payment. In order that we can secure availability for your booking we would typically require a deposit of 50%.<br />Pay all the fee before the departure 20 days<br />Passport period is at least 6 months</td>\r\n<td width=\"538\">After the deposit: the default fee is 15% of the total amount<br />Before the departure 30 days: The default fee is 25% of the total amount<br />Before the departure 8 - 29 days ago: The default fee is 35% of the total amount<br />Before the departure 7 days ago: The default fee is 70% of the total amount</td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"4\" width=\"1254\">Before deciding to participate in the itinerary, visitors are advised to refer to the itinerary, fees, included and non-payments, and breach of terms as stated above. In the case of asking others for help, please ask the person who has helped you for the relevant information.<br />Customers who are over 70 years old need to commit with us about health issues<br />Since voyages are scheduled on a per-flight basis, sometimes voyages may change time and visitors are not notified in advance<br />In the collective situation, the order of visits to tourist attractions may change, and our agency promises visitors all the attractions included in the tour itinerary.<br />In the event of natural disasters; safety problem ; aviation accidents and other issues, Diamond Travel Agency will also pay tourist fees (after dividing the visa fee).<br /><br /><br /><br /></td>\r\n</tr>\r\n</tbody>\r\n</table>', '<table width=\"1254\">\r\n<tbody>\r\n<tr>\r\n<td colspan=\"3\" width=\"716\">Detailed Intinerary</td>\r\n<td width=\"538\">Customize</td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"3\" width=\"716\">Day 1: Taipei QHanoiQDa nang (Indigo Bay) (Marble Moutain) 、My Khe BeachvHoi An</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"3\" width=\"716\">Day 2:Hoi AnvMy Son Holy Land(Vietnam Cultural Heritage)v Cam Nam Island</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"3\" width=\"716\">Day 3:Hoi Anv Hue (Hai Van Pass)、(Boat tour of Perfume River, Thien Mu Temple) vKhai Ding Tombs v Tu Duc Tombsv Hue Imperial City</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"3\">Day 4: HuevDong Ba Market vHo Chi Minh Cityv Red churh vMuseum of American War Crimes vCentennial Post Office vTown HallvReunification Palacev Sai gon River&nbsp;&nbsp;</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"3\" width=\"716\">Day 5: Ho Chi Minh City vMy ThovThai Son Island CruisevVinh Trang temple vHo Chi Minh City<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vThien Hau Temple vAn dong Market<br /><br /></td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td colspan=\"3\">Day 6: Ho Chi Minh CityvCu Chi TunnelsvHo Chi Minh CityQTaipei&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n</tbody>\r\n</table>');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rating`
+-- Cấu trúc bảng cho bảng `rating`
 --
 
 CREATE TABLE `rating` (
@@ -624,7 +723,7 @@ CREATE TABLE `rating` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `rating`
+-- Đang đổ dữ liệu cho bảng `rating`
 --
 
 INSERT INTO `rating` (`id`, `product_id`, `users_id`, `rating`, `created_at`, `created_by`, `updated_at`, `updated_by`, `is_deleted`) VALUES
@@ -635,7 +734,7 @@ INSERT INTO `rating` (`id`, `product_id`, `users_id`, `rating`, `created_at`, `c
 -- --------------------------------------------------------
 
 --
--- Table structure for table `site_sessions`
+-- Cấu trúc bảng cho bảng `site_sessions`
 --
 
 CREATE TABLE `site_sessions` (
@@ -646,181 +745,47 @@ CREATE TABLE `site_sessions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `site_sessions`
+-- Đang đổ dữ liệu cho bảng `site_sessions`
 --
 
 INSERT INTO `site_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
-('0j2mdd0a58dqf9nee7uf288hgdsi5hdp', '::1', 1529683869, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393638333836393b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363537363635223b6c6173745f636865636b7c693a313532393637393939333b6c616e67416262726576696174696f6e7c733a323a22656e223b),
-('0l71rhs275qtmh2ukk3ehr7f0csrcdti', '::1', 1529741302, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393734313330323b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('0ljcon05kfa0tvabvjb7jmfosmbi0h1p', '::1', 1529722926, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393732323932363b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('0q52bbboapt3ed5e04nkpe9dflnbktnk', '::1', 1529736460, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393733363436303b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('0t9abgva01bmk0j36e051lnv9ftud5l5', '::1', 1529898486, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393839383438363b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239373439393938223b6c6173745f636865636b7c693a313532393839353038343b),
-('0v8sfumrkau14o6so3o5e3nt76dg4or4', '::1', 1529722293, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393732323239333b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('10bd4j1fhf8vbd49hne2oghfule3dtht', '::1', 1530070296, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303037303239363b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393937393935223b6c6173745f636865636b7c693a313533303036393539343b),
-('1j69gkhrvp9016envgicig8bj1ockhas', '::1', 1529917816, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393931373831363b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393039373036223b6c6173745f636865636b7c693a313532393931333935313b),
-('1o3nvpteiklcbnoabpkkre3mt2o4pa0d', '::1', 1529737327, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393733373332373b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('21ffc43s28mjqetutaflf5f62gljq3tg', '::1', 1529737005, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393733373030353b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('21ndpds06d0kbctavfo8m216r95g1v1o', '::1', 1529731867, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393733313836373b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('26g2i7met5h33a7rb931ol5p69n3em5v', '::1', 1529896580, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393839363538303b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239373439393938223b6c6173745f636865636b7c693a313532393839353038343b),
-('272vc9ojee5qe78e2hlaehuqooeu9vi5', '::1', 1530093494, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303039333439343b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330303835303330223b6c6173745f636865636b7c693a313533303039333134353b),
-('279lu7cptsku06d64r6jq386p081mlkl', '::1', 1529751354, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393735313335343b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239373139393236223b6c6173745f636865636b7c693a313532393734393939383b6d6573736167655f737563636573737c733a31393a2253e1bbad61207468c3a06e682063c3b46e6721223b5f5f63695f766172737c613a313a7b733a31353a226d6573736167655f73756363657373223b733a333a226f6c64223b7d),
-('2c0ns9vld8oc2g5efb3287cbs9bmcodp', '::1', 1529915160, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393931353136303b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393039373036223b6c6173745f636865636b7c693a313532393931333935313b),
-('2d67ul8gp2pn5it21i95kguds6hc78rr', '::1', 1530004859, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303030343835393b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393839393835223b6c6173745f636865636b7c693a313532393939373939353b),
-('2mqvvuscbp9auejbq8lfvuude2nirl76', '::1', 1529722597, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393732323539373b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('2uk61g0t048c0kdpdalpvr7ukfdg6anb', '::1', 1529687122, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393638373132323b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363537363635223b6c6173745f636865636b7c693a313532393637393939333b6c616e67416262726576696174696f6e7c733a323a22656e223b),
-('30ri602pdtgp82g11g8alila74imseu0', '::1', 1529732171, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393733323137313b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('32r9vtge3pa5odf055o1gsng09o5bfdd', '::1', 1529921778, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393932313737383b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393039373036223b6c6173745f636865636b7c693a313532393931333935313b),
-('3ba1580654aqm1qo902j3ema0nkeaaod', '::1', 1529685877, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393638353837373b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363537363635223b6c6173745f636865636b7c693a313532393637393939333b6c616e67416262726576696174696f6e7c733a323a22656e223b),
-('3fa0224d308d2o9mu5g4vbdpu7dd99p7', '::1', 1529938568, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393933383536383b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393133393531223b6c6173745f636865636b7c693a313532393933353438393b),
-('3os1277n0pog6vho89jgc45jn7i2c8km', '::1', 1529680643, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393638303634333b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363537363635223b6c6173745f636865636b7c693a313532393637393939333b6c616e67416262726576696174696f6e7c733a323a22656e223b),
-('47rc58tvfb8ure8s9elbhvmsakp0sfht', '::1', 1529990232, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393939303233323b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393335343839223b6c6173745f636865636b7c693a313532393938393938353b),
-('49uvdlf8rlnqc29cqjpugb81usnohhkl', '::1', 1529725485, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393732353438353b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('4mf5k5qghvjojekhjgqod6j9nhtpfh32', '::1', 1529939589, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393933393538393b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393133393531223b6c6173745f636865636b7c693a313532393933353438393b),
-('4tsmimlki9h1n1htrunosckimmpt66od', '::1', 1529937299, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393933373239393b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393133393531223b6c6173745f636865636b7c693a313532393933353438393b),
-('4u87guqef5lp1btp4ahrktt5dh83n1em', '::1', 1529729084, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393732393038343b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('59rfsu658nd2nssbj5nrfgcrn072ht32', '::1', 1529935812, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393933353831323b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393133393531223b6c6173745f636865636b7c693a313532393933353438393b),
-('5iikm429k3u8li0qu9nqqiqj7f91svig', '::1', 1529900397, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393930303339373b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239373439393938223b6c6173745f636865636b7c693a313532393839353038343b6d6573736167655f6572726f727c733a32323a224944206b68c3b46e672074e1bb936e2074e1baa16921223b5f5f63695f766172737c613a313a7b733a31333a226d6573736167655f6572726f72223b733a333a226f6c64223b7d),
-('5td8mlgnpc60vejtlduia7gd5ipq0ldb', '::1', 1529683027, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393638333032373b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363537363635223b6c6173745f636865636b7c693a313532393637393939333b6c616e67416262726576696174696f6e7c733a323a22656e223b),
-('6l6kdl9oc6a77jvlnf3l6mdil5fhpsjq', '::1', 1530011062, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303031313036323b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393839393835223b6c6173745f636865636b7c693a313532393939373939353b),
-('6m4tn6o99jbhl7c8iue82rqppsveea90', '::1', 1529738085, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393733383038353b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('6mdpp3vaa46lgtt46hip95huc694ha13', '::1', 1529750279, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393735303237393b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239373139393236223b6c6173745f636865636b7c693a313532393734393939383b),
-('6opgqjhskf6pmr7bbsbqqqdrnsce5per', '::1', 1529740641, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393734303634313b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('75398jcrbv51at8h3gpkcsn8a4foavic', '::1', 1530093796, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303039333739363b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330303835303330223b6c6173745f636865636b7c693a313533303039333134353b),
-('76a4ev8kmnolenas8hah8qmk7snhgrue', '::1', 1529750902, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393735303930323b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239373139393236223b6c6173745f636865636b7c693a313532393734393939383b),
-('77clscmse0fof3t772u9f8fp90uhi4a7', '::1', 1529919208, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393931393230383b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393039373036223b6c6173745f636865636b7c693a313532393931333935313b),
-('7bmga1c7r268uc31aanrsleb5fl4e2p4', '::1', 1530071534, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303037313533343b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393937393935223b6c6173745f636865636b7c693a313533303036393539343b),
-('7c79fv1gq2u6v01gjh24j5hm5t6q9hjj', '::1', 1529895412, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393839353431323b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239373439393938223b6c6173745f636865636b7c693a313532393839353038343b),
-('7cn9rvn32u0qs97aov358u5pcggr4b61', '::1', 1529899363, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393839393336333b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239373439393938223b6c6173745f636865636b7c693a313532393839353038343b6d6573736167655f6572726f727c733a32323a224944206b68c3b46e672074e1bb936e2074e1baa16921223b5f5f63695f766172737c613a313a7b733a31333a226d6573736167655f6572726f72223b733a333a226f6c64223b7d),
-('7gk8riv36p4rsc6a2elngmai1e7816k5', '::1', 1529918233, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393931383233333b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393039373036223b6c6173745f636865636b7c693a313532393931333935313b),
-('7jf7llbfdvv42jgigt1rfcitelln6tuv', '::1', 1529939223, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393933393232333b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393133393531223b6c6173745f636865636b7c693a313532393933353438393b),
-('7qp44l4lhrh76fncfe2ghjn4hf4bl47t', '::1', 1530003702, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303030333730323b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393839393835223b6c6173745f636865636b7c693a313532393939373939353b),
-('82on4nrtiipsgtbp4av0ohc8nuuusrl1', '::1', 1529730604, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393733303630343b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('893un8844ta9hf1859t02t634kbqc9kb', '::1', 1529901404, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393930313430343b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239373439393938223b6c6173745f636865636b7c693a313532393839353038343b),
-('8bi03bshvot8jm9bdshju2jeqeg55jpg', '::1', 1529737744, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393733373734343b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('8iu8ilvhe18mq4tbdv153qnqssp5emrg', '::1', 1530085274, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303038353032373b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330303639353934223b6c6173745f636865636b7c693a313533303038353033303b),
-('8n92rjtjfjn5lqun9r4ha8vldalkp829', '::1', 1529727135, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393732373133353b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('905a10c1ks956ankvg3qiu8pp4i14fcd', '::1', 1529731258, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393733313235383b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('950u5654ftk85r9ukm4rvrvpmmgjdrug', '::1', 1529684428, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393638343432383b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363537363635223b6c6173745f636865636b7c693a313532393637393939333b6c616e67416262726576696174696f6e7c733a323a22656e223b),
-('988lslipsnt03dch1j9csdkfvbc6c8im', '::1', 1529725838, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393732353833383b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('9jqobv7ek5unn921u9nujm0i3pq7p6fl', '::1', 1529901711, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393930313731313b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239373439393938223b6c6173745f636865636b7c693a313532393839353038343b),
-('9k80n07o1apqrmniv54067omr3p3s1da', '::1', 1530005500, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303030353530303b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393839393835223b6c6173745f636865636b7c693a313532393939373939353b),
-('a1obi8svjbpi7gq62ko9m9ej3n59nb49', '::1', 1529909706, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393930393639353b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239383935303834223b6c6173745f636865636b7c693a313532393930393730363b),
-('a8158qd4d9g8mg469jniubc80r81houo', '::1', 1529749892, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393734393839323b6c616e67416262726576696174696f6e7c733a323a227669223b),
-('abbcti8jjnb8lk93knn7b0u7bgmt9ufi', '::1', 1529751826, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393735313735373b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239373139393236223b6c6173745f636865636b7c693a313532393734393939383b),
-('acc1r3a58ltboeu6kjep9ml5ppoogll7', '::1', 1529740975, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393734303937353b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('as0tmbqf0vjqots6lqf2l5eghs2t142c', '::1', 1530002853, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303030323835333b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393839393835223b6c6173745f636865636b7c693a313532393939373939353b),
-('b0tiv5q9utfof4nbn8jhojdvq2q9fttd', '::1', 1529938137, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393933383133373b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393133393531223b6c6173745f636865636b7c693a313532393933353438393b),
-('b1qgfrs0pok30me3i12fv3ss8s8qefc4', '::1', 1529725102, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393732353130323b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('b9uc1v7m1qhmrgh1pthl24e61hum4jjn', '::1', 1530004141, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303030343134313b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393839393835223b6c6173745f636865636b7c693a313532393939373939353b),
-('bblusambe25b0lrbfc1gtj1v4vt9h12g', '::1', 1529732518, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393733323531383b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('bcn6e185l4sjag5kl20s81t6u0g4p8ei', '::1', 1529916131, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393931363133313b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393039373036223b6c6173745f636865636b7c693a313532393931333935313b),
-('bhtbaiphdijou17lko6fp7hgbupgq4c3', '::1', 1529681611, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393638313631313b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363537363635223b6c6173745f636865636b7c693a313532393637393939333b6c616e67416262726576696174696f6e7c733a323a22656e223b),
-('c1r8b9n9qkco82b9gb97pamksvl5f304', '::1', 1529721393, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393732313339333b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('cl2d260gslbbeppe1cv0mhk77n8ho0hu', '::1', 1529916880, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393931363838303b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393039373036223b6c6173745f636865636b7c693a313532393931333935313b6d6573736167655f737563636573737c733a32353a225468c3aa6d206de1bb9b69207468c3a06e682063c3b46e6721223b5f5f63695f766172737c613a313a7b733a31353a226d6573736167655f73756363657373223b733a333a226f6c64223b7d),
-('cmbu4hhg2j0g6k18i9g4ljhv950t209b', '::1', 1529681953, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393638313935333b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363537363635223b6c6173745f636865636b7c693a313532393637393939333b6c616e67416262726576696174696f6e7c733a323a22656e223b),
-('d4qe3qvpo7l6h9g5lhq9tncoffenp7r7', '::1', 1529901046, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393930313034363b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239373439393938223b6c6173745f636865636b7c693a313532393839353038343b),
-('d7t4m51po1d34slfh72v5buovo43k8m2', '::1', 1529917202, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393931373230323b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393039373036223b6c6173745f636865636b7c693a313532393931333935313b),
-('dga5pns6d9eqivsd2erocr56e2f6fap2', '::1', 1529682611, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393638323631313b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363537363635223b6c6173745f636865636b7c693a313532393637393939333b6c616e67416262726576696174696f6e7c733a323a22656e223b),
-('e5cs6mrk3tqkvd06r697rr806ql69arh', '::1', 1530009142, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303030393134323b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393839393835223b6c6173745f636865636b7c693a313532393939373939353b),
-('edf6kug77p1mrgvfnqgi8gld2msev56k', '::1', 1529680948, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393638303934383b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363537363635223b6c6173745f636865636b7c693a313532393637393939333b6c616e67416262726576696174696f6e7c733a323a22656e223b),
-('ek6cqasbmeninju25p5ccs645k17im3o', '::1', 1529940657, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393934303632363b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393133393531223b6c6173745f636865636b7c693a313532393933353438393b),
-('elkfsq7fk3tkisbe9q517chb3h5i7hra', '::1', 1529990861, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393939303536393b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393335343839223b6c6173745f636865636b7c693a313532393938393938353b),
-('emj7u0bcisorsdo9jk07vkto91olr8nf', '::1', 1529917508, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393931373530383b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393039373036223b6c6173745f636865636b7c693a313532393931333935313b),
-('epqq6773s2rttsfm11h45sefs51bgl1f', '::1', 1529684814, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393638343831343b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363537363635223b6c6173745f636865636b7c693a313532393637393939333b6c616e67416262726576696174696f6e7c733a323a22656e223b),
-('f0s1052ophe2gtdf0gql9qpsd6kviji9', '::1', 1529893940, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393839333934303b6c616e67416262726576696174696f6e7c733a323a227669223b),
-('fadufroh4go3t1n4htr7rkg2rs199nf1', '::1', 1529738391, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393733383339313b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('fcn6vsjnlmc9n22a4fvtcvqcqc8dbd5h', '::1', 1529685470, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393638353437303b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363537363635223b6c6173745f636865636b7c693a313532393637393939333b6c616e67416262726576696174696f6e7c733a323a22656e223b),
-('fdeoeqvsogji5cpi33mc89p4rfsc163a', '::1', 1529914628, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393931343632383b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393039373036223b6c6173745f636865636b7c693a313532393931333935313b),
-('fr1o9kga8p8aftubmo6h6f53rgvnm3q8', '::1', 1529915792, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393931353739323b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393039373036223b6c6173745f636865636b7c693a313532393931333935313b),
-('fv3nqv7o798bkd7nhte9uqdbgl1qu6pd', '::1', 1529916437, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393931363433373b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393039373036223b6c6173745f636865636b7c693a313532393931333935313b6d6573736167655f737563636573737c733a32353a225468c3aa6d206de1bb9b69207468c3a06e682063c3b46e6721223b5f5f63695f766172737c613a313a7b733a31353a226d6573736167655f73756363657373223b733a333a226f6c64223b7d),
-('g71l5fk4vemj08jvqauue9q43il88c05', '::1', 1529686178, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393638363137383b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363537363635223b6c6173745f636865636b7c693a313532393637393939333b6c616e67416262726576696174696f6e7c733a323a22656e223b),
-('gb060jf1376nk3ircr5lp6seec81en3h', '::1', 1529921437, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393932313433373b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393039373036223b6c6173745f636865636b7c693a313532393931333935313b),
-('gcri8eqscj2152un3kahuk1uqku9i8g4', '::1', 1529681287, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393638313238373b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363537363635223b6c6173745f636865636b7c693a313532393637393939333b6c616e67416262726576696174696f6e7c733a323a22656e223b),
-('gcs0ed53n2je1hhuh7v0qf868ro5ltho', '::1', 1529738755, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393733383735353b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('ge6t13rbeluld3ssfnnu3ci1bk3vp5bi', '::1', 1529682301, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393638323330313b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363537363635223b6c6173745f636865636b7c693a313532393637393939333b6c616e67416262726576696174696f6e7c733a323a22656e223b),
-('glfbid9gaafkv1k1g9sj5ib2gm20jor4', '::1', 1529683487, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393638333438373b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363537363635223b6c6173745f636865636b7c693a313532393637393939333b6c616e67416262726576696174696f6e7c733a323a22656e223b),
-('gn9an1uacju31amuvmi9uj3d3duhu1fb', '::1', 1530011083, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303031313036323b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393839393835223b6c6173745f636865636b7c693a313532393939373939353b),
-('gpgkcj9as0pqpvmlqlbdn1r4icot4iuj', '::1', 1529990569, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393939303536393b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393335343839223b6c6173745f636865636b7c693a313532393938393938353b),
-('hf0506ls2sj26g8d8m9g5jc46un7esrt', '::1', 1529726301, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393732363330313b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('hjvq8rj5bbjac8gcr8hfgf3t2uffm2l0', '::1', 1529735312, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393733353331323b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('hp6jm4ulsp1iulrjst2av22dkleuv7fs', '::1', 1529999647, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393939393634373b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393839393835223b6c6173745f636865636b7c693a313532393939373939353b),
-('hpnarhrl8cdanqb3bothv4crrtmf3mtt', '::1', 1529739836, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393733393833363b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('ij8dbv7qhjmsfuau2bj6130f96rhv3g5', '::1', 1530006500, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303030363530303b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393839393835223b6c6173745f636865636b7c693a313532393939373939353b),
-('ijrg2fakllajacp97r80p7aioek1ba2h', '::1', 1529730150, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393733303135303b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('iskhom12asaclk8bcofvu7munr2qklnq', '::1', 1529923176, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393932333137363b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393039373036223b6c6173745f636865636b7c693a313532393931333935313b),
-('iu9vlfqmm1jra1m2mdiqscfjmcej6rg7', '::1', 1529900731, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393930303733313b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239373439393938223b6c6173745f636865636b7c693a313532393839353038343b),
-('j446lv4bkg2657u1gp5pbpehf8ubkghp', '::1', 1529724388, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393732343338383b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('j6538138l5hfq33dklbdv141d065ip7v', '::1', 1529719926, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393731393932363b6c616e67416262726576696174696f6e7c733a323a227669223b),
-('jgc1t7o0be2jns7rg00jnd0kk2g8rkie', '::1', 1530074203, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303037343230333b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393937393935223b6c6173745f636865636b7c693a313533303036393539343b),
-('jot19dvef0mcl6uns4g49h15vt2id830', '::1', 1529724781, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393732343738313b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('k2pfqrh495cfm6anoanqd52an8b5k2gh', '::1', 1529902045, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393930323034353b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239373439393938223b6c6173745f636865636b7c693a313532393839353038343b3a3a317c733a333a223a3a31223b5f5f63695f766172737c613a313a7b733a333a223a3a31223b693a313532393930353530393b7d),
-('k5grv5aiqook3mcu5ldsq7if2jejc20o', '::1', 1529727519, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393732373531393b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('k72mdq5to8qm0jui83ijc5rs3ucroaqm', '::1', 1529750601, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393735303630313b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239373139393236223b6c6173745f636865636b7c693a313532393734393939383b),
-('klsgsa202cve2ustoif2oi3u53a2nmje', '::1', 1530094078, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303039333739363b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330303835303330223b6c6173745f636865636b7c693a313533303039333134353b),
-('kmrpn299sk641pntds8tl0ndh2ueibpk', '::1', 1530007707, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303030373730373b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393839393835223b6c6173745f636865636b7c693a313532393939373939353b),
-('l8dr9idlbvh9r29gqosk4c1d7tm8rj4l', '::1', 1529751757, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393735313735373b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239373139393236223b6c6173745f636865636b7c693a313532393734393939383b),
-('l9ckt7g09jb7vrurb7qogi0vsdkko2s0', '::1', 1530000536, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303030303533363b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393839393835223b6c6173745f636865636b7c693a313532393939373939353b),
-('la8rc5459bqu79j1f9qfd20g0v2j0r7m', '::1', 1529686803, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393638363830333b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363537363635223b6c6173745f636865636b7c693a313532393637393939333b6c616e67416262726576696174696f6e7c733a323a22656e223b),
-('ldhrd36dfhk92m8ooh331pmermighplt', '::1', 1529727826, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393732373832363b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('lsk9c2qebnqu797ksjnorrlak4i6r40n', '::1', 1530005989, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303030353938393b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393839393835223b6c6173745f636865636b7c693a313532393939373939353b),
-('m696s32g1lnv53vd8f1bqj1eicffbf3r', '::1', 1529729449, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393732393434393b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('m8jqnme7p7q98e8ev5c77mnmrsj67p21', '::1', 1529721087, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393732313038373b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('makd6ga9f97glh5obir68fqbqrb0ufoa', '::1', 1529680338, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393638303333383b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363537363635223b6c6173745f636865636b7c693a313532393637393939333b6c616e67416262726576696174696f6e7c733a323a22656e223b);
-INSERT INTO `site_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
-('mp0lnufe5uvl8h1uqp670b39tsc5lorc', '::1', 1529940626, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393934303632363b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393133393531223b6c6173745f636865636b7c693a313532393933353438393b),
-('mr2fbni5m321obio72bq99u98o1ivhf1', '::1', 1529894251, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393839343235313b6c616e67416262726576696174696f6e7c733a323a227669223b),
-('mr8rf2gbo0lgvgl06kvujvp4k51kkin2', '::1', 1529728599, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393732383539393b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b6d6573736167655f737563636573737c733a32353a225468c3aa6d206de1bb9b69207468c3a06e682063c3b46e6721223b5f5f63695f766172737c613a313a7b733a31353a226d6573736167655f73756363657373223b733a333a226f6c64223b7d),
-('mrtns2de1i99ibl1aog507pf8hk69ulh', '::1', 1529923176, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393932333137363b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393039373036223b6c6173745f636865636b7c693a313532393931333935313b),
-('mtaasbbrihfkhf12j4kqmfhrecldbqtv', '::1', 1529728236, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393732383233363b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('nnd4lpsjkak7at1l8cm84gj0c7frvgq5', '::1', 1529686493, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393638363439333b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363537363635223b6c6173745f636865636b7c693a313532393637393939333b6c616e67416262726576696174696f6e7c733a323a22656e223b),
-('o02bjesdunc2up9h3tc8ootr03uren4m', '::1', 1529895025, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393839353032353b6c616e67416262726576696174696f6e7c733a323a227669223b),
-('o5pg7vflse9dbq07l1etcbi5luh85vdu', '::1', 1529739350, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393733393335303b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('olemn7us8lu35sabfr9cu53o82octa94', '::1', 1530008836, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303030383833363b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393839393835223b6c6173745f636865636b7c693a313532393939373939353b),
-('p44ivmv26a7g2pdqgh7debfmkmkp07dl', '::1', 1530074826, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303037343535363b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393937393935223b6c6173745f636865636b7c693a313533303036393539343b),
-('p4bsu1drsn735t3deh6bsqah88o9g0o0', '::1', 1529740205, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393734303230353b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('p9evuldelgeoppq2475l46oh5cjpukq1', '::1', 1529730913, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393733303931333b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('pdnjreav0as9hknejagoahcajtmkbkbg', '::1', 1529918544, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393931383534343b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393039373036223b6c6173745f636865636b7c693a313532393931333935313b),
-('pj1choquj3kc46igv7f7sr3l0lels3td', '::1', 1529741596, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393734313330323b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('pq6fuhasinl5j5qv514ntnsq2dva5b4b', '::1', 1529937740, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393933373734303b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393133393531223b6c6173745f636865636b7c693a313532393933353438393b),
-('qksbcq4gi8c4bf0dqv7cmun15q2n1d85', '::1', 1529687122, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393638373132323b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363537363635223b6c6173745f636865636b7c693a313532393637393939333b6c616e67416262726576696174696f6e7c733a323a22656e223b),
-('qu33pp865gj9k3n5utsis0brrgsi928v', '::1', 1530004555, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303030343535353b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393839393835223b6c6173745f636865636b7c693a313532393939373939353b),
-('rad42g6n1iqel26ni76pi1729vv7cpit', '::1', 1529919843, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393931393834333b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393039373036223b6c6173745f636865636b7c693a313532393931333935313b),
-('rbodhjdsdo75fbn56isuoo7g09idogfi', '::1', 1529894596, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393839343539363b6c616e67416262726576696174696f6e7c733a323a227669223b),
-('rniiupvdlp1972ugv5g5ibv8b6c052fi', '::1', 1529902751, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393930323735313b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239373439393938223b6c6173745f636865636b7c693a313532393839353038343b3a3a317c733a333a223a3a31223b5f5f63695f766172737c613a313a7b733a333a223a3a31223b693a313532393930353530393b7d),
-('rpfv6kjje8lt0j51pki11p43j98j7sqc', '::1', 1530003231, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303030333233313b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393839393835223b6c6173745f636865636b7c693a313532393939373939353b),
-('s35elt9oqr33fqqoqdeac7mkiolobir7', '::1', 1529899039, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393839393033393b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239373439393938223b6c6173745f636865636b7c693a313532393839353038343b6d6573736167655f6572726f727c733a32323a224944206b68c3b46e672074e1bb936e2074e1baa16921223b5f5f63695f766172737c613a313a7b733a31333a226d6573736167655f6572726f72223b733a333a226e6577223b7d),
-('s459uoeu08vq5pg4u41jblafdectoep6', '::1', 1530005189, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303030353138393b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393839393835223b6c6173745f636865636b7c693a313532393939373939353b),
-('s5rnd10idhcqo0187ogudjmvb34ohg7j', '::1', 1529685147, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393638353134373b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363537363635223b6c6173745f636865636b7c693a313532393637393939333b6c616e67416262726576696174696f6e7c733a323a22656e223b),
-('s85gffm37b9bsrqsfc1e9qf7e1jq82vp', '::1', 1530010519, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303031303531393b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393839393835223b6c6173745f636865636b7c693a313532393939373939353b),
-('sb1bbp6gatdihebshin2j7q5fbj0t46b', '::1', 1529724069, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393732343036393b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('scara5heofvhcen8ddbknr3ssotvl7gu', '::1', 1529896164, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393839363136343b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239373439393938223b6c6173745f636865636b7c693a313532393839353038343b),
-('sn2p45vm01i355j907faca6hml8mif3r', '::1', 1529999084, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393939393038343b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393839393835223b6c6173745f636865636b7c693a313532393939373939353b),
-('soqnko8uvd4vfc3e7o08i8kb21gkdhol', '::1', 1530073181, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303037333138313b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393937393935223b6c6173745f636865636b7c693a313533303036393539343b),
-('t54bm6nuq335a21u6d7aturlqc9cg09h', '::1', 1530008120, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303030383132303b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393839393835223b6c6173745f636865636b7c693a313532393939373939353b),
-('t9k2le9pnbac7ps8c57t1vfgd70vtkmh', '::1', 1530009615, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303030393631353b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393839393835223b6c6173745f636865636b7c693a313532393939373939353b),
-('tcmhqc4nfndtndk9obmadk20obe0q9b1', '::1', 1529899700, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393839393730303b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239373439393938223b6c6173745f636865636b7c693a313532393839353038343b6d6573736167655f6572726f727c733a32323a224944206b68c3b46e672074e1bb936e2074e1baa16921223b5f5f63695f766172737c613a313a7b733a31333a226d6573736167655f6572726f72223b733a333a226f6c64223b7d),
-('td4q5goh8r317m6dvrc8utl8gdqfrd5r', '::1', 1530069983, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303036393938333b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393937393935223b6c6173745f636865636b7c693a313533303036393539343b),
-('tglk7orgbjphd5qprh21fc36jbqbpldq', '::1', 1529938885, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393933383838353b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393133393531223b6c6173745f636865636b7c693a313532393933353438393b),
-('tjr2pbi2r05c3gt12l1jemdqnrsfr1ue', '::1', 1529900047, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393930303034373b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239373439393938223b6c6173745f636865636b7c693a313532393839353038343b6d6573736167655f6572726f727c733a32323a224944206b68c3b46e672074e1bb936e2074e1baa16921223b5f5f63695f766172737c613a313a7b733a31333a226d6573736167655f6572726f72223b733a333a226e6577223b7d),
-('tm3aat0cqbeibafufguns082ag7ab6es', '::1', 1529720246, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393732303234363b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('ts2b2t8aihopio1t4p13h2a0122k6fku', '::1', 1530074556, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303037343535363b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393937393935223b6c6173745f636865636b7c693a313533303036393539343b),
-('tuairsja65t40f72046q42257npbp4qj', '::1', 1529731563, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393733313536333b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('tuu4tqbs9dn8f5dgsv588637e91ctnoq', '::1', 1529918869, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393931383836393b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393039373036223b6c6173745f636865636b7c693a313532393931333935313b),
-('u3ppk9jmvh3bcs94dugdgs3umk5oj5hr', '::1', 1530070754, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303037303735343b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393937393935223b6c6173745f636865636b7c693a313533303036393539343b),
-('u9ao48up8skoclk4mba1vbi1u0efk1l1', '::1', 1530009953, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303030393935333b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393839393835223b6c6173745f636865636b7c693a313532393939373939353b),
-('uctab80d11ctsda66vm9mghgtcndjk3n', '::1', 1530071934, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303037313933343b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393937393935223b6c6173745f636865636b7c693a313533303036393539343b),
-('uhomvvdl088sk7hvmf8t1e4tk9846lnr', '::1', 1529721938, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393732313933383b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('ul9077cgtnbdoqufecguslit9kvii0vn', '::1', 1529719594, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393731393539343b6c616e67416262726576696174696f6e7c733a323a227669223b),
-('v43qmc8v8m1623cfst402pt68rf2stnu', '::1', 1529915461, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393931353436313b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393039373036223b6c6173745f636865636b7c693a313532393931333935313b6d6573736167655f737563636573737c733a31393a2253e1bbad61207468c3a06e682063c3b46e6721223b5f5f63695f766172737c613a313a7b733a31353a226d6573736167655f73756363657373223b733a333a226f6c64223b7d),
-('v6micuqvoc351ik1erflmpfrh7vtc6bh', '::1', 1529726651, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393732363635313b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('v9iuell6fn5skdi4skorjc8jn8nk5206', '::1', 1529735760, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393733353736303b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239363739393933223b6c6173745f636865636b7c693a313532393731393932363b),
-('vcc7c3kjnadaljdovrnjug1usqu3rkh0', '::1', 1529919522, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393931393532323b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239393039373036223b6c6173745f636865636b7c693a313532393931333935313b),
-('vu98r3g709nuvvg0b2nkor6j5rdkuso1', '::1', 1529902756, 0x5f5f63695f6c6173745f726567656e65726174657c693a313532393930323735313b6c616e67416262726576696174696f6e7c733a323a227669223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239373439393938223b6c6173745f636865636b7c693a313532393839353038343b3a3a317c733a333a223a3a31223b5f5f63695f766172737c613a313a7b733a333a223a3a31223b693a313532393930353530393b7d);
+('080a94k5a72mc6q7ltqlb7ukckpe8h8a', '::1', 1530624144, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303632343134343b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330363133353936223b6c6173745f636865636b7c693a313533303632333230313b6c616e67416262726576696174696f6e7c733a323a22656e223b),
+('0rscsskqhfjpr02eijbqfq8nv0lqvqf9', '::1', 1530627029, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303632373032393b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330363133353936223b6c6173745f636865636b7c693a313533303632333230313b6c616e67416262726576696174696f6e7c733a323a22656e223b),
+('1k9735c31npriqc5k5lupf5ahf0c2jvf', '::1', 1530594558, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303539343535383b6c616e67416262726576696174696f6e7c733a323a22656e223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330353136383133223b6c6173745f636865636b7c693a313533303538373938383b),
+('2n8t83vsm3r1gvsmdu9jdcb6hmjlipcb', '::1', 1530606651, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303630363635313b6c616e67416262726576696174696f6e7c733a323a22656e223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330353136383133223b6c6173745f636865636b7c693a313533303538373938383b),
+('2v2r2cmj0vn8av0eeueporpb18br7ov0', '::1', 1530627744, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303632373734343b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330363133353936223b6c6173745f636865636b7c693a313533303632333230313b6c616e67416262726576696174696f6e7c733a323a22656e223b),
+('4hsou96vv6q3jplg16vmacaqvl1g6u6s', '::1', 1530605318, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303630353331383b6c616e67416262726576696174696f6e7c733a323a22656e223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330353136383133223b6c6173745f636865636b7c693a313533303538373938383b),
+('52pls9i9l8ls5agvm0qrbldso3pfmvlt', '::1', 1530604262, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303630343236323b6c616e67416262726576696174696f6e7c733a323a22656e223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330353136383133223b6c6173745f636865636b7c693a313533303538373938383b),
+('5ognro53352n2sehdb0n4crkphqg70fq', '::1', 1530602790, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303630323739303b6c616e67416262726576696174696f6e7c733a323a22656e223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330353136383133223b6c6173745f636865636b7c693a313533303538373938383b),
+('7aad3f06tc9ahqbi27o7f19t24qe3tf4', '::1', 1530613609, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303631333538393b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330363039363532223b6c6173745f636865636b7c693a313533303631333539363b),
+('7ce6b3sn657b76dahfbuvhhi14m6jpcj', '::1', 1530597004, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303539373030343b6c616e67416262726576696174696f6e7c733a323a22656e223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330353136383133223b6c6173745f636865636b7c693a313533303538373938383b),
+('8f98vlts2fuosrumd4ta0fg5249l2h5d', '::1', 1530604604, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303630343630343b6c616e67416262726576696174696f6e7c733a323a22656e223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330353136383133223b6c6173745f636865636b7c693a313533303538373938383b),
+('8l9o5101g9tejfjst8p9477qlc84udoh', '::1', 1530604949, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303630343934393b6c616e67416262726576696174696f6e7c733a323a22656e223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330353136383133223b6c6173745f636865636b7c693a313533303538373938383b),
+('b13621r707saf39gdigq1rmfikrps67s', '::1', 1530624712, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303632343731323b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330363133353936223b6c6173745f636865636b7c693a313533303632333230313b6c616e67416262726576696174696f6e7c733a323a22656e223b),
+('b7mf2c95490ckdhe92vhfqosp3ff75ah', '::1', 1530625267, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303632353236373b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330363133353936223b6c6173745f636865636b7c693a313533303632333230313b6c616e67416262726576696174696f6e7c733a323a22656e223b),
+('ce63d31afg09mti37ckr5s67sve5hd0f', '::1', 1530627337, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303632373333373b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330363133353936223b6c6173745f636865636b7c693a313533303632333230313b6c616e67416262726576696174696f6e7c733a323a22656e223b),
+('dlj5tectrn7q0qkvqsbkfauja9t5ehee', '::1', 1530601697, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303630313639373b6c616e67416262726576696174696f6e7c733a323a22656e223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330353136383133223b6c6173745f636865636b7c693a313533303538373938383b),
+('f4bkbl75netsvr0ojkkulajrmrp9lvgt', '::1', 1530628523, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303632383332313b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330363133353936223b6c6173745f636865636b7c693a313533303632333230313b6c616e67416262726576696174696f6e7c733a323a22656e223b),
+('f4o7kdmcj1dao86ui30ve323atnnuln4', '::1', 1530603116, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303630333131363b6c616e67416262726576696174696f6e7c733a323a22656e223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330353136383133223b6c6173745f636865636b7c693a313533303538373938383b),
+('ld3mt5u5gh4s7p3v0vam4iicnl1ic136', '::1', 1530625700, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303632353730303b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330363133353936223b6c6173745f636865636b7c693a313533303632333230313b6c616e67416262726576696174696f6e7c733a323a22656e223b),
+('mtpvl432ir1tdgimajuqg2qpokgignqf', '::1', 1530609876, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303630393837363b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330353837393838223b6c6173745f636865636b7c693a313533303630393635323b),
+('on27a0l6fpiagkp43nom4h5g5o3ai2h7', '::1', 1530601372, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303630313337323b6c616e67416262726576696174696f6e7c733a323a22656e223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330353136383133223b6c6173745f636865636b7c693a313533303538373938383b),
+('ongl6dfhn9nd68ibnq1kl4032mbg53ms', '::1', 1530594934, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303539343933343b6c616e67416262726576696174696f6e7c733a323a22656e223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330353136383133223b6c6173745f636865636b7c693a313533303538373938383b),
+('oqbqho3s91d6n9s972e6t88jajfkcup6', '::1', 1530628321, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303632383332313b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330363133353936223b6c6173745f636865636b7c693a313533303632333230313b6c616e67416262726576696174696f6e7c733a323a22656e223b),
+('pkpb1qapmfhq6lg5e3u3m7jses5ov4l3', '::1', 1530610258, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303631303232333b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330353837393838223b6c6173745f636865636b7c693a313533303630393635323b6d6573736167655f737563636573737c733a32353a225468c3aa6d206de1bb9b69207468c3a06e682063c3b46e6721223b5f5f63695f766172737c613a313a7b733a31353a226d6573736167655f73756363657373223b733a333a226f6c64223b7d),
+('q26sc6p95ejjdqn4400usaunue1l4fkp', '::1', 1530606702, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303630363635313b6c616e67416262726576696174696f6e7c733a323a22656e223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330353136383133223b6c6173745f636865636b7c693a313533303538373938383b),
+('qkj6sh3hvo95qbro889hub75chfmefbl', '::1', 1530626332, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303632363333323b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330363133353936223b6c6173745f636865636b7c693a313533303632333230313b6c616e67416262726576696174696f6e7c733a323a22656e223b),
+('qr2bnn1r2sqe1hdsug1ghl3neqn7jvf4', '::1', 1530603464, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303630333436343b6c616e67416262726576696174696f6e7c733a323a22656e223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330353136383133223b6c6173745f636865636b7c693a313533303538373938383b),
+('rcsefa6n48f50vu4pu1baqvfbu8m64pu', '::1', 1530610223, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303631303232333b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330353837393838223b6c6173745f636865636b7c693a313533303630393635323b6d6573736167655f737563636573737c733a32353a225468c3aa6d206de1bb9b69207468c3a06e682063c3b46e6721223b5f5f63695f766172737c613a313a7b733a31353a226d6573736167655f73756363657373223b733a333a226f6c64223b7d),
+('ru0a0ppmho6f1qhefjslk8q14444ig5q', '::1', 1530603775, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303630333737353b6c616e67416262726576696174696f6e7c733a323a22656e223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330353136383133223b6c6173745f636865636b7c693a313533303538373938383b),
+('ss7eluu0k1qsle4f4lbfcsbp6h8r3fv0', '::1', 1530602084, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303630323038343b6c616e67416262726576696174696f6e7c733a323a22656e223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330353136383133223b6c6173745f636865636b7c693a313533303538373938383b),
+('t2eqe0qgeh1igc0f6uqt0i66hro6rvig', '::1', 1530602395, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303630323339353b6c616e67416262726576696174696f6e7c733a323a22656e223b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330353136383133223b6c6173745f636865636b7c693a313533303538373938383b),
+('vnlu85t0ppbuipe03a4ggisiv8c0l07s', '::1', 1530626002, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303632363030323b6964656e746974797c733a31353a2261646d696e4061646d696e2e636f6d223b656d61696c7c733a31353a2261646d696e4061646d696e2e636f6d223b757365725f69647c733a313a2231223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330363133353936223b6c6173745f636865636b7c693a313533303632333230313b6c616e67416262726576696174696f6e7c733a323a22656e223b);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Cấu trúc bảng cho bảng `users`
 --
 
 CREATE TABLE `users` (
@@ -845,16 +810,17 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `users`
+-- Đang đổ dữ liệu cho bảng `users`
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`, `age`) VALUES
-(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1530093145, 1, 'Admin', 'istrator', 'ADMIN', '0', NULL);
+(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1530623201, 1, 'Admin', 'istrator', 'ADMIN', '0', NULL),
+(2, '::1', 'Nguyễn', '$2y$08$0LO6/hE8V7teJQ1QkcDAb.czd5vZI4uwZUNR8msHz3HKjbGZlLpEu', NULL, '12quyen12@gmail.com', NULL, 'bGhWofBRGt79bDumdB0aHOad9b635d0d67e398d2', 1530516852, NULL, 1530516041, 1530516838, 1, 'Nguyễn', 'Quyền', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users_groups`
+-- Cấu trúc bảng cho bảng `users_groups`
 --
 
 CREATE TABLE `users_groups` (
@@ -864,177 +830,178 @@ CREATE TABLE `users_groups` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `users_groups`
+-- Đang đổ dữ liệu cho bảng `users_groups`
 --
 
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (1, 1, 1),
-(2, 1, 2);
+(2, 1, 2),
+(3, 2, 2);
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `about`
+-- Chỉ mục cho bảng `about`
 --
 ALTER TABLE `about`
   ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
--- Indexes for table `about_lang`
+-- Chỉ mục cho bảng `about_lang`
 --
 ALTER TABLE `about_lang`
   ADD PRIMARY KEY (`id`) USING BTREE,
   ADD KEY `about_id` (`about_id`);
 
 --
--- Indexes for table `banner`
+-- Chỉ mục cho bảng `banner`
 --
 ALTER TABLE `banner`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `banner_lang`
+-- Chỉ mục cho bảng `banner_lang`
 --
 ALTER TABLE `banner_lang`
   ADD PRIMARY KEY (`id`),
   ADD KEY `post_id` (`banner_id`);
 
 --
--- Indexes for table `blog`
+-- Chỉ mục cho bảng `blog`
 --
 ALTER TABLE `blog`
   ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
--- Indexes for table `blog_lang`
+-- Chỉ mục cho bảng `blog_lang`
 --
 ALTER TABLE `blog_lang`
   ADD PRIMARY KEY (`id`) USING BTREE,
   ADD KEY `blog_id` (`blog_id`);
 
 --
--- Indexes for table `booking`
+-- Chỉ mục cho bảng `booking`
 --
 ALTER TABLE `booking`
   ADD PRIMARY KEY (`id`),
   ADD KEY `product_id` (`product_id`) USING BTREE;
 
 --
--- Indexes for table `ci_sessions`
+-- Chỉ mục cho bảng `ci_sessions`
 --
 ALTER TABLE `ci_sessions`
   ADD PRIMARY KEY (`id`) USING BTREE,
   ADD KEY `ci_sessions_timestamp` (`timestamp`) USING BTREE;
 
 --
--- Indexes for table `customize`
+-- Chỉ mục cho bảng `customize`
 --
 ALTER TABLE `customize`
   ADD PRIMARY KEY (`id`),
   ADD KEY `product_id` (`product_id`);
 
 --
--- Indexes for table `groups`
+-- Chỉ mục cho bảng `groups`
 --
 ALTER TABLE `groups`
   ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
--- Indexes for table `localtion`
+-- Chỉ mục cho bảng `localtion`
 --
 ALTER TABLE `localtion`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `localtion_lang`
+-- Chỉ mục cho bảng `localtion_lang`
 --
 ALTER TABLE `localtion_lang`
   ADD PRIMARY KEY (`id`),
   ADD KEY `localtion_id` (`localtion_id`) USING BTREE;
 
 --
--- Indexes for table `login_attempts`
+-- Chỉ mục cho bảng `login_attempts`
 --
 ALTER TABLE `login_attempts`
   ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
--- Indexes for table `post`
+-- Chỉ mục cho bảng `post`
 --
 ALTER TABLE `post`
   ADD PRIMARY KEY (`id`),
   ADD KEY `post_category_id` (`post_category_id`);
 
 --
--- Indexes for table `post_category`
+-- Chỉ mục cho bảng `post_category`
 --
 ALTER TABLE `post_category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `post_category_lang`
+-- Chỉ mục cho bảng `post_category_lang`
 --
 ALTER TABLE `post_category_lang`
   ADD PRIMARY KEY (`id`),
   ADD KEY `post_category_id` (`post_category_id`);
 
 --
--- Indexes for table `post_lang`
+-- Chỉ mục cho bảng `post_lang`
 --
 ALTER TABLE `post_lang`
   ADD PRIMARY KEY (`id`),
   ADD KEY `post_id` (`post_id`);
 
 --
--- Indexes for table `product`
+-- Chỉ mục cho bảng `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`),
   ADD KEY `product_category_id` (`product_category_id`) USING BTREE;
 
 --
--- Indexes for table `product_category`
+-- Chỉ mục cho bảng `product_category`
 --
 ALTER TABLE `product_category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `product_category_lang`
+-- Chỉ mục cho bảng `product_category_lang`
 --
 ALTER TABLE `product_category_lang`
   ADD PRIMARY KEY (`id`),
   ADD KEY `post_category_id` (`product_category_id`);
 
 --
--- Indexes for table `product_lang`
+-- Chỉ mục cho bảng `product_lang`
 --
 ALTER TABLE `product_lang`
   ADD PRIMARY KEY (`id`),
   ADD KEY `product_id` (`product_id`) USING BTREE;
 
 --
--- Indexes for table `rating`
+-- Chỉ mục cho bảng `rating`
 --
 ALTER TABLE `rating`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `site_sessions`
+-- Chỉ mục cho bảng `site_sessions`
 --
 ALTER TABLE `site_sessions`
   ADD PRIMARY KEY (`id`) USING BTREE,
   ADD KEY `ci_sessions_timestamp` (`timestamp`) USING BTREE;
 
 --
--- Indexes for table `users`
+-- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
--- Indexes for table `users_groups`
+-- Chỉ mục cho bảng `users_groups`
 --
 ALTER TABLE `users_groups`
   ADD PRIMARY KEY (`id`) USING BTREE,
@@ -1043,225 +1010,202 @@ ALTER TABLE `users_groups`
   ADD KEY `fk_users_groups_groups1_idx` (`group_id`) USING BTREE;
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `about`
+-- AUTO_INCREMENT cho bảng `about`
 --
 ALTER TABLE `about`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
--- AUTO_INCREMENT for table `about_lang`
+-- AUTO_INCREMENT cho bảng `about_lang`
 --
 ALTER TABLE `about_lang`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
--- AUTO_INCREMENT for table `banner`
+-- AUTO_INCREMENT cho bảng `banner`
 --
 ALTER TABLE `banner`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
-
 --
--- AUTO_INCREMENT for table `banner_lang`
+-- AUTO_INCREMENT cho bảng `banner_lang`
 --
 ALTER TABLE `banner_lang`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
-
 --
--- AUTO_INCREMENT for table `blog`
+-- AUTO_INCREMENT cho bảng `blog`
 --
 ALTER TABLE `blog`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
-
 --
--- AUTO_INCREMENT for table `blog_lang`
+-- AUTO_INCREMENT cho bảng `blog_lang`
 --
 ALTER TABLE `blog_lang`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
-
 --
--- AUTO_INCREMENT for table `booking`
+-- AUTO_INCREMENT cho bảng `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `customize`
+-- AUTO_INCREMENT cho bảng `customize`
 --
 ALTER TABLE `customize`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `groups`
+-- AUTO_INCREMENT cho bảng `groups`
 --
 ALTER TABLE `groups`
   MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
--- AUTO_INCREMENT for table `localtion`
+-- AUTO_INCREMENT cho bảng `localtion`
 --
 ALTER TABLE `localtion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
--- AUTO_INCREMENT for table `localtion_lang`
+-- AUTO_INCREMENT cho bảng `localtion_lang`
 --
 ALTER TABLE `localtion_lang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 --
--- AUTO_INCREMENT for table `login_attempts`
+-- AUTO_INCREMENT cho bảng `login_attempts`
 --
 ALTER TABLE `login_attempts`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
-
 --
--- AUTO_INCREMENT for table `post`
+-- AUTO_INCREMENT cho bảng `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `post_category`
+-- AUTO_INCREMENT cho bảng `post_category`
 --
 ALTER TABLE `post_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
--- AUTO_INCREMENT for table `post_category_lang`
+-- AUTO_INCREMENT cho bảng `post_category_lang`
 --
 ALTER TABLE `post_category_lang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
--- AUTO_INCREMENT for table `post_lang`
+-- AUTO_INCREMENT cho bảng `post_lang`
 --
 ALTER TABLE `post_lang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `product`
+-- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `product_category`
+-- AUTO_INCREMENT cho bảng `product_category`
 --
 ALTER TABLE `product_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
--- AUTO_INCREMENT for table `product_category_lang`
+-- AUTO_INCREMENT cho bảng `product_category_lang`
 --
 ALTER TABLE `product_category_lang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
--- AUTO_INCREMENT for table `product_lang`
+-- AUTO_INCREMENT cho bảng `product_lang`
 --
 ALTER TABLE `product_lang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=194;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `rating`
+-- AUTO_INCREMENT cho bảng `rating`
 --
 ALTER TABLE `rating`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `users_groups`
+-- AUTO_INCREMENT cho bảng `users_groups`
 --
 ALTER TABLE `users_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- Các ràng buộc cho các bảng đã đổ
+--
 
 --
--- Constraints for dumped tables
---
-
---
--- Constraints for table `about_lang`
+-- Các ràng buộc cho bảng `about_lang`
 --
 ALTER TABLE `about_lang`
   ADD CONSTRAINT `about_lang_ibfk_1` FOREIGN KEY (`about_id`) REFERENCES `about` (`id`);
 
 --
--- Constraints for table `banner_lang`
+-- Các ràng buộc cho bảng `banner_lang`
 --
 ALTER TABLE `banner_lang`
   ADD CONSTRAINT `banner_lang_ibfk_1` FOREIGN KEY (`banner_id`) REFERENCES `banner` (`id`);
 
 --
--- Constraints for table `blog_lang`
+-- Các ràng buộc cho bảng `blog_lang`
 --
 ALTER TABLE `blog_lang`
   ADD CONSTRAINT `blog_lang_ibfk_1` FOREIGN KEY (`blog_id`) REFERENCES `blog` (`id`);
 
 --
--- Constraints for table `booking`
+-- Các ràng buộc cho bảng `booking`
 --
 ALTER TABLE `booking`
   ADD CONSTRAINT `booking_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`);
 
 --
--- Constraints for table `customize`
+-- Các ràng buộc cho bảng `customize`
 --
 ALTER TABLE `customize`
   ADD CONSTRAINT `customize_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`);
 
 --
--- Constraints for table `localtion_lang`
+-- Các ràng buộc cho bảng `localtion_lang`
 --
 ALTER TABLE `localtion_lang`
   ADD CONSTRAINT `localtion_lang_ibfk_1` FOREIGN KEY (`localtion_id`) REFERENCES `localtion` (`id`);
 
 --
--- Constraints for table `post`
+-- Các ràng buộc cho bảng `post`
 --
 ALTER TABLE `post`
   ADD CONSTRAINT `post_ibfk_1` FOREIGN KEY (`post_category_id`) REFERENCES `post_category` (`id`);
 
 --
--- Constraints for table `post_category_lang`
+-- Các ràng buộc cho bảng `post_category_lang`
 --
 ALTER TABLE `post_category_lang`
   ADD CONSTRAINT `post_category_lang_ibfk_1` FOREIGN KEY (`post_category_id`) REFERENCES `post_category` (`id`);
 
 --
--- Constraints for table `post_lang`
+-- Các ràng buộc cho bảng `post_lang`
 --
 ALTER TABLE `post_lang`
   ADD CONSTRAINT `post_lang_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `post` (`id`);
 
 --
--- Constraints for table `product`
+-- Các ràng buộc cho bảng `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`product_category_id`) REFERENCES `product_category` (`id`);
 
 --
--- Constraints for table `product_category_lang`
+-- Các ràng buộc cho bảng `product_category_lang`
 --
 ALTER TABLE `product_category_lang`
   ADD CONSTRAINT `product_category_lang_ibfk_1` FOREIGN KEY (`product_category_id`) REFERENCES `product_category` (`id`);
 
 --
--- Constraints for table `product_lang`
+-- Các ràng buộc cho bảng `product_lang`
 --
 ALTER TABLE `product_lang`
   ADD CONSTRAINT `product_lang_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`);
 
 --
--- Constraints for table `users_groups`
+-- Các ràng buộc cho bảng `users_groups`
 --
 ALTER TABLE `users_groups`
   ADD CONSTRAINT `fk_users_groups_groups1` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,

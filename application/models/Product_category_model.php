@@ -140,4 +140,21 @@ class Product_category_model extends MY_Model{
         
         return $this->db->get()->row_array();
     }
+
+    public function get_parent_id($parent_id,$lang='',$limit = '') {
+        $this->db->select('product_category.*, product_category_lang.title as title, product_category_lang.content as content');
+        $this->db->from($this->table);
+        $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id', 'left');
+        if($lang != ''){
+            $this->db->where($this->table_lang .'.language', $lang);
+        }
+        $this->db->where($this->table.'.is_deleted', 0);
+        $this->db->where($this->table.'.is_activated', 0);
+        $this->db->where($this->table.'.parent_id', $parent_id);
+        $this->db->group_by($this->table.".id");
+        if($limit != '' && is_numeric($limit)){
+            $this->db->limit($limit);
+        }
+        return $this->db->get()->result_array();
+    }
 }

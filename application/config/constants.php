@@ -18,7 +18,14 @@ defined('SHOW_DEBUG_BACKTRACE') OR define('SHOW_DEBUG_BACKTRACE', TRUE);
  */
 defined('FIXED_TOUR_PACKAGES_CATEGORY_ID') OR define('FIXED_TOUR_PACKAGES_CATEGORY_ID', 1);
 defined('FIXED_BACKPACK_TRAVEL_CATEGORY_ID') OR define('FIXED_BACKPACK_TRAVEL_CATEGORY_ID', 2);
+defined('FIXED_VIETNAM_CATEGORY_ID') OR define('FIXED_VIETNAM_CATEGORY_ID', 3);
 
+/**
+ * FIXED POST CATEGORIES ID
+ */
+defined('FIXED_VISA')        OR define('FIXED_VISA', 1);
+defined('FIXED_NEWS')        OR define('FIXED_NEWS', 2);
+defined('FIXED_BLOG')        OR define('FIXED_BLOG', 3);
 /*
 |--------------------------------------------------------------------------
 | File and Directory Modes

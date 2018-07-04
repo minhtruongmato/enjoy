@@ -108,6 +108,8 @@ $lang['form-adults'] = 'Adults';
 $lang['form-children-u11'] = 'Children (2-11 years old)';
 $lang['form-children-u2'] = 'Children (Under 2 years old)';
 $lang['form-message'] = 'Message';
+$lang['top-packages'] = '越南十大旅遊行程';
+$lang['top-backpack'] = '十大旅遊行程';
 
 
 
