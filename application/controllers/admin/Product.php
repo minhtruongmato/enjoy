@@ -403,7 +403,7 @@ class Product extends Admin_Controller{
                 if($unique_slug != $this->data['detail']['slug']){
                     $shared_request['slug'] = $unique_slug;
                 }
-                if($this->input->post('date') !== null){
+                if($this->input->post('date') != ''){
                     $date= explode("/",$this->input->post('date'));
                     $datetime=date('Y-m-d H:i:s', strtotime($date[1]."/".$date[0]."/".$date[2]));
                 }

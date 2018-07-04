@@ -35,7 +35,7 @@ class Homepage extends Public_Controller {
         }
     }
     function get_all_product_in_category($tour_in_category,$number_tour=0){
-        $this->get_multiple_products_with_category($this->product_category_model->get_all_lang(array(),'vi'),$tour_in_category['parent_id'],$sub);
+        $this->get_multiple_products_with_category($this->product_category_model->get_all_lang(array(),'sc'),$tour_in_category['parent_id'],$sub);
         if(empty($sub)){
             $tour_in_category['sub'] = $sub;
         }else{
@@ -49,9 +49,9 @@ class Homepage extends Public_Controller {
         $check = 0;
         $tour_all_in_category=array();
         for ($i=0; $i < count($ids); $i++) {
-             $tour =$this->product_model->get_by_product_category_id_array($ids[$i],array('title'),'vi');
+             $tour =$this->product_model->get_by_product_category_id_array($ids[$i],array('title'),'sc');
              if($tour['id'] != ''){
-                $tour_all_in_category[$check] = $this->product_model->get_by_product_category_id_array($ids[$i],array('title'),'vi');
+                $tour_all_in_category[$check] = $this->product_model->get_by_product_category_id_array($ids[$i],array('title'),'sc');
                 $tour_all_in_category[$check]['parent'] = $this->product_category_model->get_by_id_lang($tour_all_in_category[$check]['product_category_id']);
                 $check++;
                 if($check == $number_tour){
@@ -63,20 +63,18 @@ class Homepage extends Public_Controller {
     }
     public function index() {
         //banner
-        $this->data['banner'] = $this->banner_model->get_all_lang(array('title','description'),'vi');
+        $this->data['banner'] = $this->banner_model->get_all_lang(array('title','description'),'sc');
         //tour
-        $this->data['domestic'] = $this->product_category_model->get_by_slug_lang('trong-nuoc',array(),'vi');
-        $this->data['tour_domestic'] = $this->get_all_product_in_category($this->data['domestic'],3);
-        $this->data['international'] = $this->product_category_model->get_by_slug_lang('nuoc-ngoai',array(),'vi');
-        $this->data['tour_international'] = $this->get_all_product_in_category($this->data['international'],3);
-        $this->data['specialtour'] = $this->product_category_model->get_by_slug_lang('tour-dac-biet',array(),'vi');
-        $this->data['tour_specialtour'] = $this->get_all_product_in_category($this->data['specialtour'],6);
+        $this->data['tour_packages'] = $this->product_model->get_all_product_category_id_array($this->id_array_packages,5,'sc');
+        $this->data['tour_backpack'] = $this->product_model->get_all_product_category_id_array($this->id_array_backpack,5,'sc');
+        $this->data['tour_vietnam'] = $this->data['vietnam_menu'] = $this->product_category_model->get_parent_id(FIXED_VIETNAM_CATEGORY_ID,'sc',5);
         //post
-        $this->data['services'] = $this->post_category_model->get_by_slug('dich-vu','asc','vi');
-        $this->data['post_services'] = $this->post_model->get_by_post_category_id_lang($this->data['services']['id'],array('title'),'vi',2);
-        $this->data['visa'] = $this->post_category_model->get_by_slug('visa','asc','vi');
-        $this->data['blogs'] = $this->post_category_model->get_by_slug('blogs','asc','vi');
-        $this->data['post_blogs'] = $this->post_model->get_by_post_category_id_lang($this->data['blogs']['id'],array('title','description'),'vi',3);
+        $this->data['services'] = $this->post_category_model->get_by_slug('dich-vu','desc','sc');
+        $this->data['post_services'] = $this->post_model->get_by_post_category_id_lang($this->data['services']['id'],array('title'),'sc',2);
+        $this->data['visa'] = $this->post_category_model->get_by_id(FIXED_VISA,array('title','content'),'sc');
+        $this->data['news'] = $this->post_category_model->get_by_id(FIXED_NEWS,array('title','content'),'sc');
+        $this->data['blog'] = $this->post_category_model->get_by_id(FIXED_BLOG,array('title','content'),'sc');
+        $this->data['post_blogs'] = $this->post_model->get_by_post_category_id_lang(FIXED_BLOG,array('title','description'),'sc',3);
         $this->render('homepage_view');
     }
 

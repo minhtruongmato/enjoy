@@ -479,7 +479,30 @@ $('#is_top').change(function(){
         });
 	}
 });
-$("#box_is_top").css("display","none");
+$("#box_is_top").fadeOut();
+if(window.location.pathname.indexOf("/product/edit/") != '-1'){
+	$.ajax({
+        method: "get",
+        url: $('#parent_id_shared').data('url'),
+        data: {
+        	id : $('#parent_id_shared').val()
+        },
+        success: function(response){
+            if(response.isExisted == false){
+            	$("#box_is_top").fadeOut();
+            }else{
+            	$("#box_is_top").fadeIn();
+            }
+        },
+        error: function(jqXHR, exception){
+            console.log(errorHandle(jqXHR, exception));
+            if(jqXHR.status == 404 && jqXHR.responseJSON.message != 'undefined'){
+                alert(jqXHR.responseJSON.message);
+                location.reload();
+            }
+        }
+    });
+}
 $('#parent_id_shared').change(function(){
 	var url = $(this).data('url');
 	var id = $(this).val();
