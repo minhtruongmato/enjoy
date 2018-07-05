@@ -96,4 +96,41 @@ class Post_category_model extends MY_Model{
 
         return $result = $this->db->get()->row_array();
     }
+    public function get_parent_id($parent_id,$lang='',$limit = '') {
+        $this->db->select('post_category.*, post_category_lang.title as title, post_category_lang.content as content');
+        $this->db->from($this->table);
+        $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id', 'left');
+        if($lang != ''){
+            $this->db->where($this->table_lang .'.language', $lang);
+        }
+        $this->db->where($this->table.'.is_deleted', 0);
+        $this->db->where($this->table.'.is_activated', 0);
+        $this->db->where($this->table.'.parent_id', $parent_id);
+        $this->db->group_by($this->table.".id");
+        if($limit != '' && is_numeric($limit)){
+            $this->db->limit($limit);
+        }
+        return $this->db->get()->result_array();
+    }
+    
+    public function get_all_lang($select = array(), $lang = 'en',$order="asc") {
+        $this->db->query('SET SESSION group_concat_max_len = 10000000');
+        $this->db->select($this->table .'.*');
+        if(in_array('title', $select)){
+            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.title ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'title');
+        }
+        if($select == null){
+            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.title ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'title');
+        }
+        $this->db->from($this->table);
+        $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id', 'left');
+        if($lang != ''){
+            $this->db->where($this->table_lang .'.language', $lang);
+        }
+        $this->db->where($this->table .'.is_deleted', 0);
+        $this->db->where($this->table .'.is_activated', 0);
+        $this->db->group_by($this->table .".id");
+        $this->db->order_by($this->table .".sort", $order);
+        return $this->db->get()->result_array();
+    }
 }

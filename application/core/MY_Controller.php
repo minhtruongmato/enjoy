@@ -285,6 +285,7 @@ class Public_Controller extends MY_Controller {
         $this->load->model('post_category_model');
         $this->load->model('post_model');
         $this->category_all = $this->product_category_model->get_all_lang(array(),'sc');
+        $this->category_all_post = $this->post_category_model->get_all_lang(array(),'sc');
 
         $this->langAbbreviation = $this->uri->segment(1) ? $this->uri->segment(1) : 'en';
         if($this->langAbbreviation == 'en' || $this->langAbbreviation == 'cn' || $this->langAbbreviation == 'sc' || $this->langAbbreviation == ''){
@@ -314,27 +315,27 @@ class Public_Controller extends MY_Controller {
         /**
          * PRODUCT CATEGORY MENU
          */
-        $this->data['vietnam'] = $this->product_category_model->get_by_id(FIXED_VIETNAM_CATEGORY_ID,array('title','content'),'sc');
+        $this->data['vietnam'] = $this->post_category_model->get_by_id(FIXED_VIETNAM_CATEGORY_ID,array('title','content'),'sc');
         $this->data['packages'] = $this->product_category_model->get_by_id(FIXED_TOUR_PACKAGES_CATEGORY_ID,array('title','content'),'sc');
         $this->data['backpack'] = $this->product_category_model->get_by_id(FIXED_BACKPACK_TRAVEL_CATEGORY_ID,array('title','content'),'sc');
         $this->data['packages_menu'] = $this->product_category_model->get_parent_id(FIXED_TOUR_PACKAGES_CATEGORY_ID,'sc',6);
         $this->data['backpack_menu'] = $this->product_category_model->get_parent_id(FIXED_BACKPACK_TRAVEL_CATEGORY_ID,'sc',6);
-        $this->data['vietnam_menu'] = $this->product_category_model->get_parent_id(FIXED_VIETNAM_CATEGORY_ID,'sc',8);
+        $this->data['vietnam_menu'] = $this->post_category_model->get_parent_id(FIXED_VIETNAM_CATEGORY_ID,'sc',8);
         $this->get_all_menu_param('packages_menu');
         $this->get_all_menu_param('backpack_menu');
         $this->get_all_product_with_category_id($this->category_all,FIXED_TOUR_PACKAGES_CATEGORY_ID,$this->id_array_packages);
         $this->get_all_product_with_category_id($this->category_all,FIXED_BACKPACK_TRAVEL_CATEGORY_ID,$this->id_array_backpack);
-        $this->data['top_packages'] = $this->product_model->get_all_product_category_id_array($this->id_array_packages,6,'sc','',1);
-        $this->data['top_backpack'] = $this->product_model->get_all_product_category_id_array($this->id_array_backpack,6,'sc','',1);
+        $this->data['top_packages'] = $this->product_model->get_all_product_category_id_array($this->id_array_packages,10,'sc','',1);
+        $this->data['top_backpack'] = $this->product_model->get_all_product_category_id_array($this->id_array_backpack,10,'sc','',1);
         /**
          * POST CATEGORY MENU
          */
-        $this->data['visa'] = $this->post_category_model->get_by_id(FIXED_VISA,array('title','content'),'sc');
-        $this->data['news'] = $this->post_category_model->get_by_id(FIXED_NEWS,array('title','content'),'sc');
-        $this->data['blog'] = $this->post_category_model->get_by_id(FIXED_BLOG,array('title','content'),'sc');
-        $this->data['post_visa'] = $this->post_model->get_by_post_category_id_lang(FIXED_VISA,array('title','description'),'sc',2);
-        $this->data['post_news'] = $this->post_model->get_by_post_category_id_lang(FIXED_NEWS,array('title','description'),'sc',2);
-        $this->data['post_blog'] = $this->post_model->get_by_post_category_id_lang(FIXED_BLOG,array('title','description'),'sc',2);
+        $this->data['visa_menu'] = $this->post_category_model->get_by_id(FIXED_VISA,array('title','content'),'sc');
+        $this->data['news_menu'] = $this->post_category_model->get_by_id(FIXED_NEWS,array('title','content'),'sc');
+        $this->data['blog_menu'] = $this->post_category_model->get_by_id(FIXED_BLOG,array('title','content'),'sc');
+        $this->get_all_menu_param_post('visa_menu');
+        $this->get_all_menu_param_post('news_menu');
+        $this->get_all_menu_param_post('blog_menu');
         $this->data['controller'] = $this;
     }
 
@@ -351,6 +352,20 @@ class Public_Controller extends MY_Controller {
                 $ids[] = $item['id'];
                 unset($categories[$key]);
                 $this->get_all_product_with_category_id($categories, $item['id'], $ids);
+            }
+        }
+    }
+    protected function get_all_menu_param_post($param){
+            $id_category = array($this->data[$param]['id']);
+            $this->get_all_post_with_category_id($this->category_all_post,$this->data[$param]['id'],$id_category);
+            $this->data[$param]['sub'] = $this->post_model->get_all_post_category_id_array($id_category,3,'sc');
+    }
+    protected function get_all_post_with_category_id($categories, $parent_id = 0, &$ids){
+        foreach ($categories as $key => $item){
+            if ($item['parent_id'] == $parent_id){
+                $ids[] = $item['id'];
+                unset($categories[$key]);
+                $this->get_all_post_with_category_id($categories, $item['id'], $ids);
             }
         }
     }

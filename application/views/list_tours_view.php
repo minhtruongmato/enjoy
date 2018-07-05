@@ -1,9 +1,32 @@
 <!-- Tours Stylesheet -->
 <link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>tours.min.css">
+<?php 
+$url_image = base_url('assets/img/horizontal.jpg');
+if ($detail['title'] == $this->lang->line('top-packages') || $detail['title'] == $this->lang->line('top-backpack')) {
+	if(!empty($product_array)){
+		$url_image = base_url("assets/upload/product/".$product_array[count($product_array)-1]['slug']."/".$product_array[count($product_array)-1]['image']);
+	}
+}else{
+	$url_image = base_url("assets/upload/product_category/".$detail['slug']."/".$detail['image']);
+}
+?>
+<section id="head-cover" class="container-fluid" style="background-image: url('<?php echo $url_image ?>')">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="big-title">
+			<?php if (!empty($detail['sub'])): ?>
+				<h4 class="subtitle">
+					<?php echo $detail['sub'][count($detail['sub'])-1]['title']; ?>
+				</h4>
+			<?php endif ?>
+			<h1 class="title">
+                <?php echo $detail['title'] ?>
+			</h1>
+		</div>
+	</div>
+</section>
 
-<section id="head-cover" class="container-fluid" style="background-image: url('<?php echo base_url("assets/upload/product_category/".$detail['slug']."/".$detail['image']) ?>')"></section>
-
-<section id="page">
+<section id="tours" class="container-fluid">
 	<div class="container">
 		<ol class="breadcrumb">
 			<li><a href="<?php echo base_url('') ?>"><?php echo $this->lang->line('home') ?></a></li>
@@ -14,74 +37,51 @@
 			<?php endif ?>
 			<li class="active"><?php echo $detail['title'];?></li>
 		</ol>
-
-		<div class="section-header">
-			<div class="row">
-				<div class="col-xs-12">
-					<h1><?php echo $detail['title'] ?></h1>
-					<p><?php echo $detail['content'] ?></p>
-				</div>
+		<?php if (!empty($detail['content'])): ?>
+			<div class="intro">
+				<h4><?php echo $detail['content'] ?></h4>
 			</div>
-		</div>
+		<?php endif ?>
 
-		<div id="tours" class="section">
+		<div id="list-tours" class="section" style="<?php echo (empty($detail['content']))?"padding-top: 30px":''; ?>">
 			<div class="row">
                 <?php for($i =0;$i<count($product_array);$i++): ?>
-					<div class="item col-md-4 col-6 col-xs-12">
-						<div class="mask">
-							<img src="<?php echo base_url('/assets/upload/product/'.$product_array[$i]['slug'].'/'.$product_array[$i]['image']) ?>" alt="image">
-							<div class="overview">
-								<div class="head">
-									<span class="sub-header"><?php echo $product_array[$i]['parent_title'] ?></span>
-									<h3><?php echo $product_array[$i]['title'] ?></h3>
-								</div>
-								<div class="body">
-									<h2 class="price"><?php echo number_format($product_array[$i]['price']) ?>vnd</h2>
-								</div>
+					<div class="item col-xs-12 col-sm-6 col-md-4">
+						<div class="wrapper">
+							<div class="mask">
+								<a href="<?php echo base_url('tours/'.$product_array[$i]['slug']) ?>">
+									<img src="<?php echo base_url('/assets/upload/product/'.$product_array[$i]['slug'].'/'.$product_array[$i]['image']) ?>" alt="image">
+								</a>
 							</div>
-							<div class="content">
-								<div class="head">
-									<a href="<?php echo base_url("danh-muc/".$product_array[$i]['parent_slug'])?>" class="sub-header" style="color:white"><?php echo $product_array[$i]['parent_title'] ?></a>
-									<h4><?php echo $product_array[$i]['title'] ?></h4>
-									<h3 class="price"><?php echo number_format($product_array[$i]['price']) ?>vnd</h3>
-								</div>
-								<div class="body">
-									<table class="table">
-										<tr>
-											<td><?php echo $this->lang->line('tour-detail-duration') ?></td>
-											<td><?php echo count(json_decode($product_array[$i]['dateimg'])) ?></td>
-										</tr>
-										<tr>
-											<td><?php echo $this->lang->line('tour-detail-start') ?></td>
-											<td>
-												<?php
-										            if($product_array[$i]['date'] != "0000-00-00 00:00:00" && $product_array[$i]['date'] != "1970-01-01 08:00:00"){
-										                $rmtime = str_replace(" 00:00:00","",$product_array[$i]['date']);
-										                $date= explode("-",$rmtime);
-										                if(count($date) == 3){
-										                    $product_array[$i]['date'] = $date[2]."/".$date[1]."/".$date[0];
-										                }else{
-										                    $product_array[$i]['date'] = "";
-										                }
-										            }else{
-										                $product_array[$i]['date'] = "";
-										            }
-										            echo $product_array[$i]['date'];
-												 ?>
-											</td>
-										</tr>
-									</table>
-								</div>
-								<div class="foot">
-									<a href="<?php echo base_url('tours/'.$product_array[$i]['slug']) ?>" class="btn btn-primary" role="button">
-                                        <?php echo $this->lang->line('explore') ?>
-									</a>
-								</div>
+							<div class="head">
+								<h4 class="post-subtitle"><?php echo $product_array[$i]['parent_title'] ?></h4>
+								<h2 class="post-title"><?php echo $product_array[$i]['title'] ?></h2>
+								<h3 class="price"><?php echo number_format($product_array[$i]['price']) ?>vnd</h3>
+							</div>
+							<div class="body">
+								<p class="post-description"><?php echo $product_array[$i]['description']; ?></p>
+							</div>
+							<div class="foot">
+								<ul class="list-inline">
+									<li>
+										<a href="<?php echo base_url('tours/'.$product_array[$i]['slug']) ?>" class="btn btn-primary" role="button">
+											Đặt Ngay
+										</a>
+									</li>
+									<li>
+										<a href="<?php echo base_url('tours/'.$product_array[$i]['slug']) ?>" class="btn btn-default" role="button">
+											Xem chi tiết
+										</a>
+									</li>
+								</ul>
 							</div>
 						</div>
 					</div>
                 <?php endfor; ?>
 			</div>
+	        <div class="col-md-6 col-md-offset-5 page">
+	            <?php echo (isset($page_links))? $page_links : ''; ?>
+	        </div>
 		</div>
 	</div>
 </section>

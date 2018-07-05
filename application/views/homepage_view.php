@@ -9,7 +9,6 @@
 		<ol class="carousel-indicators">
 			<?php if (!empty($banner)): ?>
 				<?php foreach ($banner as $key => $value): ?>
-
 					<li data-target="#homepage-slider" data-slide-to="0" class="<?php echo ($key == 0)?'active' : ''; ?>"></li>
 				<?php endforeach ?>
 			<?php endif ?>
@@ -21,10 +20,30 @@
 				<?php foreach ($banner as $key => $value): ?>
 					<div class="item <?php echo ($key == 0)?'active' : ''; ?>">
 						<div class="mask">
-							<img src="<?php echo base_url('/assets/upload/banner/'.$value['image']); ?>" alt="slide 2">
+							<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']); ?>" alt="slide 2">
 						</div>
 						<div class="carousel-caption">
-							<?php echo $value['title']; ?>
+							<div class="big-title">
+								<h4 class="subtitle">
+                                    <?php echo $value['parent_title']; ?>
+								</h4>
+								<h1 class="title">
+									<?php echo $value['title']; ?>
+								</h1>
+								<ul class="list-inline">
+									<li>
+										<a href="<?php echo base_url('tours/'.$value['slug']); ?>" class="btn btn-primary" role="button">
+											Đặt tour!
+										</a>
+									</li>
+									<li>
+										<a href="<?php echo base_url('tours/'.$value['slug']); ?>" class="btn btn-default" role="button">
+											Xem chi tiết
+										</a>
+									</li>
+								</ul>
+							</div>
+
 						</div>
 					</div>
 				<?php endforeach ?>
@@ -43,246 +62,377 @@
 		</a>
 	</div>
 </section>
-
-<section id="tour-intro" class="container-fluid section">
+<section id="packages" class="container-fluid section tour-intro">
 	<div class="container">
-		<div class="row">
-			<div class="left col-sm-6 col-xs-12">
-				<div class="head">
-					<h3>title</h3>
-				</div>
-				<div class="body">
-					<p>content</p>
-					<a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">
-						<?php echo $this->lang->line('see-all') ?>
-					</a>
-				</div>
-			</div>
-			<div class="right col-sm-6 col-xs-12">
-				<div class="row">
-					<div class="item col-sm-4 col-xs-12">
-						<div class="circle-border">
-							<i class="fa fa-plane" aria-hidden="true"></i>
+		<div class="row" style="margin-bottom: 30px;">
+			<div class="item">
+				<div class="inner cover">
+					<div class="mask col-md-6">
+						<div class="overlay">
+							<h1><?php echo $packages['product_category_title'];?></h1>
+							<p><?php echo $packages['product_category_content'];?></p>
 						</div>
-						<h4>Transport</h4>
+						<div class="foot">
+							<ul class="list-inline">
+								<li>
+									<a href="<?php echo base_url('danh-muc/top-10-vietnam-tours') ?>" class="btn btn-primary" role="button">
+										Top 10 Tour Pachages
+									</a>
+								</li>
+								<?php if (!empty($packages_menu)): ?>
+									<?php foreach ($packages_menu as $key => $value): ?>
+										<li>
+											<a href="<?php echo base_url('danh-muc/'.$value['slug']) ?>" class="btn btn-default" role="button">
+												<?php echo $value['title']; ?>
+											</a>
+										</li>
+										<?php if ($key == 0): ?>
+											<?php break; ?>
+										<?php endif ?>
+									<?php endforeach ?>
+								<?php endif ?>
+							</ul>
+						</div>
 					</div>
-					<div class="item col-sm-4 col-xs-12">
-						<div class="circle-border">
-							<i class="fa fa-compass" aria-hidden="true"></i>
-						</div>
-						<h4>Trip Guiding</h4>
-					</div>
-					<div class="item col-sm-4 col-xs-12">
-						<div class="circle-border">
-							<i class="fa fa-hotel" aria-hidden="true"></i>
-						</div>
-						<h4>Hotel Advisor</h4>
+					<div class="mask col-md-6">
+						<img src="<?php echo base_url('/assets/upload/product_category/'.$packages['slug'].'/'.$packages['image']); ?>" alt="packages cover image">
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-					<div class="item col-md-4 col-6 col-xs-12">
+			 <?php if (!empty($tour_packages)): ?>
+				<div class="item col-md-4">
+					<div class="inner cover">
 						<div class="mask">
-							<img src="http://thuthuat123.com/uploads/2018/02/01/nhung-hinh-anh-buon-40_090557.jpg" alt="image">
-							<div class="overview">
-								<div class="head">
-									<span class="sub-header">parent title</span>
-									<h3>title</h3>
-								</div>
-								<div class="body">
-									<h2 class="price">price</h2>
-								</div>
-							</div>
-							<div class="content">
-								<div class="head">
-									<span class="sub-header">parent title</span>
-									<h4><?php echo $value['title']; ?></h4>
-									<h3 class="price">price</h3>
-								</div>
-								<div class="body">
-									<table class="table">
-										<tr>
-											<td>Time</td>
-											<td>dateimg</td>
-										</tr>
-										<tr>
-											<td>Start</td>
-											<td>
-												date	
-											</td>
-										</tr>
-									</table>
-								</div>
-								<div class="foot">
-									<a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">
-		                                <?php echo $this->lang->line('explore') ?>
-									</a>
-								</div>
+							<img src="<?php echo base_url('/assets/upload/product/'.$tour_packages[0]['slug'].'/'.$tour_packages[0]['image']) ?>" alt="packages cover image">
+							<div class="overlay">
+								<h1><?php echo $packages['product_category_title'];?></h1>
+								<a href="<?php echo base_url('danh-muc/top-10-vietnam-tours') ?>" class="btn btn-primary" role="button">Xem tất cả Tours</a>
 							</div>
 						</div>
 					</div>
+				</div>
+			<?php endif; ?>
+		    <?php if (!empty($tour_packages) && count($tour_packages)>1): ?>
+		        <?php foreach ($tour_packages as $key => $value): ?>
+		        	<?php if ($key > 0): ?>
+			        	<?php if ($key == 3): ?>
+			        		</div><div class="row">
+			        	<?php endif ?>
+						<div class="item col-md-4">
+							<div class="inner">
+								<div class="wrapper">
+									<div class="mask">
+										<a href="<?php echo base_url('tours/' . $value['slug']) ?>">
+			                                <?php if($value['image']){ ?>
+												<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
+			                                <?php }else{ ?>
+												<img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="image">
+			                                <?php } ?>
+										</a>
+									</div>
+									<div class="head">
+										<h4 class="post-subtitle"><?php echo $value['parent_title']; ?></h4>
+										<h2 class="post-title"><?php echo $value['title']; ?></h2>
+										<h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
+									</div>
+									<div class="body">
+										<p class="post-description"><?php echo $value['description']; ?></p>
+									</div>
+									<div class="foot">
+										<ul class="list-inline">
+											<li>
+												<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-primary" role="button">
+													Đặt Ngay
+												</a>
+											</li>
+											<li>
+												<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-default" role="button">
+													Xem chi tiết
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+		        	<?php endif ?>
+		        <?php endforeach; ?>
+		    <?php endif; ?>
+	    </div>
+	</div>
+</section>
+
+<section id="backpack" class="container-fluid section tour-intro">
+	<div class="container">
+		<div class="row" style="margin-bottom: 30px;">
+			<div class="item">
+				<div class="inner cover">
+					<div class="mask col-md-6">
+						<img src="<?php echo base_url('/assets/upload/product_category/'.$backpack['slug'].'/'.$backpack['image']); ?>" alt="backpack cover image">
+					</div>
+					<div class="mask col-md-6">
+						<div class="overlay">
+							<h1><?php echo $backpack['product_category_title'];?></h1>
+							<p><?php echo $backpack['product_category_content'];?></p>
+						</div>
+						<div class="foot">
+							<ul class="list-inline">
+								<li>
+									<a href="<?php echo base_url('danh-muc/top-10-tours') ?>" class="btn btn-primary" role="button">
+										Top 10 Tour
+									</a>
+								</li>
+								<?php if (!empty($backpack_menu)): ?>
+									<?php foreach ($backpack_menu as $key => $value): ?>
+										<li>
+											<a href="<?php echo base_url('danh-muc/'.$value['slug']) ?>" class="btn btn-default" role="button">
+												<?php echo $value['title']; ?>
+											</a>
+										</li>
+										<?php if ($key == 0): ?>
+											<?php break; ?>
+										<?php endif ?>
+									<?php endforeach ?>
+								<?php endif ?>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			 <?php if (!empty($tour_backpack)): ?>
+				<div class="item col-md-4">
+					<div class="inner cover">
+						<div class="mask">
+							<img src="<?php echo base_url('/assets/upload/product/'.$tour_backpack[0]['slug'].'/'.$tour_backpack[0]['image']) ?>" alt="packages cover image">
+							<div class="overlay">
+								<h1><?php echo $backpack['product_category_title'];?></h1>
+								<a href="<?php echo base_url('danh-muc/top-10-tours') ?>" class="btn btn-primary" role="button">Xem tất cả Tours</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			<?php endif; ?>
+		    <?php if (!empty($tour_backpack) && count($tour_backpack)>1): ?>
+		        <?php foreach ($tour_backpack as $key => $value): ?>
+		        	<?php if ($key > 0): ?>
+			        	<?php if ($key == 3): ?>
+			        		</div><div class="row">
+			        	<?php endif ?>
+						<div class="item col-md-4">
+							<div class="inner">
+								<div class="wrapper">
+									<div class="mask">
+										<a href="<?php echo base_url('tours/' . $value['slug']) ?>">
+			                                <?php if($value['image']){ ?>
+												<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
+			                                <?php }else{ ?>
+												<img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="image">
+			                                <?php } ?>
+										</a>
+									</div>
+									<div class="head">
+										<h4 class="post-subtitle"><?php echo $value['parent_title']; ?></h4>
+										<h2 class="post-title"><?php echo $value['title']; ?></h2>
+										<h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
+									</div>
+									<div class="body">
+										<p class="post-description"><?php echo $value['description']; ?></p>
+									</div>
+									<div class="foot">
+										<ul class="list-inline">
+											<li>
+												<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-primary" role="button">
+													Đặt Ngay
+												</a>
+											</li>
+											<li>
+												<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-default" role="button">
+													Xem chi tiết
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+		        	<?php endif ?>
+		        <?php endforeach; ?>
+		    <?php endif; ?>
+	    </div>
+	</div>
+</section>
+<section id="gallery" class="section container-fluid">
+	<div class="container">
+		<div class="row">
+			<div class="grid">
+				<div class="grid-sizer"></div>
+				<div class="grid-item grid-item-width-2 grid-item-height-2 col-xs-12">
+					<div class="mask">
+						<img src="<?php echo base_url('assets/upload/post_category/'.$vietnam['image']); ?>" alt="blogs image">
+						<div class="overlay"></div>
+						<div class="content">
+							<h2 class="post-title">
+								<a href="<?php echo base_url('chuyen-muc/'.$vietnam['slug']) ?>" role="button">
+                                    <?php echo $vietnam['post_category_title'];?>
+								</a>
+							</h2>
+						</div>
+					</div>
+				</div>
+                <?php foreach ($vietnam_menu as $key => $value): ?>
+                    <?php $class = '';
+                    switch ($key){
+                        case 0:
+                            $class = 'grid-item-width-1 grid-item-height-2';
+                            break;
+                        case 1:
+                            $class = 'grid-item-width-1 grid-item-height-2';
+                            break;
+                        case 2:
+                            $class = 'grid-item-width-1 grid-item-height-2';
+                            break;
+                        case 3:
+                            $class = 'grid-item-height-1 grid-item-height-2';
+                            break;
+                        case 4:
+                            $class = 'grid-item-width-2 grid-item-height-2';
+                            break;
+                    }?>
+					<div class="grid-item <?php echo $class ?> col-xs-12">
+						<div class="mask">
+							<img src="<?php echo base_url('assets/upload/post_category/'.$value['image']); ?>" alt="blogs image">
+							<div class="overlay"></div>
+							<div class="content">
+								<?php if ($key == 3): ?>
+									<h2 class="post-title">
+	                                        <?php echo $value['title'];?>
+									</h2>
+									<p>
+										<?php echo $value['content'];?>
+									</p>
+									<h2 class="post-title">
+										<a href="<?php echo base_url('chuyen-muc/'.$value['slug']) ?>" role="button">
+	                                       Read Mores
+										</a>
+									</h2>
+								<?php else: ?>
+									<h2 class="post-title">
+										<a href="<?php echo base_url('chuyen-muc/'.$value['slug']) ?>" role="button">
+	                                        <?php echo $value['title'];?>
+										</a>
+									</h2>
+								<?php endif ?>
+							</div>
+						</div>
+					</div>
+					<?php if ($key == 4): ?>
+					<?php break; ?>
+					<?php endif ?>
+                <?php endforeach ?>
+			</div>
+
 		</div>
 	</div>
 </section>
 
-<section id="domestic" class="container-fluid section tour-intro">
+<section id="visa-news" class="container-fluid section tour-intro">
 	<div class="container">
 		<div class="row">
-				<div class="item col-sm-3 col-xs-12">
-					<div class="mask">
-						<img src="http://thuthuat123.com/uploads/2018/02/01/nhung-hinh-anh-buon-40_090557.jpg" alt="image">
-						<div class="top">
-							<span class="sub-header">parent title</span>
-							<span class="header">title</span>
-						</div>
-						<div class="bottom">
-							<a href="<?php echo base_url('') ?>" class="btn btn-default" role="button">
-								<?php echo $this->lang->line('explore') ?>
+			<div class="item">
+				<div class="inner cover">
+					<?php if (!empty($visa_menu['sub'])): ?>
+						<div class="mask col-md-6">
+							<img src="<?php echo base_url('/assets/upload/post/'.$visa[0]['image']); ?>" alt="packages cover image">
+							<a href="<?php echo base_url('chuyen-muc/'.$visa_menu['sub'][0]['parent_slug']) ?>" role="button">
+								<h4 class="post-subtitle"><?php echo $visa_menu['sub'][0]['parent_title']; ?></h4>
+							</a>
+							<a href="<?php echo base_url('bai-viet/'.$visa_menu['sub'][0]['slug']) ?>" role="button">
+								<h2 class="post-title"><?php echo $visa_menu['sub'][0]['title']; ?></h2>
 							</a>
 						</div>
-					</div>
-				</div>
-			<div class="item col-sm-3; ?> col-xs-12">
-				<div class="head">
-					<span style="font-size: 2em;"><?php echo $this->lang->line('domestic') ?></span>
-				</div>
-				<div class="body">
-					<div>content</div>
-				</div>
-				<div class="foot">
-					<a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">
-                        <?php echo $this->lang->line('see-all') ?>
-					</a>
+					<?php endif ?>
+					<?php if (!empty($news_menu['sub'])): ?>
+						<div class="mask col-md-6">
+							<img src="<?php echo base_url('/assets/upload/post/'.$news[0]['image']); ?>" alt="packages cover image">
+							<a href="<?php echo base_url('chuyen-muc/'.$news_menu['sub'][0]['parent_slug']) ?>" role="button">
+								<h4 class="post-subtitle"><?php echo $news_menu['sub'][0]['parent_title']; ?></h4>
+							</a>
+							<a href="<?php echo base_url('bai-viet/'.$news_menu['sub'][0]['slug']) ?>" role="button">
+								<h2 class="post-title"><?php echo $news_menu['sub'][0]['title']; ?></h2>
+							</a>
+						</div>
+					<?php endif ?>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
 
-<section id="international" class="container-fluid section tour-intro">
+
+<section id="blog" class="container-fluid section tour-intro">
 	<div class="container">
-		<div class="row">
-					<div class="item col-sm-3 col-xs-12">
-						<div class="mask">
-							<img src="http://thuthuat123.com/uploads/2018/02/01/nhung-hinh-anh-buon-40_090557.jpg" alt="image">
-							<div class="top">
-								<span class="sub-header">parent title</span>
-								<span class="header">title</span>
-							</div>
-							<div class="bottom">
-								<a href="<?php echo base_url('') ?>" class="btn btn-default" role="button">
-	                                <?php echo $this->lang->line('explore') ?>
-								</a>
-							</div>
+		<div class="row" style="margin-bottom: 30px;">
+			<div class="item">
+				<div class="inner cover">
+					<div class="mask col-md-6">
+						<div class="overlay">
+							<h1><?php echo $blog['post_category_title'];?></h1>
+							<p><?php echo $blog['post_category_content'];?></p>
+						</div>
+						<div class="foot">
+							<ul class="list-inline">
+								<?php if (!empty($blog_category)): ?>
+									<?php foreach ($blog_category as $key => $value): ?>
+										<li>
+											<a href="<?php echo base_url('chuyen-muc/'.$value['slug']) ?>" class="btn btn-default" role="button">
+												<?php echo $value['title']; ?>
+											</a>
+										</li>
+									<?php endforeach ?>
+								<?php endif ?>
+							</ul>
 						</div>
 					</div>
-
-			<div class="item col-sm-<?php echo (!empty($tour_international))?(12 - count($tour_international)*3): '12'; ?> col-xs-12">
-				<div class="head">
-					<span style="font-size: 2em;"><?php echo $this->lang->line('international') ?></span>
-				</div>
-				<div class="body">
-					<div>content</div>
-				</div>
-				<div class="foot">
-					<a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">
-                        <?php echo $this->lang->line('see-all') ?>
-					</a>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
-
-<section id="tour-request" class="container-fluid section" style="background-image: url('https://images.unsplash.com/photo-1523698157635-f68771d9e761?ixlib=rb-0.3.5&s=332933132e5bfedb487304d4978df2c6&auto=format&fit=crop&w=2690&q=80');">
-	<div class="overlay">
-		<div class="container">
-			<div class="head">
-				<h1><?php echo $this->lang->line('tour-request-title') ?></h1>
-			</div>
-			<div class="body">
-				<h4><?php echo $this->lang->line('tour-request-content') ?></h4>
-			</div>
-			<div class="foot">
-				<a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">
-                    <?php echo $this->lang->line('tour-request') ?>
-				</a>
-			</div>
-		</div>
-	</div>
-</section>
-
-<section id="services" class="section container">
-	<div class="section-header">
 		<div class="row">
-			<div class="col-sm-6 col-xs-12">
-				<h3>title</h3>
-				<p>content</p>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-			<div class="item col-sm-6 col-xs-12">
-				<div class="mask">
-					<img src="http://thuthuat123.com/uploads/2018/02/01/nhung-hinh-anh-buon-40_090557.jpg" alt="blogs image">
-					<div class="content">
-						<h4 class="sub-header">title</h4>
-						<a href="<?php echo base_url('') ?>">
-							<h2 class="header">title</h2>
-						</a>
-					</div>
-				</div>
-			</div>
-	</div>
-</section>
-
-<section id="visa" class="container-fluid section" style="background-image: url('<?php echo base_url('assets/upload/post_category/'.$visa['image']); ?>');">
-	<div class="overlay">
-		<div class="container">
-			<div class="head">
-				<h1>title</h1>
-			</div>
-			<div class="body">
-				<h4>content</h4>
-			</div>
-			<div class="foot">
-				<a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">
-                    <?php echo $this->lang->line('explore') ?>
-				</a>
-			</div>
-		</div>
-	</div>
-</section>
-
-<section id="blogs" class="section container">
-	<div class="section-header">
-		<div class="row">
-			<div class="col-sm-6 col-xs-12">
-				<h3>title</h3>
-				<p>content</p>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="item col-sm-4 col-xs-12">
-			<div class="inner">
-				<div class="mask">
-					<img src="http://thuthuat123.com/uploads/2018/02/01/nhung-hinh-anh-buon-40_090557.jpg" alt="blogs image">
-				</div>
-				<div class="head">
-					<h2>title</h2>
-				</div>
-				<div class="body">
-					<p>description</p>
-				</div>
-				<div class="foot">
-					<a href="<?php echo base_url('') ?>" class="btn btn-primary" role="button">
-                        <?php echo $this->lang->line('tour-request') ?>
-					</a>
-				</div>
-			</div>
-		</div>
+		    <?php if (!empty($blog_menu['sub'])): ?>
+		        <?php foreach ($blog_menu['sub'] as $key => $value): ?>
+						<div class="item col-md-4">
+							<div class="inner">
+								<div class="wrapper">
+									<div class="head">
+										<h4 class="post-subtitle"><?php echo $value['parent_title']; ?></h4>
+										<h2 class="post-title"><?php echo $value['title']; ?></h2>
+									</div>
+									<div class="body">
+										<p class="post-date"><?php echo date("d/m/Y",strtotime($value['created_at']));?></p>
+									</div>
+									<div class="mask">
+										<a href="<?php echo base_url('bai-viet/' . $value['slug']) ?>">
+			                                <?php if($value['image']){ ?>
+												<img src="<?php echo base_url('/assets/upload/post/'.$value['image']) ?>" alt="image">
+			                                <?php }else{ ?>
+												<img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="image">
+			                                <?php } ?>
+										</a>
+									<div class="foot">
+												<a href="<?php echo base_url('bai-viet/'.$value['slug']) ?>" class="btn btn-primary" role="button">
+													View Detail
+												</a>
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+		        <?php endforeach; ?>
+		    <?php endif; ?>
+	    </div>
 	</div>
 </section>
 

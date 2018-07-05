@@ -63,18 +63,18 @@ class Homepage extends Public_Controller {
     }
     public function index() {
         //banner
-        $this->data['banner'] = $this->banner_model->get_all_lang(array('title','description'),'sc');
+        $this->data['banner'] = $this->product_model->get_all_product(4,'sc','desc');
         //tour
-        $this->data['tour_packages'] = $this->product_model->get_all_product_category_id_array($this->id_array_packages,5,'sc');
-        $this->data['tour_backpack'] = $this->product_model->get_all_product_category_id_array($this->id_array_backpack,5,'sc');
-        $this->data['tour_vietnam'] = $this->data['vietnam_menu'] = $this->product_category_model->get_parent_id(FIXED_VIETNAM_CATEGORY_ID,'sc',5);
+        $this->data['tour_packages'] = $this->product_model->get_all_product_category_id_array($this->id_array_packages,6,'sc','',1);
+        $this->data['tour_backpack'] = $this->product_model->get_all_product_category_id_array($this->id_array_backpack,6,'sc','',1);
         //post
         $this->data['services'] = $this->post_category_model->get_by_slug('dich-vu','desc','sc');
         $this->data['post_services'] = $this->post_model->get_by_post_category_id_lang($this->data['services']['id'],array('title'),'sc',2);
-        $this->data['visa'] = $this->post_category_model->get_by_id(FIXED_VISA,array('title','content'),'sc');
-        $this->data['news'] = $this->post_category_model->get_by_id(FIXED_NEWS,array('title','content'),'sc');
+        $this->data['visa'] = $this->post_model->get_all_post(FIXED_VISA,1,'sc');
+        $this->data['news'] = $this->post_model->get_all_post(FIXED_NEWS,1,'sc');
         $this->data['blog'] = $this->post_category_model->get_by_id(FIXED_BLOG,array('title','content'),'sc');
         $this->data['post_blogs'] = $this->post_model->get_by_post_category_id_lang(FIXED_BLOG,array('title','description'),'sc',3);
+        $this->data['blog_category'] = $this->post_category_model->get_parent_id(FIXED_BLOG,'sc',3);
         $this->render('homepage_view');
     }
 

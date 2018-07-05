@@ -142,7 +142,7 @@ class Product_model extends MY_Model{
     }
     public function get_by_slug_lang($slug, $select = array(), $lang = 'en') {
         $this->db->query('SET SESSION group_concat_max_len = 10000000');
-        $this->db->select($this->table .'.*');
+        $this->db->select($this->table .'.*, product_category_lang.title as parent_title');
         if(in_array('title', $select)){
             $this->db->select('GROUP_CONCAT('. $this->table_lang .'.title ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'title');
         }
@@ -183,8 +183,10 @@ class Product_model extends MY_Model{
         }
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id', 'left');
+        $this->db->join('product_category_lang', 'product_category_lang.product_category_id = '. $this->table .'.product_category_id', 'left');
         if($lang != ''){
             $this->db->where($this->table_lang .'.language', $lang);
+            $this->db->where('product_category_lang.language', $lang);
         }
         $this->db->where($this->table .'.is_deleted', 0);
         $this->db->where($this->table .'.slug', $slug);
@@ -250,7 +252,7 @@ class Product_model extends MY_Model{
         return $result = $this->db->get()->row_array();
     }
 
-    public function get_all_product_category_id_array($product_category_id=array(),$limit=0,$lang='en',$order='desc',$top = 0) {
+    public function get_all_product_category_id_array($product_category_id=array(),$limit='',$lang='en',$order='desc',$top = 0,$start='') {
         $this->db->select('product.*, product_lang.title as title, product_lang.description as description, product_category_lang.title as parent_title, product_category.slug as parent_slug');
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id', 'left');
@@ -269,6 +271,43 @@ class Product_model extends MY_Model{
         }else{
             $this->db->order_by('product.id', $order);
         }
+        if($limit != '' && $start == ''){
+            $this->db->limit($limit);
+        }
+        if($limit != '' && $start != ''){
+            $this->db->limit($limit,$start);
+        }
+        $this->db->limit($limit);
+        return $this->db->get()->result_array();
+    }
+    public function get_all_product($limit=0,$lang='en',$order='desc') {
+        $this->db->select('product.*, product_lang.title as title, product_lang.description as description, product_category_lang.title as parent_title, product_category.slug as parent_slug');
+        $this->db->from($this->table);
+        $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id', 'left');
+        $this->db->join('product_category', 'product_category.id = product.product_category_id', 'left');
+        $this->db->join('product_category_lang', 'product_category.id = product_category_lang.product_category_id', 'left');
+        $this->db->where($this->table .'.is_deleted', 0);
+        $this->db->where($this->table_lang .'.language', $lang);
+        $this->db->where('product_category_lang.language', $lang);
+        $this->db->group_by('product.id');
+        $this->db->order_by('product.id', $order);
+        $this->db->limit($limit);
+        return $this->db->get()->result_array();
+    }
+
+    public function get_by_product_category_id_and_not_id($product_category_id=array(),$id,$limit=0,$order='asc',$lang='en') {
+        $this->db->select('product.*, product_category_lang.title as parent_title, product_category.slug as parent_slug, product_lang.title as title, product_lang.description as description, product_lang.content as content');
+        $this->db->from($this->table);
+        $this->db->join('product_lang', 'product_lang.product_id = product.id');
+        $this->db->join('product_category', 'product_category.id = product.product_category_id');
+        $this->db->join('product_category_lang', 'product_category_lang.product_category_id = product.product_category_id');
+        $this->db->where($this->table .'.is_deleted', 0);
+        $this->db->where_in('product.product_category_id', $product_category_id);
+        $this->db->where($this->table_lang .'.language', $lang);
+        $this->db->where('product_category_lang.language', $lang);
+        $this->db->where("product.id !=",$id);
+        $this->db->group_by('product.id');
+        $this->db->order_by('rand()');
         $this->db->limit($limit);
         return $this->db->get()->result_array();
     }

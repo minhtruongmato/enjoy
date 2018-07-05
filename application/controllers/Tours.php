@@ -17,7 +17,9 @@ class Tours extends Public_Controller {
         $this->load->library('image_lib');
         $this->load->helper('captcha');
         $this->load->helper('common');
+        $this->load->helper("url");
         $this->data['controller'] = $this->product_model->table;
+        $this->get_all = $this->product_category_model->get_all();
         $this->data['request_vehicles_icon'] = $this->request_vehicles_icon;
     }
 
@@ -34,7 +36,7 @@ class Tours extends Public_Controller {
         }
     }
     public function category($slug) {
-        if($this->product_category_model->find_rows(array('slug' => $slug,'is_deleted' => 0,'is_activated' => 0)) != 0){
+        if($this->product_category_model->find_rows(array('slug' => $slug,'is_deleted' => 0,'is_activated' => 0)) != 0 || $slug == 'top-10-vietnam-tours' || $slug == 'top-10-tours'){
             $detail = $this->product_category_model->get_by_slug_lang($slug,array(),$this->data['langs']);
             $this->get_multiple_products_with_category($this->product_category_model->get_all_lang(array(),$this->data['langs']),$detail['parent_id'],$sub);
             if(empty($sub)){
@@ -47,9 +49,40 @@ class Tours extends Public_Controller {
                 $ids = array();
             }
             array_unshift($ids,$detail['id']);
-            $product_array = $this->product_model->get_all_product_category_id_array($ids,'',$this->data['langs']);
+            $total_rows  = 0;
+            $check = $this->product_model->get_all_product_category_id_array($ids,'',$this->data['langs'],'',0);
+            if(!empty($check)){
+                $total_rows  = count($check);
+            }
+            $this->load->library('pagination');
+            $base_url = base_url('tours/category/'.$slug);
+            $uri_segment = 4;
+            $per_page = 9;
+            foreach ($this->pagination_config($base_url, $total_rows, $per_page, $uri_segment) as $key => $value) {
+                $config[$key] = $value;
+            }
+            $this->pagination->initialize($config);
+            $this->data['page_links'] = $this->pagination->create_links();
+            $this->data['page'] = ($this->uri->segment($uri_segment)) ? $this->uri->segment($uri_segment) : 0;
+            $product_array = $this->product_model->get_all_product_category_id_array($ids,$per_page,$this->data['langs'],'',0,$this->data['page']);
             $this->data['detail'] = $detail;
             $this->data['product_array'] = $product_array;
+            if($slug == 'top-10-vietnam-tours'){
+                $this->data['detail']['sub'][0] = array(
+                    'title' => $this->data['packages']['product_category_title'],
+                    'slug' => $this->data['packages']['slug'],
+                );
+                $this->data['detail']['title'] = $this->lang->line('top-packages');
+                $this->data['product_array'] = $this->data['top_packages'];
+            }
+            if($slug == 'top-10-tours'){
+                $this->data['detail']['sub'][0] = array(
+                    'title' => $this->data['backpack']['product_category_title'],
+                    'slug' => $this->data['backpack']['slug'],
+                );
+                $this->data['detail']['title'] = $this->lang->line('top-backpack');
+                $this->data['product_array'] = $this->data['top_backpack'];
+            }
             $this->render('list_tours_view');
         }else{
             $this->session->set_flashdata('message_error',MESSAGE_ISSET_ERROR);
@@ -119,6 +152,12 @@ class Tours extends Public_Controller {
                     $this->data['detail']['dateimg'] = json_decode($this->data['detail']['dateimg']);
             }
 
+            $this->get_multiple_products_with_category_id($this->get_all, $detail['product_category_id'], $ids);
+            if(empty($ids)){
+                $ids = array();
+            }
+            array_unshift($ids,$detail['product_category_id']);
+            $this->data['product_array'] =$this->product_model->get_by_product_category_id_and_not_id($ids,$detail['id'],4);
             /**
              * RATING SYSTEM
              * [$ip description]
