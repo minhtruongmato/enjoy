@@ -39,123 +39,48 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 
 <body>
+<section id="page">
+	<header>
+		<section id="top-nav" class="container-fluid">
+			<div class="container">
+				<div class="row">
+					<div class="left col-sm-6 col-xs-12">
+						<ul>
+							<li>
+								<a href="<?php echo base_url('about/')?>">
+									<i class="fa fa-user-circle-o" aria-hidden="true"></i> <?php echo $this->lang->line('about') ?>
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('contact/')?>">
+									<i class="fa fa-phone" aria-hidden="true"></i> <?php echo $this->lang->line('contact') ?>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="right col-sm-6 col-xs-12">
+						<ul>
+							<li>
+								<a href="mailto: info@diamondtour.vn" target="_blank">
+									<i class="fa fa-envelope-o" aria-hidden="true"></i> info@diamondtour.vn
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
 
-<section id="top-nav" class="container-fluid">
-	<div class="container">
-		<div class="row">
-			<div class="left col-sm-6 col-xs-12">
-				<ul>
-					<li>
-						<a href="<?php echo base_url('about/')?>">
-							<i class="fa fa-user-circle-o" aria-hidden="true"></i> <?php echo $this->lang->line('about') ?>
+		<nav id="main-nav" class="container-fluid">
+			<div class="container">
+				<div class="row">
+					<div class="left col-sm-3 col-xs-6">
+						<a href="<?php echo base_url('') ?>">
+							<img src="<?php echo site_url('assets/img/')?>logo-W.png" alt="logo Diamond">
 						</a>
-					</li>
-					<li>
-						<a href="<?php echo base_url('contact/')?>">
-							<i class="fa fa-phone" aria-hidden="true"></i> <?php echo $this->lang->line('contact') ?>
-						</a>
-					</li>
-				</ul>
-			</div>
-			<div class="right col-sm-6 col-xs-12">
-				<ul>
-					<li>
-						<a href="" class="change-language" data-language="vi">
-							<img src="<?php echo site_url('assets/img/vn@2x.png') ?>" alt="flag Vietnam"> Tiếng Việt</li>
-						</a>
-					<li>
-						<a href="" class="change-language" data-language="en">
-							<img src="<?php echo site_url('assets/img/gb@2x.png') ?>" alt="flag GB"> English</li>
-						</a>
-					</li>
-					<li> | </li>
-					<li>
-						<a href="" target="_blank">
-							<i class="fa fa-facebook-square" aria-hidden="true"></i>
-						</a>
-					</li>
-					<li>
-						<a href="" target="_blank">
-							<i class="fa fa-twitter-square" aria-hidden="true"></i>
-						</a>
-					</li>
-					<li>
-						<a href="" target="_blank">
-							<i class="fa fa-pinterest-square" aria-hidden="true"></i>
-						</a>
-					</li>
-					<li>
-						<a href="" target="_blank">
-							<i class="fa fa-linkedin-square" aria-hidden="true"></i>
-						</a>
-					</li>
-					<li>
-						<a href="" target="_blank">
-							<i class="fa fa-instagram" aria-hidden="true"></i>
-						</a>
-					</li>
-					<li>
-						<a href="" target="_blank">
-							<i class="fa fa-youtube-square" aria-hidden="true"></i>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</section>
-<section id="brand" class="container-fluid">
-	<div class="container">
-		<div class="row">
-			<div class="left col-sm-4 col-xs-6">
-				<a href="<?php echo base_url('') ?>">
-					<img src="<?php echo site_url('assets/img/')?>logo.png" alt="logo Diamond">
-				</a>
-			</div>
-			<div class="right col-sm-8 hidden-xs">
-				<ul>
-					<li class="outline">
-						<i class="fa fa-phone" aria-hidden="true"></i> Hotline <br>
-						<a href="tel:(024) 1234 5678">(024) 1234 5678</a>
-					</li>
-					<li class="outline">
-						<i class="fa fa-envelope-o" aria-hidden="true"></i> Email <br>
-						<a href="mailto:info@diamondtour.vn">info@diamondtour.vn</a>
-					</li>
-				</ul>
-			</div>
-			<div class="btn-expand visible-xs col-xs-6">
-				<button class="btn btn-primary" id="btn-expand">
-					<i class="fa fa-bars" aria-hidden="false"></i>
-				</button>
-			</div>
-		</div>
-	</div>
-</section>
-<script>
-    $("a[class='change-language']").click(function(){
-        $.ajax({
-            method: "GET",
-            url: "http://localhost/tourist1/homepage/change_language",
-            data: {
-                lang: $(this).data('language')
-            },
-            success: function(res){
-                if(res.message == 'changed'){
-                    window.location.reload();
-                }
-            },
-            error: function(){
-
-            }
-        });
-    });
-</script>
-
-<header class="header">
-	<div class="container-fluid">
-		<div class="container" id="main-nav">
-			<ul>
+					</div>
+					<div class="right col-sm-9 hidden-xs">
+						<ul>
 				<li class="menu-tabs">
 					<a href="<?php echo base_url('danh-muc/'.$packages['slug']) ?>">
 						<?php echo $packages['product_category_title']; ?><span class="caret"></span>
@@ -176,6 +101,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 													</div>
 													<a href="<?php echo base_url('tours/'.$val['slug']); ?>"><?php echo $val['title']; ?></a>
 												</li>
+												<?php if ($k == 5): ?>
+													<?php break;?>
+												<?php endif ?>
 											<?php endforeach ?>
 										</ul>
 									</li>
@@ -221,6 +149,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 													</div>
 													<a href="<?php echo base_url('tours/'.$val['slug']); ?>"><?php echo $val['title']; ?></a>
 												</li>
+												<?php if ($k == 5): ?>
+													<?php break;?>
+												<?php endif ?>
 											<?php endforeach ?>
 										</ul>
 									</li>
@@ -247,17 +178,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 				</li>
 				<li class="menu-tabs">
-					<a href="<?php echo base_url('danh-muc/'.$vietnam['slug']) ?>">
-						<?php echo $vietnam['product_category_title']; ?> <span class="caret"></span>
+					<a href="<?php echo base_url('chuyen-muc/'.$vietnam['slug']) ?>">
+						<?php echo $vietnam['post_category_title']; ?> <span class="caret"></span>
 					</a>
 					<div class="menu-tabs-expand menu-expand">
 						<div class="row">
 							<?php foreach ($vietnam_menu as $key => $value): ?>
 								<div class="left col-md-3 col-sm-4 col-xs-12">
 									<div class="mask">
-										<img src="<?php echo base_url('assets/upload/product_category/'.$value['slug'].'/'.$value['image']); ?>">
+										<img src="<?php echo base_url('assets/upload/post_category/'.$value['image']); ?>">
 									</div>
-									<a href="<?php echo base_url('danh-muc/'.$value['slug']); ?>" style="color: black"><?php echo $value['title']; ?></a>
+									<a href="<?php echo base_url('chuyen-muc/'.$value['slug']); ?>" style="color: black"><?php echo $value['title']; ?></a>
 								</div>
 							<?php endforeach ?>
 						</div>
@@ -265,16 +196,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</li>
 
 				<li class="menu-dropdown">
-					<a href="<?php echo base_url('chuyen-muc/'.$visa['slug']); ?>">
-						<?php echo $visa['post_category_title'];?>
-						<?php if (!empty($post_visa)): ?>
+					<a href="<?php echo base_url('chuyen-muc/'.$visa_menu['slug']); ?>">
+						<?php echo $visa_menu['post_category_title'];?>
+						<?php if (!empty($visa_menu['sub'])): ?>
 							<span class="caret">
 						<?php endif ?>
 					</a>
-					<?php if(!empty($post_visa)): ?>
+					<?php if(!empty($visa_menu['sub'])): ?>
 						<div class="menu-dropdown-expand menu-expand">
 							<div class="row">
-								<?php foreach ($post_visa as $key => $value): ?>
+								<?php foreach ($visa_menu['sub'] as $key => $value): ?>
 									<div class="media col-sm-6 col-xs-12">
 										<div class="media-left">
 											<div class="mask">
@@ -291,22 +222,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 											</a>
 										</div>
 									</div>
+									<?php if ($key == 1): ?>
+										<?php break; ?>
+									<?php endif ?>
 								<?php endforeach ?>
 							</div>
 						</div>
 					<?php endif; ?>
 				</li>
 				<li class="menu-dropdown">
-					<a href="<?php echo base_url('chuyen-muc/'.$news['slug']); ?>">
-						<?php echo $news['post_category_title'];?>
-						<?php if (!empty($post_news)): ?>
+					<a href="<?php echo base_url('chuyen-muc/'.$news_menu['slug']); ?>">
+						<?php echo $news_menu['post_category_title'];?>
+						<?php if (!empty($news_menu['sub'])): ?>
 							<span class="caret">
 						<?php endif ?>
 					</a>
-					<?php if(!empty($post_news)): ?>
+					<?php if(!empty($news_menu['sub'])): ?>
 						<div class="menu-dropdown-expand menu-expand">
 							<div class="row">
-								<?php foreach ($post_news as $key => $value): ?>
+								<?php foreach ($news_menu['sub'] as $key => $value): ?>
 									<div class="media col-sm-6 col-xs-12">
 										<div class="media-left">
 											<div class="mask">
@@ -323,22 +257,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 											</a>
 										</div>
 									</div>
+									<?php if ($key == 1): ?>
+										<?php break; ?>
+									<?php endif ?>
 								<?php endforeach ?>
 							</div>
 						</div>
 					<?php endif; ?>
 				</li>
 				<li class="menu-dropdown">
-					<a href="<?php echo base_url('chuyen-muc/'.$blog['slug']); ?>">
-						<?php echo $blog['post_category_title'];?> 
-						<?php if (!empty($post_blog)): ?>
+					<a href="<?php echo base_url('chuyen-muc/'.$blog_menu['slug']); ?>">
+						<?php echo $blog_menu['post_category_title'];?> 
+						<?php if (!empty($blog_menu['sub'])): ?>
 							<span class="caret">
 						<?php endif ?>
 					</a>
-					<?php if(!empty($post_blog)): ?>
+					<?php if(!empty($blog_menu['sub'])): ?>
 						<div class="menu-dropdown-expand menu-expand">
 							<div class="row">
-								<?php foreach ($post_blog as $key => $value): ?>
+								<?php foreach ($blog_menu['sub'] as $key => $value): ?>
 									<div class="media col-sm-6 col-xs-12">
 										<div class="media-left">
 											<div class="mask">
@@ -355,6 +292,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 											</a>
 										</div>
 									</div>
+									<?php if ($key == 1): ?>
+										<?php break; ?>
+									<?php endif ?>
 								<?php endforeach ?>
 							</div>
 						</div>
@@ -362,10 +302,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</li>
 				
 			</ul>
-		</div>
-	</div>
-
-</header>
-
-
-
+					</div>
+					<div class="btn-expand visible-xs col-xs-6">
+						<button class="btn btn-primary" id="btn-expand">
+							<i class="fa fa-bars" aria-hidden="false"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</header>
+</section>
