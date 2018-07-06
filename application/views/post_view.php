@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="foot">
                                     <a href="<?php echo base_url('bai-viet/' . $val['slug']) ?>" class="btn btn-primary" role="button">
-                                        Xem chi tiết
+                                        <?php echo $this->lang->line('view-detail');?>
                                     </a>
                                 </div>
                             </div>

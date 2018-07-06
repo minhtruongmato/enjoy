@@ -262,3 +262,7 @@ defined('MESSAGE_ERROR_DEACTIVE_CATEGORY') OR define('MESSAGE_ERROR_DEACTIVE_CAT
  *
  */
 defined('MESSAGE_CHECK_TOP_ERROR') OR define('MESSAGE_CHECK_TOP_ERROR', 'Hiện tại đã có đủ 10 tour thuộc TOP 10 TOUR của danh mục hiện tại. Vui lòng tắt 1 Tour thuộc danh mục hiên tại nếu bạn muốn thêm tour vào TOP 10!');
+
+
+defined('MESSAGE_CHANGE_LANGUAGE_SUCCESS') OR define('MESSAGE_CHANGE_LANGUAGE_SUCCESS', 'changed');
+defined('MESSAGE_CHANGE_LANGUAGE_FAIL') OR define('MESSAGE_CHANGE_LANGUAGE_FAIL', 'keep');

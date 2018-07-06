@@ -284,10 +284,8 @@ class Public_Controller extends MY_Controller {
         $this->load->model('product_category_model');
         $this->load->model('post_category_model');
         $this->load->model('post_model');
-        $this->category_all = $this->product_category_model->get_all_lang(array(),'sc');
-        $this->category_all_post = $this->post_category_model->get_all_lang(array(),'sc');
+        $this->langAbbreviation = $this->session->userdata('langAbbreviation') ? $this->session->userdata('langAbbreviation') : 'en';
 
-        $this->langAbbreviation = $this->uri->segment(1) ? $this->uri->segment(1) : 'en';
         if($this->langAbbreviation == 'en' || $this->langAbbreviation == 'cn' || $this->langAbbreviation == 'sc' || $this->langAbbreviation == ''){
             $this->session->set_userdata('langAbbreviation', $this->langAbbreviation);
         }
@@ -298,41 +296,42 @@ class Public_Controller extends MY_Controller {
             $this->session->set_userdata("langAbbreviation",'en');
             $this->lang->load('english_lang', 'english');
         }
-
-        if($this->session->userdata('langAbbreviation') == 'cn' || $this->session->userdata('langAbbreviation') == ''){
+        if($this->session->userdata('langAbbreviation') == 'cn'){
             $langName = 'chinese';
             $this->config->set_item('language', $langName); 
             $this->session->set_userdata("langAbbreviation",'cn');
             $this->lang->load('chinese_lang', 'chinese');
         }
-
-        if($this->session->userdata('langAbbreviation') == 'sc' || $this->session->userdata('langAbbreviation') == ''){
+        if($this->session->userdata('langAbbreviation') == 'sc'){
             $langName = 'simplified_chinese';
             $this->config->set_item('language', $langName); 
             $this->session->set_userdata("langAbbreviation",'sc');
-            $this->lang->load('simplified_chinese_lang.php', 'simplified_chinese');
+            $this->lang->load('simplified_chinese_lang', 'simplified_chinese');
         }
+
+        $this->category_all = $this->product_category_model->get_all_lang(array(),$this->session->userdata('langAbbreviation'));
+        $this->category_all_post = $this->post_category_model->get_all_lang(array(),$this->session->userdata('langAbbreviation'));
         /**
          * PRODUCT CATEGORY MENU
          */
-        $this->data['vietnam'] = $this->post_category_model->get_by_id(FIXED_VIETNAM_CATEGORY_ID,array('title','content'),'sc');
-        $this->data['packages'] = $this->product_category_model->get_by_id(FIXED_TOUR_PACKAGES_CATEGORY_ID,array('title','content'),'sc');
-        $this->data['backpack'] = $this->product_category_model->get_by_id(FIXED_BACKPACK_TRAVEL_CATEGORY_ID,array('title','content'),'sc');
-        $this->data['packages_menu'] = $this->product_category_model->get_parent_id(FIXED_TOUR_PACKAGES_CATEGORY_ID,'sc',6);
-        $this->data['backpack_menu'] = $this->product_category_model->get_parent_id(FIXED_BACKPACK_TRAVEL_CATEGORY_ID,'sc',6);
-        $this->data['vietnam_menu'] = $this->post_category_model->get_parent_id(FIXED_VIETNAM_CATEGORY_ID,'sc',8);
+        $this->data['vietnam'] = $this->post_category_model->get_by_id(FIXED_VIETNAM_CATEGORY_ID,array('title','content'),$this->session->userdata('langAbbreviation'));
+        $this->data['packages'] = $this->product_category_model->get_by_id(FIXED_TOUR_PACKAGES_CATEGORY_ID,array('title','content'),$this->session->userdata('langAbbreviation'));
+        $this->data['backpack'] = $this->product_category_model->get_by_id(FIXED_BACKPACK_TRAVEL_CATEGORY_ID,array('title','content'),$this->session->userdata('langAbbreviation'));
+        $this->data['packages_menu'] = $this->product_category_model->get_parent_id(FIXED_TOUR_PACKAGES_CATEGORY_ID,$this->session->userdata('langAbbreviation'),6);
+        $this->data['backpack_menu'] = $this->product_category_model->get_parent_id(FIXED_BACKPACK_TRAVEL_CATEGORY_ID,$this->session->userdata('langAbbreviation'),6);
+        $this->data['vietnam_menu'] = $this->post_category_model->get_parent_id(FIXED_VIETNAM_CATEGORY_ID,$this->session->userdata('langAbbreviation'),8);
         $this->get_all_menu_param('packages_menu');
         $this->get_all_menu_param('backpack_menu');
         $this->get_all_product_with_category_id($this->category_all,FIXED_TOUR_PACKAGES_CATEGORY_ID,$this->id_array_packages);
         $this->get_all_product_with_category_id($this->category_all,FIXED_BACKPACK_TRAVEL_CATEGORY_ID,$this->id_array_backpack);
-        $this->data['top_packages'] = $this->product_model->get_all_product_category_id_array($this->id_array_packages,10,'sc','',1);
-        $this->data['top_backpack'] = $this->product_model->get_all_product_category_id_array($this->id_array_backpack,10,'sc','',1);
+        $this->data['top_packages'] = $this->product_model->get_all_product_category_id_array($this->id_array_packages,10,$this->session->userdata('langAbbreviation'),'',1);
+        $this->data['top_backpack'] = $this->product_model->get_all_product_category_id_array($this->id_array_backpack,10,$this->session->userdata('langAbbreviation'),'',1);
         /**
          * POST CATEGORY MENU
          */
-        $this->data['visa_menu'] = $this->post_category_model->get_by_id(FIXED_VISA,array('title','content'),'sc');
-        $this->data['news_menu'] = $this->post_category_model->get_by_id(FIXED_NEWS,array('title','content'),'sc');
-        $this->data['blog_menu'] = $this->post_category_model->get_by_id(FIXED_BLOG,array('title','content'),'sc');
+        $this->data['visa_menu'] = $this->post_category_model->get_by_id(FIXED_VISA,array('title','content'),$this->session->userdata('langAbbreviation'));
+        $this->data['news_menu'] = $this->post_category_model->get_by_id(FIXED_NEWS,array('title','content'),$this->session->userdata('langAbbreviation'));
+        $this->data['blog_menu'] = $this->post_category_model->get_by_id(FIXED_BLOG,array('title','content'),$this->session->userdata('langAbbreviation'));
         $this->get_all_menu_param_post('visa_menu');
         $this->get_all_menu_param_post('news_menu');
         $this->get_all_menu_param_post('blog_menu');
@@ -343,7 +342,7 @@ class Public_Controller extends MY_Controller {
         foreach ($this->data[$param] as $key => $value) {
             $id_category = array($value['id']);
             $this->get_all_product_with_category_id($this->category_all,$value['id'],$id_category);
-            $this->data[$param][$key]['sub'] = $this->product_model->get_all_product_category_id_array($id_category,6,'sc');
+            $this->data[$param][$key]['sub'] = $this->product_model->get_all_product_category_id_array($id_category,6,$this->session->userdata('langAbbreviation'));
         }
     }
     protected function get_all_product_with_category_id($categories, $parent_id = 0, &$ids){
@@ -358,7 +357,7 @@ class Public_Controller extends MY_Controller {
     protected function get_all_menu_param_post($param){
             $id_category = array($this->data[$param]['id']);
             $this->get_all_post_with_category_id($this->category_all_post,$this->data[$param]['id'],$id_category);
-            $this->data[$param]['sub'] = $this->post_model->get_all_post_category_id_array($id_category,3,'sc');
+            $this->data[$param]['sub'] = $this->post_model->get_all_post_category_id_array($id_category,3,$this->session->userdata('langAbbreviation'));
     }
     protected function get_all_post_with_category_id($categories, $parent_id = 0, &$ids){
         foreach ($categories as $key => $item){

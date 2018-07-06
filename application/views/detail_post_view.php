@@ -37,7 +37,7 @@
                 <div class="section-header">
                     <div class="row">
                         <div class="left col-xs-8">
-                            <h1>Bài viết liên quan</h1>
+                            <h1><?php echo $this->lang->line('post-related'); ?></h1>
                         </div>
                         <div class="right col-xs-4">
                         </div>
@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="foot">
                                     <a href="<?php echo base_url('bai-viet/' . $value['slug']) ?>" class="btn btn-primary" role="button">
-                                        Xem chi tiết
+                                        <?php echo $this->lang->line('view-detail'); ?>
                                     </a>
                                 </div>
                             </div>

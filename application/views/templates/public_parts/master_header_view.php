@@ -12,6 +12,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet" href="<?php echo site_url('assets/lib/') ?>bootstrap/css/bootstrap.min.css">
+    <!-- Font Open Sans -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?php echo site_url('assets/lib/') ?>fontAwesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?php echo site_url('assets/css/') ?>client.css">
@@ -60,6 +62,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 					<div class="right col-sm-6 col-xs-12">
 						<ul>
+							<li>
+								<a href="" class="change-language" data-language="en">
+									<!-- <img src="<?php echo site_url('assets/img/gb@2x.png') ?>" alt="flag Vietnam">  -->
+									English	|	
+								</a>
+							</li>
+							<li>
+								<a href="" class="change-language" data-language="cn">
+									<!-- <img src="<?php echo site_url('assets/img/gb@2x.png') ?>" alt="flag GB">  -->
+									Chinese	|	
+								</a>
+							</li>
+							<li>
+								<a href="" class="change-language" data-language="sc">
+									<!-- <img src="<?php echo site_url('assets/img/gb@2x.png') ?>" alt="flag GB">  -->
+									Simplified Chinese
+								</a>
+							</li>
 							<li>
 								<a href="mailto: info@diamondtour.vn" target="_blank">
 									<i class="fa fa-envelope-o" aria-hidden="true"></i> info@diamondtour.vn
@@ -313,3 +333,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</nav>
 	</header>
 </section>
+
+<script>
+    $("a[class='change-language']").click(function(){
+        $.ajax({
+            method: "GET",
+            url: "<?php echo base_url('homepage/change_language'); ?>",
+            data: {
+                lang: $(this).data('language')
+            },
+            success: function(res){
+                if(res.message == 'changed'){
+                    window.location.reload();
+                }
+            },
+            error: function(){
+
+            }
+        });
+    });
+</script>
