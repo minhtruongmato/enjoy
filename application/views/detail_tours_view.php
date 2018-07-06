@@ -488,7 +488,7 @@
 				<div class="section-header">
 					<div class="row">
 						<div class="left col-xs-8">
-							<h1>Tour liên quan</h1>
+							<h1><?php echo $this->lang->line('related-tour'); ?></h1>
 						</div>
 						<div class="right col-xs-4">
 						</div>
@@ -515,12 +515,12 @@
 									<ul class="list-inline">
 										<li>
 											<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-primary" role="button">
-												Đặt Ngay
+												<?php echo $this->lang->line('book-now'); ?>
 											</a>
 										</li>
 										<li>
 											<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-default" role="button">
-												Xem chi tiết
+												<?php echo $this->lang->line('expore-now'); ?>
 											</a>
 										</li>
 									</ul>

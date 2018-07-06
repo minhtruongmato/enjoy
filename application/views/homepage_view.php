@@ -33,12 +33,12 @@
 								<ul class="list-inline">
 									<li>
 										<a href="<?php echo base_url('tours/'.$value['slug']); ?>" class="btn btn-primary" role="button">
-											Đặt tour!
+											<?php echo $this->lang->line('book-now');?>
 										</a>
 									</li>
 									<li>
 										<a href="<?php echo base_url('tours/'.$value['slug']); ?>" class="btn btn-default" role="button">
-											Xem chi tiết
+											<?php echo $this->lang->line('expore-now');?>
 										</a>
 									</li>
 								</ul>
@@ -76,7 +76,7 @@
 							<ul class="list-inline">
 								<li>
 									<a href="<?php echo base_url('danh-muc/top-10-vietnam-tours') ?>" class="btn btn-primary" role="button">
-										Top 10 Tour Pachages
+										<?php echo $this->lang->line('top-packages');?>
 									</a>
 								</li>
 								<?php if (!empty($packages_menu)): ?>
@@ -108,7 +108,7 @@
 							<img src="<?php echo base_url('/assets/upload/product/'.$tour_packages[0]['slug'].'/'.$tour_packages[0]['image']) ?>" alt="packages cover image">
 							<div class="overlay">
 								<h1><?php echo $packages['product_category_title'];?></h1>
-								<a href="<?php echo base_url('danh-muc/top-10-vietnam-tours') ?>" class="btn btn-primary" role="button">Xem tất cả Tours</a>
+								<a href="<?php echo base_url('danh-muc/top-10-vietnam-tours') ?>" class="btn btn-primary" role="button"><?php echo $this->lang->line('see-all-tour'); ?></a>
 							</div>
 						</div>
 					</div>
@@ -144,12 +144,12 @@
 										<ul class="list-inline">
 											<li>
 												<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-primary" role="button">
-													Đặt Ngay
+													<?php echo $this->lang->line("book-now"); ?>
 												</a>
 											</li>
 											<li>
 												<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-default" role="button">
-													Xem chi tiết
+													<?php echo $this->lang->line("expore-now"); ?>
 												</a>
 											</li>
 										</ul>
@@ -181,7 +181,7 @@
 							<ul class="list-inline">
 								<li>
 									<a href="<?php echo base_url('danh-muc/top-10-tours') ?>" class="btn btn-primary" role="button">
-										Top 10 Tour
+										<?php echo $this->lang->line('top-backpack');?>
 									</a>
 								</li>
 								<?php if (!empty($backpack_menu)): ?>
@@ -210,7 +210,7 @@
 							<img src="<?php echo base_url('/assets/upload/product/'.$tour_backpack[0]['slug'].'/'.$tour_backpack[0]['image']) ?>" alt="packages cover image">
 							<div class="overlay">
 								<h1><?php echo $backpack['product_category_title'];?></h1>
-								<a href="<?php echo base_url('danh-muc/top-10-tours') ?>" class="btn btn-primary" role="button">Xem tất cả Tours</a>
+								<a href="<?php echo base_url('danh-muc/top-10-tours') ?>" class="btn btn-primary" role="button"><?php echo $this->lang->line('see-all-tour'); ?></a>
 							</div>
 						</div>
 					</div>
@@ -246,12 +246,12 @@
 										<ul class="list-inline">
 											<li>
 												<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-primary" role="button">
-													Đặt Ngay
+													<?php echo $this->lang->line("book-now"); ?>
 												</a>
 											</li>
 											<li>
 												<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-default" role="button">
-													Xem chi tiết
+													<?php echo $this->lang->line("expore-now"); ?>
 												</a>
 											</li>
 										</ul>
@@ -316,7 +316,7 @@
 									</p>
 									<h2 class="post-title">
 										<a href="<?php echo base_url('chuyen-muc/'.$value['slug']) ?>" role="button">
-	                                       Read Mores
+	                                       <?php echo $this->lang->line("read-mores"); ?>
 										</a>
 									</h2>
 								<?php else: ?>
@@ -375,7 +375,7 @@
 
 <section id="blog" class="container-fluid section tour-intro">
 	<div class="container">
-		<div class="row" style="margin-bottom: 30px;">
+		<div class="row">
 			<div class="item">
 				<div class="inner cover">
 					<div class="mask col-md-6">
@@ -423,7 +423,7 @@
 										</a>
 									<div class="foot">
 												<a href="<?php echo base_url('bai-viet/'.$value['slug']) ?>" class="btn btn-primary" role="button">
-													View Detail
+													<?php echo $this->lang->line("view-detail"); ?>
 												</a>
 									</div>
 									</div>

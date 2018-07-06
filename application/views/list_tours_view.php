@@ -65,12 +65,12 @@ if ($detail['title'] == $this->lang->line('top-packages') || $detail['title'] ==
 								<ul class="list-inline">
 									<li>
 										<a href="<?php echo base_url('tours/'.$product_array[$i]['slug']) ?>" class="btn btn-primary" role="button">
-											Đặt Ngay
+											<?php echo $this->lang->line('book-now'); ?>
 										</a>
 									</li>
 									<li>
 										<a href="<?php echo base_url('tours/'.$product_array[$i]['slug']) ?>" class="btn btn-default" role="button">
-											Xem chi tiết
+											<?php echo $this->lang->line('expore-now'); ?>
 										</a>
 									</li>
 								</ul>
