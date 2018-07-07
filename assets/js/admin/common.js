@@ -180,7 +180,7 @@ function deactive(controller, id, question) {
                 if(response.status == 200){
                     switch(controller){
                         case 'post_category' :
-                            alert('Tắt danh mục thành công');
+                            alert(response.message);
                             break;
                         case 'banner' :
                             alert('Tắt banner thành công');

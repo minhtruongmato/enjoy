@@ -73,37 +73,34 @@
 		</div>
 		<div class="row">
 			<ul class="text-center list-inline">
-				<li>
-					<a href="<?php echo base_url('') ?>">Home</a>
-				</li>
 				<li >
-					<a href="<?php echo base_url('danh-muc/hanh-huong-trong-nuoc') ?>">
-						Tour Packages
+					<a href="<?php echo base_url('danh-muc/'.$packages['slug']); ?>">
+						<?php echo $packages['product_category_title']; ?>
 					</a>
 				</li>
 				<li>
-					<a href="<?php echo base_url('danh-muc/hanh-huong-nuoc-ngoai') ?>">
-						Backpack Travel
+					<a href="<?php echo base_url('danh-muc/'.$backpack['slug']); ?>">
+						<?php echo $backpack['product_category_title']; ?>
 					</a>
 				</li>
 				<li>
-					<a href="<?php echo base_url('chuyen-muc/tin-tuc'); ?>">
-						Vietnam Overview
+					<a href="<?php echo base_url('chuyen-muc/'.$vietnam['slug']); ?>">
+						<?php echo $vietnam['post_category_title']; ?>
 					</a>
 				</li>
 				<li>
-					<a href="<?php echo base_url('location'); ?>">
-						Visa
+					<a href="<?php echo base_url('chuyen-muc/'.$visa_menu['slug']); ?>">
+						<?php echo $visa_menu['post_category_title'];?>
 					</a>
 				</li>
 				<li>
-					<a href="<?php echo base_url('chuyen-muc/goc-chia-se'); ?>">
-						News
+					<a href="<?php echo base_url('chuyen-muc/'.$news_menu['slug']); ?>">
+						<?php echo $news_menu['post_category_title'];?>
 					</a>
 				</li>
 				<li>
-					<a href="<?php echo base_url('chuyen-muc/goc-chia-se'); ?>">
-						Blogs
+					<a href="<?php echo base_url('chuyen-muc/'.$blog_menu['slug']); ?>">
+						<?php echo $blog_menu['post_category_title'];?>
 					</a>
 				</li>
 			</ul>
