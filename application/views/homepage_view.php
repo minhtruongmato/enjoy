@@ -339,38 +339,50 @@
 	</div>
 </section>
 
-<section id="visa-news" class="container-fluid section tour-intro">
+
+<section id="gallery" class="section container-fluid">
 	<div class="container">
 		<div class="row">
-			<div class="item">
-				<div class="inner cover">
-					<?php if (!empty($visa_menu['sub'])): ?>
-						<div class="mask col-md-6">
-							<img src="<?php echo base_url('/assets/upload/post/'.$visa[0]['image']); ?>" alt="packages cover image">
-							<a href="<?php echo base_url('chuyen-muc/'.$visa_menu['sub'][0]['parent_slug']) ?>" role="button">
-								<h4 class="post-subtitle"><?php echo $visa_menu['sub'][0]['parent_title']; ?></h4>
-							</a>
-							<a href="<?php echo base_url('bai-viet/'.$visa_menu['sub'][0]['slug']) ?>" role="button">
-								<h2 class="post-title"><?php echo $visa_menu['sub'][0]['title']; ?></h2>
-							</a>
+			<div class="grid">
+				<div class="grid-sizer"></div>
+				<?php if (!empty($visa_menu['sub'])): ?>
+					<div class="grid-item grid-item-width-2 grid-item-height-2 col-xs-12">
+						<div class="mask">
+							<img src="<?php echo base_url('assets/upload/post/'.$visa[0]['image']); ?>" alt="visa image">
+							<div class="overlay"></div>
+							<div class="content">
+								<a href="<?php echo base_url('chuyen-muc/'.$visa_menu['sub'][0]['parent_slug']) ?>" role="button">
+									<h3 class="post-subtitle"><?php echo $visa_menu['sub'][0]['parent_title']; ?></h3>
+								</a>
+								<a href="<?php echo base_url('bai-viet/'.$visa_menu['sub'][0]['slug']) ?>" role="button">
+									<h1 class="post-title"><?php echo $visa_menu['sub'][0]['title']; ?></h1>
+								</a>
+							</div>
 						</div>
-					<?php endif ?>
-					<?php if (!empty($news_menu['sub'])): ?>
-						<div class="mask col-md-6">
-							<img src="<?php echo base_url('/assets/upload/post/'.$news[0]['image']); ?>" alt="packages cover image">
-							<a href="<?php echo base_url('chuyen-muc/'.$news_menu['sub'][0]['parent_slug']) ?>" role="button">
-								<h4 class="post-subtitle"><?php echo $news_menu['sub'][0]['parent_title']; ?></h4>
-							</a>
-							<a href="<?php echo base_url('bai-viet/'.$news_menu['sub'][0]['slug']) ?>" role="button">
-								<h2 class="post-title"><?php echo $news_menu['sub'][0]['title']; ?></h2>
-							</a>
+					</div>
+				<?php endif ?>
+				<?php if (!empty($news_menu['sub'])): ?>
+					<div class="grid-item grid-item-width-2 grid-item-height-2 col-xs-12">
+						<div class="mask">
+							<img src="<?php echo base_url('assets/upload/post/'.$news[0]['image']); ?>" alt="news image">
+							<div class="overlay"></div>
+							<div class="content">
+								<a href="<?php echo base_url('chuyen-muc/'.$news_menu['sub'][0]['parent_slug']) ?>" role="button">
+									<h3 class="post-subtitle"><?php echo $news_menu['sub'][0]['parent_title']; ?></h3>
+								</a>
+								<a href="<?php echo base_url('bai-viet/'.$news_menu['sub'][0]['slug']) ?>" role="button">
+									<h1 class="post-title"><?php echo $news_menu['sub'][0]['title']; ?></h1>
+								</a>
+							</div>
 						</div>
-					<?php endif ?>
-				</div>
+					</div>
+				<?php endif ?>
 			</div>
+
 		</div>
 	</div>
 </section>
+
 
 
 <section id="blog" class="container-fluid section tour-intro">

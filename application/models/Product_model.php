@@ -259,6 +259,7 @@ class Product_model extends MY_Model{
         $this->db->join('product_category', 'product_category.id = product.product_category_id', 'left');
         $this->db->join('product_category_lang', 'product_category.id = product_category_lang.product_category_id', 'left');
         $this->db->where($this->table .'.is_deleted', 0);
+        $this->db->where($this->table .'.is_activated', 0);
         $this->db->where_in('product.product_category_id', $product_category_id);
         $this->db->where($this->table_lang .'.language', $lang);
         $this->db->where('product_category_lang.language', $lang);
@@ -302,6 +303,7 @@ class Product_model extends MY_Model{
         $this->db->join('product_category', 'product_category.id = product.product_category_id');
         $this->db->join('product_category_lang', 'product_category_lang.product_category_id = product.product_category_id');
         $this->db->where($this->table .'.is_deleted', 0);
+        $this->db->where($this->table .'.is_activated', 0);
         $this->db->where_in('product.product_category_id', $product_category_id);
         $this->db->where($this->table_lang .'.language', $lang);
         $this->db->where('product_category_lang.language', $lang);

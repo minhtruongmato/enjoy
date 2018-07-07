@@ -118,6 +118,7 @@ class Post_model extends MY_Model{
         $this->db->join('post_category', 'post_category.id = post.post_category_id', 'left');
         $this->db->join('post_category_lang', 'post_category.id = post_category_lang.post_category_id', 'left');
         $this->db->where($this->table .'.is_deleted', 0);
+        $this->db->where($this->table .'.is_activated', 0);
         $this->db->where_in('post.post_category_id', $post_category_id);
         $this->db->where($this->table_lang .'.language', $lang);
         $this->db->where('post_category_lang.language', $lang);
@@ -158,5 +159,17 @@ class Post_model extends MY_Model{
         $this->db->where('post_lang.language', $lang);
 
         return $this->db->get()->row_array();
+    }
+
+    public function get_by_category_id($post_category_id = '',$activated=1) {
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->where('is_deleted', 0);
+        $this->db->where('post_category_id', $post_category_id);
+        if($activated == 0){
+            $this->db->where('post.is_activated', 0);
+        }
+        $this->db->group_by("id");
+        return $this->db->get()->result_array();
     }
 }

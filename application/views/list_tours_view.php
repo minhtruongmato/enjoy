@@ -1,5 +1,5 @@
 <!-- Tours Stylesheet -->
-<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>tours.min.css">
+<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>tours.css">
 <?php 
 $url_image = base_url('assets/img/horizontal.jpg');
 if ($detail['title'] == $this->lang->line('top-packages') || $detail['title'] == $this->lang->line('top-backpack')) {

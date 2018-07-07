@@ -100,7 +100,7 @@ class Tours extends Public_Controller {
     }
     public function detail($slug){
         $this->load->model('rating_model');
-        if($this->product_model->find_rows(array('slug' => $slug,'is_deleted' => 0)) != 0){
+        if($this->product_model->find_rows(array('slug' => $slug,'is_deleted' => 0,'is_activated' => 0)) != 0){
             $this->load->helper('form');
             $this->load->library('form_validation');
             $detail = $this->product_model->get_by_slug_lang($slug,array(),$this->data['lang']);
@@ -165,10 +165,10 @@ class Tours extends Public_Controller {
             $ip = $_SERVER['SERVER_ADDR'];
             // $this->session->unset_userdata($ip);
             $check_session = false;
-            if($this->session->has_userdata($ip)){
+            if($this->session->has_userdata($ip) && in_array($detail['id'], $this->session->userdata($ip))){
                 $check_session = true;
             }
-            $id = 91;
+            $id = $detail['id'];
             $rating = $this->product_model->rating_by_id($id);
             $count_rating = $rating['count_rating'];
             $total_rating = $rating['total_rating'];
@@ -207,10 +207,10 @@ class Tours extends Public_Controller {
     public function created_rating(){
         $isExits = false;
         $ip = $_SERVER['SERVER_ADDR'];
-        if($this->session->has_userdata($ip)){
+        if($this->session->has_userdata($ip) && in_array($this->input->get('product_id'), $this->session->userdata($ip))){
             $isExits = false;
         }else{
-            $this->session->set_userdata($ip, $ip);
+            $this->session->set_userdata($ip, array($ip, $this->input->get('product_id')));
             $this->session->mark_as_temp($ip, 3600);
             $product_id = $this->input->get('product_id');
             $new_rating = $this->input->get('rating');
