@@ -94,17 +94,8 @@ class Product_category_model extends MY_Model{
         $this->db->order_by($this->table .".sort", $order);
         return $this->db->get()->result_array();
     }
-    public function get_by_slug_lang($slug,$select = array('title','content'), $lang = 'en',$order="asc") {
-        $this->db->query('SET SESSION group_concat_max_len = 10000000');
-        $this->db->select($this->table .'.*');
-        if(in_array('title', $select)){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.title ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'title');
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.content ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'content');
-        }
-        if($select == null){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.title ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'title');
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.content ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'content');
-        }
+    public function get_by_slug_lang($slug, $lang = 'en',$order="asc") {
+        $this->db->select($this->table .'.*, product_category_lang.title as title, product_category_lang.content as content');
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id', 'left');
         if($lang != ''){

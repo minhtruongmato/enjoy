@@ -284,6 +284,7 @@ class Public_Controller extends MY_Controller {
         $this->load->model('product_category_model');
         $this->load->model('post_category_model');
         $this->load->model('post_model');
+        $this->load->model('localtion_model');
         $this->langAbbreviation = $this->session->userdata('langAbbreviation') ? $this->session->userdata('langAbbreviation') : 'en';
 
         if($this->langAbbreviation == 'en' || $this->langAbbreviation == 'cn' || $this->langAbbreviation == 'sc' || $this->langAbbreviation == ''){
@@ -315,11 +316,14 @@ class Public_Controller extends MY_Controller {
          * PRODUCT CATEGORY MENU
          */
         $this->data['vietnam'] = $this->post_category_model->get_by_id(FIXED_VIETNAM_CATEGORY_ID,array('title','content'),$this->session->userdata('langAbbreviation'));
+        $this->data['blog'] = $this->post_category_model->get_by_id(FIXED_BLOG,array('title','content'),$this->session->userdata('langAbbreviation'));
         $this->data['packages'] = $this->product_category_model->get_by_id(FIXED_TOUR_PACKAGES_CATEGORY_ID,array('title','content'),$this->session->userdata('langAbbreviation'));
         $this->data['backpack'] = $this->product_category_model->get_by_id(FIXED_BACKPACK_TRAVEL_CATEGORY_ID,array('title','content'),$this->session->userdata('langAbbreviation'));
         $this->data['packages_menu'] = $this->product_category_model->get_parent_id(FIXED_TOUR_PACKAGES_CATEGORY_ID,$this->session->userdata('langAbbreviation'),6);
         $this->data['backpack_menu'] = $this->product_category_model->get_parent_id(FIXED_BACKPACK_TRAVEL_CATEGORY_ID,$this->session->userdata('langAbbreviation'),6);
-        $this->data['vietnam_menu'] = $this->post_category_model->get_parent_id(FIXED_VIETNAM_CATEGORY_ID,$this->session->userdata('langAbbreviation'),8);
+        $this->data['vietnam_menu'] = $this->post_category_model->get_parent_id(FIXED_VIETNAM_CATEGORY_ID,$this->session->userdata('langAbbreviation'),5);
+        $this->data['blog_menu'] = $this->post_category_model->get_parent_id(FIXED_BLOG,$this->session->userdata('langAbbreviation'),2);
+        $this->data['location_menu'] = $this->localtion_model->get_all_with_pagination_search('desc', $this->session->userdata('langAbbreviation'), 3, 0);
         $this->get_all_menu_param('packages_menu');
         $this->get_all_menu_param('backpack_menu');
         $this->get_all_product_with_category_id($this->category_all,FIXED_TOUR_PACKAGES_CATEGORY_ID,$this->id_array_packages);
@@ -331,10 +335,10 @@ class Public_Controller extends MY_Controller {
          */
         $this->data['visa_menu'] = $this->post_category_model->get_by_id(FIXED_VISA,array('title','content'),$this->session->userdata('langAbbreviation'));
         $this->data['news_menu'] = $this->post_category_model->get_by_id(FIXED_NEWS,array('title','content'),$this->session->userdata('langAbbreviation'));
-        $this->data['blog_menu'] = $this->post_category_model->get_by_id(FIXED_BLOG,array('title','content'),$this->session->userdata('langAbbreviation'));
+        $this->data['blog_post'] = $this->post_category_model->get_by_id(FIXED_BLOG,array('title','content'),$this->session->userdata('langAbbreviation'));
         $this->get_all_menu_param_post('visa_menu');
         $this->get_all_menu_param_post('news_menu');
-        $this->get_all_menu_param_post('blog_menu');
+        $this->get_all_menu_param_post('blog_post');
         $this->data['controller'] = $this;
     }
 

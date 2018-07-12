@@ -2,16 +2,16 @@
 <link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>blogs.css">
 
 <section class="cover">
-    <div class="overlay"></div>
-    <img src="<?php echo base_url('/assets/upload/post/' . $detail['image']) ?>" alt="cover">
+	<img src="<?php echo site_url('assets/upload/localtion/' . $detail['slug'] .'/'. $detail['image']); ?>" alt="image blog">
 </section>
+
 <div id="detail-post" class="container-fluid">
     <div class="container">
         <div class="row">
             <div class="left col-xs-12">
                 <div class="big-title">
                     <h4 class="subtitle">
-                        <?php echo $detail['parent_title'] ?>
+                        <?php echo $detail['area'] ?>
                     </h4>
                     <h1 class="title">
                         <?php echo $detail['title'] ?>
@@ -30,7 +30,7 @@
                     </ul>
                 </div>
             </div>
-            <?php if (!empty($post_array)): ?>
+            <?php if (!empty($location_array)): ?>
                 <div class="right col-sm-12 col-xs-12">
                     <div class="section-header">
                         <div class="row">
@@ -40,23 +40,23 @@
                         </div>
                     </div>
                     <div class="row">
-                        <?php foreach ($post_array as $key => $value): ?>
+                        <?php foreach ($location_array as $key => $value): ?>
                                 <div class="item col-md-4 col-xs-12">
                                     <div class="wrapper">
                                         <div class="mask">
                                             <a href="<?php echo base_url('bai-viet/'.$value['slug']) ?>">
-                                                <img src="<?php echo base_url('assets/upload/post/' . $value['image']) ?>" alt="" style="width: 100%;">
+                                                <img src="<?php echo base_url('assets/upload/localtion/' . $value['slug'] .'/'. $value['image']) ?>" alt="" style="width: 100%;">
                                             </a>
                                         </div>
                                         <div class="head">
-                                            <h4 class="post-subtitle"><?php echo $value['parent_title']; ?></h4>
+                                            <h4 class="post-subtitle"><?php echo $value['area']; ?></h4>
                                             <h2 class="post-title"><?php echo $value['title'];?></h2>
                                         </div>
                                         <div class="body">
                                             <p class="post-description"><?php echo $value['content'];?></p>
                                         </div>
                                         <div class="foot">
-                                            <a href="<?php echo base_url('bai-viet/' . $value['slug']) ?>" class="btn btn-primary" role="button">
+                                            <a href="<?php echo base_url('diem-den/' . $value['slug']) ?>" class="btn btn-primary" role="button">
                                                 <?php echo $this->lang->line('view-detail'); ?>
                                             </a>
                                         </div>
@@ -70,5 +70,3 @@
 
     </div>
 </div>
-
-

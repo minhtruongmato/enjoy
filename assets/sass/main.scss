@@ -16,11 +16,11 @@ VARIABLES
 =======================================
  */
 
-$primary: #FFDB2F;
-$primary-hover: #FFE87B;
+$primary: #E54646;
+$primary-hover: #EE7C6B;
 
 $gray-dark: #333;
-$gray: #666;
+$gray: #fff;
 $gray-light: #999;
 
 /*
@@ -62,11 +62,8 @@ FONT EMBED
 =======================================
  */
 
-/* Embed font Roboto from Google Fonts Library */
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
-
 body{
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 /*
@@ -91,7 +88,7 @@ a{
     background-color: $primary;
     color: $gray;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
 
     &:hover{
         background-color: $primary-hover;
@@ -102,10 +99,11 @@ a{
 .btn-default{
     padding: 7px 30px;
 
-    background-color: #e7e7e7;
-    color: $gray;
+    background-color: rgba(0,0,0,0);
+    color: #e7e7e7;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
+    border: 2px solid white;
 
     &:hover{
         background-color: #fafafa;
@@ -161,11 +159,102 @@ HEADER STYLE
         z-index: 1011;
 
         width: 100%;
+        .container-fluid{
+            #nav-device{
+                width: 90%;
+                height: 100vh;
+                overflow-y: scroll;
 
+                background-color: $primary;
+
+                position: fixed;
+                top: 0;
+                left: -100%;
+
+                padding: 15px;
+
+                a{
+                    color: $gray;
+                }
+
+                > .head{
+                    padding: 10px 0;
+                    display: block;
+                }
+
+                > .body{
+                    display: block;
+
+                    margin-top: 30px;
+
+                    .panel-group{
+                        .panel-default{
+                            background-color: transparent;
+                            border-color: transparent;
+
+                            -webkit-box-shadow: none;
+                            -moz-box-shadow: none;
+                            box-shadow: none;
+
+                            .panel-heading{
+                                background-color: transparent;
+                                border-color: transparent;
+
+                                h4{
+                                    a{
+                                        color: $gray;
+                                        text-transform: uppercase;
+                                    }
+                                }
+                            }
+
+                            .panel-body{
+                                ul{
+                                    list-style: none;
+                                    padding-left: 15px;
+                                    color: $gray;
+
+                                    li{
+                                        h3{
+                                            color: $gray;
+                                            font-size: 1em;
+                                        }
+
+                                        a{
+                                            color: $gray;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                > .foot{
+                    padding-top: 30px;
+                    border-top: 1px solid #fff;
+
+                    ul{
+                        list-style: none;
+                        padding-left: 15px;
+
+                        li{
+                            color: $gray;
+
+                            h3{
+                                font-size: 1.25em;
+                                margin-top: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+       
         #top-nav{
-            border-bottom: 2px solid #fff;
-
             .container{
+                border-bottom: 2px solid #fff;
+
                 .row{
                     padding-top: 7px;
                     padding-bottom: 7px;
@@ -223,8 +312,28 @@ HEADER STYLE
                         img{
                             width: 120px;
                         }
+                        .mask{
+                            img{
+                                width: 100%;
+                            }
+                        }
+                        padding-right: 6px;
+                        .vietnam{
+                            .mask{
+                                height: 200px;
+                                a{
+                                    
+                                    height: 200px;
+                                }
+                            }
+                            a{   
+                                line-height: 1.5em;
+                                height: 3em;
+                                font-size: .875em;
+                            }
+                            padding-right: 6px;
+                        }
                     }
-
                     .right{
                         text-align: right;
 
@@ -240,52 +349,6 @@ HEADER STYLE
                                 display: inline-block;
 
                                 font-size: 1em;
-
-                                &:hover{
-
-                                    .menu-expand{
-                                        top: 100%;
-
-                                        display: block;
-
-                                        @include transition(500ms);
-
-                                        .row{
-                                            ul{
-                                                list-style: none;
-                                            }
-
-                                            .mask{
-                                                width: 100%;
-                                                height: 150px;
-                                                overflow: hidden;
-
-                                                margin-bottom: 15px;
-                                            }
-
-                                            a{
-                                                overflow: hidden;
-                                                text-overflow: ellipsis;
-                                                display: -webkit-box;
-                                                line-height: 1.5em;
-                                                height: 3em;
-                                                -webkit-line-clamp: 2;
-                                                -webkit-box-orient: vertical;
-                                                font-size: .875em;
-                                            }
-                                        }
-
-                                    }
-
-                                    a{
-                                        color: #fff;
-                                    }
-                                }
-
-                                > a{
-                                    color: #fff;
-                                    text-transform: uppercase;
-                                }
 
                                 .menu-expand{
                                     width: 100%;
@@ -307,11 +370,138 @@ HEADER STYLE
                                     @include transition(500ms);
                                 }
 
+                                &:hover{
+                                    .menu-expand{
+                                        top: 100%;
+
+                                        display: block;
+
+                                        @include transition(500ms);
+
+                                        .mask{
+                                            width: 100%;
+                                            height: 150px;
+                                            overflow: hidden;
+
+                                            margin-bottom: 15px;
+                                        }
+                                        a{
+                                            overflow: hidden;
+                                            text-overflow: ellipsis;
+                                            display: -webkit-box;
+                                            line-height: 1.5em;
+                                            height: 3em;
+                                            -webkit-line-clamp: 2;
+                                            -webkit-box-orient: vertical;
+                                            font-size: .875em;
+                                        }
+                                        .vietnam{
+                                            .mask{
+                                                height: 200px;
+                                                a{
+                                                    height: 200px;
+                                                }
+                                                
+                                            }
+                                            a{    
+                                                color: gray;
+                                                line-height: 1em;
+                                                height: 2em;
+                                                font-size: 1.3em;
+                                                text-align: center;
+                                                &:hover{
+                                                    color: black;
+                                                }
+                                            }
+                                            padding-right: 6px;
+                                        }
+                                    }
+
+                                    a{
+                                        color: #fff;
+                                    }
+                                }
+
+                                > a{
+                                    color: #fff;
+                                    text-transform: uppercase;
+                                }
+
                                 &.menu-tabs{
                                     .menu-tabs-expand{
-                                        .row{
-                                            min-height: 500px;
+                                        list-style: none;
+                                        padding-left: 0;
 
+                                        > li{
+                                            width: 25%;
+                                            text-align: left;
+
+                                            padding: 30px 15px;
+                                            font-size: 1.25em;
+
+                                            border-right: 1px solid #dadada;
+                                            border-bottom: 1px solid #dadada;
+
+                                            > a{
+                                                color: $gray;
+
+                                                overflow: hidden;
+                                                text-overflow: ellipsis;
+                                                display: -webkit-box;
+                                                line-height: 1.5em;
+                                                height: 1.5em;
+                                                -webkit-line-clamp: 1;
+                                                -webkit-box-orient: vertical;
+                                                font-size: .875em;
+                                            }
+
+                                            > ul{
+                                                position: absolute;
+                                                top: 0;
+                                                left: 25%;
+
+                                                width: 75%;
+                                                height: 100%;
+
+                                                padding: 15px;
+
+                                                display: none;
+
+                                                > li{
+                                                    display: inline-block;
+                                                    width: 30%;
+                                                    padding-left: 15px;
+                                                    padding-right: 15px;
+
+                                                    .mask{
+                                                        width: 100%;
+                                                        height: 160px;
+
+                                                        margin-bottom: 15px;
+                                                    }
+                                                }
+                                            }
+
+                                            &:hover{
+                                                background-color: #eaeaea;
+
+                                                a{
+                                                    color: $gray;
+
+                                                    &:hover{
+                                                        color: $gray;
+                                                    }
+                                                }
+
+                                                > ul{
+                                                    display: block;
+                                                }
+                                            }
+                                        }
+
+                                        .row{
+                                            min-height: 465px;
+                                            margin-right: -5px;
                                             .left{
                                                 > ul{
                                                     list-style: none;
@@ -323,16 +513,18 @@ HEADER STYLE
                                                     border-right: 1px solid #dadada;
 
                                                     > li{
-                                                        padding: 10px 15px;
-                                                        font-size: 1em;
-
+                                                        padding: 15px 8px;
+                                                        font-size: 1.25em;
                                                         border-bottom: 1px solid #dadada;
-
+                                                        &.menu-href{
+                                                            cursor: pointer;
+                                                        }
                                                         &:hover{
                                                             background-color: #eaeaea;
 
                                                             > ul{
                                                                 display: block;
+                                                                padding-left: 5px;
                                                             }
                                                         }
 
@@ -341,15 +533,16 @@ HEADER STYLE
                                                             top: 0;
                                                             left: 100%;
 
-                                                            width: 330%;
+                                                            width: 333.3%;
 
                                                             display: none;
 
                                                             > li{
                                                                 width: 32%;
-                                                                padding-left: 15px;
-                                                                padding-right: 15px;
-
+                                                                padding-left: 10px;
+                                                                padding-right: 10px;
+                                                                padding-top: 10px;
+                                                                
                                                                 font-size: 1.125em;
 
                                                                 display: inline-block;
@@ -385,107 +578,47 @@ HEADER STYLE
                                         }
                                     }
                                 }
-
-                                &.menu-list{
-                                    .menu-list-expand{
-                                        .row{
-                                            margin-left: 0;
-                                            margin-right: 0;
-
-                                            .item{
-                                                padding: 15px;
-
-                                                .head{
-
-                                                }
-
-                                                .body{
-                                                    ul{
-                                                        padding-left: 0;
-
-                                                        li{
-                                                            .mask{
-                                                                width: 100%;
-                                                                height: 200px;
-                                                                overflow: hidden;
-
-                                                                position: relative;
-
-                                                                a{
-                                                                    width: 100%;
-                                                                    height: 30%;
-
-                                                                    padding: 15px;
-
-                                                                    font-size: 1.5em;
-                                                                    color: #fff;
-
-                                                                    position: absolute;
-                                                                    bottom: 0;
-                                                                    left: 0;
-
-                                                                    background: rgba(0,0,0,0.5);
-                                                                    background: -moz-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 100%);
-                                                                    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(0,0,0,0.75)), color-stop(100%, rgba(0,0,0,0.0)));
-                                                                    background: -webkit-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
-                                                                    background: -o-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
-                                                                    background: -ms-linear-gradient(-45deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
-                                                                    background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 100%);
-                                                                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#77c564', endColorstr='#55b73d', GradientType=1 );
-
-                                                                    &:hover{
-                                                                        color: #fff;
-                                                                    }
-                                                                }
-                                                            }
-
-                                                            a{
-                                                                color: $gray-light;
-                                                                font-size: 1.25em;
-
-                                                                &:hover{
-                                                                    color: $gray;
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-
                                 &.menu-dropdown{
-
                                     .menu-dropdown-expand{
                                         padding: 15px;
 
                                         .row{
                                             .media{
+                                                &:first-child{
+                                                    margin-top: 15px;
+                                                }
 
                                                 .media-left{
                                                     width: 50%;
 
                                                     .mask{
                                                         width: 100%;
-                                                        height: 230px;
+                                                        height: 200px;
                                                         overflow: hidden;
                                                     }
                                                 }
 
                                                 .media-body{
+
                                                     a{
                                                         color: $primary;
 
                                                         &:hover{
-                                                            color: $gray;
+                                                            color: $primary-hover;
+                                                        }
+
+                                                        h3{
+                                                            text-align: left;
+                                                            font-weight: 700;
                                                         }
                                                     }
 
                                                     p{
+                                                        text-align: left;
                                                         color: $gray-light;
 
                                                         font-size: 1em;
+                                                        font-weight: 400;
 
                                                         overflow: hidden;
                                                         text-overflow: ellipsis;
@@ -508,13 +641,108 @@ HEADER STYLE
                                         }
 
                                     }
+                                }
 
-                                    &:hover{
-                                        .menu-dropdown-expand{
-                                            display: block;
+                            }
+                        }
+                    }
+                }
+
+                .btn-expand{
+                    text-align: center;
+
+                    .btn-primary{
+                        padding: 10px 30px;
+                        margin-top: 25px;
+                        margin-left: 35px;
+                    }
+                }
+            }
+
+            #nav-device{
+                width: 90%;
+                height: 100vh;
+                overflow-y: scroll;
+
+                background-color: $primary;
+
+                position: fixed;
+                top: 0;
+                left: -100%;
+
+                padding: 15px;
+
+                a{
+                    color: $gray;
+                }
+
+                > .head{
+                    padding: 10px 0;
+                    display: block;
+                }
+
+                > .body{
+                    display: block;
+
+                    margin-top: 30px;
+
+                    .panel-group{
+                        .panel-default{
+                            background-color: transparent;
+                            border-color: transparent;
+
+                            -webkit-box-shadow: none;
+                            -moz-box-shadow: none;
+                            box-shadow: none;
+
+                            .panel-heading{
+                                background-color: transparent;
+                                border-color: transparent;
+
+                                h4{
+                                    a{
+                                        color: $gray;
+                                        text-transform: uppercase;
+                                    }
+                                }
+                            }
+
+                            .panel-body{
+                                ul{
+                                    list-style: none;
+                                    padding-left: 15px;
+                                    color: $gray;
+
+                                    li{
+                                        h3{
+                                            color: $gray;
+                                            font-size: 1em;
+                                        }
+
+                                        a{
+                                            color: $gray;
                                         }
                                     }
                                 }
+                            }
+                        }
+                    }
+                }
+
+                > .foot{
+                    padding-top: 30px;
+                    border-top: 1px solid #fff;
+
+                    ul{
+                        list-style: none;
+                        padding-left: 15px;
+
+                        li{
+                            color: $gray;
+
+                            h3{
+                                font-size: 1.25em;
+                                margin-top: 5px;
                             }
                         }
                     }
@@ -534,7 +762,7 @@ section.main-content{
 
             padding: 7px 25px;
 
-            border-radius: 4px;
+            border-radius: 6px;
 
             background-color: $primary;
             color: $gray;
@@ -552,7 +780,7 @@ section.main-content{
             display: -webkit-box;
             line-height: 1.168;
             max-width: 40%;
-            height: 3.3em;
+            height: 3.6em;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
     
@@ -650,25 +878,30 @@ section.main-content{
 
 footer.footer{
     color: $gray;
+    background-color: $primary;
+    
+    background-image: url("../img/bg-footer.png");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 100%;
 
     padding-top: 30px;
-    padding-bottom: 100px;
+    padding-bottom: 470px;
 
     border-top: 2px solid $primary;
 
     a{
-        color: $gray-light;
+        color: $gray;
 
         &:hover{
-            color: $primary;
+            color: #fff;
         }
     }
 
     .container{
         .row{
             padding-bottom: 30px;
-
-            border-bottom: 1px solid $gray-light;
+            border-bottom: 1px solid $gray;
 
             .item{
 
@@ -680,14 +913,14 @@ footer.footer{
                 }
 
                 .info{
-                    margin-bottom: 15px;
+                    margin-bottom: 5px;
 
                     label{
                         font-size: 1.125em;
                         font-weight: 400;
 
                         i{
-                            color: $primary;
+                            color: $gray;
                         }
                     }
 
@@ -695,7 +928,7 @@ footer.footer{
                         font-size: 1.5em;
                         font-weight: 700;
 
-                        margin-top: 15px;
+                        margin-top: 5px;
                     }
                 }
             }
@@ -729,6 +962,9 @@ footer.footer{
 }
 
 @media (max-width: 768px){
+    footer.footer{
+        padding-bottom: 250px;
+    }
     #top-nav{
         .container{
             .row{
@@ -744,6 +980,7 @@ footer.footer{
                 }
 
                 .right{
+                    display: none;
                     text-align: left;
                 }
             }
@@ -983,6 +1220,10 @@ footer.footer{
             }
         }
 
-
+    }
+}
+@media (max-width: 480px){
+    footer.footer{
+        padding-bottom: 150px;
     }
 }

@@ -140,47 +140,9 @@ class Product_model extends MY_Model{
         $this->db->limit(1);
         return $this->db->get()->row_array();
     }
-    public function get_by_slug_lang($slug, $select = array(), $lang = 'en') {
-        $this->db->query('SET SESSION group_concat_max_len = 10000000');
-        $this->db->select($this->table .'.*, product_category_lang.title as parent_title');
-        if(in_array('title', $select)){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.title ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'title');
-        }
-        if(in_array('description', $select)){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.description ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'description');
-        }
-        if(in_array('content', $select)){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.content ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'content');
-        }
-        if(in_array('metakeywords', $select)){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.metakeywords ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'metakeywords');
-        }
-        if(in_array('metadescription', $select)){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.metadescription ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'metadescription');
-        }
-        if(in_array('datetitle', $select)){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.datetitle ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'datetitle');
-        }
-        if(in_array('datecontent', $select)){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.datecontent ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'datecontent');
-        }
-        if(in_array('tripnodes', $select)){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.tripnodes ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'tripnodes');
-        }
-        if(in_array('detailsprice', $select)){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.detailsprice ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'detailsprice');
-        }
-        if($select == null){
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.title ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'title');
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.description ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'description');
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.content ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'content');
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.metakeywords ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'metakeywords');
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.metadescription ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'metadescription');
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.datetitle ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'datetitle');
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.datecontent ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'datecontent');
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.tripnodes ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'tripnodes');
-            $this->db->select('GROUP_CONCAT('. $this->table_lang .'.detailsprice ORDER BY '. $this->table_lang .'.id separator \' ||| \') as '. 'detailsprice');
-        }
+    public function get_by_slug_lang($slug, $lang = 'en') {
+        $this->db->select($this->table .'.*, product_lang.title as title, product_lang.content as content, product_lang.description as description, product_lang.metakeywords as metakeywords, product_lang.metadescription as metadescription, product_lang.datetitle as datetitle, product_lang.datecontent as datecontent, product_lang.tripnodes as tripnodes, product_lang.detailsprice as detailsprice, product_category_lang.title as parent_title');
+        
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id', 'left');
         $this->db->join('product_category_lang', 'product_category_lang.product_category_id = '. $this->table .'.product_category_id', 'left');

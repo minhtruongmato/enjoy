@@ -61,6 +61,7 @@
                                 padding-left: 15px;
                                 padding-right: 15px;
 
+
                                 h4.post-subtitle{
                                     padding: 7px 15px;
                                     background-color: $primary;
@@ -77,8 +78,7 @@
 
                                 h2.post-title{
                                     font-weight: 700;
-
-                                    margin-top: 0;
+                                    margin-top: 0px;
                                 }
                             }
 
@@ -92,6 +92,8 @@
                             .foot{
                                 padding-left: 15px;
                                 padding-right: 15px;
+
+                                border-top: 1px solid #eee;
                             }
                         }
 
@@ -111,6 +113,33 @@
 
             .right{
 
+            }
+            .page{
+                text-align: center;
+                padding-top: 40px;
+                strong{
+                    border: 1px solid #E54646;
+                    border-radius: 3px;
+                    margin-right: 3px;
+                    padding: 5px 11px;
+                    color: #fff;
+                    cursor: pointer;
+                    background-color: #E54646;
+                    border-color: #E54646;
+                }
+                a{
+                    color: #23527c;
+                    background-color: #fff;
+                    border-color: #fff;
+                    border-radius: 3px;
+                    margin-right: 3px;
+                    padding: 5px 11px;
+                    cursor: pointer;
+                    &:hover{
+                        padding: 6px 11px;
+                        background: #ddd;
+                    }
+                }
             }
 
         }
@@ -145,7 +174,7 @@
                     }
 
                     p{
-                        color: $gray;
+                        color: black;
                         font-size: 1em;
                     }
                 }
@@ -246,5 +275,21 @@
         }
 
 
+    }
+}
+.facebook{
+    a{
+        color:#777;
+    }
+    .fa-facebook-f{
+      color:#777;
+    }
+    &:hover{
+        a{
+            color:#337ab7;
+        }
+        .fa-facebook-f{
+          color:#337ab7;
+        }
     }
 }

@@ -63,14 +63,14 @@ class Post extends Public_Controller {
 
     public function detail($slug){
         if($this->post_model->find_rows(array('slug' => $slug,'is_deleted' => 0,'is_activated' => 0)) != 0){
-            $this->data['detail'] = $this->post_model->fetch_row_by_slug($slug);
+            $this->data['detail'] = $this->post_model->fetch_row_by_slug($slug,$this->data['lang']);
             $get_all = $this->post_category_model->get_all_lang(array('title','content'),$this->data['lang']);
             $this->get_multiple_posts_with_category_id($get_all, $this->data['detail']['post_category_id'], $id_array);
             if(empty($id_array)){
                 $id_array = array();
             }
             array_unshift($id_array,$this->data['detail']['post_category_id']);
-            $this->data['post_array'] =$this->post_model->get_by_post_category_id_and_not_id($id_array,$this->data['detail']['id'],4,$this->data['lang']);
+            $this->data['post_array'] =$this->post_model->get_by_post_category_id_and_not_id($id_array,$this->data['detail']['id'],4,'',$this->data['lang']);
             $this->render('detail_post_view');
         }else{
             $this->session->set_flashdata('message_error',MESSAGE_ISSET_ERROR);

@@ -21,6 +21,7 @@ $lang['mice'] = 'Mice';
 $lang['services'] = 'Services';
 $lang['visa'] = 'Visa';
 $lang['blogs'] = 'Blogs';
+$lang['location'] = 'Location';
 
 //Sub Nav
 $lang['pilgrimage'] = 'Pilgrimage';
@@ -47,6 +48,7 @@ $lang['see-all'] = 'See all';
 $lang['explore'] = 'Expore Now';
 $lang['tour-request'] = 'Send Us your Request';
 $lang['booking'] = 'Book Now!';
+$lang['registef'] = 'Registef Now!';
 
 //Tour Request
 
@@ -111,10 +113,23 @@ $lang['form-adults'] = 'Adults';
 $lang['form-children-u11'] = 'Children (2-11 years old)';
 $lang['form-children-u2'] = 'Children (Under 2 years old)';
 $lang['form-message'] = 'Message';
+$lang['insert-code'] = 'Enter the code';
+$lang['evaluate'] = 'Evaluate';
 
 
 
+//Contact
 
+$lang['contact-name'] = 'Full name';
+$lang['contact-mail'] = 'Email';
+$lang['contact-phone'] = 'Phone number';
+$lang['contact-country'] = 'Country of residence';
+$lang['contact-message'] = 'Message';
+$lang['contact-send'] = 'Send';
+
+
+
+//All
 $lang['top-packages'] = 'Top 10 Vietnam Tours';
 $lang['top-backpack'] = 'Top 10 Tours';
 $lang['see-all-tour'] = 'See all tours';
@@ -125,6 +140,9 @@ $lang['view-detail'] = 'View Detail';
 $lang['read-mores'] = 'Read Mores';
 $lang['related-tour'] = 'Related Tour';
 $lang['post-related'] = 'Related Post';
+$lang['point-to'] = 'Point To';
+$lang['day'] = 'Day';
+$lang['note'] = 'Note';
 
 
 

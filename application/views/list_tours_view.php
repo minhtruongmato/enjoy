@@ -64,11 +64,6 @@ if ($detail['title'] == $this->lang->line('top-packages') || $detail['title'] ==
 							<div class="foot">
 								<ul class="list-inline">
 									<li>
-										<a href="<?php echo base_url('tours/'.$product_array[$i]['slug']) ?>" class="btn btn-primary" role="button">
-											<?php echo $this->lang->line('book-now'); ?>
-										</a>
-									</li>
-									<li>
 										<a href="<?php echo base_url('tours/'.$product_array[$i]['slug']) ?>" class="btn btn-default" role="button">
 											<?php echo $this->lang->line('expore-now'); ?>
 										</a>
@@ -79,9 +74,13 @@ if ($detail['title'] == $this->lang->line('top-packages') || $detail['title'] ==
 					</div>
                 <?php endfor; ?>
 			</div>
-	        <div class="col-md-6 col-md-offset-5 page">
-	            <?php echo (isset($page_links))? $page_links : ''; ?>
-	        </div>
+            <div class="row">
+            	<div class="col-md-12">
+	                <div class="page">
+	                    <?php echo (isset($page_links))? $page_links : '';?>
+	                </div>
+            	</div>
+            </div>
 		</div>
 	</div>
 </section>
