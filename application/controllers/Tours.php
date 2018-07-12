@@ -36,7 +36,11 @@ class Tours extends Public_Controller {
     }
     public function category($slug) {
         if($this->product_category_model->find_rows(array('slug' => $slug,'is_deleted' => 0,'is_activated' => 0)) != 0 || $slug == 'top-10-vietnam-tours' || $slug == 'top-10-tours'){
-            $detail = $this->product_category_model->get_by_slug_lang($slug,array(),$this->data['lang']);
+            $detail = $this->product_category_model->get_by_slug_lang($slug,$this->data['lang']);
+            if(empty($detail)){
+                $detail['id'] = '';
+                $detail['parent_id'] = '';
+            }
             $this->get_multiple_products_with_category($this->product_category_model->get_all_lang(array(),$this->data['lang']),$detail['parent_id'],$sub);
             if(empty($sub)){
                 $detail['sub'] = $sub;
@@ -103,7 +107,8 @@ class Tours extends Public_Controller {
         if($this->product_model->find_rows(array('slug' => $slug,'is_deleted' => 0,'is_activated' => 0)) != 0){
             $this->load->helper('form');
             $this->load->library('form_validation');
-            $detail = $this->product_model->get_by_slug_lang($slug,array(),$this->data['lang']);
+            $detail = $this->product_model->get_by_slug_lang($slug,$this->data['lang']);
+
             //$parent_title = $this->build_parent_title($detail['product_category_id']);
             //$this->product_category_model->get_by_id($detail['product_category_id'], array('title'),'en')['title'];
             $this->get_multiple_products_with_category($this->product_category_model->get_all_lang(array(),$this->data['lang']),$detail['product_category_id'],$sub);
@@ -156,7 +161,7 @@ class Tours extends Public_Controller {
                 $ids = array();
             }
             array_unshift($ids,$detail['product_category_id']);
-            $this->data['product_array'] =$this->product_model->get_by_product_category_id_and_not_id($ids,$detail['id'],4,'desc',$this->data['lang']);
+            $this->data['product_array'] =$this->product_model->get_by_product_category_id_and_not_id($ids,$detail['id'],3,'desc',$this->data['lang']);
             /**
              * RATING SYSTEM
              * [$ip description]

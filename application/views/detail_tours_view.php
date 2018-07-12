@@ -1,5 +1,5 @@
 <!-- Tours Stylesheet -->
-<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>tours.min.css">
+<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>tours.css">
 
 <section id="head-cover" class="container-fluid" style="background-image: url('<?php echo base_url('/assets/upload/product/'.$detail['slug'].'/'.$detail['image']) ?>')">
 	<div class="overlay"></div>
@@ -18,7 +18,7 @@
 <section id="detail" class="container-fluid">
 	<div class="container">
 		<div class="row">
-			<div class="left col-sm-8 col-xs-12">
+			<div class="left col-sm-12 col-xs-12">
 				<ol class="breadcrumb">
 					<li><a href="<?php echo base_url('') ?>"><?php echo $this->lang->line('home') ?></a></li>
                     <?php if (!empty($detail['sub'])): ?>
@@ -35,7 +35,7 @@
 
 				<div class="row">
 					<div class="left col-sm-6 col-xs-12">
-						<h3>Note</h3>
+						<h3><?php echo $this->lang->line('note') ?></h3>
 						<p><?php echo $detail['content'] ?></p>
 					</div>
 					<div class="right col-sm-6 col-xs-12">
@@ -43,7 +43,7 @@
 						<table class="table">
 							<tr>
 								<td><?php echo $this->lang->line('tour-detail-duration') ?></td>
-								<td><?php echo count($detail['datetitle'])?> Ngày</td>
+								<td><?php echo count($detail['datetitle'])?> <?php echo $this->lang->line('day') ?></td>
 							</tr>
 							<tr>
 								<td><?php echo $this->lang->line('tour-detail-start') ?></td>
@@ -67,7 +67,7 @@
 								<td>
 									<div class="captcha-input input-group col-md-12">
 										<input type="hidden" name="re_captcha" id="re_captcha" class="show-re-captcha" value="" >
-										<input placeholder="Nhập mã" name="captcha" id="captcha" type="text" value="" class="form-control" aria-describedby="captcha" style=" border: 1;margin-right: 5%; color: black;height: 33px;">
+										<input placeholder="<?php echo $this->lang->line('insert-code') ?>" name="captcha" id="captcha" type="text" value="" class="form-control" aria-describedby="captcha" style=" border: 1;margin-right: 5%; color: black;height: 33px;">
 										<span class="input-group-addon" id="basic-addon1"><a class="refresh" href="javascript:void(0)" title="Lấy mã mới"><i class="fa fa-refresh" aria-hidden="true"></i></a></span>
 									</div>
 									<div class="captcha-input col-md-7">
@@ -88,7 +88,7 @@
 										<input type="hidden" name="created_rating" class="created_rating" value="<?php echo base_url('created_rating'); ?>">
 										<input type="hidden" name="product_id" class="product_id" value="<?php echo $detail['id']?>">
 										<button class="btn btn-default btn-rating" <?php echo ($check_session == true)? 'disabled' : '' ?> >
-	                                        <?php echo $this->lang->line('booking') ?>
+	                                        <?php echo $this->lang->line('evaluate') ?>
 										</button>
 									</div>
 								</td>
@@ -141,7 +141,7 @@
 													<div class="panel-heading" role="tab" id="day-<?php echo $i+1; ?>-heading">
 														<h4 class="panel-title">
 															<a role="button" data-toggle="collapse" data-parent="#schedule" href="#day-<?php echo $i+1; ?>" aria-expanded="false" aria-controls="day-<?php echo $i+1; ?>">
-																Day <?php echo $i+1; ?>: <?php echo $detail['datetitle'][$i];?>
+																<?php echo $this->lang->line('day');?> <?php echo $i+1; ?>: <?php echo $detail['datetitle'][$i];?>
 															</a>
 															<i class="fa <?php echo $request_vehicles_icon[$detail['vehicles'][$i]]; ?> pull-right" aria-hidden="true"></i>
 														</h4>
@@ -184,7 +184,7 @@
 													<div class="panel-heading" role="tab" id="day-1-heading">
 														<h4 class="panel-title">
 															<a role="button" data-toggle="collapse" data-parent="#gallery-list" href="#gallery-<?php echo $i+1; ?>" aria-expanded="false" aria-controls="gallery-<?php echo $i+1; ?>">
-																Day <?php echo $i+1; ?>: <?php echo $detail['datetitle'][$i];?>
+																<?php echo $this->lang->line('day');?> <?php echo $i+1; ?>: <?php echo $detail['datetitle'][$i];?>
 															</a>
 															<i class="fa <?php echo $request_vehicles_icon[$detail['vehicles'][$i]]; ?> pull-right" aria-hidden="true"></i>
 														</h4>
@@ -224,7 +224,7 @@
 								</div>
 
 							</div>
-							<div role="tabpanel" class="tab-pane" id="price">
+							<div role="tabpanel" class="tab-pane table-responsive" id="price">
 								<div class="row">
 									<div class="col-xs-12">
 										<table class="table table-bordered">
@@ -237,9 +237,9 @@
 											</thead>
 											<tbody>
 											<tr>
-												<td><?php echo $detail['priceadults'];?>% price</td>
-												<td><?php echo $detail['pricechildren'];?>% price</td>
-												<td><?php echo $detail['priceinfants'];?>% price</td>
+												<td><?php echo $detail['priceadults'];?>% <?php echo $this->lang->line('tour-tabs-price') ?></td>
+												<td><?php echo $detail['pricechildren'];?>% <?php echo $this->lang->line('tour-tabs-price') ?></td>
+												<td><?php echo $detail['priceinfants'];?>% <?php echo $this->lang->line('tour-tabs-price') ?></td>
 											</tr>
 											</tbody>
 										</table>
@@ -247,14 +247,16 @@
 								</div>
 								<div class="row">
 									<div class="col-xs-12">
-                                        <?php echo $detail['detailsprice'];?>
+	                                    <?php echo $detail['detailsprice'];?>
 									</div>
 								</div>
 							</div>
 							<div role="tabpanel" class="tab-pane" id="trip-notes">
 								<div class="row">
 									<div class="col-xs-12">
-                                        <?php echo $detail['tripnodes'];?>
+										<div class="table-responsive">
+	                                        <?php echo $detail['tripnodes'];?>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -375,7 +377,7 @@
                                             <?php for ($i = 0;$i< count($detail['dateimg']);$i++): ?>
 												<tr>
 													<td>
-														Day <?php echo $i+1; ?>
+														<?php echo $this->lang->line('day');?> <?php echo $i+1; ?>
 													</td>
 													<td>
                                                         <?php
@@ -482,53 +484,46 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
-			<div class="right col-sm-4 col-xs-12">
+			<div class="right col-sm-12 col-xs-12">
 				<div class="section-header">
 					<div class="row">
-						<div class="left col-xs-8">
+						<div class="left col-md-12">
 							<h1><?php echo $this->lang->line('related-tour'); ?></h1>
-						</div>
-						<div class="right col-xs-4">
 						</div>
 					</div>
 				</div>
-				<?php foreach ($product_array as $key => $value): ?>
-					<div class="row">
-						<div class="item col-xs-12">
-							<div class="wrapper">
-								<div class="mask">
-									<a href="<?php echo base_url('tours/'.$value['slug']) ?>">
-										<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
-									</a>
-								</div>
-								<div class="head">
-									<h4 class="post-subtitle"><?php echo $value['parent_title'];?></h4>
-									<h2 class="post-title"><?php echo $value['title'];?></h2>
-									<h3 class="price"><?php echo $value['price'];?>vnd</h3>
-								</div>
-								<div class="body">
-									<p class="post-description"><?php echo $value['description'];?></p>
-								</div>
-								<div class="foot">
-									<ul class="list-inline">
-										<li>
-											<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-primary" role="button">
-												<?php echo $this->lang->line('book-now'); ?>
-											</a>
-										</li>
-										<li>
-											<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-default" role="button">
-												<?php echo $this->lang->line('expore-now'); ?>
-											</a>
-										</li>
-									</ul>
+				<div class="row">
+					<?php foreach ($product_array as $key => $value): ?>
+						
+							<div class="item col-md-4">
+								<div class="wrapper">
+									<div class="mask">
+										<a href="<?php echo base_url('tours/'.$value['slug']) ?>">
+											<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
+										</a>
+									</div>
+									<div class="head">
+										<h4 class="post-subtitle"><?php echo $value['parent_title'];?></h4>
+										<h2 class="post-title"><?php echo $value['title'];?></h2>
+										<h3 class="price"><?php echo $value['price'];?>vnd</h3>
+									</div>
+									<div class="body">
+										<p class="post-description"><?php echo $value['description'];?></p>
+									</div>
+									<div class="foot">
+										<ul class="list-inline">
+											<li>
+												<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-default" role="button">
+													<?php echo $this->lang->line('expore-now'); ?>
+												</a>
+											</li>
+										</ul>
+									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-				<?php endforeach ?>
+					<?php endforeach ?>
+				</div>
 			</div>
 		</div>
 	</div>

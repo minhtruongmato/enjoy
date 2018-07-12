@@ -99,21 +99,21 @@
     <!-- /.content -->
 </div>
 <script type="text/javascript">
-    $( function() {
-        $('.sortable').sortable({
-            axis: 'y',
-            update: function (event, ui) {
-                var data = $(this).sortable('serialize');
-                $.ajax({
-                    data: {
-                        sort: data,
-                    },
-                    method: 'GET',
-                    url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/teddy/admin/post_category/sort",
-                });
-            }
-        });
-    } );
+    // $( function() {
+    //     $('.sortable').sortable({
+    //         axis: 'y',
+    //         update: function (event, ui) {
+    //             var data = $(this).sortable('serialize');
+    //             $.ajax({
+    //                 data: {
+    //                     sort: data,
+    //                 },
+    //                 method: 'GET',
+    //                 url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/teddy/admin/post_category/sort",
+    //             });
+    //         }
+    //     });
+    // } );
 
     $('.btn-dropdown-cate').click(function(){
         if($(this).attr('aria-expanded') == false){

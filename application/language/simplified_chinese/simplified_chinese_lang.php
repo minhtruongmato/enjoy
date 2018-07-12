@@ -18,6 +18,8 @@ $lang['mice'] = 'Mice';
 $lang['services'] = 'Services';
 $lang['visa'] = 'Visa';
 $lang['blogs'] = 'Blogs';
+$lang['location'] = 'Location';
+$lang['registef'] = 'Registef Now!';
 
 //Sub Nav
 $lang['pilgrimage'] = 'Pilgrimage';
@@ -108,8 +110,21 @@ $lang['form-adults'] = 'Adults';
 $lang['form-children-u11'] = 'Children (2-11 years old)';
 $lang['form-children-u2'] = 'Children (Under 2 years old)';
 $lang['form-message'] = 'Message';
+$lang['insert-code'] = 'Enter the code';
+$lang['evaluate'] = 'Evaluate';
+
+//Contact
+
+$lang['contact-name'] = 'Full name';
+$lang['contact-mail'] = 'Email';
+$lang['contact-phone'] = 'Phone number';
+$lang['contact-country'] = 'Country of residence';
+$lang['contact-message'] = 'Message';
+$lang['contact-send'] = 'Send';
 
 
+
+//All
 $lang['top-packages'] = '越南十大旅游行程';
 $lang['top-backpack'] = '十大旅游行程';
 $lang['see-all-tour'] = 'See all tours';
@@ -119,6 +134,10 @@ $lang['view-detail'] = 'View Detail';
 $lang['read-mores'] = 'Read Mores';
 $lang['related-tour'] = 'Related Tour';
 $lang['post-related'] = 'Related Post';
+$lang['point-to'] = 'Point To';
+$lang['day'] = 'Day';
+$lang['note'] = 'Note';
+
 
 
 

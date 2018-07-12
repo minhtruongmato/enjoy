@@ -94,234 +94,268 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<nav id="main-nav" class="container-fluid">
 			<div class="container">
 				<div class="row">
-					<div class="left col-sm-3 col-xs-6">
+					<div class="left col-sm-2 col-xs-6">
 						<a href="<?php echo base_url('') ?>">
 							<img src="<?php echo site_url('assets/img/')?>logo-W.png" alt="logo Diamond">
 						</a>
 					</div>
-					<div class="right col-sm-9 hidden-xs">
+					<div class="right col-sm-10 hidden-xs">
 						<ul>
-				<li class="menu-tabs">
-					<a href="<?php echo base_url('danh-muc/'.$packages['slug']) ?>">
-						<?php echo $packages['product_category_title']; ?><span class="caret"></span>
-					</a>
-					<div class="menu-tabs-expand menu-expand">
-						<div class="row">
-							<div class="left col-md-3 col-sm-4 col-xs-12">
-								<ul>
-									<li>
-										<?php echo $this->lang->line('top-packages') ?>
-										<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
-														aria-hidden="true"></span>
-										<ul>
-											<?php foreach ($top_packages as $k => $val): ?>
-												<li>
-													<div class="mask">
-														<img src="<?php echo base_url('assets/upload/product/'.$val['slug'].'/'.$val['image']); ?>">
-													</div>
-													<a href="<?php echo base_url('tours/'.$val['slug']); ?>"><?php echo $val['title']; ?></a>
+							<li class="menu-dropdown">
+								<a href="<?php echo base_url(''); ?>">
+									<?php echo $this->lang->line('home') ?>
+								</a>
+							</li>
+							<li class="menu-tabs">
+								<a href="<?php echo base_url('danh-muc/'.$packages['slug']) ?>">
+									<?php echo $packages['product_category_title']; ?><span class="caret"></span>
+								</a>
+								<div class="menu-tabs-expand menu-expand" style="margin: 0px;">
+									<div class="row">
+										<div class="left col-md-3 col-sm-4 col-xs-12">
+											<ul style="margin-left: 0px;">
+												<li class="menu-href" >
+													<span class="menu-href" href="<?php echo base_url('danh-muc/top-10-vietnam-tours'); ?>">
+														<?php echo $this->lang->line('top-packages') ?>
+													</span>
+													<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
+																	aria-hidden="true"></span>
+													<ul>
+														<?php foreach ($top_packages as $k => $val): ?>
+															<li>
+																<div class="mask">
+																	<img src="<?php echo base_url('assets/upload/product/'.$val['slug'].'/'.$val['image']); ?>">
+																</div>
+																<a href="<?php echo base_url('tours/'.$val['slug']); ?>"><?php echo $val['title']; ?></a>
+															</li>
+															<?php if ($k == 5): ?>
+																<?php break;?>
+															<?php endif ?>
+														<?php endforeach ?>
+													</ul>
 												</li>
-												<?php if ($k == 5): ?>
-													<?php break;?>
-												<?php endif ?>
-											<?php endforeach ?>
-										</ul>
-									</li>
-									<?php foreach ($packages_menu as $key => $value): ?>
-										<li>
-											<?php echo $value['title']; ?>
-											<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
-															aria-hidden="true"></span>
-											<ul>
-												<?php foreach ($value['sub'] as $k => $val): ?>
-													<li>
-														<div class="mask">
-															<img src="<?php echo base_url('assets/upload/product/'.$val['slug'].'/'.$val['image']); ?>">
-														</div>
-														<a href="<?php echo base_url('tours/'.$val['slug']); ?>"><?php echo $val['title']; ?></a>
-													</li>
-												<?php endforeach ?>
-											</ul>
-										</li>
-									<?php endforeach ?>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</li>
-				<li class="menu-tabs">
-					<a href="<?php echo base_url('danh-muc/'.$backpack['slug']) ?>">
-						<?php echo $backpack['product_category_title']; ?> <span class="caret"></span>
-					</a>
-					<div class="menu-tabs-expand menu-expand">
-						<div class="row">
-							<div class="left col-md-3 col-sm-4 col-xs-12">
-								<ul>
-									<li>
-										<?php echo $this->lang->line('top-backpack') ?>
-										<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
-														aria-hidden="true"></span>
-										<ul>
-											<?php foreach ($top_backpack as $k => $val): ?>
-												<li>
-													<div class="mask">
-														<img src="<?php echo base_url('assets/upload/product/'.$val['slug'].'/'.$val['image']); ?>">
-													</div>
-													<a href="<?php echo base_url('tours/'.$val['slug']); ?>"><?php echo $val['title']; ?></a>
-												</li>
-												<?php if ($k == 5): ?>
-													<?php break;?>
-												<?php endif ?>
-											<?php endforeach ?>
-										</ul>
-									</li>
-									<?php foreach ($backpack_menu as $key => $value): ?>
-										<li>
-											<?php echo $value['title']; ?>
-											<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
-															aria-hidden="true"></span>
-											<ul>
-												<?php foreach ($value['sub'] as $k => $val): ?>
-													<li>
-														<div class="mask">
-															<img src="<?php echo base_url('assets/upload/product/'.$val['slug'].'/'.$val['image']); ?>">
-														</div>
-														<a href="<?php echo base_url('tours/'.$val['slug']); ?>"><?php echo $val['title']; ?></a>
-													</li>
-												<?php endforeach ?>
-											</ul>
-										</li>
-									<?php endforeach ?>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</li>
-				<li class="menu-tabs">
-					<a href="<?php echo base_url('chuyen-muc/'.$vietnam['slug']) ?>">
-						<?php echo $vietnam['post_category_title']; ?> <span class="caret"></span>
-					</a>
-					<div class="menu-tabs-expand menu-expand">
-						<div class="row">
-							<?php foreach ($vietnam_menu as $key => $value): ?>
-								<div class="left col-md-3 col-sm-4 col-xs-12">
-									<div class="mask">
-										<img src="<?php echo base_url('assets/upload/post_category/'.$value['image']); ?>">
-									</div>
-									<a href="<?php echo base_url('chuyen-muc/'.$value['slug']); ?>" style="color: black"><?php echo $value['title']; ?></a>
-								</div>
-							<?php endforeach ?>
-						</div>
-					</div>
-				</li>
+												<?php foreach ($packages_menu as $key => $value): ?>
 
-				<li class="menu-dropdown">
-					<a href="<?php echo base_url('chuyen-muc/'.$visa_menu['slug']); ?>">
-						<?php echo $visa_menu['post_category_title'];?>
-						<?php if (!empty($visa_menu['sub'])): ?>
-							<span class="caret">
-						<?php endif ?>
-					</a>
-					<?php if(!empty($visa_menu['sub'])): ?>
-						<div class="menu-dropdown-expand menu-expand">
-							<div class="row">
-								<?php foreach ($visa_menu['sub'] as $key => $value): ?>
-									<div class="media col-sm-6 col-xs-12">
-										<div class="media-left">
-											<div class="mask">
-												<img class="media-object" src="<?php echo base_url('assets/upload/post/'.$value['image']); ?>" alt="service air tickets">
-											</div>
-										</div>
-										<div class="media-body">
-											<a href="javascript:void(0);">
-												<h3 class="media-heading"><?php echo $this->lang->line('registration-form') ?></h3>
-											</a>
-											<p><?php echo $value['description'];?></p>
-											<a href="<?php echo base_url('bai-viet/'.$value['slug']); ?>" class="btn btn-primary" role="button">
-		                                        <?php echo $this->lang->line('explore') ?>
-											</a>
+													<li class="menu-href" >
+														<span class="menu-href" href="<?php echo base_url('danh-muc/'.$value['slug']); ?>">
+															<?php echo $value['title']; ?>
+														</span>
+														<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
+																		aria-hidden="true"></span>
+														<ul>
+															<?php foreach ($value['sub'] as $k => $val): ?>
+																<li>
+																	<div class="mask">
+																		<img src="<?php echo base_url('assets/upload/product/'.$val['slug'].'/'.$val['image']); ?>">
+																	</div>
+																	<a href="<?php echo base_url('tours/'.$val['slug']); ?>"><?php echo $val['title']; ?></a>
+																</li>
+															<?php endforeach ?>
+														</ul>
+													</li>
+												<?php endforeach ?>
+											</ul>
 										</div>
 									</div>
-									<?php if ($key == 1): ?>
-										<?php break; ?>
-									<?php endif ?>
-								<?php endforeach ?>
-							</div>
-						</div>
-					<?php endif; ?>
-				</li>
-				<li class="menu-dropdown">
-					<a href="<?php echo base_url('chuyen-muc/'.$news_menu['slug']); ?>">
-						<?php echo $news_menu['post_category_title'];?>
-						<?php if (!empty($news_menu['sub'])): ?>
-							<span class="caret">
-						<?php endif ?>
-					</a>
-					<?php if(!empty($news_menu['sub'])): ?>
-						<div class="menu-dropdown-expand menu-expand">
-							<div class="row">
-								<?php foreach ($news_menu['sub'] as $key => $value): ?>
-									<div class="media col-sm-6 col-xs-12">
-										<div class="media-left">
-											<div class="mask">
-												<img class="media-object" src="<?php echo base_url('assets/upload/post/'.$value['image']); ?>" alt="service air tickets">
-											</div>
-										</div>
-										<div class="media-body">
-											<a href="javascript:void(0);">
-												<h3 class="media-heading"><?php echo $this->lang->line('registration-form') ?></h3>
-											</a>
-											<p><?php echo $value['description'];?></p>
-											<a href="<?php echo base_url('bai-viet/'.$value['slug']); ?>" class="btn btn-primary" role="button">
-		                                        <?php echo $this->lang->line('explore') ?>
-											</a>
-										</div>
-									</div>
-									<?php if ($key == 1): ?>
-										<?php break; ?>
-									<?php endif ?>
-								<?php endforeach ?>
-							</div>
-						</div>
-					<?php endif; ?>
-				</li>
-				<li class="menu-dropdown">
-					<a href="<?php echo base_url('chuyen-muc/'.$blog_menu['slug']); ?>">
-						<?php echo $blog_menu['post_category_title'];?> 
-						<?php if (!empty($blog_menu['sub'])): ?>
-							<span class="caret">
-						<?php endif ?>
-					</a>
-					<?php if(!empty($blog_menu['sub'])): ?>
-						<div class="menu-dropdown-expand menu-expand">
-							<div class="row">
-								<?php foreach ($blog_menu['sub'] as $key => $value): ?>
-									<div class="media col-sm-6 col-xs-12">
-										<div class="media-left">
-											<div class="mask">
-												<img class="media-object" src="<?php echo base_url('assets/upload/post/'.$value['image']); ?>" alt="service air tickets">
-											</div>
-										</div>
-										<div class="media-body">
-											<a href="javascript:void(0);">
-												<h3 class="media-heading"><?php echo $this->lang->line('registration-form') ?></h3>
-											</a>
-											<p><?php echo $value['description'];?></p>
-											<a href="<?php echo base_url('bai-viet/'.$value['slug']); ?>" class="btn btn-primary" role="button">
-		                                        <?php echo $this->lang->line('explore') ?>
-											</a>
+								</div>
+							</li>
+							<li class="menu-tabs">
+								<a href="<?php echo base_url('danh-muc/'.$backpack['slug']) ?>">
+									<?php echo $backpack['product_category_title']; ?> <span class="caret"></span>
+								</a>
+								<div class="menu-tabs-expand menu-expand">
+									<div class="row">
+										<div class="left col-md-3 col-sm-4 col-xs-12">
+											<ul>
+												<li class="menu-href" >
+													<span class="menu-href" href="<?php echo base_url('danh-muc/top-10-tours'); ?>">
+														<?php echo $this->lang->line('top-backpack') ?>
+													</span>
+													<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
+																	aria-hidden="true"></span>
+													<ul>
+														<?php foreach ($top_backpack as $k => $val): ?>
+															<li>
+																<div class="mask">
+																	<img src="<?php echo base_url('assets/upload/product/'.$val['slug'].'/'.$val['image']); ?>">
+																</div>
+																<a href="<?php echo base_url('tours/'.$val['slug']); ?>"><?php echo $val['title']; ?></a>
+															</li>
+															<?php if ($k == 5): ?>
+																<?php break;?>
+															<?php endif ?>
+														<?php endforeach ?>
+													</ul>
+												</li>
+												<?php foreach ($backpack_menu as $key => $value): ?>
+													<li class="menu-href" >
+														<span class="menu-href" href="<?php echo base_url('danh-muc/'.$value['slug']); ?>">
+															<?php echo $value['title']; ?>
+														</span>
+														<span class="glyphicon glyphicon glyphicon-menu-right pull-right"
+																		aria-hidden="true"></span>
+														<ul>
+															<?php foreach ($value['sub'] as $k => $val): ?>
+																<li>
+																	<div class="mask">
+																		<img src="<?php echo base_url('assets/upload/product/'.$val['slug'].'/'.$val['image']); ?>">
+																	</div>
+																	<a href="<?php echo base_url('tours/'.$val['slug']); ?>"><?php echo $val['title']; ?></a>
+																</li>
+															<?php endforeach ?>
+														</ul>
+													</li>
+												<?php endforeach ?>
+											</ul>
 										</div>
 									</div>
-									<?php if ($key == 1): ?>
-										<?php break; ?>
+								</div>
+							</li>
+							<li class="menu-tabs">
+								<a href="<?php echo base_url('chuyen-muc/'.$vietnam['slug']) ?>">
+									<?php echo $vietnam['post_category_title']; ?> <span class="caret"></span>
+								</a>
+								<div class="menu-tabs-expand menu-expand">
+									<div class="row">
+										<div class="col-xs-12" style="padding-top:20px ">
+											<?php foreach ($vietnam_menu as $key => $value): ?>
+												<div class="left col-md-<?php echo ($key < 2)?'6':'4';?> col-xs-12">
+													<div class="vietnam">
+														<div class="mask">
+															<img src="<?php echo base_url('assets/upload/post_category/'.$value['image']); ?>">
+														</div>
+														<a href="<?php echo base_url('chuyen-muc/'.$value['slug']); ?>"><?php echo $value['title']; ?></a>
+													</div>
+												</div>
+											<?php endforeach ?>
+										</div>
+									</div>
+								</div>
+							</li>
+
+							<li class="menu-dropdown">
+								<a href="<?php echo base_url('chuyen-muc/'.$visa_menu['slug']); ?>">
+									<?php echo $visa_menu['post_category_title'];?>
+									<!-- <?php if (!empty($visa_menu['sub'])): ?>
+										<span class="caret">
+									<?php endif ?> -->
+								</a>
+								<!-- <?php if(!empty($visa_menu['sub'])): ?>
+									<div class="menu-dropdown-expand menu-expand">
+										<div class="row">
+											<?php foreach ($visa_menu['sub'] as $key => $value): ?>
+												<div class="media col-sm-6 col-xs-12">
+													<div class="media-left">
+														<div class="mask">
+															<img class="media-object" src="<?php echo base_url('assets/upload/post/'.$value['image']); ?>" alt="service air tickets">
+														</div>
+													</div>
+													<div class="media-body">
+														<a href="javascript:void(0);">
+															<h3 class="media-heading"><?php echo $this->lang->line('registration-form') ?></h3>
+														</a>
+														<p><?php echo $value['description'];?></p>
+														<a href="<?php echo base_url('bai-viet/'.$value['slug']); ?>" class="btn btn-primary" role="button">
+					                                        <?php echo $this->lang->line('explore') ?>
+														</a>
+													</div>
+												</div>
+												<?php if ($key == 1): ?>
+													<?php break; ?>
+												<?php endif ?>
+											<?php endforeach ?>
+										</div>
+									</div>
+								<?php endif; ?> -->
+							</li>
+							<li class="menu-dropdown">
+								<a href="<?php echo base_url('chuyen-muc/'.$news_menu['slug']); ?>">
+									<?php echo $news_menu['post_category_title'];?>
+									<!-- <?php if (!empty($news_menu['sub'])): ?>
+										<span class="caret">
+									<?php endif ?> -->
+								</a>
+								<!-- <?php if(!empty($news_menu['sub'])): ?>
+									<div class="menu-dropdown-expand menu-expand">
+										<div class="row">
+											<?php foreach ($news_menu['sub'] as $key => $value): ?>
+												<div class="media col-sm-6 col-xs-12">
+													<div class="media-left">
+														<div class="mask">
+															<img class="media-object" src="<?php echo base_url('assets/upload/post/'.$value['image']); ?>" alt="service air tickets">
+														</div>
+													</div>
+													<div class="media-body">
+														<a href="javascript:void(0);">
+															<h3 class="media-heading"><?php echo $this->lang->line('registration-form') ?></h3>
+														</a>
+														<p><?php echo $value['description'];?></p>
+														<a href="<?php echo base_url('bai-viet/'.$value['slug']); ?>" class="btn btn-primary" role="button">
+					                                        <?php echo $this->lang->line('explore') ?>
+														</a>
+													</div>
+												</div>
+												<?php if ($key == 1): ?>
+													<?php break; ?>
+												<?php endif ?>
+											<?php endforeach ?>
+										</div>
+									</div>
+								<?php endif; ?> -->
+							</li>
+							<li class="menu-dropdown">
+								<a href="<?php echo base_url('chuyen-muc/'.$blog['slug']); ?>">
+									<?php echo $blog['post_category_title'];?> 
+									<?php if (!empty($blog_menu)): ?>
+										<span class="caret">
 									<?php endif ?>
-								<?php endforeach ?>
-							</div>
-						</div>
-					<?php endif; ?>
-				</li>
-				
-			</ul>
+								</a>
+								<?php if(!empty($blog_menu)): ?>
+									<div class="menu-dropdown-expand menu-expand">
+										<div class="row">
+												<div class="media col-sm-4 col-xs-12">
+													<div class="media-left">
+														<div class="mask">
+															<img class="media-object" src="<?php echo base_url('assets/upload/localtion/'.$location_menu[0]['slug'].'/'.$location_menu[0]['image']); ?>" alt="service air tickets">
+														</div>
+													</div>
+													<div class="media-body">
+														<a href="<?php echo base_url('location'); ?>">
+															<h3 class="media-heading"><?php echo $this->lang->line('location') ?></h3>
+														</a>
+														<p><?php echo $location_menu[0]['content'];?></p>
+														<a href="<?php echo base_url('location'); ?>" class="btn btn-primary" role="button">
+					                                        <?php echo $this->lang->line('explore') ?>
+														</a>
+													</div>
+												</div>
+											<?php foreach ($blog_menu as $key => $value): ?>
+												<div class="media col-sm-4 col-xs-12">
+													<div class="media-left">
+														<div class="mask">
+															<img class="media-object" src="<?php echo base_url('assets/upload/post_category/'.$value['image']); ?>" alt="service air tickets">
+														</div>
+													</div>
+													<div class="media-body">
+														<a href="<?php echo base_url('chuyen-muc/'.$value['slug']); ?>">
+															<h3 class="media-heading"><?php echo $value['title'];?> </h3>
+														</a>
+														<p><?php echo $value['content'];?></p>
+														<a href="<?php echo base_url('chuyen-muc/'.$value['slug']); ?>" class="btn btn-primary" role="button">
+					                                        <?php echo $this->lang->line('explore') ?>
+														</a>
+													</div>
+												</div>
+												<?php if ($key == 1): ?>
+													<?php break; ?>
+												<?php endif ?>
+											<?php endforeach ?>
+										</div>
+									</div>
+								<?php endif; ?>
+							</li>
+							
+						</ul>
 					</div>
 					<div class="btn-expand visible-xs col-xs-6">
 						<button class="btn btn-primary" id="btn-expand">
@@ -331,6 +365,193 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 			</div>
 		</nav>
+		<div class="container-fluid visible-xs">
+			<div id="nav-device">
+				<div class="head">
+					<a href="javascript:void(0);" class="pull-right" id="nav-close">
+						<i class="fa fa-close fa-2x" aria-hidden="false"></i>
+					</a>
+				</div>
+				<div class="body">
+					<div class="panel-group" id="main-nav-side" role="tablist" aria-multiselectable="true">
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="homepage">
+								<h4 class="panel-title">
+									<a href="<?php echo site_url('') ?>" role="button">
+										<i class="fa fa-home" aria-hidden="true"></i> <?php echo $this->lang->line('home') ?>
+									</a>
+								</h4>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="expand-domestic-heading">
+								<h4 class="panel-title">
+									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#main-nav-side" href="#domestic" aria-expanded="true" aria-controls="expand-domestic-heading">
+										<?php echo $packages['product_category_title']; ?><span class="caret"></span>
+									</a>
+								</h4>
+							</div>
+							<div id="domestic" class="panel-collapse collapse" role="tabpanel" aria-labelledby="expand-packages-heading">
+								<div class="panel-body">
+									<ul>
+										<li>
+											<a href="<?php echo base_url('danh-muc/top-10-vietnam-tours'); ?>">
+												<h3><?php echo $this->lang->line('top-packages') ?></h3>
+											</a>
+										</li>
+										<?php if (!empty($packages_menu)): ?>
+											<?php foreach ($packages_menu as $key => $val): ?>
+												<li>
+													<a href="<?php echo base_url('danh-muc/'.$val['slug']); ?>">
+														<h3><?php echo $val['title']; ?></h3>
+													</a>
+												</li>
+											<?php endforeach ?>
+										<?php endif ?>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="expand-international-heading">
+								<h4 class="panel-title">
+									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#main-nav-side" href="#international" aria-expanded="false" aria-controls="expand-international-heading">
+	                                    <?php echo $backpack['product_category_title']; ?><span class="caret"></span>
+									</a>
+								</h4>
+							</div>
+							<div id="international" class="panel-collapse collapse" role="tabpanel" aria-labelledby="expand-international-heading">
+								<div class="panel-body">
+									<ul>
+										<li>
+											<a href="<?php echo base_url('danh-muc/top-10-tours'); ?>">
+												<h3><?php echo $this->lang->line('top-backpack') ?></h3>
+											</a>
+										</li>
+										<?php if (!empty($backpack_menu)): ?>
+											<?php foreach ($backpack_menu as $key => $val): ?>
+												<li>
+													<a href="<?php echo base_url('danh-muc/'.$val['slug']); ?>">
+														<h3><?php echo $val['title']; ?></h3>
+													</a>
+												</li>
+											<?php endforeach ?>
+										<?php endif ?>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="expand-vietnam-heading">
+								<h4 class="panel-title">
+									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#main-nav-side" href="#vietnam" aria-expanded="false" aria-controls="expand-international-heading">
+	                                    <?php echo $vietnam['post_category_title'] ?><span class="caret"></span>
+									</a>
+								</h4>
+							</div>
+							<div id="vietnam" class="panel-collapse collapse" role="tabpanel" aria-labelledby="expand-vietnam-heading">
+								<div class="panel-body">
+									<ul>
+										<?php if (!empty($vietnam_menu)): ?>
+											<?php foreach ($vietnam_menu as $key => $val): ?>
+												<li>
+													<a href="<?php echo base_url('chuyen-muc/'.$val['slug']); ?>">
+														<h3><?php echo $val['title']; ?></h3>
+													</a>
+												</li>
+											<?php endforeach ?>
+										<?php endif ?>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="expand-visa-heading">
+								<h4 class="panel-title">
+									<a class="collapsed" role="button" data-toggle="" data-parent="#main-nav-side" href="<?php echo base_url('chuyen-muc/'.$visa_menu['slug']);?>" aria-expanded="true" aria-controls="expand-visa-heading">
+	                                    <?php echo $visa_menu['post_category_title'] ?>
+									</a>
+								</h4>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="expand-news-heading">
+								<h4 class="panel-title">
+									<a class="collapsed" role="button" data-toggle="" data-parent="#main-nav-side" href="<?php echo base_url('chuyen-muc/'.$news_menu['slug']);?>" aria-expanded="true" aria-controls="expand-news-heading">
+	                                    <?php echo $news_menu['post_category_title'] ?>
+									</a>
+								</h4>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="expand-blog-heading">
+								<h4 class="panel-title">
+									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#main-nav-side" href="#blog" aria-expanded="false" aria-controls="expand-international-heading">
+	                                    <?php echo $blog['post_category_title'] ?><span class="caret"></span>
+									</a>
+								</h4>
+							</div>
+							<div id="blog" class="panel-collapse collapse" role="tabpanel" aria-labelledby="expand-blog-heading">
+								<div class="panel-body">
+									<ul>
+										<li>
+											<a href="<?php echo base_url('location'); ?>">
+												<h3 class="media-heading"><?php echo $this->lang->line('location') ?></h3>
+											</a>
+										</li>
+										<?php if (!empty($blog_menu)): ?>
+											<?php foreach ($blog_menu as $key => $val): ?>
+												<li>
+													<a href="<?php echo base_url('chuyen-muc/'.$val['slug']); ?>">
+														<h3><?php echo $val['title']; ?></h3>
+													</a>
+												</li>
+											<?php endforeach ?>
+										<?php endif ?>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+
+				<div class="foot">
+					<ul>
+						<li>
+							<a href="" class="change-language" data-language="vi">
+								<img src="<?php echo site_url('assets/img/vn@2x.png') ?>" alt="flag Vietnam"> Tiếng Việt
+						</a>
+						<li>
+							<a href="" class="change-language" data-language="en">
+								<img src="<?php echo site_url('assets/img/gb@2x.png') ?>" alt="flag GB"> English
+							</a>
+						</li>
+					</ul>
+					<ul>
+						<li>
+							<label>
+								<i class="fa fa-phone" aria-hidden="true"></i> Hotline <br>
+							</label>
+							<h3>
+								<a href="tel:0869 770 333">0869 770 333</a>
+							</h3>
+						</li>
+						<li>
+							<label>
+								<i class="fa fa-envelope-o" aria-hidden="true"></i> Email <br>
+							</label>
+							<h3>
+								<a href="mailto: info@diamondtour.vn">info@diamondtour.vn</a>
+							</h3>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 	</header>
 </section>
 

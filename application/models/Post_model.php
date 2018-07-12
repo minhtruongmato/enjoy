@@ -157,6 +157,7 @@ class Post_model extends MY_Model{
         $this->db->where('post.is_deleted', 0);
         $this->db->where('post.slug', $slug);
         $this->db->where('post_lang.language', $lang);
+        $this->db->where('post_category_lang.language', $lang);
 
         return $this->db->get()->row_array();
     }

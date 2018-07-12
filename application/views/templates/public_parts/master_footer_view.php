@@ -99,8 +99,8 @@
 					</a>
 				</li>
 				<li>
-					<a href="<?php echo base_url('chuyen-muc/'.$blog_menu['slug']); ?>">
-						<?php echo $blog_menu['post_category_title'];?>
+					<a href="<?php echo base_url('chuyen-muc/'.$blog['slug']); ?>">
+						<?php echo $blog['post_category_title'];?>
 					</a>
 				</li>
 			</ul>
