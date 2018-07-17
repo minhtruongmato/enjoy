@@ -1,5 +1,70 @@
 <!-- Homepage Stylesheet -->
 <link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>homepage.css">
+
+<!-- GET WEATHER INFO -->
+<script type="text/javascript">
+    function to_slug(str,space="_"){
+        str = str.toLowerCase();
+
+        str = str.replace(/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/g, 'a');
+        str = str.replace(/(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/g, 'e');
+        str = str.replace(/(ì|í|ị|ỉ|ĩ)/g, 'i');
+        str = str.replace(/(ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ)/g, 'o');
+        str = str.replace(/(ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ)/g, 'u');
+        str = str.replace(/(ỳ|ý|ỵ|ỷ|ỹ)/g, 'y');
+        str = str.replace(/(đ|ð)/g, 'd');
+
+        str = str.replace(/([^0-9a-z-\s])/g, '');
+
+        str = str.replace(/(\s+)/g, space);
+
+        str = str.replace(/^-+/g, '');
+
+        str = str.replace(/-+$/g, '');
+
+        // return
+        return str;
+    }
+    function temperature(id,lang){
+        $.ajax({
+            url: 'http://api.openweathermap.org/data/2.5/forecast?id='+id+'&mode=json&lang='+lang+'&APPID=279b4be6d54c8bf6ea9b12275a567156&cnt=3',
+            type: 'GET',
+        })
+            .done(function(data) {
+                var key = to_slug(data.city.name);
+                $.ajax({
+                    url: 'http://localhost/tourist1/homepage/ajax_home?key='+key,
+                    type: 'GET',
+                })
+                    .done(function(datas) {
+                        $("#banner-weather .line ."+id+" h3").text(datas.reponse);
+                    })
+                    .fail(function() {
+                        console.log("error");
+                    });
+                $('#banner-weather .line .content-weather').append('<div class="col-md-12 '+id+'" style="padding:0px; margin-bottom:10px;border-bottom:1px solid #CCC;"><div class="img col-md-3" style="padding:0px;"><img src="http://openweathermap.org/img/w/'+data.list[2].weather[0].icon+'.png'+'" width="80px" alt=""></div><div class=" col-md-9" style="padading:0px;paddidng-left:5px;"><h3 style="font-size:1em; text-transform:capitalize;font-weight:600;margin-bottom:0px;margin-top:15px;"></h3><p class="description" style="text-transform:capitalize;margin-bottom:0px;"></p><p class="nhietdo" style="margin-bottom:0px;"></p></div></div>');
+                $("#banner-weather .line ."+id+" p.description").text(data.list[2].weather[0].description);
+                $("#banner-weather .line ."+id+" p.nhietdo").text(Math.floor(data.list[2].main.temp_min/10)+'°C - '+Math.ceil(data.list[2].main.temp_max/10)+'°C');
+            })
+            .fail(function() {
+                console.log("error");
+            });
+    }
+    temperature('1581129','<?php echo $lang;?>');
+    temperature('1816670','<?php echo $lang;?>');
+    temperature('1796236','<?php echo $lang;?>');
+    temperature('1668341','<?php echo $lang;?>');
+    temperature('1850147','<?php echo $lang;?>');
+    temperature('1835848','<?php echo $lang;?>');
+    temperature('4321929','<?php echo $lang;?>');
+    temperature('1609350','<?php echo $lang;?>');
+    temperature('1651944','<?php echo $lang;?>');
+    temperature('1735161','<?php echo $lang;?>');
+    temperature('1821306','<?php echo $lang;?>');
+    temperature('1642911','<?php echo $lang;?>');
+    temperature('1880252','<?php echo $lang;?>');
+</script>
+
 <!-- Slider JS -->
 <script src="<?php echo site_url('assets/js/slider.js') ?>"></script>
 <section id="slider" class="container-fluid">
@@ -331,22 +396,23 @@
 <section id="gallery" class="section container-fluid">
 	<div class="container">
 		<div class="row">
-			<div class="grid col-md-6">
-				<div class="grid-sizer"></div>
-				<div class="grid-item grid-item-width-2 grid-item-height-2 col-xs-12">
-					<div class="mask">
-						<img src="<?php echo base_url('assets/upload/post_category/'.$vietnam['image']); ?>" alt="blogs image">
-						<div class="overlay"></div>
-						<div class="content">
-							<h2 class="post-title">
-								<a href="<?php echo base_url('chuyen-muc/'.$vietnam['slug']) ?>" role="button">
-                                    <?php echo $vietnam['post_category_title'];?>
-								</a>
-							</h2>
+			<div class="left col-sm-9 col-xs-12">
+				<div class="grid col-md-6">
+					<div class="grid-sizer"></div>
+					<div class="grid-item grid-item-width-2 grid-item-height-2 col-xs-12">
+						<div class="mask">
+							<img src="<?php echo base_url('assets/upload/post_category/'.$vietnam['image']); ?>" alt="blogs image">
+							<div class="overlay"></div>
+							<div class="content">
+								<h2 class="post-title">
+									<a href="<?php echo base_url('chuyen-muc/'.$vietnam['slug']) ?>" role="button">
+                                        <?php echo $vietnam['post_category_title'];?>
+									</a>
+								</h2>
+							</div>
 						</div>
 					</div>
-				</div>
-                <?php foreach ($vietnam_menu as $key => $value): ?>
+                    <?php foreach ($vietnam_menu as $key => $value): ?>
                     <?php $class = '';
                     switch ($key){
                         case 0:
@@ -369,40 +435,53 @@
 						<div class="mask <?php echo  ($key == 1)?'cover':''; ?>">
 							<img src="<?php echo base_url('assets/upload/post_category/'.$value['image']); ?>" alt="blogs image">
 							<div class="overlay">
-								<?php if ($key == 1): ?>
-										<h2 class="post-title">
-		                                        <?php echo $value['title'];?>
-										</h2>
-										<p>
-											<?php echo $value['content'];?>
-										</p>
-										<h2 class="post-title">
-											<a href="<?php echo base_url('chuyen-muc/'.$value['slug']) ?>" role="button" class="btn btn-default">
-		                                       <?php echo $this->lang->line("read-mores"); ?>
-											</a>
-										</h2>
-								<?php else: ?>
+                                <?php if ($key == 1): ?>
+									<h2 class="post-title">
+                                        <?php echo $value['title'];?>
+									</h2>
+									<p>
+                                        <?php echo $value['content'];?>
+									</p>
+									<h2 class="post-title">
+										<a href="<?php echo base_url('chuyen-muc/'.$value['slug']) ?>" role="button" class="btn btn-default">
+                                            <?php echo $this->lang->line("read-mores"); ?>
+										</a>
+									</h2>
+                                <?php else: ?>
 									<div class="content">
 										<h2 class="post-title">
 											<a href="<?php echo base_url('chuyen-muc/'.$value['slug']) ?>" role="button">
-		                                        <?php echo $value['title'];?>
+                                                <?php echo $value['title'];?>
 											</a>
 										</h2>
 									</div>
-								<?php endif ?>
+                                <?php endif ?>
 							</div>
 						</div>
 					</div>
-					<?php if ($key == 1): ?>
-						</div>
-						<div class="grid col-md-6">
-					<?php endif ?>
-					<?php if ($key == 4): ?>
-					<?php break; ?>
-					<?php endif ?>
-                <?php endforeach ?>
+                    <?php if ($key == 1): ?>
+				</div>
+				<div class="grid col-md-6">
+                    <?php endif ?>
+                    <?php if ($key == 4): ?>
+                        <?php break; ?>
+                    <?php endif ?>
+                    <?php endforeach ?>
+				</div>
 			</div>
-
+			<div class="right col-sm-3 col-xs-12" style="overflow-y: scroll">
+				<div id="banner-weather">
+					<h2>Weather</h2>
+					<div class="row">
+						<div class="item col-xs-12">
+							<div class="line" style="padding: 0px;">
+								<div class="line-primary"></div>
+								<div class="content-weather" style="overflow-y: scroll;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
@@ -527,4 +606,12 @@
 	    </div>
 	</div>
 </section>
+
+<script>
+	$(document).ready(function(){
+        var leftHeight = $('#gallery .row .left').height();
+        console.log(leftHeight);
+        $('#gallery .row .right').css('height' , leftHeight);
+	})
+</script>
 
