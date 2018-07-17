@@ -93,7 +93,15 @@ HEADER STYLE
     top: 0;
     left: 0;
     z-index: 1011;
-    width: 100%; }
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 25%, rgba(0, 0, 0, 0) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.5)), color-stop(25%, rgba(0, 0, 0, 0.5)), color-stop(100%, rgba(0, 0, 0, 0)));
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 25%, rgba(0, 0, 0, 0) 100%);
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 25%, rgba(0, 0, 0, 0) 100%);
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 25%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 25%, rgba(0, 0, 0, 0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=0 ); }
     #page header .container-fluid #nav-device {
       width: 90%;
       height: 100vh;
@@ -164,6 +172,14 @@ HEADER STYLE
             padding-right: 15px; }
         #page header #top-nav .container .row .right {
           text-align: right; }
+          #page header #top-nav .container .row .right ul li {
+            padding-left: 10px;
+            padding-right: 10px;
+            border-left: 1px solid #fff; }
+            #page header #top-nav .container .row .right ul li:last-of-type {
+              padding-right: 0; }
+            #page header #top-nav .container .row .right ul li:first-of-type {
+              border-left: none; }
     #page header nav .container {
       position: relative; }
       #page header nav .container .row {
@@ -454,6 +470,31 @@ section.main-content .big-title h1.title {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   margin-bottom: 10px; }
+section.main-content .item .mask {
+  position: relative; }
+  section.main-content .item .mask .badge {
+    position: absolute;
+    z-index: 990;
+    background-color: transparent; }
+    section.main-content .item .mask .badge.badge-special {
+      width: 130px;
+      height: 50px;
+      top: 10px;
+      right: 5px; }
+    section.main-content .item .mask .badge.badge-discount {
+      top: 0px;
+      left: 15px;
+      padding: 0 5px 5px;
+      background-color: #E54646;
+      color: #fff;
+      border-radius: 0;
+      font-size: 1.5em;
+      font-weight: 700; }
+      section.main-content .item .mask .badge.badge-discount .content {
+        position: relative;
+        padding: 50px 15px 30px;
+        border: 1px solid #fff;
+        border-top: none; }
 section.main-content .section {
   display: block;
   padding-top: 30px;

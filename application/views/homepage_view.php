@@ -204,7 +204,7 @@
 										</a>
 
 										<!--BADGE DISCOUNT -->
-                                        <?php if (!empty($value['showpromotion'])): ?>
+                                        <?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
 											<div class="badge badge-discount">
 												<div class="content">KM<br>-<?php echo $value['percen']; ?>%</div>
 											</div>
@@ -238,7 +238,14 @@
 										</div>
 										<div class="col-md-12">
 											<h2 class="post-title"><?php echo $value['title']; ?></h2>
-											<h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
+											<h3 class="price">
+												<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+													<?php echo number_format($value['pricepromotion']); ?> vnd
+													<small class="price-original"><del><?php echo number_format($value['price']);?> vnd</del></small>
+												<?php else: ?>
+													<?php echo number_format($value['price']); ?> vnd
+												<?php endif ?>
+											</h3>
 										</div>
 									</div>
 									<div class="body">
@@ -337,7 +344,7 @@
 										</a>
 
 										<!--BADGE DISCOUNT -->
-                                        <?php if (!empty($value['showpromotion'])): ?>
+                                        <?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
 											<div class="badge badge-discount">
 												<div class="content">KM<br>-<?php echo $value['percen']; ?>%</div>
 											</div>
@@ -371,7 +378,15 @@
 										</div>
 										<div class="col-md-12">
 											<h2 class="post-title"><?php echo $value['title']; ?></h2>
-											<h3 class="price"><?php echo number_format($value['price']); ?>vnd</h3>
+											<h3 class="price">
+												<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+													<?php echo number_format($value['pricepromotion']); ?> vnd
+													<small class="price-original"><del><?php echo number_format($value['price']);?> vnd</del></small>
+												<?php else: ?>
+													<?php echo number_format($value['price']); ?> vnd
+												<?php endif ?>
+												
+											</h3>
 										</div>
 									</div>
 									<div class="body">
@@ -396,6 +411,7 @@
 <section id="gallery" class="section container-fluid">
 	<div class="container">
 		<div class="row">
+
 			<div class="left col-sm-9 col-xs-12">
 				<div class="grid col-md-6">
 					<div class="grid-sizer"></div>
@@ -411,30 +427,32 @@
 								</h2>
 							</div>
 						</div>
+
 					</div>
                     <?php foreach ($vietnam_menu as $key => $value): ?>
                     <?php $class = '';
                     switch ($key){
                         case 0:
-                            $class = 'grid-item-width-1 grid-item-height-2fr2';
+                            $class = 'grid-item-width-1 grid-item-height-2fr2 cover';
                             break;
                         case 1:
                             $class = 'grid-item-width-1 grid-item-height-2fr2 cover';
                             break;
                         case 2:
-                            $class = 'grid-item-width-1 grid-item-height-2fr2';
+                            $class = 'grid-item-width-1 grid-item-height-2fr2 cover';
                             break;
                         case 3:
-                            $class = 'grid-item-height-1 grid-item-height-2fr2';
+                            $class = 'grid-item-height-1 grid-item-height-2fr2 cover';
                             break;
                         case 4:
                             $class = 'grid-item-width-2 grid-item-height-2';
                             break;
                     }?>
 					<div class="grid-item <?php echo $class ?> col-xs-12">
-						<div class="mask <?php echo  ($key == 1)?'cover':''; ?>">
+						<div class="mask <?php echo ($key == 4)?'covers':'cover'; ?>">
 							<img src="<?php echo base_url('assets/upload/post_category/'.$value['image']); ?>" alt="blogs image">
 							<div class="overlay">
+
                                 <?php if ($key == 1): ?>
 									<h2 class="post-title">
                                         <?php echo $value['title'];?>
@@ -456,6 +474,7 @@
 										</h2>
 									</div>
                                 <?php endif ?>
+
 							</div>
 						</div>
 					</div>
