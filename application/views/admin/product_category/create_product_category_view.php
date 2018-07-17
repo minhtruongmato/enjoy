@@ -35,7 +35,7 @@
                             <?php
                             echo form_label('Ảnh đại diện', 'image_shared');
                             echo form_error('image_shared');
-                            echo form_upload('image_shared', set_value('image_shared'), 'class="form-control"');
+                            echo form_upload('image_shared[]', set_value('image_shared'), 'class="form-control" multiple');
                             ?>
                             <br>
                         </div>
@@ -49,7 +49,6 @@
 
                         <div class="form-group col-xs-12">
                             <select name="parent_id_shared" class="form-control">
-                                <option selected="" value="0">Danh muc gốc</option>
                                 <?php echo $product_category; ?>
                             </select>
                         </div>

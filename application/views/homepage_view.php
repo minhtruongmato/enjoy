@@ -97,7 +97,7 @@
 						</div>
 					</div>
 					<div class="mask col-md-6">
-						<img src="<?php echo base_url('/assets/upload/product_category/'.$packages['slug'].'/'.$packages['image']); ?>" alt="packages cover image">
+						<img src="<?php echo base_url('/assets/upload/product_category/'.$packages['slug'].'/'.json_decode($packages['image'])[count(json_decode($packages['image']))-1]); ?>" alt="packages cover image">
 					</div>
 				</div>
 			</div>
@@ -180,7 +180,7 @@
 			<div class="item">
 				<div>
 					<div class="mask col-md-6">
-						<img src="<?php echo base_url('/assets/upload/product_category/'.$backpack['slug'].'/'.$backpack['image']); ?>" alt="backpack cover image">
+						<img src="<?php echo base_url('/assets/upload/product_category/'.$backpack['slug'].'/'.json_decode($backpack['image'])[count(json_decode($backpack['image']))-1]); ?>" alt="packages cover image">
 					</div>
 					<div class="mask col-md-6">
 						<div class="overlay">

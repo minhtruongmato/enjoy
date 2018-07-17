@@ -26,6 +26,10 @@ defined('FIXED_VIETNAM_CATEGORY_ID') OR define('FIXED_VIETNAM_CATEGORY_ID', 7);
 defined('FIXED_VISA')        OR define('FIXED_VISA', 1);
 defined('FIXED_NEWS')        OR define('FIXED_NEWS', 2);
 defined('FIXED_BLOG')        OR define('FIXED_BLOG', 3);
+/**
+ * FIXED POST CATEGORIES ID
+ */
+defined('FIXED_ABOUT_US')        OR define('FIXED_ABOUT_US', 13);
 /*
 |--------------------------------------------------------------------------
 | File and Directory Modes
@@ -256,6 +260,7 @@ defined('MESSAGE_DEACTIVE_ERROR') OR define('MESSAGE_DEACTIVE_ERROR', 'Bạn ph�
 defined('MESSAGE_DEACTIVE_POST_ERROR') OR define('MESSAGE_DEACTIVE_POST_ERROR', 'Bạn phải tắt tất cả danh mục con và bài viết thuộc danh mục!');
 defined('MESSAGE_DEACTIVE_SUCCESS') OR define('MESSAGE_DEACTIVE_SUCCESS', 'Tắt danh mục thành công!');
 defined('MESSAGE_ERROR_DEACTIVE_CATEGORY') OR define('MESSAGE_ERROR_DEACTIVE_CATEGORY', 'Danh mục này không thể tắt!');
+defined('MESSAGE_ERROR_REMOVE_CATEGORY') OR define('MESSAGE_ERROR_REMOVE_CATEGORY', 'Danh mục này không thể xóa!');
 /**
  *
  * Message check top 10

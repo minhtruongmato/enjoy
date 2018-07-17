@@ -68,6 +68,11 @@ $lang[''] = '';
 //Tour Detail
 
 $lang['tour-detail-duration'] = 'Duration';
+$lang['tour-detail'] = 'Tour Detail';
+$lang['note'] = 'Note';
+$lang['rate'] = 'Rate';
+$lang['price'] = 'Price';
+$lang['no-where-selected-in-the-day'] = 'No location has selected';
 $lang['tour-detail-start'] = 'Starting Day';
 $lang['tour-detail-price'] = 'Price';
 $lang['tour-detail-rating'] = 'Rating';

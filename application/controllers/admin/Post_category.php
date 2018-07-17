@@ -52,6 +52,10 @@ class Post_category extends Admin_Controller{
         	$this->render('admin/'. $this->controller .'/create_post_category_view');
         } else {
         	if($this->input->post()){
+                if($this->input->post('parent_id_shared') == 0){
+                    $this->session->set_flashdata('message_error', MESSAGE_CREATE_ERROR);
+                    redirect('admin/'. $this->data['controller'], 'refresh');
+                }
         		$check_upload = true;
                 if ($_FILES['image_shared']['size'] > 1228800) {
                     $check_upload = false;
@@ -126,7 +130,7 @@ class Post_category extends Admin_Controller{
         $this->data['category'] = $category;
         
         $this->data['detail'] = $detail;
-        
+        $this->data['detail']['check_parent_id'] = ($this->data['detail']['parent_id'] == 0)? 'disabled' : '';
 
         $this->form_validation->set_rules('title_cn', 'Tiêu đề (Phồn thể)', 'required');
         $this->form_validation->set_rules('title_en', 'Title', 'required');
@@ -145,13 +149,16 @@ class Post_category extends Admin_Controller{
                     $unique_slug = $this->post_category_model->build_unique_slug($slug, $id);
                     $image = $this->upload_image('image_shared', $_FILES['image_shared']['name'], 'assets/upload/'. $this->controller .'', 'assets/upload/'. $this->controller .'/thumb');
                     $shared_request = array(
-                        'parent_id' => $this->input->post('parent_id_shared'),
                         'type' => $this->input->post('type_shared'),
                         'created_at' => $this->author_data['created_at'],
                         'created_by' => $this->author_data['created_by'],
                         'updated_at' => $this->author_data['updated_at'],
                         'updated_by' => $this->author_data['updated_by']
                     );
+                    if($this->data['detail']['parent_id'] != 0){
+                        $shared_request['slug'] = $unique_slug;
+                        $shared_request['parent_id'] = $this->input->post('parent_id_shared');
+                    }
                     if($image){
                         $shared_request['image'] = $image;
                     }
@@ -190,47 +197,80 @@ class Post_category extends Admin_Controller{
         }
     }
 
-    public function remove(){
-        $this->load->model('post_model');
+    function remove(){
         $id = $this->input->post('id');
-        if(in_array($id, $this->fix_data)){
-            return $this->output
-                ->set_content_type('application/json')
-                ->set_status_header(HTTP_BAD_REQUEST)
-                ->set_output(json_encode(array('status' => HTTP_BAD_REQUEST)));
-        }
-        $list_categories = $this->post_category_model->get_by_parent_id(null, 'asc');
-        $detail_catrgory = $this->post_category_model->get_by_id($id, $this->request_language_template);
-        $this->get_multiple_posts_with_category($list_categories, $detail_catrgory['id'], $ids);
-        $ids = array_unique($ids);
-        $posts = array();
-        $reponse = array(
-            'csrf_hash' => $this->security->get_csrf_hash()
-        );
-        if(isset($ids)){
-            $posts = $this->post_model->get_by_multiple_ids(array_unique($ids), 'vi');
-        }
-        if(!isset($posts)){
-            $data = array('is_deleted' => 1);
-            $update = $this->post_category_model->common_update($id, $data);
-            if($update == 1){
-                
-                return $this->output
-                ->set_content_type('application/json')
-                ->set_status_header(HTTP_SUCCESS)
-                ->set_output(json_encode(array('status' => HTTP_SUCCESS, 'reponse' => $reponse, 'isExisted' => true)));
+        $this->load->model('post_model');
+        if($id &&  is_numeric($id) && ($id > 0)){
+            $post_category = $this->post_category_model->get_by_id($id,array('title'));
+            if($post_category['parent_id'] == 0){
+                return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ERROR_REMOVE_CATEGORY);
             }
-        }else{
-            return $this->output
-                ->set_content_type('application/json')
-                ->set_status_header(HTTP_SUCCESS)
-                ->set_output(json_encode(array('status' => HTTP_SUCCESS, 'reponse' => $reponse, 'isExisted' => false)));
+            if($this->post_category_model->find_rows(array('id' => $id,'is_deleted' => 0)) == 0){
+                return $this->return_api(HTTP_NOT_FOUND, MESSAGE_ISSET_ERROR);
+            }
+            $where = array('post_category_id' => $id,'is_deleted' => 0);
+            $post = $this->post_model->find_rows($where);// lấy số bài viết thuộc về category
+            $where = array('parent_id' => $id,'is_deleted' => 0);
+            $parent_id = $this->post_category_model->find_rows($where);//lấy số con của category
+            if($post == 0 && $parent_id == 0){
+                $data = array('is_deleted' => 1);
+                $update = $this->post_category_model->common_update($id, $data);
+                if($update){
+                    $reponse = array(
+                        'csrf_hash' => $this->security->get_csrf_hash()
+                    );
+                    return $this->return_api(HTTP_SUCCESS,MESSAGE_REMOVE_SUCCESS,$reponse);
+                }
+                return $this->return_api(HTTP_NOT_FOUND,MESSAGE_REMOVE_ERROR);
+            }else{
+                return $this->return_api(HTTP_NOT_FOUND,sprintf(MESSAGE_FOREIGN_KEY_LINK_ERROR,$post,$parent_id));
+            }
         }
-        return $this->output
-                ->set_content_type('application/json')
-                ->set_status_header(HTTP_BAD_REQUEST)
-                ->set_output(json_encode(array('status' => HTTP_BAD_REQUEST)));
+        return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ID_ERROR);
     }
+
+
+    // public function remove(){
+    //     $this->load->model('post_model');
+    //     $id = $this->input->post('id');
+    //     if(in_array($id, $this->fix_data)){
+    //         return $this->output
+    //             ->set_content_type('application/json')
+    //             ->set_status_header(HTTP_BAD_REQUEST)
+    //             ->set_output(json_encode(array('status' => HTTP_BAD_REQUEST)));
+    //     }
+    //     $list_categories = $this->post_category_model->get_by_parent_id(null, 'asc');
+    //     $detail_catrgory = $this->post_category_model->get_by_id($id, $this->request_language_template);
+    //     $this->get_multiple_posts_with_category($list_categories, $detail_catrgory['id'], $ids);
+    //     $ids = array_unique($ids);
+    //     $posts = array();
+    //     $reponse = array(
+    //         'csrf_hash' => $this->security->get_csrf_hash()
+    //     );
+    //     if(isset($ids)){
+    //         $posts = $this->post_model->get_by_multiple_ids(array_unique($ids), 'vi');
+    //     }
+    //     if(!isset($posts)){
+    //         $data = array('is_deleted' => 1);
+    //         $update = $this->post_category_model->common_update($id, $data);
+    //         if($update == 1){
+                
+    //             return $this->output
+    //             ->set_content_type('application/json')
+    //             ->set_status_header(HTTP_SUCCESS)
+    //             ->set_output(json_encode(array('status' => HTTP_SUCCESS, 'reponse' => $reponse, 'isExisted' => true)));
+    //         }
+    //     }else{
+    //         return $this->output
+    //             ->set_content_type('application/json')
+    //             ->set_status_header(HTTP_SUCCESS)
+    //             ->set_output(json_encode(array('status' => HTTP_SUCCESS, 'reponse' => $reponse, 'isExisted' => false)));
+    //     }
+    //     return $this->output
+    //             ->set_content_type('application/json')
+    //             ->set_status_header(HTTP_BAD_REQUEST)
+    //             ->set_output(json_encode(array('status' => HTTP_BAD_REQUEST)));
+    // }
 
     public function active(){
         $this->load->model('post_model');
@@ -258,44 +298,72 @@ class Post_category extends Admin_Controller{
     public function deactive(){
         $this->load->model('post_model');
         $id = $this->input->post('id');
-        $list_categories = $this->post_category_model->get_by_parent_id(null, 'asc',0);
+        $list_categories = $this->post_category_model->get_by_parent_id(null, 'asc');
         $this->get_multiple_posts_with_category($list_categories, $id, $ids);
         $ids = array_unique($ids);
         if(count($ids)>1){
-                $reponse = array(
-                    'csrf_hash' => $this->security->get_csrf_hash()
-                );
-            return $this->return_api(HTTP_SUCCESS,MESSAGE_DEACTIVE_POST_ERROR,$reponse);
+            return $this->return_api(HTTP_NOT_FOUND,MESSAGE_DEACTIVE_POST_ERROR);
         }else{
-            $check = $this->post_category_model->get_by_id($id,array('title', 'content'));
-            if(!empty($check['id']) && !empty($this->post_model->get_by_category_id($id,0))){
-                $reponse = array(
-                    'csrf_hash' => $this->security->get_csrf_hash()
-                );
-                return $this->return_api(HTTP_SUCCESS,MESSAGE_DEACTIVE_POST_ERROR,$reponse);
+            $post_category = $this->post_category_model->get_by_id($id,array('title'));
+            if(!empty($this->post_model->get_by_post_category_id($id))){
+                return $this->return_api(HTTP_NOT_FOUND,MESSAGE_DEACTIVE_POST_ERROR);
+            }
+            if($post_category['parent_id'] == 0){
+                return $this->return_api(HTTP_NOT_FOUND,MESSAGE_ERROR_DEACTIVE_CATEGORY);
             }
         }
         $data = array('is_activated' => 1);
-
-        $this->db->trans_begin();
-
-        $update = $this->post_category_model->multiple_update_by_ids($ids, $data);
-
+        $update = $this->post_category_model->common_update($id,array_merge($data,$this->author_data));
         if ($update == 1) {
-            $this->post_model->multiple_update_by_category_ids($ids, $data);
-        }
-
-        if ($this->db->trans_status() === false) {
-            $this->db->trans_rollback();
-            return $this->return_api(HTTP_BAD_REQUEST);
-        } else {
-            $this->db->trans_commit();
             $reponse = array(
                 'csrf_hash' => $this->security->get_csrf_hash()
             );
             return $this->return_api(HTTP_SUCCESS,MESSAGE_DEACTIVE_SUCCESS,$reponse);
         }
     }
+
+
+    // public function deactive(){
+    //     $this->load->model('post_model');
+    //     $id = $this->input->post('id');
+    //     $list_categories = $this->post_category_model->get_by_parent_id(null, 'asc',0);
+    //     $this->get_multiple_posts_with_category($list_categories, $id, $ids);
+    //     $ids = array_unique($ids);
+    //     if(count($ids)>1){
+    //             $reponse = array(
+    //                 'csrf_hash' => $this->security->get_csrf_hash()
+    //             );
+    //         return $this->return_api(HTTP_SUCCESS,MESSAGE_DEACTIVE_POST_ERROR,$reponse);
+    //     }else{
+    //         $check = $this->post_category_model->get_by_id($id,array('title', 'content'));
+    //         if(!empty($check['id']) && !empty($this->post_model->get_by_category_id($id,0))){
+    //             $reponse = array(
+    //                 'csrf_hash' => $this->security->get_csrf_hash()
+    //             );
+    //             return $this->return_api(HTTP_SUCCESS,MESSAGE_DEACTIVE_POST_ERROR,$reponse);
+    //         }
+    //     }
+    //     $data = array('is_activated' => 1);
+
+    //     $this->db->trans_begin();
+
+    //     $update = $this->post_category_model->multiple_update_by_ids($ids, $data);
+
+    //     if ($update == 1) {
+    //         $this->post_model->multiple_update_by_category_ids($ids, $data);
+    //     }
+
+    //     if ($this->db->trans_status() === false) {
+    //         $this->db->trans_rollback();
+    //         return $this->return_api(HTTP_BAD_REQUEST);
+    //     } else {
+    //         $this->db->trans_commit();
+    //         $reponse = array(
+    //             'csrf_hash' => $this->security->get_csrf_hash()
+    //         );
+    //         return $this->return_api(HTTP_SUCCESS,MESSAGE_DEACTIVE_SUCCESS,$reponse);
+    //     }
+    // }
 
 
     protected function build_parent_title($parent_id){

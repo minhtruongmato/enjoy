@@ -37,17 +37,23 @@ class Product extends Admin_Controller{
 
         public function index(){
         $this->data['keyword'] = '';
-        if($this->input->get('search')){
+        $this->data['bestselling'] = '';
+        $this->data['hot'] = '';
+        $this->data['promotion'] = '';
+        if($this->input->get('search') || $this->input->get('hot') || $this->input->get('bestselling') || $this->input->get('promotion')){
             $this->data['keyword'] = $this->input->get('search');
+            $this->data['bestselling'] = ($this->input->get('bestselling') !== null)?'1':'';
+            $this->data['hot'] = ($this->input->get('hot') !== null)?'1':'';
+            $this->data['promotion'] = ($this->input->get('promotion') !== null)?'1':'';
         }
         $this->load->library('pagination');
         $per_page = 10;
-        $total_rows  = $this->product_model->count_search($this->data['keyword']);
+        $total_rows  = $this->product_model->count_search($this->data['keyword'],$this->data['bestselling'],$this->data['hot'],$this->data['promotion']);
         $config = $this->pagination_config(base_url('admin/'.$this->data['controller'].'/index'), $total_rows, $per_page, 4);
         $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
-        $this->data['result'] = $this->product_model->get_all_with_pagination_search('desc','en' , $per_page, $this->data['page'], $this->data['keyword']);
+        $this->data['result'] = $this->product_model->get_all_with_pagination_search('desc','en' , $per_page, $this->data['page'], $this->data['keyword'],$this->data['bestselling'],$this->data['hot'],$this->data['promotion']);
         foreach ($this->data['result'] as $key => $value) {
             $parent_title = $this->build_parent_title($value['product_category_id']);
             $this->data['result'][$key]['parent_title'] = $parent_title;
@@ -115,6 +121,9 @@ class Product extends Admin_Controller{
                     $dateimage_full[] = "";
                 }
             }
+            $showpromotion = ($this->input->post('showpromotion') == 'true')? '1': '0';
+            $bestselling = ($this->input->post('bestselling') == 'true')? '1': '0';
+            $hot = ($this->input->post('hot') == 'true')? '1': '0';
             $shared_request = array(
                 'slug' => $unique_slug,
                 'price' => $this->input->post('price'),
@@ -122,6 +131,10 @@ class Product extends Admin_Controller{
                 'pricechildren ' => $this->input->post('pricechildren'),
                 'priceinfants ' => $this->input->post('priceinfants'),
                 'percen' => $this->input->post('percen'),
+                'bestselling' => $bestselling,
+                'hot' => $hot,
+                'showpromotion' => $showpromotion,
+                'pricepromotion' => $this->input->post('pricepromotion'),
                 'localtion' => $this->input->post('localtion'),
                 'product_category_id' => $this->input->post('parent_id_shared'),
                 'dateimg' => json_encode($dateimage_full),
@@ -388,12 +401,19 @@ class Product extends Admin_Controller{
                     }
                     $dateimage_json = json_encode($dateimage_full);
                 }
+                $showpromotion = ($this->input->post('showpromotion') == 'true' && (!empty($this->input->post('percen')) || !empty($this->input->post('pricepromotion'))))? '1': '0';
+                $bestselling = ($this->input->post('bestselling') == 'true')? '1': '0';
+                $hot = ($this->input->post('hot') == 'true')? '1': '0';
                 $shared_request = array(
                     'price' => $this->input->post('price'),
                     'priceadults ' => $this->input->post('priceadults'),
                     'pricechildren ' => $this->input->post('pricechildren'),
                     'priceinfants ' => $this->input->post('priceinfants'),
                     'percen' => $this->input->post('percen'),
+                    'pricepromotion' => $this->input->post('pricepromotion'),
+                    'bestselling' => $bestselling,
+                    'hot' => $hot,
+                    'showpromotion' => $showpromotion,
                     'localtion' => $this->input->post('localtion'),
                     'product_category_id' => $this->input->post('parent_id_shared'),
                     'vehicles' => json_encode($this->input->post('vehicles')),

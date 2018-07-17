@@ -25,16 +25,23 @@
                             <span><?php echo $this->session->flashdata('message'); ?></span>
                         </div>
                         <div class="form-group col-xs-12">
-                            <label for="image_shared">Hình ảnh đang dùng</label>
+                            <label class="col-xs-12" for="image_shared">Hình ảnh đang dùng</label>
                             <br>
-                            <img src="<?php echo base_url('assets/upload/'. $controller .'/'.$detail['slug'].'/'. $detail['image']); ?>" width=250px>
+                            <?php foreach (json_decode($detail['image']) as $key => $value): ?>
+                                <div class="col-xs-6 row_<?php echo $key; ?>">
+                                    <div  style="background-color: #363636;position: relative;">
+                                        <img src="<?php echo base_url('assets/upload/'. $controller .'/'.$detail['slug'].'/'. $value); ?> " width=100% style="padding: 13px;height: 300px;">
+                                        <span class="glyphicon glyphicon-remove" style="position: absolute;right:0%;color: white; cursor: pointer;" onclick="remove_image('product_category','<?php echo $detail['id'] ?>','<?php echo $value; ?>','<?php echo $key;?>')"></span>
+                                    </div>
+                                </div>
+                            <?php endforeach ?>
                             <br>
                         </div>
                         <div class="form-group col-xs-12">
                             <?php
                             echo form_label('Ảnh đại diện', 'image_shared');
                             echo form_error('image_shared');
-                            echo form_upload('image_shared', set_value('image_shared'), 'class="form-control"');
+                            echo form_upload('image_shared[]', set_value('image_shared'), 'class="form-control" multiple');
                             ?>
                             <br>
                         </div>
@@ -51,9 +58,10 @@
                             echo form_label('Danh Mục', 'parent_id_shared');
                             echo form_error('parent_id_shared');
                             ?>
-                            <select name="parent_id_shared" class="form-control">
-                                <<option value="0">Danh mục gốc</option>}
-                                option
+                            <select name="parent_id_shared" class="form-control"  <?php echo $detail['check_parent_id'];?>>
+                                <?php if ($detail['parent_id'] == 0): ?>
+                                    <option value="0">Danh mục gốc</option>
+                                <?php endif ?>
                                 <?php echo $product_category; ?>
                             </select>
                         </div>
@@ -82,7 +90,7 @@
                                                     if($k == 'title' && in_array($k, $request_language_template)){
                                                         echo form_label($val, $k .'_'. $key);
                                                         echo form_error($k .'_'. $key);
-                                                        echo form_input($k .'_'. $key, trim($detail['title_'. $key]), 'class="form-control" id="title_'.$key.'"');
+                                                        echo form_input($k .'_'. $key, trim($detail['title_'. $key]), 'class="form-control" id="title_'.$key.'" '.$detail['check_parent_id']);
                                                     }elseif($k == 'description' && in_array($k, $request_language_template)){
                                                         echo form_label($val, $k .'_'. $key);
                                                         echo form_error($k .'_'. $key);
@@ -116,6 +124,11 @@
         </div>
     </section>
 </div>
+<script type="text/javascript">
+    $("[name=submit_shared]").click(function() {
+        $('input,select').removeAttr('disabled');
+    });
+</script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/admin/script.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/admin/common.js') ?>"></script>
 
