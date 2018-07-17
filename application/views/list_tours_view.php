@@ -75,7 +75,7 @@ if ($detail['title'] == $this->lang->line('top-packages') || $detail['title'] ==
 								</a>
 
 								<!--BADGE DISCOUNT -->
-                                <?php if (!empty($product_array[$i]['showpromotion'])): ?>
+                                <?php if (!empty($product_array[$i]['pricepromotion']) && !empty($product_array[$i]['percen']) && !empty($product_array[$i]['showpromotion'])): ?>
 									<div class="badge badge-discount">
 										<div class="content">KM<br>-<?php echo $product_array[$i]['percen']; ?>%</div>
 									</div>
@@ -99,7 +99,14 @@ if ($detail['title'] == $this->lang->line('top-packages') || $detail['title'] ==
 							<div class="head">
 								<h4 class="post-subtitle"><?php echo $product_array[$i]['parent_title'] ?></h4>
 								<h2 class="post-title"><?php echo $product_array[$i]['title'] ?></h2>
-								<h3 class="price"><?php echo number_format($product_array[$i]['price']) ?>vnd</h3>
+								<h3 class="price">
+									<?php if (!empty($product_array[$i]['pricepromotion']) && !empty($product_array[$i]['percen']) && !empty($product_array[$i]['showpromotion'])): ?>
+										<?php echo number_format($product_array[$i]['pricepromotion']); ?> vnd
+										<small class="price-original"><del><?php echo number_format($product_array[$i]['price']);?> vnd</del></small>
+									<?php else: ?>
+										<?php echo number_format($product_array[$i]['price']); ?> vnd
+									<?php endif ?>
+								</h3>
 							</div>
 							<div class="body">
 								<p class="post-description"><?php echo $product_array[$i]['description']; ?></p>

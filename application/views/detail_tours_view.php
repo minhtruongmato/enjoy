@@ -62,7 +62,14 @@
 							<tr>
 								<td><?php echo $this->lang->line('tour-detail-price') ?></td>
 								<td>
-									<h3><?php echo number_format($detail['price']) ?> vnd</h3>
+									<h3>
+                                        <?php if (!empty($detail['pricepromotion']) && !empty($detail['percen']) && !empty($detail['showpromotion'])): ?>
+                                            <?php echo number_format($detail['pricepromotion']); ?> vnd
+											<small class="price-original"><del><?php echo number_format($detail['price']);?> vnd</del></small>
+                                        <?php else: ?>
+                                            <?php echo number_format($detail['price']); ?> vnd
+                                        <?php endif ?>
+									</h3>
 								</td>
 							</tr>
 							<tr>
@@ -513,7 +520,7 @@
 											<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']) ?>" alt="image">
 										</a>
 										<!--BADGE DISCOUNT -->
-                                        <?php if (!empty($value['showpromotion'])): ?>
+                                        <?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
 											<div class="badge badge-discount">
 												<div class="content">KM<br>-<?php echo $value['percen']; ?>%</div>
 											</div>
@@ -536,7 +543,14 @@
 									<div class="head">
 										<h4 class="post-subtitle"><?php echo $value['parent_title'];?></h4>
 										<h2 class="post-title"><?php echo $value['title'];?></h2>
-										<h3 class="price"><?php echo $value['price'];?>vnd</h3>
+										<h3 class="price">
+	                                          <?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+	                                              <?php echo number_format($value['pricepromotion']); ?> vnd
+													<small class="price-original"><del><?php echo number_format($value['price']);?> vnd</del></small>
+	                                          <?php else: ?>
+	                                              <?php echo number_format($value['price']); ?> vnd
+	                                          <?php endif ?>
+										</h3>
 									</div>
 									<div class="body">
 										<p class="post-description"><?php echo $value['description'];?></p>
