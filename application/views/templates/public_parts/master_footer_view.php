@@ -13,27 +13,33 @@
 			<div class="item col-sm-4 col-xs-12">
 				<div class="info">
 					<label>
-						<i class="fa fa-map-marker"></i> Địa chỉ
+						<i class="fa fa-mobile-phone" aria-hidden="false"></i> Hotline
 					</label>
-					<h2>Dia chi trung tam</h2>
+					<a class="link-primary" href="tel:0869 770 333">
+						<h2>0869 770 333</h2>
+					</a>
 				</div>
 				<div class="info">
 					<label>
-						<i class="fa fa-phone"></i> Điện thoại
+						<i class="fa fa-phone" aria-hidden="false"></i> Tel
 					</label>
-					<h2>024 1234 5678</h2>
+					<a class="link-primary" href="tel:(024) 22 393 599">
+						<h2>(024) 22 393 599</h2>
+					</a>
 				</div>
 				<div class="info">
 					<label>
-						<i class="fa fa-envelope-o"></i> Email
+						<i class="fa fa-envelope-o" aria-hidden="false"></i> Email
 					</label>
-					<h2>info@diamondtour.vn</h2>
+					<a class="link-primary" href="mailto:info@diamondtour.vn">
+						<h2>info@diamondtour.vn</h2>
+					</a>
 				</div>
 			</div>
 			<div class="item col-sm-4 col-xs-12">
 				<div class="info">
 					<label>
-						<i class="fa fa-globe"></i> Theo dõi chúng tôi tại
+						<i class="fa fa-globe"></i> <?php echo $this->lang->line('follow') ?>
 					</label>
 
 					<ul class="list-inline">

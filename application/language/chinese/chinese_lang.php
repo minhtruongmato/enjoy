@@ -5,12 +5,12 @@
  */
 
 //Top Nav
-$lang['about'] = 'About Us';
-$lang['contact'] = 'Contact Us';
+$lang['about'] = '關於我們';
+$lang['contact'] = '聯繫我們';
 
 //Main Nav
 
-$lang['home'] = 'Home';
+$lang['home'] = '主頁';
 $lang['domestic'] = 'Domestic';
 $lang['international'] = 'International';
 $lang['special-tours'] = 'Special Tour';
@@ -19,7 +19,7 @@ $lang['services'] = 'Services';
 $lang['visa'] = 'Visa';
 $lang['blogs'] = 'Blogs';
 $lang['location'] = 'Location';
-$lang['registef'] = 'Registef Now!';
+$lang['register'] = 'Register Now!';
 
 //Sub Nav
 $lang['pilgrimage'] = 'Pilgrimage';
@@ -29,7 +29,7 @@ $lang['southern'] = 'Southern';
 
 //Footer
 $lang['accept'] = 'We accept';
-$lang['follow'] = 'Follow Us on';
+$lang['follow'] = '跟著我們';
 
 //Company Information
 
@@ -41,10 +41,12 @@ $lang['branch-2-address'] = 'Address 2';
 
 //.btn
 
-$lang['see-all'] = 'See all';
-$lang['explore'] = 'Expore Now';
-$lang['tour-request'] = 'Send Us your Request';
-$lang['booking'] = 'Book Now!';
+$lang['see-all'] = '查看全部';
+$lang['explore'] = '立即探索';
+$lang['tour-request'] = '發送您的請求';
+$lang['booking'] = '现在预订！';
+$lang['view-detail'] = '查看詳情';
+$lang['read-more'] = '閱讀更多';
 
 //Tour Request
 
@@ -67,25 +69,24 @@ $lang[''] = '';
 
 //Tour Detail
 
-$lang['tour-detail-duration'] = 'Duration';
-$lang['tour-detail'] = 'Tour Detail';
-$lang['note'] = 'Note';
-$lang['rate'] = 'Rate';
-$lang['price'] = 'Price';
-$lang['no-where-selected-in-the-day'] = 'No location has selected';
-$lang['tour-detail-start'] = 'Starting Day';
-$lang['tour-detail-price'] = 'Price';
-$lang['tour-detail-rating'] = 'Rating';
-$lang['tour-detail-votes'] = 'Votes';
+$lang['tour-detail-duration'] = '持續時間';
+$lang['tour-detail'] = '旅遊細節';
+$lang['rate'] = '評分';
+$lang['price'] = '價錢';
+$lang['no-where-selected-in-the-day'] = '沒有選擇位置';
+$lang['tour-detail-start'] = '開始的一天';
+$lang['tour-detail-price'] = '價錢';
+$lang['tour-detail-rating'] = '評分';
+$lang['tour-detail-votes'] = '投票';
 
-$lang['tour-detail-schedule'] = 'Schedule';
+$lang['tour-detail-schedule'] = '時間表';
 
-$lang['tour-tabs-overview'] = 'Overview';
-$lang['tour-tabs-gallery'] = 'Gallery';
-$lang['tour-tabs-price'] = 'Price';
-$lang['tour-tabs-trip-notes'] = 'Trip Notes';
-$lang['tour-tabs-inquire'] = 'Inquire';
-$lang['tour-tabs-customize'] = 'Customize';
+$lang['tour-tabs-overview'] = '概觀';
+$lang['tour-tabs-gallery'] = '畫廊';
+$lang['tour-tabs-price'] = '價錢';
+$lang['tour-tabs-trip-notes'] = '旅行筆記';
+$lang['tour-tabs-inquire'] = '查詢';
+$lang['tour-tabs-customize'] = '定制';
 
 $lang['tour-price-adult'] = 'Adult';
 $lang['tour-price-u11'] = 'Children from 2 to 11';
@@ -133,16 +134,22 @@ $lang['contact-send'] = 'Send';
 //All
 $lang['top-packages'] = '越南十大旅遊行程';
 $lang['top-backpack'] = '十大旅遊行程';
-$lang['see-all-tour'] = 'See all tours';
-$lang['book-now'] = 'Book now';
-$lang['expore-now'] = 'Expore now';
-$lang['view-detail'] = 'View Detail';
-$lang['read-mores'] = 'Read Mores';
-$lang['related-tour'] = 'Related Tour';
-$lang['post-related'] = 'Related Post';
+
+$lang['related-tour'] = '相關旅遊';
+$lang['post-related'] = '相關文章';
 $lang['point-to'] = 'Point To';
-$lang['day'] = 'Day';
-$lang['note'] = 'Note';
+$lang['day'] = '天';
+$lang['note'] = '注意';
+
+//Badge
+
+$lang['tour-best-sell'] = '暢銷遊覽';
+$lang['tour-hot'] = '熱門旅遊';
+$lang['tour-discount'] = '出售旅遊';
+
+$lang['tour-best-sell-short'] = 'Best Sell';
+$lang['tour-hot-short'] = 'Hot';
+$lang['tour-discount-short'] = 'Sale Off';
 
 
 

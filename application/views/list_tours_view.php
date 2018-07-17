@@ -10,19 +10,40 @@ if ($detail['title'] == $this->lang->line('top-packages') || $detail['title'] ==
 	$url_image = base_url("assets/upload/product_category/".$detail['slug']."/".$detail['image']);
 }
 ?>
-<section id="head-cover" class="container-fluid" style="background-image: url('<?php echo $url_image ?>')">
-	<div class="overlay"></div>
+
+<section id="head-slider-section">
 	<div class="container">
 		<div class="big-title">
-			<?php if (!empty($detail['sub'])): ?>
+            <?php if (!empty($detail['sub'])): ?>
 				<h4 class="subtitle">
-					<?php echo $detail['sub'][count($detail['sub'])-1]['title']; ?>
+                    <?php echo $detail['sub'][count($detail['sub'])-1]['title']; ?>
 				</h4>
-			<?php endif ?>
+            <?php endif ?>
 			<h1 class="title">
                 <?php echo $detail['title'] ?>
 			</h1>
 		</div>
+	</div>
+	<div id="head-slider" class="carousel slide" data-ride="carousel">
+		<div class="carousel-inner" role="listbox">
+            <?php if (!empty(json_decode($detail['image']))): ?>
+                <?php foreach (json_decode($detail['image']) as $key => $value): ?>
+					<div class="item <?php echo ($key == 0)?'active':'';?>">
+						<div class="mask">
+							<img src="<?php echo base_url('assets/upload/product_category/'.$detail['slug'].'/'.$value);?>" alt="...">
+						</div>
+					</div>
+                <?php endforeach ?>
+            <?php endif ?>
+		</div>
+		<a class="left carousel-control" href="#head-slider" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="right carousel-control" href="#head-slider" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
 	</div>
 </section>
 
@@ -52,6 +73,28 @@ if ($detail['title'] == $this->lang->line('top-packages') || $detail['title'] ==
 								<a href="<?php echo base_url('tours/'.$product_array[$i]['slug']) ?>">
 									<img src="<?php echo base_url('/assets/upload/product/'.$product_array[$i]['slug'].'/'.$product_array[$i]['image']) ?>" alt="image">
 								</a>
+
+								<!--BADGE DISCOUNT -->
+                                <?php if (!empty($product_array[$i]['showpromotion'])): ?>
+									<div class="badge badge-discount">
+										<div class="content">KM<br>-<?php echo $product_array[$i]['percen']; ?>%</div>
+									</div>
+                                <?php endif ?>
+
+								<!--BADGE SPECIAL -->
+								<div class="badge badge-special">
+                                    <?php if (!empty($product_array[$i]['hot'])): ?>
+										<div id="tour-hot" class="">
+											<img src="<?php echo site_url('assets/img/badge-tour-hot.png')?>" alt="badge tour hot">
+										</div>
+                                    <?php endif ?>
+                                    <?php if (!empty($product_array[$i]['bestselling'])): ?>
+										<div id="best-sell" class="">
+											<img src="<?php echo site_url('assets/img/badge-best-sell.png')?>" alt="badge best sell">
+										</div>
+                                    <?php endif ?>
+								</div>
+
 							</div>
 							<div class="head">
 								<h4 class="post-subtitle"><?php echo $product_array[$i]['parent_title'] ?></h4>
@@ -65,7 +108,7 @@ if ($detail['title'] == $this->lang->line('top-packages') || $detail['title'] ==
 								<ul class="list-inline">
 									<li>
 										<a href="<?php echo base_url('tours/'.$product_array[$i]['slug']) ?>" class="btn btn-default" role="button">
-											<?php echo $this->lang->line('expore-now'); ?>
+											<?php echo $this->lang->line('explore'); ?>
 										</a>
 									</li>
 								</ul>

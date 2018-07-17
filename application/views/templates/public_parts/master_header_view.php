@@ -16,6 +16,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?php echo site_url('assets/lib/') ?>fontAwesome/css/font-awesome.min.css">
+	<!-- Main Style -->
+	<link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>main.css">
+
     <link rel="stylesheet" href="<?php echo site_url('assets/css/') ?>client.css">
     <link rel="stylesheet" href="<?php echo site_url('assets/css/rateit.css') ?>">
 
@@ -65,19 +68,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<li>
 								<a href="" class="change-language" data-language="en">
 									<!-- <img src="<?php echo site_url('assets/img/gb@2x.png') ?>" alt="flag Vietnam">  -->
-									English	|	
+									English
 								</a>
 							</li>
 							<li>
 								<a href="" class="change-language" data-language="cn">
 									<!-- <img src="<?php echo site_url('assets/img/gb@2x.png') ?>" alt="flag GB">  -->
-									Chinese	|	
+									繁體中文
 								</a>
 							</li>
 							<li>
 								<a href="" class="change-language" data-language="sc">
 									<!-- <img src="<?php echo site_url('assets/img/gb@2x.png') ?>" alt="flag GB">  -->
-									Simplified Chinese
+									简体中文
 								</a>
 							</li>
 							<li>

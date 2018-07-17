@@ -23,7 +23,7 @@
 								<ul class="list-inline">
 									<li>
 										<a href="<?php echo base_url('tours/'.$value['slug']); ?>" class="btn btn-default" role="button">
-											<?php echo $this->lang->line('book-now');?>
+											<?php echo $this->lang->line('booking');?>
 										</a>
 									</li>
 								</ul>
@@ -49,9 +49,9 @@
 		<!-- Indicators -->
 	<?php if (!empty($banner)): ?>
 		<?php foreach ($banner as $key => $value): ?>
-			<div data-target="#homepage-slider" data-slide-to="<?php echo $key; ?>" style="margin: 0px;padding: 0px;float: left;left: " class="col-md-3 col-sm-3 homepage-slider">
+			<div data-target="#homepage-slider" data-slide-to="<?php echo $key; ?>" style="margin: 0px;padding: 0px;float: left;" class="col-md-3 col-sm-3 homepage-slider">
 				<div class="item <?php echo ($key == 0)?'active' : ''; ?>">
-					<div class="mask"  style="height: 200px;">
+					<div class="mask"  style="height: 20vh;">
 						<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']); ?>" alt="slide 2">
 						<div class="banner">
 							<h3 class="post-subtitle"><?php echo $value['title']; ?></h3>
@@ -111,7 +111,7 @@
 							<div class="overlay">
 								<h1><?php echo $packages['product_category_title'];?></h1>
 								<p><?php echo $packages['product_category_content'];?></p>
-								<a href="<?php echo base_url('danh-muc/top-10-vietnam-tours') ?>" class="btn btn-default" role="button"><?php echo $this->lang->line('see-all-tour'); ?></a>
+								<a href="<?php echo base_url('danh-muc/top-10-vietnam-tours') ?>" class="btn btn-default" role="button"><?php echo $this->lang->line('see-all'); ?></a>
 							</div>
 						</div>
 					</div>
@@ -137,6 +137,28 @@
 												<img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="image">
 			                                <?php } ?>
 										</a>
+
+										<!--BADGE DISCOUNT -->
+                                        <?php if (!empty($value['showpromotion'])): ?>
+											<div class="badge badge-discount">
+												<div class="content">KM<br>-<?php echo $value['percen']; ?>%</div>
+											</div>
+                                        <?php endif ?>
+
+										<!--BADGE SPECIAL -->
+										<div class="badge badge-special">
+                                            <?php if (!empty($value['hot'])): ?>
+												<div id="tour-hot" class="">
+													<img src="<?php echo site_url('assets/img/badge-tour-hot.png')?>" alt="badge tour hot">
+												</div>
+                                            <?php endif ?>
+                                            <?php if (!empty($value['bestselling'])): ?>
+												<div id="best-sell" class="">
+													<img src="<?php echo site_url('assets/img/badge-best-sell.png')?>" alt="badge best sell">
+												</div>
+                                            <?php endif ?>
+										</div>
+
 									</div>
 									<div class="head">
 										<div class="row">
@@ -161,7 +183,7 @@
 									</div>
 									<div class="foot">
 										<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-default" role="button">
-											<?php echo $this->lang->line("expore-now"); ?>
+											<?php echo $this->lang->line('explore'); ?>
 										</a>
 									</div>
 								</div>
@@ -222,7 +244,7 @@
 							<div class="overlay">
 								<h1><?php echo $backpack['product_category_title'];?></h1>
 								<p><?php echo $backpack['product_category_content'];?></p>
-								<a href="<?php echo base_url('danh-muc/top-10-tours') ?>" class="btn btn-default" role="button"><?php echo $this->lang->line('see-all-tour'); ?></a>
+								<a href="<?php echo base_url('danh-muc/top-10-tours') ?>" class="btn btn-default" role="button"><?php echo $this->lang->line('see-all'); ?></a>
 							</div>
 						</div>
 					</div>
@@ -248,6 +270,28 @@
 												<img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="image">
 			                                <?php } ?>
 										</a>
+
+										<!--BADGE DISCOUNT -->
+                                        <?php if (!empty($value['showpromotion'])): ?>
+											<div class="badge badge-discount">
+												<div class="content">KM<br>-<?php echo $value['percen']; ?>%</div>
+											</div>
+                                        <?php endif ?>
+
+										<!--BADGE SPECIAL -->
+										<div class="badge badge-special">
+                                            <?php if (!empty($value['hot'])): ?>
+												<div id="tour-hot" class="">
+													<img src="<?php echo site_url('assets/img/badge-tour-hot.png')?>" alt="badge tour hot">
+												</div>
+                                            <?php endif ?>
+                                            <?php if (!empty($value['bestselling'])): ?>
+												<div id="best-sell" class="">
+													<img src="<?php echo site_url('assets/img/badge-best-sell.png')?>" alt="badge best sell">
+												</div>
+                                            <?php endif ?>
+										</div>
+
 									</div>
 									<div class="head">
 										<div class="row">
@@ -272,7 +316,7 @@
 									</div>
 									<div class="foot">
 										<a href="<?php echo base_url('tours/'.$value['slug']) ?>" class="btn btn-default" role="button">
-											<?php echo $this->lang->line("expore-now"); ?>
+											<?php echo $this->lang->line('explore'); ?>
 										</a>
 									</div>
 								</div>
@@ -382,7 +426,7 @@
 								</a>
 								<h2 class="post-title bottom">
 									<a href="<?php echo base_url('chuyen-muc/'.$value['slug']) ?>" role="button" class="btn btn-default">
-                                       <?php echo $this->lang->line("read-mores"); ?>
+                                       <?php echo $this->lang->line("read-more"); ?>
 									</a>
 								</h2>
 							</div>
@@ -404,7 +448,7 @@
 								</a>
 								<h2 class="post-title bottom">
 									<a href="<?php echo base_url('chuyen-muc/'.$value['slug']) ?>" role="button" class="btn btn-default">
-                                       <?php echo $this->lang->line("read-mores"); ?>
+                                       <?php echo $this->lang->line("read-more"); ?>
 									</a>
 								</h2>
 							</div>
@@ -451,29 +495,29 @@
 		        <?php foreach ($blog_post['sub'] as $key => $value): ?>
 						<div class="item col-md-4">
 							<div class="inner cover">
-									<div class="wrapper">
+								<div class="wrapper">
+									<div class="mask">
+										<div class="head">
+											<h4 class="post-subtitle"><?php echo $value['parent_title']; ?></h4>
+											<h2 class="post-title"><?php echo $value['title']; ?></h2>
+											<p class="post-date"><?php echo date("d/m/Y",strtotime($value['created_at']));?></p>
+										</div>
+										<div class="body">
+										</div>
 										<div class="mask">
-											<div class="head">
-												<h4 class="post-subtitle"><?php echo $value['parent_title']; ?></h4>
-												<h2 class="post-title"><?php echo $value['title']; ?></h2>
-												<p class="post-date"><?php echo date("d/m/Y",strtotime($value['created_at']));?></p>
-											</div>
-											<div class="body">
-											</div>
-											<div class="mask">
-												<a href="<?php echo base_url('bai-viet/' . $value['slug']) ?>">
-					                                <?php if($value['image']){ ?>
-														<img src="<?php echo base_url('/assets/upload/post/'.$value['image']) ?>" alt="image">
-					                                <?php }else{ ?>
-														<img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="image">
-					                                <?php } ?>
+											<a href="<?php echo base_url('bai-viet/' . $value['slug']) ?>">
+												<?php if($value['image']){ ?>
+													<img src="<?php echo base_url('/assets/upload/post/'.$value['image']) ?>" alt="image">
+												<?php }else{ ?>
+													<img src="<?php echo base_url('/assets/img/vertical.jpg'); ?>" alt="image">
+												<?php } ?>
+											</a>
+											<div class="overlay">
+												<a href="<?php echo base_url('bai-viet/'.$value['slug']) ?>" class="btn btn-default" role="button">
+													<?php echo $this->lang->line("view-detail"); ?>
 												</a>
-												<div class="overlay">
-													<a href="<?php echo base_url('bai-viet/'.$value['slug']) ?>" class="btn btn-default" role="button">
-														<?php echo $this->lang->line("view-detail"); ?>
-													</a>
-												</div>
 											</div>
+										</div>
 									</div>
 								</div>
 							</div>
