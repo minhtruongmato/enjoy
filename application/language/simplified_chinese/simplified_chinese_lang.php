@@ -88,9 +88,9 @@ $lang['tour-tabs-trip-notes'] = '旅行笔记';
 $lang['tour-tabs-inquire'] = '查询';
 $lang['tour-tabs-customize'] = '定制';
 
-$lang['tour-price-adult'] = 'Adult';
-$lang['tour-price-u11'] = 'Children from 2 to 11';
-$lang['tour-price-u2'] = 'Children under 2';
+$lang['tour-price-adult'] = '成人';
+$lang['tour-price-u11'] = '2至11岁的儿童';
+$lang['tour-price-u2'] = '2岁以下的儿童';
 
 $lang['inclusion'] = 'Inclusion';
 $lang['exclusion'] = 'Exclusion';
@@ -104,29 +104,29 @@ $lang['customize-change'] = 'Your Change';
 
 //Forms
 
-$lang['form-title'] = 'Title';
-$lang['form-first-name'] = 'First Name';
-$lang['form-last-name'] = 'Last Name';
-$lang['form-email'] = 'Email Address';
-$lang['form-email-confirm'] = 'Confirm Email Address';
-$lang['form-phone-number'] = 'Phone Number';
-$lang['form-departure'] = 'Preferred Departure Date';
-$lang['form-country'] = 'Country';
-$lang['form-adults'] = 'Adults';
-$lang['form-children-u11'] = 'Children (2-11 years old)';
-$lang['form-children-u2'] = 'Children (Under 2 years old)';
-$lang['form-message'] = 'Message';
-$lang['insert-code'] = 'Enter the code';
-$lang['evaluate'] = 'Evaluate';
+$lang['form-title'] = '标题';
+$lang['form-first-name'] = '名字';
+$lang['form-last-name'] = '姓';
+$lang['form-email'] = '电子邮件地址';
+$lang['form-email-confirm'] = '确认电子邮箱地址';
+$lang['form-phone-number'] = '电话号码';
+$lang['form-departure'] = '首选出发日期';
+$lang['form-country'] = '国家';
+$lang['form-adults'] = '成人';
+$lang['form-children-u11'] = '2至11岁的儿童';
+$lang['form-children-u2'] = '2岁以下的儿童';
+$lang['form-message'] = '信息';
+$lang['insert-code'] = '输入代码';
+$lang['evaluate'] = '评估';
 
 //Contact
 
-$lang['contact-name'] = 'Full name';
-$lang['contact-mail'] = 'Email';
-$lang['contact-phone'] = 'Phone number';
+$lang['contact-name'] = '全名';
+$lang['contact-mail'] = '电子邮件地址';
+$lang['contact-phone'] = '电话号码';
 $lang['contact-country'] = 'Country of residence';
-$lang['contact-message'] = 'Message';
-$lang['contact-send'] = 'Send';
+$lang['contact-message'] = '信息';
+$lang['contact-send'] = '发送';
 
 
 

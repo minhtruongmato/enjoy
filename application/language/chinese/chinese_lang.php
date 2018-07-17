@@ -88,9 +88,9 @@ $lang['tour-tabs-trip-notes'] = '旅行筆記';
 $lang['tour-tabs-inquire'] = '查詢';
 $lang['tour-tabs-customize'] = '定制';
 
-$lang['tour-price-adult'] = 'Adult';
-$lang['tour-price-u11'] = 'Children from 2 to 11';
-$lang['tour-price-u2'] = 'Children under 2';
+$lang['tour-price-adult'] = '成人';
+$lang['tour-price-u11'] = '2至11歲的兒童';
+$lang['tour-price-u2'] = '2歲以下的兒童';
 
 $lang['inclusion'] = 'Inclusion';
 $lang['exclusion'] = 'Exclusion';
@@ -106,28 +106,30 @@ $lang['evaluate'] = 'Evaluate';
 
 //Forms
 
-$lang['form-title'] = 'Title';
-$lang['form-first-name'] = 'First Name';
-$lang['form-last-name'] = 'Last Name';
-$lang['form-email'] = 'Email Address';
-$lang['form-email-confirm'] = 'Confirm Email Address';
-$lang['form-phone-number'] = 'Phone Number';
-$lang['form-departure'] = 'Preferred Departure Date';
-$lang['form-country'] = 'Country';
-$lang['form-adults'] = 'Adults';
-$lang['form-children-u11'] = 'Children (2-11 years old)';
-$lang['form-children-u2'] = 'Children (Under 2 years old)';
-$lang['form-message'] = 'Message';
+$lang['form-title'] = '標題';
+$lang['form-first-name'] = '名字';
+$lang['form-last-name'] = '姓';
+$lang['form-email'] = '電子郵件地址';
+$lang['form-email-confirm'] = '確認電子郵箱地址';
+$lang['form-phone-number'] = '電話號碼';
+$lang['form-departure'] = '首選出發日期';
+$lang['form-country'] = '国家';
+$lang['form-adults'] = '成人';
+$lang['form-children-u11'] = '2至11歲的兒童';
+$lang['form-children-u2'] = '2歲以下的兒童';
+$lang['form-message'] = '信息';
+$lang['insert-code'] = '輸入代碼';
+$lang['evaluate'] = '評估';
 
 
 //Contact
 
-$lang['contact-name'] = 'Full name';
-$lang['contact-mail'] = 'Email';
-$lang['contact-phone'] = 'Phone number';
+$lang['contact-name'] = '全名';
+$lang['contact-mail'] = '電子郵件地址';
+$lang['contact-phone'] = '電話號碼';
 $lang['contact-country'] = 'Country of residence';
-$lang['contact-message'] = 'Message';
-$lang['contact-send'] = 'Send';
+$lang['contact-message'] = '信息';
+$lang['contact-send'] = '發送';
 
 
 

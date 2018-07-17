@@ -27,34 +27,34 @@
 
                 <div class="form-group col-xs-12">
                     <?php
-                    echo form_label('Họ tên (*)', 'contact_name');
+                    echo form_label($this->lang->line('contact-name'), 'contact_name');
                     echo form_error('contact_name');
                     echo form_input('contact_name', set_value('contact_name'), 'class="form-control" id="contact_name"');
                     ?>
                 </div>
                 <div class="form-group col-xs-12">
                     <?php
-                    echo form_label('Email (*)', 'contact_mail');
+                    echo form_label($this->lang->line('contact-mail'), 'contact_mail');
                     echo form_error('contact_mail');
                     echo form_input('contact_mail', set_value('contact_mail'), 'class="form-control" id="contact_mail"');
                     ?>
                 </div>
                 <div class="form-group col-xs-12">
                     <?php
-                    echo form_label('Số điện thoại (*)', 'contact_phone');
+                    echo form_label($this->lang->line('contact-phone'), 'contact_phone');
                     echo form_error('contact_phone');
                     echo form_input('contact_phone', set_value('contact_phone'), 'class="form-control" id="contact_phone"');
                     ?>
                 </div>
                 <div class="form-group col-xs-12">
                     <?php
-                    echo form_label('Nội dung', 'contact_message');
+                    echo form_label($this->lang->line('contact-message'), 'contact_message');
                     echo form_error('contact_message');
                     echo form_textarea('contact_message', set_value('contact_message'), 'class="form-control" id="contact_message"');
                     ?>
                 </div>
                 <div class="form-group col-xs-12">
-                    <?php echo form_submit('submit', 'Gửi', 'class="btn btn-primary"'); ?>
+                    <?php echo form_submit('submit', $this->lang->line('contact-send'), 'class="btn btn-primary"'); ?>
                 </div>
 
                 <?php echo form_close(); ?>
