@@ -36,14 +36,25 @@
                         </h3>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-6">
+                    <div class="row" style="padding: 5px;">
+                        <div class="col-md-2 col-ms-12">
                             <a href="<?php echo base_url('admin/'.$controller.'/create') ?>" class="btn btn-primary" role="button">Thêm mới</a>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-10 col-ms-12">
                             <form action="<?php echo base_url('admin/'.$controller.'/index') ?>" method="get">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Tìm kiếm ..." name="search" value="">
+                                <div class="checkbox col-md-6 col-ms-12">
+                                    <label style="padding-right: 10px;">
+                                        <input type="checkbox" name="promotion" <?php echo (!empty($promotion))? 'checked' : '';?>> Khuyến Mãi
+                                    </label>
+                                    <label style="padding-right: 10px;">
+                                        <input type="checkbox" name="bestselling" <?php echo (!empty($bestselling))? 'checked' : '';?>> Bán Chạy
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="hot" <?php echo (!empty($hot))? 'checked' : '';?>> Hot
+                                    </label>
+                                </div>
+                                <div class="input-group col-md-6 col-ms-12">
+                                    <input type="text" class="form-control" placeholder="Tìm kiếm ..." name="search" value="<?php echo (!empty($keyword))? $keyword : '';?>">
                                     <span class="input-group-btn">
                                         <input type="submit" class="btn btn-block btn-primary" value="Tìm kiếm">
                                     </span>
@@ -62,6 +73,7 @@
                                     <th>No.</th>
                                     <th>Hình ảnh</th>
                                     <th>Tiêu đề</th>
+                                    <th>Khuyến mãi</th>
                                     <th>Danh mục</th>
                                     <th>Trạng thái</th>
                                     <th>Detail</th>
@@ -77,13 +89,14 @@
                                         <td>
                                             <div class="mask_sm">
                                                 <?php if (!empty($value['image'])): ?>
-                                                    <img src="<?php echo base_url('assets/upload/'.$controller.'/'.$value['slug'].'/' .$value['imglocaltion']) ?>" alt="anh-cua-<?php echo $value['slug'] ?>" width=150px>
+                                                    <img src="<?php echo base_url('assets/upload/'.$controller.'/'.$value['slug'].'/' .$value['image']) ?>" alt="anh-cua-<?php echo $value['slug'] ?>" width=150px>
                                                 <?php else: ?>
                                                     Chưa có Ảnh.
                                                 <?php endif ?>
                                             </div>
                                         </td>
                                         <td><?php echo $value['title'] ?></td>
+                                        <td><i class="<?php echo ($value['showpromotion'] == 1)?'glyphicon glyphicon-ok':'glyphicon glyphicon-remove'; ?>" style="color:<?php echo ($value['showpromotion'] == 1)?'green':'red'; ?>;"></i></td>
                                         <td><?php echo $value['parent_title'] ?></td>
                                         <td>
                                             <?php echo ($value['is_activated'] == 0)? '<span class="label label-success">Đang sử dụng</span>' : '<span class="label label-warning">Không sử dụng</span>'; ?>   
@@ -112,6 +125,7 @@
                                         <th>No.</th>
                                         <th>Hình ảnh</th>
                                         <th>Tiêu đề</th>
+                                        <th>Khuyến mãi</th>
                                         <th>Danh mục</th>
                                         <th>Trạng thái</th>
                                         <th>Detail</th>

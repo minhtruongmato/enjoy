@@ -39,7 +39,7 @@
 						<p><?php echo $detail['content'] ?></p>
 					</div>
 					<div class="right col-sm-6 col-xs-12">
-						<h3>Tour Detail</h3>
+						<h3><?php echo $this->lang->line('tour-detail'); ?></h3>
 						<table class="table">
 							<tr>
 								<td><?php echo $this->lang->line('tour-detail-duration') ?></td>
@@ -60,7 +60,7 @@
 								<td>
 									<div id="rateit_star" data-productid="<?php echo $detail['id']; ?>" data-rateit-resetable="false" data-rateit-value="<?php echo $rating ?>"></div>
 									<input type="hidden" name="re_rateit" id="re_rateit" value="">
-									<p class="number"><?php echo $rating ?> / 5 điểm <?php echo '(' . $count_rating. ' ' .$this->lang->line('tour-detail-votes') . ')' ?></p>
+									<p class="number"><?php echo $rating ?> / 5 <?php echo $this->lang->line('rate'); ?> <?php echo '(' . $count_rating. ' ' .$this->lang->line('tour-detail-votes') . ')' ?></p>
 								</td>
 							</tr>
 							<tr>
