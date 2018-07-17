@@ -13,7 +13,7 @@ $lang['about'] = 'About Us';
 $lang['contact'] = 'Contact Us';
 
 //Main Nav
-$lang['home'] = 'Home';
+$lang['home'] = 'Homepage';
 $lang['domestic'] = 'Domestic';
 $lang['international'] = 'International';
 $lang['special-tours'] = 'Special Tour';
@@ -48,7 +48,8 @@ $lang['see-all'] = 'See all';
 $lang['explore'] = 'Expore Now';
 $lang['tour-request'] = 'Send Us your Request';
 $lang['booking'] = 'Book Now!';
-$lang['registef'] = 'Registef Now!';
+$lang['view-detail'] = 'View Detail';
+$lang['read-more'] = 'Read More';
 
 //Tour Request
 
@@ -73,8 +74,7 @@ $lang[''] = '';
 
 $lang['tour-detail-duration'] = 'Duration';
 $lang['tour-detail'] = 'Tour Detail';
-$lang['note'] = 'Note';
-$lang['rate'] = 'Rate';
+$lang['rate'] = 'Rating';
 $lang['price'] = 'Price';
 $lang['no-where-selected-in-the-day'] = 'No location has selected';
 $lang['tour-detail-start'] = 'Starting Day';
@@ -137,17 +137,23 @@ $lang['contact-send'] = 'Send';
 //All
 $lang['top-packages'] = 'Top 10 Vietnam Tours';
 $lang['top-backpack'] = 'Top 10 Tours';
-$lang['see-all-tour'] = 'See all tours';
 $lang['top-backpack'] = 'Top 10 Tours';
-$lang['book-now'] = 'Book now';
-$lang['expore-now'] = 'Expore now';
-$lang['view-detail'] = 'View Detail';
-$lang['read-mores'] = 'Read Mores';
+
 $lang['related-tour'] = 'Related Tour';
 $lang['post-related'] = 'Related Post';
 $lang['point-to'] = 'Point To';
 $lang['day'] = 'Day';
 $lang['note'] = 'Note';
+
+//Badge
+
+$lang['tour-best-sell'] = 'Best Sell Tour';
+$lang['tour-hot'] = 'Hot Tour';
+$lang['tour-discount'] = 'Sale Off Tour';
+
+$lang['tour-best-sell-short'] = 'Best Sell';
+$lang['tour-hot-short'] = 'Hot';
+$lang['tour-discount-short'] = 'Sale Off';
 
 
 
