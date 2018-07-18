@@ -1,7 +1,22 @@
 <!-- Homepage Stylesheet -->
 <link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>homepage.css">
-
 <!-- GET WEATHER INFO -->
+<?php
+	$frontend_lang = '';
+    switch ($lang) {
+        case 'cn':
+            $frontend_lang = 'zh_cn';
+            break;
+        
+        case 'sc':
+            $frontend_lang = 'zh_tw';
+            break;
+        
+        default:
+            $frontend_lang = 'en';
+            break;
+    }
+?>
 <script type="text/javascript">
     function to_slug(str,space="_"){
         str = str.toLowerCase();
@@ -32,16 +47,17 @@
         })
             .done(function(data) {
                 var key = to_slug(data.city.name);
+                console.log(key);
                 $.ajax({
-                    url: 'http://localhost/tourist1/homepage/ajax_home?key='+key,
+                    url: 'http://localhost/enjoy/homepage/ajax_home?key='+key,
                     type: 'GET',
                 })
-                    .done(function(datas) {
-                        $("#banner-weather .line ."+id+" h3").text(datas.reponse);
-                    })
-                    .fail(function() {
-                        console.log("error");
-                    });
+                .done(function(datas) {
+                    $("#banner-weather .line ."+id+" h3").text(datas.reponse);
+                })
+                .fail(function() {
+                    console.log("error");
+                });
                 $('#banner-weather .line .content-weather').append('<div class="col-md-12 '+id+'" style="padding:0px; margin-bottom:10px;border-bottom:1px solid #CCC;"><div class="img col-md-3" style="padding:0px;"><img src="http://openweathermap.org/img/w/'+data.list[2].weather[0].icon+'.png'+'" width="80px" alt=""></div><div class=" col-md-9" style="padading:0px;paddidng-left:5px;"><h3 style="font-size:1em; text-transform:capitalize;font-weight:600;margin-bottom:0px;margin-top:15px;"></h3><p class="description" style="text-transform:capitalize;margin-bottom:0px;"></p><p class="nhietdo" style="margin-bottom:0px;"></p></div></div>');
                 $("#banner-weather .line ."+id+" p.description").text(data.list[2].weather[0].description);
                 $("#banner-weather .line ."+id+" p.nhietdo").text(Math.floor(data.list[2].main.temp_min/10)+'°C - '+Math.ceil(data.list[2].main.temp_max/10)+'°C');
@@ -50,19 +66,19 @@
                 console.log("error");
             });
     }
-    temperature('1581129','<?php echo $lang;?>');
-    temperature('1816670','<?php echo $lang;?>');
-    temperature('1796236','<?php echo $lang;?>');
-    temperature('1668341','<?php echo $lang;?>');
-    temperature('1850147','<?php echo $lang;?>');
-    temperature('1835848','<?php echo $lang;?>');
-    temperature('4321929','<?php echo $lang;?>');
-    temperature('1609350','<?php echo $lang;?>');
-    temperature('1651944','<?php echo $lang;?>');
-    temperature('1735161','<?php echo $lang;?>');
-    temperature('1821306','<?php echo $lang;?>');
-    temperature('1642911','<?php echo $lang;?>');
-    temperature('1880252','<?php echo $lang;?>');
+    temperature('1581129','<?php echo $frontend_lang;?>');
+    temperature('1580578','<?php echo $frontend_lang;?>');
+    temperature('1905468','<?php echo $frontend_lang;?>');
+    temperature('1565033','<?php echo $frontend_lang;?>');
+
+    temperature('1559970','<?php echo $frontend_lang;?>');
+    temperature('1568839','<?php echo $frontend_lang;?>');
+    temperature('1580410','<?php echo $frontend_lang;?>');
+    temperature('1568574','<?php echo $frontend_lang;?>');
+
+    temperature('1568769','<?php echo $frontend_lang;?>');
+    temperature('1572151','<?php echo $frontend_lang;?>');
+    temperature('1579008','<?php echo $frontend_lang;?>');
 </script>
 
 <!-- Slider JS -->
@@ -416,18 +432,31 @@
 				<div class="grid col-md-6">
 					<div class="grid-sizer"></div>
 					<div class="grid-item grid-item-width-2 grid-item-height-2 col-xs-12">
-						<div class="mask">
+						<div class="mask covers">
 							<img src="<?php echo base_url('assets/upload/post_category/'.$vietnam['image']); ?>" alt="blogs image">
-							<div class="overlay"></div>
-							<div class="content">
-								<h2 class="post-title">
-									<a href="<?php echo base_url('chuyen-muc/'.$vietnam['slug']) ?>" role="button">
-                                        <?php echo $vietnam['post_category_title'];?>
-									</a>
-								</h2>
+							<div class="overlay">
+								<div class="hover-mouse">
+									<h2 class="post-title">
+	                                        <?php echo $vietnam['post_category_title'];?>
+									</h2>
+									<p>
+										<?php echo $vietnam['post_category_content'];?>
+									</p>
+									<h2 class="post-title">
+										<a href="<?php echo base_url('chuyen-muc/'.$vietnam['slug']) ?>" role="button" class="btn btn-default">
+	                                       <?php echo $this->lang->line("read-mores"); ?>
+										</a>
+									</h2>
+								</div>
+								<div class="content">
+									<h2 class="post-title">
+										<a href="<?php echo base_url('chuyen-muc/'.$vietnam['slug']) ?>" role="button">
+	                                        <?php echo $vietnam['post_category_title'];?>
+										</a>
+									</h2>
+								</div>
 							</div>
 						</div>
-
 					</div>
                     <?php foreach ($vietnam_menu as $key => $value): ?>
                     <?php $class = '';
@@ -452,8 +481,7 @@
 						<div class="mask <?php echo ($key == 4)?'covers':'cover'; ?>">
 							<img src="<?php echo base_url('assets/upload/post_category/'.$value['image']); ?>" alt="blogs image">
 							<div class="overlay">
-
-                                <?php if ($key == 1): ?>
+								<div class="hover-mouse">
 									<h2 class="post-title">
                                         <?php echo $value['title'];?>
 									</h2>
@@ -465,7 +493,6 @@
                                             <?php echo $this->lang->line("read-mores"); ?>
 										</a>
 									</h2>
-                                <?php else: ?>
 									<div class="content">
 										<h2 class="post-title">
 											<a href="<?php echo base_url('chuyen-muc/'.$value['slug']) ?>" role="button">
@@ -473,8 +500,7 @@
 											</a>
 										</h2>
 									</div>
-                                <?php endif ?>
-
+	                            </div>
 							</div>
 						</div>
 					</div>
@@ -490,7 +516,7 @@
 			</div>
 			<div class="right col-sm-3 col-xs-12" style="overflow-y: scroll">
 				<div id="banner-weather">
-					<h2>Weather</h2>
+					<h2><?php echo $this->lang->line('weather');?></h2>
 					<div class="row">
 						<div class="item col-xs-12">
 							<div class="line" style="padding: 0px;">
@@ -524,7 +550,7 @@
 								</a>
 								<h2 class="post-title bottom">
 									<a href="<?php echo base_url('chuyen-muc/'.$value['slug']) ?>" role="button" class="btn btn-default">
-                                       <?php echo $this->lang->line("read-more"); ?>
+                                       <?php echo $this->lang->line("read-mores"); ?>
 									</a>
 								</h2>
 							</div>
@@ -546,7 +572,7 @@
 								</a>
 								<h2 class="post-title bottom">
 									<a href="<?php echo base_url('chuyen-muc/'.$value['slug']) ?>" role="button" class="btn btn-default">
-                                       <?php echo $this->lang->line("read-more"); ?>
+                                       <?php echo $this->lang->line("read-mores"); ?>
 									</a>
 								</h2>
 							</div>

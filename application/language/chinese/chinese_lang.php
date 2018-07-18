@@ -154,6 +154,20 @@ $lang['tour-hot-short'] = 'Hot';
 $lang['tour-discount-short'] = 'Sale Off';
 
 
+//weather
+$lang['weather'] = 'Weather';
+
+$lang['thu_do_ha_noi'] = '河内';
+$lang['thanh_pho_ho_chi_minh'] = '胡志明市'; 
+$lang['tinh_da_nang'] = '峴港'; 
+$lang['tinh_thua_thien-hue'] = '順化';
+$lang['tinh_ninh_binh'] = '寧平';
+$lang['tinh_quang_binh'] = '廣平';
+$lang['ha_long'] = '廣寧 - 下龍灣';
+$lang['quy_nhon'] = '歸仁';
+$lang['tinh_quang_ngai'] = '廣義';
+$lang['nha_trang'] = '慶和 - 芽莊';
+$lang['tinh_kien_giang'] = '富國島';
 
 
 
