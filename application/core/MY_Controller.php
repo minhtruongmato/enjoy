@@ -181,7 +181,6 @@ class Admin_Controller extends MY_Controller {
 
         $this->fix_data = array(25);
     } 
-    
     function return_api($status, $message='', $data = null,$isExisted= true){
         return $this->output
             ->set_content_type('application/json')

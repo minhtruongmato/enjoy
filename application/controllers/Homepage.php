@@ -78,6 +78,9 @@ class Homepage extends Public_Controller {
         $this->render('homepage_view');
     }
 
+    public function ajax_home(){
+        return $this->return_api(HTTP_SUCCESS,'',$this->lang->line($this->input->get('key')));
+    }
     function about(){
     	$this->load->model('about_model');
     	$about = $this->about_model->get_by_id_in_about($this->data['lang']);

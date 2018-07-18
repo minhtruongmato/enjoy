@@ -49,7 +49,7 @@ $lang['explore'] = 'Expore Now';
 $lang['tour-request'] = 'Send Us your Request';
 $lang['booking'] = 'Book Now!';
 $lang['view-detail'] = 'View Detail';
-$lang['read-more'] = 'Read More';
+$lang['read-mores'] = 'Read More';
 
 //Tour Request
 
@@ -154,6 +154,22 @@ $lang['tour-discount'] = 'Sale Off Tour';
 $lang['tour-best-sell-short'] = 'Best Sell';
 $lang['tour-hot-short'] = 'Hot';
 $lang['tour-discount-short'] = 'Sale Off';
+
+//weather
+$lang['weather'] = 'Weather';
+
+
+$lang['thu_do_ha_noi'] = 'Ha Noi';
+$lang['thanh_pho_ho_chi_minh'] = 'Ho Chi Minh City'; 
+$lang['tinh_da_nang'] = 'Da Nang'; 
+$lang['tinh_thua_thien-hue'] = 'Hue';
+$lang['tinh_ninh_binh'] = 'Ninh Binh';
+$lang['tinh_quang_binh'] = 'Quang Binh';
+$lang['ha_long'] = 'Ha Long Bay – Quang Ninh';
+$lang['quy_nhon'] = 'Quy Nhon';
+$lang['tinh_quang_ngai'] = 'Quang Ngai';
+$lang['nha_trang'] = 'Nha Trang – Khanh Hoa';
+$lang['tinh_kien_giang'] = 'Phu Quoc Island';
 
 
 
