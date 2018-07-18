@@ -1,16 +1,5 @@
 <!-- Tours Stylesheet -->
 <link rel="stylesheet" href="<?php echo site_url('assets/sass/') ?>tours.css">
-<?php 
-$url_image = base_url('assets/img/horizontal.jpg');
-if ($detail['title'] == $this->lang->line('top-packages') || $detail['title'] == $this->lang->line('top-backpack')) {
-	if(!empty($product_array)){
-		$url_image = base_url("assets/upload/product/".$product_array[count($product_array)-1]['slug']."/".$product_array[count($product_array)-1]['image']);
-	}
-}else{
-	$url_image = base_url("assets/upload/product_category/".$detail['slug']."/".$detail['image']);
-}
-?>
-
 <section id="head-slider-section">
 	<div class="container">
 		<div class="big-title">
@@ -26,7 +15,18 @@ if ($detail['title'] == $this->lang->line('top-packages') || $detail['title'] ==
 	</div>
 	<div id="head-slider" class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner" role="listbox">
-            <?php if (!empty(json_decode($detail['image']))): ?>
+			<?php if (($detail['title'] == $this->lang->line('top-packages') || $detail['title'] == $this->lang->line('top-backpack')) && count($product_array) > 0): ?>
+                <?php for($i=0;$i<count($product_array);$i++): ?>
+					<div class="item <?php echo ($i == 0)?'active':'';?>">
+						<div class="mask">
+							<img src="<?php echo base_url('assets/upload/product/'.$product_array[count($product_array)-($i+1)]['slug'].'/'.$product_array[count($product_array)-($i+1)]['image']);?>" alt="...">
+						</div>
+					</div>
+					<?php if ($i ==4): ?>
+						<?php break; ?>
+					<?php endif ?>
+                <?php endfor ?>
+            <?php elseif (!empty(json_decode($detail['image']))): ?>
                 <?php foreach (json_decode($detail['image']) as $key => $value): ?>
 					<div class="item <?php echo ($key == 0)?'active':'';?>">
 						<div class="mask">
