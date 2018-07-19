@@ -628,6 +628,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             data: {
                 lang: $(this).data('language')
             },
+            async: false,
             success: function(res){
                 if(res.message == 'changed'){
                     window.location.reload();
