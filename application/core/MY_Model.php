@@ -302,9 +302,11 @@ class MY_Model extends CI_Model {
      * @param 
      * @return mixed
      */
-    public function get_all_item($category){
-        $this->db->select('*')
+    public function get_all_item($category, $lang = ''){
+        $this->db->select($this->table . '.*, ' . $this->table_lang . '.*')
             ->from($this->table)
+            ->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id')
+            ->where($this->table_lang . '.language', $lang)
             ->where($this->table . '.post_category_id', $category)
             ->where($this->table . '.is_deleted', 0);
 

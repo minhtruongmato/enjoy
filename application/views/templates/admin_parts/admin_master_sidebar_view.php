@@ -7,24 +7,12 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="<?php echo site_url('assets/lib/dist/img/user2-160x160.jpg') ?>" class="img-circle" alt="User Image">
+                    <img src="<?php echo site_url('assets/img/logo.png') ?>" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>Alexander Pierce</p>
-                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    <p><h4><b>Mato</b> creative</h4></p>
                 </div>
             </div>
-            <!-- search form -->
-            <form action="#" method="get" class="sidebar-form">
-                <div class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="Search...">
-                    <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-                </div>
-            </form>
-            <!-- /.search form -->
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MAIN NAVIGATION</li>
@@ -33,7 +21,7 @@
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                     </a>
                 </li>
-                <li class="<?php echo ($this->uri->segment(2) == 'about' || $this->uri->segment(2) == 'our_message' || $this->uri->segment(2) == 'our_methods')? 'active' : 'treeview' ?>">
+                <!-- <li class="<?php echo ($this->uri->segment(2) == 'about' || $this->uri->segment(2) == 'our_message' || $this->uri->segment(2) == 'our_methods')? 'active' : 'treeview' ?>">
                     <a href="">
                         <i class="fa fa-user-circle-o"></i>
                         <span>Giới Thiệu</span>
@@ -46,10 +34,10 @@
                             <a href="<?php echo base_url('admin/about') ?>"><i class="fa fa-group"></i> Giới Thiệu</a>
                         </li>
                     </ul>
-                </li>
-                <li class="<?php echo ($this->uri->segment(2) == 'banner')? 'active' : '' ?>">
+                </li> -->
+                <!-- <li class="<?php echo ($this->uri->segment(2) == 'banner')? 'active' : '' ?>">
                     <a href="<?php echo base_url('admin/banner') ?>"><i class="fa fa-list"></i> Banner</a>
-                </li>
+                </li> -->
                 <!-- <li class="<?php echo ($this->uri->segment(2) == 'category' || $this->uri->segment(2) == 'blog')? 'active' : 'treeview' ?>">
                     <a href="">
                         <i class="fa fa-newspaper-o"></i>
@@ -144,12 +132,12 @@
                         </li>
                     </ul>
                 </li>
-                <li class="header">DOCUMENTATION</li>
+                <!-- <li class="header">DOCUMENTATION</li>
                 <li>
                     <a href="<?php echo base_url('admin/documentation') ?>">
                         <i class="fa fa-book"></i> <span>Documentation</span>
                     </a>
-                </li>
+                </li> -->
 
             </ul>
         </section>

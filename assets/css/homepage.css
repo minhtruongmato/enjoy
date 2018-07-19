@@ -311,12 +311,7 @@ HEADER STYLE
                       #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand > li > ul > li .mask {
                         width: 100%;
                         height: 160px;
-                        margin-bottom: 15px;
-                        position: relative; }
-                        #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand > li > ul > li .mask .tour-badge {
-                          position: absolute;
-                          top: 5px;
-                          left: 10px; }
+                        margin-bottom: 15px; }
                   #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand > li:hover {
                     background-color: #eaeaea; }
                     #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand > li:hover a {
@@ -326,7 +321,7 @@ HEADER STYLE
                     #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand > li:hover > ul {
                       display: block; }
                 #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand .row {
-                  min-height: 465px;
+                  min-height: 485px;
                   margin-right: -5px; }
                   #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand .row .left > ul {
                     list-style: none;
@@ -358,6 +353,15 @@ HEADER STYLE
                           padding-top: 10px;
                           font-size: 1.125em;
                           display: inline-block; }
+                          #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand .row .left > ul > li > ul > li .mask {
+                            width: 100%;
+                            height: 160px;
+                            margin-bottom: 15px;
+                            position: relative; }
+                            #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand .row .left > ul > li > ul > li .mask .tour-badge {
+                              position: absolute;
+                              top: 5px;
+                              left: 5px; }
                           #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand .row .left > ul > li > ul > li a {
                             color: #999; }
                             #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand .row .left > ul > li > ul > li a:hover {
@@ -1589,7 +1593,24 @@ footer.footer {
       -o-transition: all ease 500ms;
       transition: all ease 500ms; }
 
+#banner-weather .item {
+  height: 750px; }
+  #banner-weather .item .services-right {
+    height: 750px; }
+    #banner-weather .item .services-right .content-weather {
+      height: 750px; }
+
 @media (max-width: 768px) {
+  #banner-weather {
+    padding: 10px;
+    padding-right: 25px; }
+    #banner-weather .item {
+      height: 800px; }
+      #banner-weather .item .services-right {
+        height: 800px; }
+        #banner-weather .item .services-right .content-weather {
+          height: 800px; }
+
   .section#gallery .row .grid .grid-item .mask.cover .overlay, .section#gallery .row .grid .grid-item .mask.covers .overlay, .section#visa-news .row .grid .grid-item .mask.cover .overlay, .section#visa-news .row .grid .grid-item .mask.covers .overlay {
     background: rgba(0, 0, 0, 0);
     background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 0%, black 100%);
