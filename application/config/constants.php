@@ -271,3 +271,4 @@ defined('MESSAGE_CHECK_TOP_ERROR') OR define('MESSAGE_CHECK_TOP_ERROR', 'Hiện 
 
 defined('MESSAGE_CHANGE_LANGUAGE_SUCCESS') OR define('MESSAGE_CHANGE_LANGUAGE_SUCCESS', 'changed');
 defined('MESSAGE_CHANGE_LANGUAGE_FAIL') OR define('MESSAGE_CHANGE_LANGUAGE_FAIL', 'keep');
+defined('NO_DATA') OR define('NO_DATA', 'Không có dữ liệu');

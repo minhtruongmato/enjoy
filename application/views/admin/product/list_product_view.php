@@ -73,7 +73,6 @@
                                     <th>No.</th>
                                     <th>Hình ảnh</th>
                                     <th>Tiêu đề</th>
-                                    <th>Khuyến mãi</th>
                                     <th>Danh mục</th>
                                     <th>Trạng thái</th>
                                     <th>Detail</th>
@@ -96,7 +95,6 @@
                                             </div>
                                         </td>
                                         <td><?php echo $value['title'] ?></td>
-                                        <td><i class="<?php echo ($value['showpromotion'] == 1)?'glyphicon glyphicon-ok':'glyphicon glyphicon-remove'; ?>" style="color:<?php echo ($value['showpromotion'] == 1)?'green':'red'; ?>;"></i></td>
                                         <td><?php echo $value['parent_title'] ?></td>
                                         <td>
                                             <?php echo ($value['is_activated'] == 0)? '<span class="label label-success">Đang sử dụng</span>' : '<span class="label label-warning">Không sử dụng</span>'; ?>   
@@ -125,7 +123,6 @@
                                         <th>No.</th>
                                         <th>Hình ảnh</th>
                                         <th>Tiêu đề</th>
-                                        <th>Khuyến mãi</th>
                                         <th>Danh mục</th>
                                         <th>Trạng thái</th>
                                         <th>Detail</th>

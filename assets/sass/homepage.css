@@ -755,7 +755,7 @@ footer.footer {
           height: 100%;
           overflow: hidden; }
         #slider .slide .carousel-inner .item .carousel-caption {
-          top: 60%;
+          top: 50%;
           left: 15%;
           -webkit-transform: translateY(-50%);
           -moz-transform: translateY(-50%);
