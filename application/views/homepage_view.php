@@ -49,7 +49,7 @@
                 var key = to_slug(data.city.name);
                 console.log(key);
                 $.ajax({
-                    url: 'http://localhost/enjoy/homepage/ajax_home?key='+key,
+                    url: '<?php echo base_url('homepage/ajax_home?key='); ?>'+key,
                     type: 'GET',
                 })
                 .done(function(datas) {
