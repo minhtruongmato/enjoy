@@ -58,7 +58,7 @@
                 .fail(function() {
                     console.log("error");
                 });
-                $('#banner-weather .line .content-weather').append('<div class="col-md-12 '+id+'" style="padding:0px; margin-bottom:10px;border-bottom:1px solid #CCC;"><div class="img col-md-3" style="padding:0px;"><img src="http://openweathermap.org/img/w/'+data.list[2].weather[0].icon+'.png'+'" width="80px" alt=""></div><div class=" col-md-9" style="padading:0px;paddidng-left:5px;"><h3 style="font-size:1em; text-transform:capitalize;font-weight:600;margin-bottom:0px;margin-top:15px;"></h3><p class="description" style="text-transform:capitalize;margin-bottom:0px;"></p><p class="nhietdo" style="margin-bottom:0px;"></p></div></div>');
+        		$('#banner-weather .line .content-weather').append('<div class="col-md-12 '+id+'" style="padding:0px; margin-bottom:10px;border-bottom:1px solid #CCC;"><div class="row"><div class="img col-md-3 col-ms-12 col-sm-12 col-xs-6" ><img src="http://openweathermap.org/img/w/'+data.list[2].weather[0].icon+'.png'+'" width="80px" alt=""></div><div class=" col-md-9 col-ms-12 col-sm-12 col-xs-6" style="padding-left:25px;"><h3 style="font-size:1em; text-transform:capitalize;font-weight:600;margin-bottom:0px;margin-top:15px;"></h3><p class="description" style="text-transform:capitalize;margin-bottom:0px;"></p><p class="nhietdo" style="margin-bottom:0px;"></p></div></div></div>');
                 $("#banner-weather .line ."+id+" p.description").text(data.list[2].weather[0].description);
                 $("#banner-weather .line ."+id+" p.nhietdo").text(Math.floor(data.list[2].main.temp_min/10)+'°C - '+Math.ceil(data.list[2].main.temp_max/10)+'°C');
             })
@@ -428,7 +428,7 @@
 	<div class="container">
 		<div class="row">
 
-			<div class="left col-sm-9 col-xs-12">
+			<div class="left col-sm-9 col-xs-12 services-left">
 				<div class="grid col-md-6">
 					<div class="grid-sizer"></div>
 					<div class="grid-item grid-item-width-2 grid-item-height-2 col-xs-12">
@@ -493,6 +493,7 @@
                                             <?php echo $this->lang->line("read-mores"); ?>
 										</a>
 									</h2>
+	                            </div>
 									<div class="content">
 										<h2 class="post-title">
 											<a href="<?php echo base_url('chuyen-muc/'.$value['slug']) ?>" role="button">
@@ -500,7 +501,6 @@
 											</a>
 										</h2>
 									</div>
-	                            </div>
 							</div>
 						</div>
 					</div>
@@ -514,14 +514,14 @@
                     <?php endforeach ?>
 				</div>
 			</div>
-			<div class="right col-sm-3 col-xs-12" style="overflow-y: scroll">
+			<div class="right col-sm-3 col-xs-12 services-right">
 				<div id="banner-weather">
-					<h2><?php echo $this->lang->line('weather');?></h2>
-					<div class="row">
+					<h2 style="margin-top: 0px;">Thời tiết</h2>
+					<div class="row services-right"  style="overflow-y: scroll">
 						<div class="item col-xs-12">
-							<div class="line" style="padding: 0px;">
+							<div class="line" style="padding-left: 0px;padding-right: 0px;">
 								<div class="line-primary"></div>
-								<div class="content-weather" style="overflow-y: scroll;"></div>
+								<div class="content-weather"></div>
 							</div>
 						</div>
 					</div>
@@ -653,10 +653,15 @@
 </section>
 
 <script>
+	var height = $('.services-left').height();
+	if(height > 750 && height < 1700){
+		$('.row.services-right').height(($('.services-left').height()-$('#banner-weather h2').height()-30));
+		$('.services-right .content-weather').height($('.services-left').height()-$('.services-right h2').height()-30);
+	}
 	$(document).ready(function(){
         var leftHeight = $('#gallery .row .left').height();
-        console.log(leftHeight);
-        $('#gallery .row .right').css('height' , leftHeight);
+        //console.log(leftHeight);
+        //$('#gallery .row .right').css('height' , leftHeight);
 	})
 </script>
 

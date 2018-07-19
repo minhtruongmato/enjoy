@@ -44,6 +44,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 
 <body>
+<div id="fb-root"></div>
+<script>
+    <?php
+        $share_button_lang = 'en_US';
+        if($lang == 'cn'){
+            $share_button_lang = 'zh_CN';
+        }elseif($lang == 'sc'){
+            $share_button_lang = 'zh_CN';
+        }
+    ?>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/<?php echo $share_button_lang; ?>/sdk.js#xfbml=1&version=v3.0&appId=139238366917004&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 <section id="page">
 	<header>
 		<section id="top-nav" class="container-fluid">
@@ -128,6 +146,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 															<li>
 																<div class="mask">
 																	<img src="<?php echo base_url('assets/upload/product/'.$val['slug'].'/'.$val['image']); ?>">
+																	<div class="tour-badge">
+		                                                                <?php if (!empty($val['hot'])): ?>
+																			<span class="badge "><i class="fa fa-location-arrow" aria-hidden="true"></i><?php echo $this->lang->line('tour-hot-short') ?></span>
+		                                                                <?php endif ?>
+		                                                                <?php if (!empty($val['bestselling'])): ?>
+																			<span class="badge "><i class="fa fa-star" aria-hidden="true"></i><?php echo $this->lang->line('tour-best-sell-short') ?></span>
+		                                                                <?php endif ?>
+		                                                                <?php if (!empty($val['showpromotion']) && !empty($val['percen']) && !empty($val['pricepromotion'])): ?>
+																			<span class="badge "><i class="fa fa-tags" aria-hidden="true"></i><?php echo $this->lang->line('tour-discount-short') ?></span>
+		                                                                <?php endif ?>
+																	</div>
 																</div>
 																<a href="<?php echo base_url('tours/'.$val['slug']); ?>"><?php echo $val['title']; ?></a>
 															</li>
@@ -150,6 +179,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 																<li>
 																	<div class="mask">
 																		<img src="<?php echo base_url('assets/upload/product/'.$val['slug'].'/'.$val['image']); ?>">
+																		<div class="tour-badge">
+			                                                                <?php if (!empty($val['hot'])): ?>
+																				<span class="badge "><i class="fa fa-location-arrow" aria-hidden="true"></i><?php echo $this->lang->line('tour-hot-short') ?></span>
+			                                                                <?php endif ?>
+			                                                                <?php if (!empty($val['bestselling'])): ?>
+																				<span class="badge "><i class="fa fa-star" aria-hidden="true"></i><?php echo $this->lang->line('tour-best-sell-short') ?></span>
+			                                                                <?php endif ?>
+			                                                                <?php if (!empty($val['showpromotion']) && !empty($val['percen']) && !empty($val['pricepromotion'])): ?>
+																				<span class="badge "><i class="fa fa-tags" aria-hidden="true"></i><?php echo $this->lang->line('tour-discount-short') ?></span>
+			                                                                <?php endif ?>
+																		</div>
 																	</div>
 																	<a href="<?php echo base_url('tours/'.$val['slug']); ?>"><?php echo $val['title']; ?></a>
 																</li>
@@ -181,6 +221,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 															<li>
 																<div class="mask">
 																	<img src="<?php echo base_url('assets/upload/product/'.$val['slug'].'/'.$val['image']); ?>">
+																	<div class="tour-badge">
+		                                                                <?php if (!empty($val['hot'])): ?>
+																			<span class="badge "><i class="fa fa-location-arrow" aria-hidden="true"></i><?php echo $this->lang->line('tour-hot-short') ?></span>
+		                                                                <?php endif ?>
+		                                                                <?php if (!empty($val['bestselling'])): ?>
+																			<span class="badge "><i class="fa fa-star" aria-hidden="true"></i><?php echo $this->lang->line('tour-best-sell-short') ?></span>
+		                                                                <?php endif ?>
+		                                                                <?php if (!empty($val['showpromotion']) && !empty($val['percen']) && !empty($val['pricepromotion'])): ?>
+																			<span class="badge "><i class="fa fa-tags" aria-hidden="true"></i><?php echo $this->lang->line('tour-discount-short') ?></span>
+		                                                                <?php endif ?>
+																	</div>
 																</div>
 																<a href="<?php echo base_url('tours/'.$val['slug']); ?>"><?php echo $val['title']; ?></a>
 															</li>
@@ -202,6 +253,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 																<li>
 																	<div class="mask">
 																		<img src="<?php echo base_url('assets/upload/product/'.$val['slug'].'/'.$val['image']); ?>">
+																		<div class="tour-badge">
+			                                                                <?php if (!empty($val['hot'])): ?>
+																				<span class="badge "><i class="fa fa-location-arrow" aria-hidden="true"></i><?php echo $this->lang->line('tour-hot-short') ?></span>
+			                                                                <?php endif ?>
+			                                                                <?php if (!empty($val['bestselling'])): ?>
+																				<span class="badge "><i class="fa fa-star" aria-hidden="true"></i><?php echo $this->lang->line('tour-best-sell-short') ?></span>
+			                                                                <?php endif ?>
+			                                                                <?php if (!empty($val['showpromotion']) && !empty($val['percen']) && !empty($val['pricepromotion'])): ?>
+																				<span class="badge "><i class="fa fa-tags" aria-hidden="true"></i><?php echo $this->lang->line('tour-discount-short') ?></span>
+			                                                                <?php endif ?>
+																		</div>
 																	</div>
 																	<a href="<?php echo base_url('tours/'.$val['slug']); ?>"><?php echo $val['title']; ?></a>
 																</li>
@@ -566,6 +628,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             data: {
                 lang: $(this).data('language')
             },
+            async: false,
             success: function(res){
                 if(res.message == 'changed'){
                     window.location.reload();

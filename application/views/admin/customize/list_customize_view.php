@@ -13,10 +13,10 @@
                 <?php
                     switch ($this->uri->segment(3)) {
                         case 'success':
-                            echo 'Thành công';
+                            echo 'Đặt tour thành công';
                             break;
                         case 'cancel':
-                            echo 'Hủy bỏ';
+                            echo 'Tour đã Hủy bỏ';
                             break;
                         default:
                             echo 'Chờ xác nhận';
@@ -71,16 +71,18 @@
                     <div class="box-body">
                         <div class="table-responsive">
                             <table id="table" class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Họ Tên</th>
-                                        <th>Tên Tour</th>
-                                        <th>Thời Gian</th>
-                                        <th>Xem thêm</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
+                                <?php if (!empty($booking)): ?>
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Họ Tên</th>
+                                            <th>Tên Tour</th>
+                                            <th>Thời Gian</th>
+                                            <th>Xem thêm</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                <?php endif ?>
                                 <tbody>
                                     <?php if ($booking): ?>
                                         <?php foreach ($booking as $key => $value): ?>
@@ -158,19 +160,21 @@
                                         <?php endforeach ?>
                                     <?php else: ?>
                                         <tr>
-                                            Chưa có Tùy biến của khách hàng
+                                            <h4><?php echo NO_DATA;?></h4>
                                         </tr>
                                     <?php endif ?>
                                 </tbody>
                                 <tfoot>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Họ Tên</th>
-                                        <th>Tên Tour</th>
-                                        <th>Thời Gian</th>
-                                        <th>Xem thêm</th>
-                                        <th>Action</th>
-                                    </tr>
+                                    <?php if (!empty($booking)): ?>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Họ Tên</th>
+                                            <th>Tên Tour</th>
+                                            <th>Thời Gian</th>
+                                            <th>Xem thêm</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    <?php endif ?>
                                 </tfoot>
                             </table>
                         </div>

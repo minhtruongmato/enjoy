@@ -35,7 +35,7 @@ body, html{
                 }
 
                 .carousel-caption{
-                    top: 60%;
+                    top: 50%;
                     left: 15%;
 
                     -webkit-transform: translateY(-50%);
@@ -1333,7 +1333,31 @@ body, html{
     }
 }
 
+#banner-weather{
+    .item{
+        height: 750px;
+        .services-right{
+            height: 750px;
+            .content-weather{
+                height: 750px;
+            }
+        }
+    }
+}
 @media (max-width: 768px){
+    #banner-weather{
+        padding: 10px;
+        padding-right: 25px;
+        .item{
+            height: 800px;
+            .services-right{
+                height: 800px;
+                .content-weather{
+                    height: 800px;
+                }
+            }
+        }
+    }
     .section{
         &#gallery, &#visa-news{
             .row{
