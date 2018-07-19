@@ -44,6 +44,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 
 <body>
+<div id="fb-root"></div>
+<script>
+    <?php
+        $share_button_lang = 'en_US';
+        if($lang == 'cn'){
+            $share_button_lang = 'zh_CN';
+        }elseif($lang == 'sc'){
+            $share_button_lang = 'zh_CN';
+        }
+    ?>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/<?php echo $share_button_lang; ?>/sdk.js#xfbml=1&version=v3.0&appId=139238366917004&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 <section id="page">
 	<header>
 		<section id="top-nav" class="container-fluid">

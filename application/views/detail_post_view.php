@@ -24,9 +24,8 @@
                 </article>
 
                 <div class="foot">
-                    <p>Shared:</p>
                     <ul class="list-inline">
-                        <li class="facebook"><a href=""><i class="fa fa-facebook-f"></i> Facebook </a></li>
+                        <div class="fb-share-button" data-href="" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fenjoy.matocreative.vn%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><?php echo $this->lang->line('share_facebook'); ?></a></div>
                     </ul>
                 </div>
             </div>
