@@ -494,7 +494,7 @@ section.main-content .item .mask {
       width: 130px;
       height: 50px;
       top: 10px;
-      right: 5px; }
+      right: -20px; }
     section.main-content .item .mask .badge.badge-discount {
       top: 0px;
       left: 15px;
@@ -879,7 +879,14 @@ footer.footer {
       #detail-post .container .row .right .row .item .wrapper .head h2.post-title {
         font-weight: 700;
         margin-top: 0;
-        font-size: 1.25em; }
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        font-size: 1.25em;
+        line-height: 1.5;
+        height: 2.9em;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical; }
     #detail-post .container .row .right .row .item .wrapper .body {
       color: #999;
       padding-left: 15px;
