@@ -49,7 +49,7 @@
                 var key = to_slug(data.city.name);
                 console.log(key);
                 $.ajax({
-                    url: 'http://localhost/enjoy/homepage/ajax_home?key='+key,
+                    url: '<?php echo base_url('homepage/ajax_home?key='); ?>'+key,
                     type: 'GET',
                 })
                 .done(function(datas) {
@@ -201,7 +201,7 @@
 		    <?php if (!empty($tour_packages) && count($tour_packages)>1): ?>
 		        <?php foreach ($tour_packages as $key => $value): ?>
 					<?php if (count(json_decode($value['dateimg']))>0): ?>
-						<?php $many = (count(json_decode($value['dateimg']))>1)?'s':''; ?>
+						<?php $many = (count(json_decode($value['dateimg']))>1  && $lang == 'en')?'s':''; ?>
 					<?php endif ?>
 		        	<?php if ($key > 0): ?>
 			        	<?php if ($key == 3): ?>
@@ -341,7 +341,7 @@
 		    <?php if (!empty($tour_backpack) && count($tour_backpack)>1): ?>
 		        <?php foreach ($tour_backpack as $key => $value): ?>
 					<?php if (count(json_decode($value['dateimg']))>0): ?>
-						<?php $many = (count(json_decode($value['dateimg']))>1)?'s':''; ?>
+						<?php $many = (count(json_decode($value['dateimg']))>1 && $lang == 'en')?'s':''; ?>
 					<?php endif ?>
 		        	<?php if ($key > 0): ?>
 			        	<?php if ($key == 3): ?>
@@ -516,7 +516,7 @@
 			</div>
 			<div class="right col-sm-3 col-xs-12 services-right">
 				<div id="banner-weather">
-					<h2 style="margin-top: 0px;">Thời tiết</h2>
+					<h2 style="margin-top: 0px;"><?php echo $this->lang->line('weather'); ?></h2>
 					<div class="row services-right"  style="overflow-y: scroll">
 						<div class="item col-xs-12">
 							<div class="line" style="padding-left: 0px;padding-right: 0px;">

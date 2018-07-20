@@ -46,7 +46,7 @@ $lang['explore'] = '立即探索';
 $lang['tour-request'] = '發送您的請求';
 $lang['booking'] = '现在预订！';
 $lang['view-detail'] = '查看詳情';
-$lang['read-more'] = '閱讀更多';
+$lang['read-mores'] = '閱讀更多';
 
 //Tour Request
 

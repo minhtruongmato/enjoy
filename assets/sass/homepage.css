@@ -1249,20 +1249,20 @@ footer.footer {
             top: 100%; }
         .section#gallery .row .grid .grid-item .mask.cover:hover .content, .section#visa-news .row .grid .grid-item .mask.cover:hover .content {
           opacity: 0;
-          -webkit-transition: opacity 1s ease-in-out;
-          -moz-transition: opacity 1s ease-in-out;
-          -ms-transition: opacity 1s ease-in-out;
-          -o-transition: opacity 1s ease-in-out;
-          transition: opacity 1s ease-in-out;
+          -webkit-transition: opacity .5s ease-in-out;
+          -moz-transition: opacity .5s ease-in-out;
+          -ms-transition: opacity .5s ease-in-out;
+          -o-transition: opacity .5s ease-in-out;
+          transition: opacity .5s ease-in-out;
           top: 100%; }
         .section#gallery .row .grid .grid-item .mask.cover:hover .hover-mouse, .section#visa-news .row .grid .grid-item .mask.cover:hover .hover-mouse {
           top: 0%;
           opacity: 1;
-          -webkit-transition: opacity 1s ease-in-out;
-          -moz-transition: opacity 1s ease-in-out;
-          -ms-transition: opacity 1s ease-in-out;
-          -o-transition: opacity 1s ease-in-out;
-          transition: opacity 1s ease-in-out; }
+          -webkit-transition: opacity .5s ease-in-out;
+          -moz-transition: opacity .5s ease-in-out;
+          -ms-transition: opacity .5s ease-in-out;
+          -o-transition: opacity .5s ease-in-out;
+          transition: opacity .5s ease-in-out; }
         .section#gallery .row .grid .grid-item .mask.cover:hover .overlay, .section#visa-news .row .grid .grid-item .mask.cover:hover .overlay {
           background: rgba(0, 0, 0, 0);
           background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 0%, black 100%);
