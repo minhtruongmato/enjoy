@@ -124,6 +124,15 @@
 <script src="<?php echo site_url('assets/lib/bootstrap/js/daterangepicker.js') ?>"></script>
 <script src="<?php echo site_url('assets/js/') ?>main.js"></script>
 <script src="<?php echo site_url('assets/js/') ?>client.js"></script>
-
+<script type="text/javascript">
+	$('.menu-tabs').hover(function(){
+		$('li.menu-href').removeClass('active');
+		$(this).find('li.menu-href').first().addClass('active');
+	});
+	$('li.menu-href').hover(function(){
+		$('li.menu-href').removeClass('active');
+		$(this).addClass('active');
+	});
+</script>
 </body>
 </html>

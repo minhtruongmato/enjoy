@@ -540,14 +540,14 @@ HEADER STYLE
                                                         &.menu-href{
                                                             cursor: pointer;
                                                         }
-                                                        &:hover{
-                                                            background-color: #eaeaea;
+                                                        // &:hover{
+                                                        //     background-color: #eaeaea;
 
-                                                            > ul{
-                                                                display: block;
-                                                                padding-left: 5px;
-                                                            }
-                                                        }
+                                                        //     > ul{
+                                                        //         display: block;
+                                                        //         padding-left: 5px;
+                                                        //     }
+                                                        // }
 
                                                         > ul{
                                                             position: absolute;
@@ -587,6 +587,13 @@ HEADER STYLE
                                                                         color: $gray-dark;
                                                                     }
                                                                 }
+                                                            }
+                                                        }
+                                                        &.active{
+                                                            background-color: #eaeaea;
+                                                            > ul{
+                                                                display: block;
+                                                                padding-left: 5px;
                                                             }
                                                         }
                                                     }
