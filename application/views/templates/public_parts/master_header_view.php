@@ -138,7 +138,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<div class="row">
 										<div class="left col-md-3 col-sm-4 col-xs-12">
 											<ul style="margin-left: 0px;">
-												<li class="menu-href" >
+												<li class="menu-href active" >
 													<span class="menu-href" href="<?php echo base_url('danh-muc/top-10-vietnam-tours'); ?>">
 														<?php echo $this->lang->line('top-packages') ?>
 													</span>
@@ -213,7 +213,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<div class="row">
 										<div class="left col-md-3 col-sm-4 col-xs-12">
 											<ul>
-												<li class="menu-href" >
+												<li class="menu-href active" >
 													<span class="menu-href" href="<?php echo base_url('danh-muc/top-10-tours'); ?>">
 														<?php echo $this->lang->line('top-backpack') ?>
 													</span>
