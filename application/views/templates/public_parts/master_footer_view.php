@@ -31,8 +31,8 @@
 					<label>
 						<i class="fa fa-envelope-o" aria-hidden="false"></i> Email
 					</label>
-					<a class="link-primary" href="mailto:info@diamondtour.vn">
-						<h2>info@diamondtour.vn</h2>
+					<a class="link-primary" href="mailto:info@enjoyvietnam.tours">
+						<h2>info@enjoyvietnam.tours</h2>
 					</a>
 				</div>
 			</div>

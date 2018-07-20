@@ -81,6 +81,14 @@ class Homepage extends Public_Controller {
     public function ajax_home(){
         return $this->return_api(HTTP_SUCCESS,'',$this->lang->line($this->input->get('key')));
     }
+    public function fetch_weather_language(){
+        $result = [];
+        $data = json_decode($this->input->get('data'));
+        foreach($data as $key => $value){
+            $result[$key] = $this->lang->line('weather_city')[$value];
+        }
+        return $this->return_api(HTTP_SUCCESS,'', $result);
+    }
     function about(){
     	$this->load->model('about_model');
     	$about = $this->about_model->get_by_id_in_about($this->data['lang']);

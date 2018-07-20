@@ -494,7 +494,7 @@ section.main-content .item .mask {
       width: 130px;
       height: 50px;
       top: 10px;
-      right: 5px; }
+      right: -20px; }
     section.main-content .item .mask .badge.badge-discount {
       top: 0px;
       left: 15px;

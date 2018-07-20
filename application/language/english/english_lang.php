@@ -159,17 +159,17 @@ $lang['tour-discount-short'] = 'Sale Off';
 $lang['weather'] = 'Weather';
 
 
-$lang['thu_do_ha_noi'] = 'Ha Noi';
-$lang['thanh_pho_ho_chi_minh'] = 'Ho Chi Minh City'; 
-$lang['tinh_da_nang'] = 'Da Nang'; 
-$lang['tinh_thua_thien-hue'] = 'Hue';
-$lang['tinh_ninh_binh'] = 'Ninh Binh';
-$lang['tinh_quang_binh'] = 'Quang Binh';
-$lang['ha_long'] = 'Ha Long Bay – Quang Ninh';
-$lang['quy_nhon'] = 'Quy Nhon';
-$lang['tinh_quang_ngai'] = 'Quang Ngai';
-$lang['nha_trang'] = 'Nha Trang – Khanh Hoa';
-$lang['tinh_kien_giang'] = 'Phu Quoc Island';
+$lang['weather_city']['thu_do_ha_noi'] = 'Ha Noi';
+$lang['weather_city']['thanh_pho_ho_chi_minh'] = 'Ho Chi Minh City'; 
+$lang['weather_city']['tinh_da_nang'] = 'Da Nang'; 
+$lang['weather_city']['tinh_thua_thien-hue'] = 'Hue';
+$lang['weather_city']['tinh_ninh_binh'] = 'Ninh Binh';
+$lang['weather_city']['tinh_quang_binh'] = 'Quang Binh';
+$lang['weather_city']['ha_long'] = 'Ha Long Bay – Quang Ninh';
+$lang['weather_city']['quy_nhon'] = 'Quy Nhon';
+$lang['weather_city']['tinh_quang_ngai'] = 'Quang Ngai';
+$lang['weather_city']['nha_trang'] = 'Nha Trang – Khanh Hoa';
+$lang['weather_city']['tinh_kien_giang'] = 'Phu Quoc Island';
 
 
 

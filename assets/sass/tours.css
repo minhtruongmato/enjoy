@@ -494,7 +494,7 @@ section.main-content .item .mask {
       width: 130px;
       height: 50px;
       top: 10px;
-      right: 5px; }
+      right: -20px; }
     section.main-content .item .mask .badge.badge-discount {
       top: 0px;
       left: 15px;
@@ -833,8 +833,7 @@ footer.footer {
       transition: all ease 500ms; }
       #tours .container #list-tours .item .wrapper .mask {
         width: 100%;
-        height: 250px;
-        overflow: hidden; }
+        height: 250px; }
       #tours .container #list-tours .item .wrapper .head {
         padding-left: 15px;
         padding-right: 15px; }
@@ -979,8 +978,7 @@ footer.footer {
     transition: all ease 500ms; }
     #detail .container .row .right .row .item .wrapper .mask {
       width: 100%;
-      height: 200px;
-      overflow: hidden; }
+      height: 200px; }
     #detail .container .row .right .row .item .wrapper .head {
       padding-left: 15px;
       padding-right: 15px; }
@@ -1102,7 +1100,6 @@ footer.footer {
     #tours .row .item .mask {
       width: 100%;
       height: 400px;
-      overflow: hidden;
       position: relative;
       border-radius: 7px; }
       #tours .row .item .mask img {
@@ -1124,6 +1121,31 @@ footer.footer {
         -ms-transition: all ease 0.5s;
         -o-transition: all ease 0.5s;
         transition: all ease 0.5s; }
+      #tours .row .item .mask .badge {
+        position: absolute;
+        z-index: 990;
+        background-color: transparent; }
+        #tours .row .item .mask .badge.badge-special {
+          width: 130px;
+          height: 50px;
+          top: 10px;
+          right: -20px; }
+        #tours .row .item .mask .badge.badge-discount {
+          top: 0px;
+          left: 15px;
+          padding: 0 5px 5px;
+          background-color: #E54646;
+          color: #fff;
+          border-radius: 0;
+          font-size: 1.5em;
+          font-weight: 700; }
+          #tours .row .item .mask .badge.badge-discount .content {
+            position: relative;
+            opacity: 1;
+            background-color: rgba(0, 0, 0, 0);
+            padding: 50px 15px 30px;
+            border: 1px solid #fff;
+            border-top: none; }
       #tours .row .item .mask .content {
         width: 100%;
         height: 100%;
@@ -1148,6 +1170,29 @@ footer.footer {
       -ms-transition: all ease 0.5s;
       -o-transition: all ease 0.5s;
       transition: all ease 0.5s; }
+    #tours .row .item:hover .mask .badge {
+      position: absolute;
+      z-index: 990;
+      background-color: transparent; }
+      #tours .row .item:hover .mask .badge.badge-special {
+        width: 130px;
+        height: 50px;
+        top: 10px;
+        right: -20px; }
+      #tours .row .item:hover .mask .badge.badge-discount {
+        top: 0px;
+        left: 15px;
+        padding: 0 5px 5px;
+        background-color: #E54646;
+        color: #fff;
+        border-radius: 0;
+        font-size: 1.5em;
+        font-weight: 700; }
+        #tours .row .item:hover .mask .badge.badge-discount .content {
+          position: relative;
+          padding: 50px 15px 30px;
+          border: 1px solid #fff;
+          border-top: none; }
     #tours .row .item:hover .mask .content {
       top: 0;
       opacity: 1;
