@@ -53,7 +53,7 @@
 						<table class="table">
 							<tr>
 								<td><?php echo $this->lang->line('tour-detail-duration') ?></td>
-								<td><?php echo count($detail['datetitle'])?> <?php echo $this->lang->line('day') ?></td>
+								<td><?php echo count($detail['datetitle'])?> <?php echo $this->lang->line('day') ?><?php echo (count($detail['datetitle'])>1 && $lang == 'en')?'s':'';?></td>
 							</tr>
 							<tr>
 								<td><?php echo $this->lang->line('tour-detail-start') ?></td>

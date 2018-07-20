@@ -154,17 +154,17 @@ $lang['tour-discount-short'] = 'Sale Off';
 //weather
 $lang['weather'] = 'Weather';
 
-$lang['thu_do_ha_noi'] = '河内';
-$lang['thanh_pho_ho_chi_minh'] = '胡志明市'; 
-$lang['tinh_da_nang'] = '岘港'; 
-$lang['tinh_thua_thien-hue'] = '顺化';
-$lang['tinh_ninh_binh'] = '宁平';
-$lang['tinh_quang_binh'] = '广平';
-$lang['ha_long'] = '广宁——下龙湾 ';
-$lang['quy_nhon'] = '归仁';
-$lang['tinh_quang_ngai'] = '归仁';
-$lang['nha_trang'] = '庆和——芽庄';
-$lang['tinh_kien_giang'] = '富国岛';
+$lang['weather_city']['thu_do_ha_noi'] = '河内';
+$lang['weather_city']['thanh_pho_ho_chi_minh'] = '胡志明市'; 
+$lang['weather_city']['tinh_da_nang'] = '岘港'; 
+$lang['weather_city']['tinh_thua_thien-hue'] = '顺化';
+$lang['weather_city']['tinh_ninh_binh'] = '宁平';
+$lang['weather_city']['tinh_quang_binh'] = '广平';
+$lang['weather_city']['ha_long'] = '广宁——下龙湾 ';
+$lang['weather_city']['quy_nhon'] = '归仁';
+$lang['weather_city']['tinh_quang_ngai'] = '归仁';
+$lang['weather_city']['nha_trang'] = '庆和——芽庄';
+$lang['weather_city']['tinh_kien_giang'] = '富国岛';
 
 
 

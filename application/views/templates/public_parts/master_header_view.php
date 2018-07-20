@@ -105,8 +105,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</a>
 							</li>
 							<li>
-								<a href="mailto: info@diamondtour.vn" target="_blank">
-									<i class="fa fa-envelope-o" aria-hidden="true"></i> info@diamondtour.vn
+								<a href="mailto: info@enjoyvietnam.tours" target="_blank">
+									<i class="fa fa-envelope-o" aria-hidden="true"></i> info@enjoyvietnam.tours
 								</a>
 							</li>
 						</ul>
@@ -613,7 +613,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<i class="fa fa-envelope-o" aria-hidden="true"></i> Email <br>
 							</label>
 							<h3>
-								<a href="mailto: info@diamondtour.vn">info@diamondtour.vn</a>
+								<a href="mailto: info@enjoyvietnam.tours">info@enjoyvietnam.tours</a>
 							</h3>
 						</li>
 					</ul>
