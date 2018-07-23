@@ -48,6 +48,10 @@
                         </div>
 
                         <div class="form-group col-xs-12">
+                            <?php
+                                echo form_label('Danh mục cha', 'parent_id_shared');
+                                echo form_error('parent_id_shared');
+                            ?>
                             <select name="parent_id_shared" class="form-control">
                                 <?php echo $product_category; ?>
                             </select>

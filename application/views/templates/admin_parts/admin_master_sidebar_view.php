@@ -132,12 +132,12 @@
                         </li>
                     </ul>
                 </li>
-                <!-- <li class="header">DOCUMENTATION</li>
+                <li class="header">DOCUMENTATION</li>
                 <li>
                     <a href="<?php echo base_url('admin/documentation') ?>">
                         <i class="fa fa-book"></i> <span>Documentation</span>
                     </a>
-                </li> -->
+                </li>
 
             </ul>
         </section>
