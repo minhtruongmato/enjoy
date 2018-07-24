@@ -83,49 +83,49 @@ if (!function_exists('handle_common_author_data')) {
     function build_template(){
         $template = array(
             'en' => array(
-                'title' => 'Title',
-                'metakeywords' => 'Meta keywords',
-                'metadescription' => 'Meta description',
-                'description' => 'Description',
-                'content' => 'Content',
-                'tripnodes' => 'Trip nodes',
-                'detailsprice' => 'Details price'
+                'title' => 'Tiêu đề',
+                'metakeywords' => 'Từ khóa Meta',
+                'metadescription' => 'Mô tả Meta',
+                'description' => 'Giới Thiệu',
+                'content' => 'Nội Dung',
+                'tripnodes' => 'Ghi chú chuyến đi',
+                'detailsprice' => 'Chi tiết giá'
             ),'cn' => array(
-                'title' => 'Title(Trung Phồn Thể)',
-                'metakeywords' => 'Metakeywords(Trung Phồn Thể)',
-                'metadescription' => 'Metadescription(Trung Phồn Thể)',
-                'description' => 'Description(Trung Phồn Thể)',
-                'content' => 'Content(Trung Phồn Thể)',
-                'tripnodes' => 'Tripnodes(Trung Phồn Thể)',
-                'detailsprice' => 'Detailsprice(Trung Phồn Thể)'
+                'title' => 'Tiêu đề',
+                'metakeywords' => 'Từ khóa Meta',
+                'metadescription' => 'Mô tả Meta',
+                'description' => 'Giới Thiệu',
+                'content' => 'Nội Dung',
+                'tripnodes' => 'Ghi chú chuyến đi',
+                'detailsprice' => 'Chi tiết giá'
             ),'sc' => array(
-                'title' => 'Title(Trung Giản Thể)',
-                'metakeywords' => 'Metakeywords(Trung Giản Thể)',
-                'metadescription' => 'Metadescription(Trung Giản Thể)',
-                'description' => 'Description(Trung Giản Thể)',
-                'content' => 'Content(Trung Giản Thể)',
-                'tripnodes' => 'Tripnodes(Trung Giản Thể)',
-                'detailsprice' => 'Detailsprice(Trung Giản Thể)'
+                'title' => 'Tiêu đề',
+                'metakeywords' => 'Từ khóa Meta',
+                'metadescription' => 'Mô tả Meta',
+                'description' => 'Giới Thiệu',
+                'content' => 'Nội Dung',
+                'tripnodes' => 'Ghi chú chuyến đi',
+                'detailsprice' => 'Chi tiết giá'
             ),
-            'cn' => array(
-                'title' => 'Tiêu đề (Phồn thể)',
-                'metakeywords' => 'Từ khóa Meta (Phồn thể)',
-                'metadescription' => 'Mô tả Meta (Phồn thể)',
-                'description' => 'Giới Thiệu (Phồn thể)',
-                'content' => 'Nội Dung (Phồn thể)',
-                'tripnodes' => 'Ghi chú chuyến đi (Phồn thể)',
-                'detailsprice' => 'Chi tiết giá (Phồn thể)'
-            ),
+            // 'cn' => array(
+            //     'title' => 'Tiêu đề (Phồn thể)',
+            //     'metakeywords' => 'Từ khóa Meta (Phồn thể)',
+            //     'metadescription' => 'Mô tả Meta (Phồn thể)',
+            //     'description' => 'Giới Thiệu (Phồn thể)',
+            //     'content' => 'Nội Dung (Phồn thể)',
+            //     'tripnodes' => 'Ghi chú chuyến đi (Phồn thể)',
+            //     'detailsprice' => 'Chi tiết giá (Phồn thể)'
+            // ),
 
-            'sc' => array(
-                'title' => 'Tiêu đề (Giản thể)',
-                'metakeywords' => 'Từ khóa Meta (Giản thể)',
-                'metadescription' => 'Mô tả Meta (Giản thể)',
-                'description' => 'Giới Thiệu (Giản thể)',
-                'content' => 'Nội Dung (Giản thể)',
-                'tripnodes' => 'Ghi chú chuyến đi (Giản thể)',
-                'detailsprice' => 'Chi tiết giá (Giản thể)'
-            ),
+            // 'sc' => array(
+            //     'title' => 'Tiêu đề (Giản thể)',
+            //     'metakeywords' => 'Từ khóa Meta (Giản thể)',
+            //     'metadescription' => 'Mô tả Meta (Giản thể)',
+            //     'description' => 'Giới Thiệu (Giản thể)',
+            //     'content' => 'Nội Dung (Giản thể)',
+            //     'tripnodes' => 'Ghi chú chuyến đi (Giản thể)',
+            //     'detailsprice' => 'Chi tiết giá (Giản thể)'
+            // ),
         );
         return $template;
     }

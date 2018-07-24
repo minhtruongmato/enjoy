@@ -33,7 +33,7 @@ class MY_Model extends CI_Model {
         return $this->db->insert_batch($this->table_lang, $data);
     }
 
-    public function get_all_with_pagination_search($order = 'desc',$lang = '', $limit = NULL, $start = NULL, $keywords = '',$bestselling = '',$hot = '',$promotion = '') {
+    public function get_all_with_pagination_search($order = 'desc',$lang = '', $limit = NULL, $start = NULL, $keywords = '',$bestselling = '',$hot = '',$promotion = '',$product_category_id = array(),$banner = '') {
         $this->db->select($this->table .'.*, '. $this->table_lang .'.title, '. $this->table_lang .'.content');
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id');
@@ -49,6 +49,13 @@ class MY_Model extends CI_Model {
             $this->db->where($this->table .'.percen !=', 0);
             $this->db->where($this->table .'.pricepromotion !=', 0);
         }
+        if(!empty($product_category_id)){
+            $this->db->where($this->table .'.is_top', 1);
+            $this->db->where_in($this->table .'.product_category_id', $product_category_id);
+        }
+        if($banner != ''){
+            $this->db->where($this->table .'.is_banner', $banner);
+        }
         if($lang != ''){
             $this->db->where($this->table_lang .'.language', $lang);
         }
@@ -59,7 +66,7 @@ class MY_Model extends CI_Model {
         return $result = $this->db->get()->result_array();
     }
 
-    public function count_search($keyword = '',$bestselling = '',$hot = '',$promotion = ''){
+    public function count_search($keyword = '',$bestselling = '',$hot = '',$promotion = '',$product_category_id = array(),$banner = ''){
         $this->db->select('*');
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id');
@@ -73,6 +80,13 @@ class MY_Model extends CI_Model {
         if($promotion != '' && $promotion == 1){
             $this->db->where($this->table .'.percen !=', 0);
             $this->db->where($this->table .'.pricepromotion !=', 0);
+        }
+        if(!empty($product_category_id)){
+            $this->db->where($this->table .'.is_top', 1);
+            $this->db->where_in($this->table .'.product_category_id', $product_category_id);
+        }
+        if($banner != ''){
+            $this->db->where($this->table .'.is_banner', $banner);
         }
         $this->db->group_by($this->table_lang .'.'.$this->table.'_id');
         $this->db->where($this->table .'.is_deleted', 0);
@@ -267,6 +281,13 @@ class MY_Model extends CI_Model {
         $this->db->where('is_top', $is_top);
         $this->db->where('is_deleted', 0);
         $this->db->where_in('product_category_id', $id_array);
+        return $this->db->count_all_results();
+    }
+    public function count_is_banner($is_top){
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->where('is_banner', $is_top);
+        $this->db->where('is_deleted', 0);
         return $this->db->count_all_results();
     }
     

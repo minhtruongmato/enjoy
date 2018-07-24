@@ -257,6 +257,22 @@ class Product_model extends MY_Model{
         $this->db->limit($limit);
         return $this->db->get()->result_array();
     }
+    public function get_by_banner($lang='en',$order='desc',$limit=4) {
+        $this->db->select('product.*, product_lang.title as title, product_lang.description as description, product_category_lang.title as parent_title, product_category.slug as parent_slug');
+        $this->db->from($this->table);
+        $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id', 'left');
+        $this->db->join('product_category', 'product_category.id = product.product_category_id', 'left');
+        $this->db->join('product_category_lang', 'product_category.id = product_category_lang.product_category_id', 'left');
+        $this->db->where($this->table .'.is_deleted', 0);
+        $this->db->where($this->table .'.is_activated', 0);
+        $this->db->where($this->table .'.is_banner', 1);
+        $this->db->where($this->table_lang .'.language', $lang);
+        $this->db->where('product_category_lang.language', $lang);
+        $this->db->group_by('product.id');
+        $this->db->order_by('product.id', $order);
+        $this->db->limit($limit);
+        return $this->db->get()->result_array();
+    }
 
     public function get_by_product_category_id_and_not_id($product_category_id=array(),$id,$limit=0,$order='asc',$lang='en') {
         $this->db->select('product.*, product_category_lang.title as parent_title, product_category.slug as parent_slug, product_lang.title as title, product_lang.description as description, product_lang.content as content');

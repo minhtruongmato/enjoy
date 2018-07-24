@@ -5,7 +5,7 @@
         <h1>
             Thêm mới
             <small>
-                Localtion
+                Location
             </small>
         </h1>
     </section>

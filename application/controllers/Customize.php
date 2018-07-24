@@ -8,26 +8,25 @@ class Customize extends Public_Controller{
         $this->load->helper('common');
         $this->load->model('rating_model');
         $this->load->model('customize_model');
-		$this->author_data = handle_author_common_data();
     }
 
 	public function index(){
         $this->load->helper('form');
         if($this->input->post()){
         	if(empty($this->input->post('product_id'))){
-        		return $this->return_api(HTTP_NOT_FOUND,MESSAGE_CREATE_BOOKING_ERROR);
+        		return $this->return_api(HTTP_NOT_FOUND,$this->lang->line('booking_errors'));
         	}
         	if(empty($this->input->post('title')) || empty($this->input->post('email')) || empty($this->input->post('first_name')) || empty($this->input->post('last_name')) || empty($this->input->post('phone')) || empty($this->input->post('time')) || empty($this->input->post('country')) || empty($this->input->post('adults')) || empty($this->input->post('children')) || empty($this->input->post('infants'))){
                 $reponse = array(
                     'csrf_hash' => $this->security->get_csrf_hash()
                 );
-    			return $this->return_api(HTTP_SUCCESS,MESSAGE_CREATE_ERROR_REQUIRE,$reponse,false);
+    			return $this->return_api(HTTP_SUCCESS,$this->lang->line('booking_require'),$reponse,false);
         	}
     		if(trim($this->input->post('email')) != trim($this->input->post('email_confirm'))){
                 $reponse = array(
                     'csrf_hash' => $this->security->get_csrf_hash()
                 );
-    			return $this->return_api(HTTP_SUCCESS,MESSAGE_CREATE_ERROR_EMAIL,$reponse,false);
+    			return $this->return_api(HTTP_SUCCESS,$this->lang->line('create_errors_email'),$reponse,false);
     		}
             $date= explode("/",$this->input->post('time'));
             $time=date('Y-m-d H:i:s', strtotime($date[1]."/".$date[0]."/".$date[2]));
@@ -44,16 +43,20 @@ class Customize extends Public_Controller{
                 'children' => $this->input->post('children'),
                 'infants' => $this->input->post('infants'),
                 'content' => json_encode($this->input->post('content')),
-                'message' => $this->input->post('message')
+                'message' => $this->input->post('message'),
+                'created_at' => date('Y-m-d H:i:s', now()),
+                'created_by' => $this->input->post('first_name') . ' ' . $this->input->post('last_name'),
+                'updated_at' => date('Y-m-d H:i:s', now()),
+                'updated_by' => $this->input->post('first_name') . ' ' . $this->input->post('last_name')
             );
             $insert = $this->customize_model->common_insert(array_merge($shared_request,$this->author_data));
             if($insert){
                 $reponse = array(
                     'csrf_hash' => $this->security->get_csrf_hash()
                 );
-                return $this->return_api(HTTP_SUCCESS,MESSAGE_CREATE_BOOKING_SUCCESS,$reponse);
+                return $this->return_api(HTTP_SUCCESS,$this->lang->line('booking_success'),$reponse);
             }
-            return $this->return_api(HTTP_NOT_FOUND,MESSAGE_CREATE_BOOKING_ERROR);
+            return $this->return_api(HTTP_NOT_FOUND,$this->lang->line('booking_errors'));
 		}
 	}
 

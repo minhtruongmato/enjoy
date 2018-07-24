@@ -33,7 +33,7 @@ $("#go-back").css("display","inline");
 $("#nav-product li#add-date").css("float","right");
 $("#nav-product li#add-date").click(function(){
 	$.validator.setDefaults({
-		ignore: ":hidden:not('input')"
+		ignore: ":hidden:not('.title-content-date.date input')"
 	});
 	$('#register-form').validate({
 		errorElement: 'span',
@@ -77,9 +77,6 @@ $("#nav-product li#add-date").click(function(){
 
 	});
 	if ($('#register-form').valid() === false){
-		console.log($(".col-xs-12.has-errors input").length);
-		console.log($("#home ul.language .active a").attr("aria-controls"));
-		console.log($(".col-xs-12.has-errors input")[0].id.indexOf($("#home ul.language .active a").attr("aria-controls")));
 		if($(".col-xs-12.has-errors input").length >0 && $(".col-xs-12.has-errors input")[0].id.indexOf($("#home ul.language .active a").attr("aria-controls")) == "-1"){
 			$("#home ul.language .active a").attr("aria-expanded","false");
 			$("#"+$("#home ul.language .active a").attr("aria-controls")).removeClass('active');
@@ -97,7 +94,6 @@ $("#nav-product li#add-date").click(function(){
 					$("#sc").addClass('active');
 				}
 			}else if($("#home ul.language .active a").attr("aria-controls") == "cn"){
-				console.log(1);
 				if($("#title_en").val() == ''){
 					$("#home ul.language .active").removeClass('active');
 					$("a[aria-controls=en]").parent().addClass("active");
@@ -110,6 +106,7 @@ $("#nav-product li#add-date").click(function(){
 					$("#sc").addClass('active');
 				}
 			}else if($("#home ul.language .active a").attr("aria-controls") == "sc"){
+				console.log($("#title_en").val());
 				if($("#title_en").val() == ''){
 					$("#home ul.language .active").removeClass('active');
 					$("a[aria-controls=en]").parent().addClass("active");
@@ -126,10 +123,12 @@ $("#nav-product li#add-date").click(function(){
 		if($("select[name=parent_id_shared]").parent().attr("class") == "col-xs-12 has-errors"){
 			$("select[name=parent_id_shared]")[0].focus();
 		}else{
-			$(".col-xs-12.has-errors input")[0].focus();
+			console.log($("#"+$(".col-xs-12.has-errors input")[0].id));
+			$("#"+$(".col-xs-12.has-errors input")[0].id).focus();
 		}
 		return false;
 	}else{
+		console.log($("#title_en").val());
         $("#nav-product li").css("display","inline");
 		$("#go-back").css("display","none");
         if($(this)[0].id == "add-date"){
@@ -190,7 +189,7 @@ $("#submit-shared,#content-home").click(function(event) {
 		return this.optional(element) || (value>0);
 	}, "Bạn phải chọn phương tiện.");
 	$.validator.setDefaults({
-		ignore: ":hidden:not('input')"
+		ignore: ":hidden:not('.title-content-date.date input')"
 	});
 	$('#register-form').validate({
 		highlight: function(element, errorClass, validClass) {
@@ -282,6 +281,11 @@ $("#submit-shared,#content-home").click(function(event) {
 			}else{
 				var is_top = 0;
 			}
+			if ($('#is_banner').is(':checked')) {
+				var is_banner = 1;
+			}else{
+				var is_banner = 0;
+			}
 			var post = new FormData();
 			numberdates = $(".title-content-date.date").length;
 			for (var k = 0; k < numberdates; k++) {
@@ -307,6 +311,7 @@ $("#submit-shared,#content-home").click(function(event) {
 			
 			post.append('price',$('#price').val());
 			post.append('is_top',is_top);
+			post.append('is_banner',is_banner);
 			post.append('date',$('#datepicker').val());
 			post.append('priceadults',$('#priceadults').val());
 			post.append('pricechildren',$('#pricechildren').val());
@@ -477,6 +482,33 @@ $("#button-numberdate,#append-date").click(function(){
 	});
 });
 
+$('#is_banner').change(function(){
+	if($(this).is(':checked')){
+		var url = $(this).data('url');
+		var id = $(this).data('id');
+		console.log(id);
+		$.ajax({
+            method: "get",
+            url: url,
+            data: {
+            	id : id
+            },
+            success: function(response){
+                if(response.isExisted == false){
+                	$('.check_banner_error').text(response.message);
+                	$('#is_banner').prop('checked',false);
+                }
+            },
+            error: function(jqXHR, exception){
+                console.log(errorHandle(jqXHR, exception));
+                if(jqXHR.status == 404 && jqXHR.responseJSON.message != 'undefined'){
+                    alert(jqXHR.responseJSON.message);
+                    location.reload();
+                }
+            }
+        });
+	}
+});
 $('#is_top').change(function(){
 	if($(this).is(':checked')){
 		var url = $(this).data('url');

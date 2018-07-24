@@ -63,7 +63,7 @@ class Homepage extends Public_Controller {
     }
     public function index() {
         //banner
-        $this->data['banner'] = $this->product_model->get_all_product(4,$this->data['lang'],'desc');
+        $this->data['banner'] = $this->product_model->get_by_banner($this->data['lang']);
         //tour
         $this->data['tour_packages'] = $this->product_model->get_all_product_category_id_array($this->id_array_packages,6,$this->data['lang'],'',1);
         $this->data['tour_backpack'] = $this->product_model->get_all_product_category_id_array($this->id_array_backpack,6,$this->data['lang'],'',1);
