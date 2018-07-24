@@ -170,4 +170,8 @@ $lang['weather_city']['nha_trang'] = '慶和 - 芽莊';
 $lang['weather_city']['tinh_kien_giang'] = '富國島';
 
 
+$lang['booking_success'] = '成功遊覽請等待確認';
+$lang['booking_errors'] = '不能預訂新的旅遊請稍等';
+$lang['create_errors_email'] = '請輸入相同的電子郵件和電子郵件確認字段';
+$lang['booking_require'] = '請輸入完整信息';
 

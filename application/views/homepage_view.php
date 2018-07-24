@@ -110,6 +110,7 @@
 								</h4>
 								<h1 class="title">
 									<?php echo $value['title']; ?>
+
 								</h1>
 								<ul class="list-inline">
 									<li>

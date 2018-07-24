@@ -67,7 +67,7 @@
                                 <div class="col-xs-12">
                                     <label>Date:</label>
                                     <div class="input-group date">
-                                      <div class="input-group-addon">
+                                      <div class="input-group-addon" title="Xóa giá trị ngày tháng">
                                         <i class="fa fa-calendar"></i>
                                       </div>
                                       <input type="text" name="date" value ="<?php echo trim($detail['date']); ?>" class="form-control pull-right" id="datepicker" readonly>
@@ -103,6 +103,10 @@
                                 </div>
                                 <div class="col-xs-12">
                                     <div class="checkbox" style="padding-top: 10px;">
+                                        <label style="margin-bottom: 10px;">
+                                            <input type="checkbox" id="is_banner" name="is_banner" <?php echo ($detail['is_banner'] == 1)?'checked':'';?>  data-url="<?php echo base_url('admin/product/check_banner');?>" data-id="<?php echo $detail['id'];?>" > Chọn làm banner
+                                            <span class="check_banner_error" style="font-weight: 700;"></span>
+                                        </label></br>
                                         <label style="padding-right: 10px;">
                                             <input type="checkbox" id="promotion" name="promotion" <?php echo (!empty(trim($detail['pricepromotion'])) || !empty(trim($detail['percen'])))?'checked':''; ?>> Khuyến mãi
                                         </label>
@@ -146,18 +150,16 @@
                                         <?php echo $product_category; ?>
                                     </select>
                                 </div>
-                                <div class="col-xs-12" id="box_is_top">
-                                    <?php
-                                    echo form_label('Sản phẩm top 10', 'is_top');
-                                    echo form_error('is_top');
-                                    echo '<br />';
-                                    echo form_checkbox('is_top', '', ($detail['is_top'] == 0)? false : true ,'id="is_top" data-url="'. base_url('admin/product/check_top') .'" data-id="'. $detail['id'] .'" ');
-                                    ?>
-                                    <span class="check_top_error"></span>
+                                <div class="col-xs-12" id="box_is_top" style="margin-top: -10px;margin-bottom: 5px;">
+
+                                    <label style="font-weight: normal;">
+                                        <input type="checkbox" id="is_top" name="is_top" <?php echo ($detail['is_top'] == 0)? '' : 'checked';?> data-url="<?php echo base_url('admin/product/check_top');?>" data-id="<?php echo $detail['id'];?>" style="padding-top: 3px;"> Tour top 10
+                                        <span class="check_top_error" style="font-weight: 700;"></span>
+                                    </label>
                                 </div>
                                 <div>
                                     <div class="col-xs-12"">
-                                        <ul class="nav nav-pills nav-justified" role="tablist">
+                                        <ul class="nav nav-pills nav-justified language" role="tablist">
                                             <?php $i = 0; ?>
                                             <?php foreach ($page_languages as $key => $value): ?>
                                                 <li role="presentation" class="<?php echo ($i == 0)? 'active' : '' ?>">
@@ -253,39 +255,47 @@
                                                     <div class="no_border">
                                                         <div class="collapse in" id="showdatecontent_<?php echo $i; ?>">
                                                             <div class="col-xs-12 title-content-date date " style="margin-top:-5px;">
-                                                            <?php
-                                                                echo form_label('Hình ảnh ngày '.($i+1), 'img_date_'.$i,'class="img_date"   id="label_img_date_'.$i.'" ');
-                                                                echo form_upload('img_date_'.$i.'[]',"",'class="form-control" id="img_date_'.$i.'"');
-                                                                echo form_label('Chọn khu vực ngày '.($i+1), 'img_date_'.$i,'class="img_date"   id="label_img_date_'.$i.'" ');
-                                                            ?>
-                                                            <select class="form-control" name="parengoplace_<?php echo $i; ?>" data-idlocaltion="<?php echo $i; ?>" style="width: 100%;"  id="paren-go-place_<?php echo $i; ?>">';
-                                                                    <?php foreach ($area_selected as $key => $value): ?>
-                                                                        <?php if(!empty($detail['librarylocaltion'][$i][0])): ?>
-                                                                            <option <?php echo ($value['slug'] == $detail['librarylocaltion'][$i][0]['slug'])?'selected' :''; ?> value="<?php echo $value['slug']; ?>"><?php echo $value['area']; ?></option>
-                                                                        <?php else: ?>
-                                                                            <option value="<?php echo $value['slug']; ?>"><?php echo $value['area']; ?></option>
-                                                                        <?php endif ?>
-                                                                    <?php endforeach ?>
-                                                            </select>
-                                                            <?php echo form_label('Chọn những nơi đến ngày '.($i+1), 'img_date_'.$i,'class="img_date"   id="label_img_date_'.$i.'" ');
-                                                            ?>
-                                                            <select class="form-control select2 select2-hidden-accessible" name="goplace_<?php echo $i; ?>" multiple="" data-placeholder="Select a State" style="width: 100%;min-height:34px;min-width:300px;" tabindex="-1" aria-hidden="true" id="go-place_<?php echo $i; ?>">
-                                                                <?php if (!empty($detail['librarylocaltion'])): ?>
-                                                                    <?php for ($m=0;$m< count($detail['librarylocaltion'][$i]);$m++): ?>
-                                                                            <option selected value="<?php echo $detail['librarylocaltion'][$i][$m]['id']; ?>"><?php echo $detail['librarylocaltion'][$i][$m]['localtion']; ?></option>
-                                                                    <?php endfor ?>
-                                                                <?php endif ?>
-                                                                <?php if (!empty($detail['notlibrarylocaltion'])): ?>
-                                                                    <?php for ($m=0;$m< count($detail['notlibrarylocaltion'][$i]);$m++): ?>
-                                                                            <option value="<?php echo $detail['notlibrarylocaltion'][$i][$m]['id']; ?>"><?php echo $detail['notlibrarylocaltion'][$i][$m]['localtion']; ?></option>
-                                                                    <?php endfor ?>
-                                                                <?php endif ?>
-                                                            </select>
-                                                            <?php
-                                                                echo form_label('Phương tiện đi ngày '.($i+1), 'vehicles');
-                                                                echo form_error('vehicles');
-                                                                echo form_dropdown('vehicles_'.$i, $request_vehicles,$detail['vehicles'][$i], 'class="form-control" id="vehicles_'.$i.'"');
-                                                            ?>
+                                                                <div class="row">
+                                                                    <div class="col-md-7" >
+                                                                        <?php
+                                                                            echo form_label('Hình ảnh ngày '.($i+1), 'img_date_'.$i,'class="img_date"   id="label_img_date_'.$i.'" ');
+                                                                            echo form_upload('img_date_'.$i.'[]',"",'class="form-control" id="img_date_'.$i.'"');
+                                                                            echo form_label('Chọn khu vực ngày '.($i+1), 'img_date_'.$i,'class="img_date"   id="label_img_date_'.$i.'" ');
+                                                                        ?>
+                                                                        <select class="form-control" name="parengoplace_<?php echo $i; ?>" data-idlocaltion="<?php echo $i; ?>" style="width: 100%;"  id="paren-go-place_<?php echo $i; ?>">';
+                                                                                <?php foreach ($area_selected as $key => $value): ?>
+                                                                                    <?php if(!empty($detail['librarylocaltion'][$i][0])): ?>
+                                                                                        <option <?php echo ($value['slug'] == $detail['librarylocaltion'][$i][0]['slug'])?'selected' :''; ?> value="<?php echo $value['slug']; ?>"><?php echo $value['area']; ?></option>
+                                                                                    <?php else: ?>
+                                                                                        <option value="<?php echo $value['slug']; ?>"><?php echo $value['area']; ?></option>
+                                                                                    <?php endif ?>
+                                                                                <?php endforeach ?>
+                                                                        </select>
+                                                                        <?php echo form_label('Chọn những nơi đến ngày '.($i+1), 'img_date_'.$i,'class="img_date"   id="label_img_date_'.$i.'" ');
+                                                                        ?>
+                                                                        <select class="form-control select2 select2-hidden-accessible" name="goplace_<?php echo $i; ?>" multiple="" data-placeholder="Select a State" style="width: 100%;min-height:34px;min-width:300px;" tabindex="-1" aria-hidden="true" id="go-place_<?php echo $i; ?>">
+                                                                            <?php if (!empty($detail['librarylocaltion'])): ?>
+                                                                                <?php for ($m=0;$m< count($detail['librarylocaltion'][$i]);$m++): ?>
+                                                                                        <option selected value="<?php echo $detail['librarylocaltion'][$i][$m]['id']; ?>"><?php echo $detail['librarylocaltion'][$i][$m]['localtion']; ?></option>
+                                                                                <?php endfor ?>
+                                                                            <?php endif ?>
+                                                                            <?php if (!empty($detail['notlibrarylocaltion'])): ?>
+                                                                                <?php for ($m=0;$m< count($detail['notlibrarylocaltion'][$i]);$m++): ?>
+                                                                                        <option value="<?php echo $detail['notlibrarylocaltion'][$i][$m]['id']; ?>"><?php echo $detail['notlibrarylocaltion'][$i][$m]['localtion']; ?></option>
+                                                                                <?php endfor ?>
+                                                                            <?php endif ?>
+                                                                        </select>
+                                                                        <?php
+                                                                            echo form_label('Phương tiện đi ngày '.($i+1), 'vehicles');
+                                                                            echo form_error('vehicles');
+                                                                            echo form_dropdown('vehicles_'.$i, $request_vehicles,$detail['vehicles'][$i], 'class="form-control" id="vehicles_'.$i.'"');
+                                                                        ?>
+                                                                    </div>
+                                                                    <div class="col-md-5" style="padding:0px;">
+                                                                        <b>Hình ảnh ngày <?php echo $i+1;?> đang sử dụng</b>
+                                                                        <img src="<?php echo base_url('assets/upload/'. $controller .'/'. $detail['slug'] .'/'. json_decode($detail['dateimg'])[$i]); ?>" style="width: 95%; height: 220px;padding-top: 6px;">
+                                                                    </div>
+                                                                </div>
                                                                 <div style="margin-top: 10px;">
                                                                     <ul class="nav nav-pills nav-justified language" role="tablist">
                                                                         <?php $number = 0; ?>

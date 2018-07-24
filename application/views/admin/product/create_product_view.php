@@ -59,7 +59,7 @@
                                 <div class="col-xs-12">
                                     <label>Date:</label>
                                     <div class="input-group date">
-                                      <div class="input-group-addon">
+                                      <div class="input-group-addon" title="Xóa giá trị ngày tháng">
                                         <i class="fa fa-calendar"></i>
                                       </div>
                                       <input type="text" name="date" class="form-control pull-right" id="datepicker" readonly>
@@ -95,14 +95,18 @@
                                 </div>
                                 <div class="col-xs-12">
                                     <div class="checkbox" style="padding-top: 10px;">
-                                        <label style="padding-right: 10px;">
+                                        <label style="margin-bottom: 10px;">
+                                            <input type="checkbox" id="is_banner" name="is_banner"  data-url="<?php echo base_url('admin/product/check_banner');?>" data-id="null" > Chọn làm banner
+                                            <span class="check_banner_error" style="font-weight: 700;"></span>
+                                        </label></br>
+                                        <label style="padding-right: 20px;">
                                             <input type="checkbox" id="promotion" name="promotion"> Khuyến mãi
                                         </label>
-                                        <label style="padding-right: 10px;">
+                                        <label style="padding-right: 20px;">
                                             <input type="checkbox" id="bestselling" name="bestselling"> Bán Chạy
                                         </label>
-                                        <label>
-                                            <input type="checkbox" id="hot" name="hot"> Hot
+                                        <label style="padding-right: 20px;">
+                                            <input type="checkbox" id="hot" name="hot"> Hot 
                                         </label>
                                     </div>
                                 </div>
@@ -133,19 +137,20 @@
                                     ?>
                                 </div>
                                 <div class="col-xs-12">
-                                    <select name="parent_id_shared" id="parent_id_shared" class="form-control" data-url="<?php echo base_url('admin/product/check_category');?>">
+                                    <label style="margin-bottom: 0px;">
+                                        Danh mục
+                                    </label>
+                                    <select name="parent_id_shared" id="parent_id_shared" class="form-control" data-url="<?php echo base_url('admin/product/check_category');?>" style="margin-top: 0px;">
                                         <option selected="" value="">Chọn danh mục</option>
                                         <?php echo $product_category; ?>
                                     </select>
                                 </div>
-                                <div class="col-xs-12" id="box_is_top">
-                                    <?php
-                                    echo form_label('Sản phẩm top 10', 'is_top');
-                                    echo form_error('is_top');
-                                    echo '<br />';
-                                    echo form_checkbox('is_top', '', false ,'id="is_top" data-url="'. base_url('admin/product/check_top') .'" data-id="null" ');
-                                    ?>
-                                    <span class="check_top_error"></span>
+                                <div class="col-xs-12" id="box_is_top" style="margin-top: -10px;margin-bottom: 5px;">
+
+                                    <label style="font-weight: normal;">
+                                        <input type="checkbox" id="is_top" name="is_top"  data-url="<?php echo base_url('admin/product/check_top');?>" data-id="null" style="padding-top: 3px;"> Tour top 10
+                                        <span class="check_top_error" style="font-weight: 700;"></span>
+                                    </label>
                                 </div>
                                 <div>
                                     <div class="col-xs-12">

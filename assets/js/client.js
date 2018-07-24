@@ -7,7 +7,20 @@ $("#inquire input,#customize input,#inquire #inquire_title,#customize #customize
 	}
 	$(targetTab + " [name="+name+"]").val($(this).val());
 });
-
+var language = $("#language").val();
+var inquire_required = {
+		inquire_email:{en:'Please enter Email.',cn:'請輸入電子郵件地址',sc:'请输入电子邮件地址'},
+		inquire_email_confirm:{en:'The Confirmation Email must match your Email Address.',cn:'請輸入確認電子郵箱地址',sc:'请输入确认电子邮箱地址'},
+		inquire_first_name:{en:'Please enter first name.',cn:'請輸入名字',sc:'请输入名字'},
+		inquire_last_name:{en:'Please enter last name.',cn:'請輸入姓',sc:'请输入姓'},
+		inquire_phone_number:{en:'Please enter your phone number.',cn:'請輸入電話號碼',sc:'请输入电话号码'},
+		datepicker:{en:'Please enter preferred departure date.',cn:'請輸入首選出發日期',sc:'请输入首选出发日期'},
+		inquire_country:{en:'Please enter Country.',cn:'請輸入国家',sc:'请输入国家'},
+		inquire_number_adults:{en:'Please enter Adults.',cn:'請輸入成人',sc:'请输入成人'},
+		inquire_number_children_u11:{en:'Please enter Children (2-11 years old).',cn:'請輸入2至11歲的兒童',sc:'请输入2至11岁的儿童'},
+		inquire_number_children_u2:{en:'Please enter Children (Under 2 years old).',cn:'請輸入2歲以下的兒童',sc:'请输入2岁以下的儿童'}
+	};
+console.log(inquire_required.inquire_email[language]);
 $(document).off("click","#bookingsubmit,#customizesubmit").on("click","#bookingsubmit,#customizesubmit",function(){
 	var idForm = $(this).parents('form')[0].id;
 	$('#'+idForm).validate({
@@ -55,34 +68,34 @@ $(document).off("click","#bookingsubmit,#customizesubmit").on("click","#bookings
 		}, 
 		messages: {
 			inquire_email: {
-				required: "Vui lòng nhập Email."
+				required: inquire_required.inquire_email[language]
 			},
 			inquire_first_name: {
-				required: "Vui lòng nhập first name."
+				required: inquire_required.inquire_first_name[language]
 			},
 			inquire_last_name: {
-				required: "Vui lòng nhập last name."
+				required: inquire_required.inquire_last_name[language]
 			},
 			inquire_email_confirm: {
-				required: "Vui lòng nhập lại Email."
+				required: inquire_required.inquire_email_confirm[language]
 			},
 			inquire_phone_number: {
-				required: "Vui lòng nhập số điện thoại."
+				required: inquire_required.inquire_phone_number[language]
 			},
 			datepicker: {
-				required: "Vui lòng nhập ngày sẵn sàng."
+				required: inquire_required.datepicker[language]
 			},
 			inquire_country: {
-				required: "Vui lòng nhập quốc tịch."
+				required: inquire_required.inquire_country[language]
 			},
 			inquire_number_adults: {
-				required: "Vui lòng nhập số người lớn đi."
+				required: inquire_required.inquire_number_adults[language]
 			},
 			inquire_number_children_u11: {
-				required: "Vui lòng nhập số trẻ em đi."
+				required: inquire_required.inquire_number_children_u11[language]
 			},
 			inquire_number_children_u2: {
-				required: "Vui lòng nhập số em bé đi."
+				required: inquire_required.inquire_number_children_u2[language]
 			}
 		},
 

@@ -249,7 +249,7 @@ defined('MESSAGE_ERROR_TURN_ON_POST_FOR_SELECTED') OR define('MESSAGE_ERROR_TURN
 defined('MESSAGE_ERROR_REMOVE_LOCALTION') OR define('MESSAGE_ERROR_REMOVE_LOCALTION', 'Bạn có %u tour đang chọn địa điểm đến này nên bạn không thể xóa.');
 defined('MESSAGE_CREATE_BOOKING_SUCCESS') OR define('MESSAGE_CREATE_BOOKING_SUCCESS', 'Đặt Tour thành công bạn vui lòng chờ xác nhận.');
 defined('MESSAGE_CREATE_ERROR_EMAIL') OR define('MESSAGE_CREATE_ERROR_EMAIL', 'Vui lòng nhập trường Email và email confirm giống nhau.');
-defined('MESSAGE_CREATE_BOOKING_ERROR') OR define('MESSAGE_CREATE_BOOKING_ERROR', 'Không thể tạo tour mới vui lòng chờ trong giây lát.');
+defined('MESSAGE_CREATE_BOOKING_ERROR') OR define('MESSAGE_CREATE_BOOKING_ERROR', 'Không thể tạo đặt tour mới vui lòng chờ trong giây lát.');
 defined('MESSAGE_CREATE_ERROR_REQUIRE') OR define('MESSAGE_CREATE_ERROR_REQUIRE', 'Vui lòng nhập đầy đủ thông tin.');
 defined('MESSAGE_EDIT_ERROR_VALIDATE') OR define('MESSAGE_EDIT_ERROR_VALIDATE', 'Lỗi sửa tour vui lòng thao tác lại.');
 defined('MESSAGE_CREATE_ERROR_VALIDATE') OR define('MESSAGE_CREATE_ERROR_VALIDATE', 'Lỗi tạo mới tour vui lòng thao tác lại.');
@@ -267,6 +267,7 @@ defined('MESSAGE_ERROR_REMOVE_CATEGORY') OR define('MESSAGE_ERROR_REMOVE_CATEGOR
  *
  */
 defined('MESSAGE_CHECK_TOP_ERROR') OR define('MESSAGE_CHECK_TOP_ERROR', 'Hiện tại đã có đủ 10 tour thuộc TOP 10 TOUR của danh mục hiện tại. Vui lòng tắt 1 Tour thuộc danh mục hiên tại nếu bạn muốn thêm tour vào TOP 10!');
+defined('MESSAGE_CHECK_BANNER_ERROR') OR define('MESSAGE_CHECK_BANNER_ERROR', 'Hiện tại đã có đủ 4 tour hiển thị trên BANNER. Vui lòng tắt 1 Tour đang hiển thị trên BANNER nếu bạn muốn thêm tour vào làm BANNER!');
 
 
 defined('MESSAGE_CHANGE_LANGUAGE_SUCCESS') OR define('MESSAGE_CHANGE_LANGUAGE_SUCCESS', 'changed');

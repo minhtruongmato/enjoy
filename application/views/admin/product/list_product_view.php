@@ -40,21 +40,29 @@
                         <div class="col-md-2 col-ms-12">
                             <a href="<?php echo base_url('admin/'.$controller.'/create') ?>" class="btn btn-primary" role="button">Thêm mới</a>
                         </div>
-                        <div class="col-md-10 col-ms-12">
+                        <div class="col-md-12 col-ms-12">
                             <form action="<?php echo base_url('admin/'.$controller.'/index') ?>" method="get">
-                                <div class="checkbox col-md-6 col-ms-12">
+                                <div class="checkbox col-md-7 col-ms-12">
                                     <label style="padding-right: 10px;">
                                         <input type="checkbox" name="promotion" <?php echo (!empty($promotion))? 'checked' : '';?>> Khuyến Mãi
                                     </label>
                                     <label style="padding-right: 10px;">
                                         <input type="checkbox" name="bestselling" <?php echo (!empty($bestselling))? 'checked' : '';?>> Bán Chạy
                                     </label>
-                                    <label>
+                                    <label style="padding-right: 10px;">
                                         <input type="checkbox" name="hot" <?php echo (!empty($hot))? 'checked' : '';?>> Hot
                                     </label>
+                                    <label>
+                                        <input type="checkbox" name="banner" <?php echo (!empty($banner))? 'checked' : '';?>> banner
+                                    </label>
+                                    <select name="category_id" id="category_id" class="" data-url="<?php echo base_url('admin/product/check_category');?>" style="margin-left: 20px;">
+                                        <option value="">Tour Top 10 </option>
+                                        <option value="1" <?php echo (!empty($category_toptour) && in_array(1, $category_toptour))? 'selected' : '';?>>Tour Packages</option>
+                                        <option value="2" <?php echo (!empty($category_toptour) && in_array(2, $category_toptour))? 'selected' : '';?>>Backpack travel</option>
+                                    </select>
                                 </div>
-                                <div class="input-group col-md-6 col-ms-12">
-                                    <input type="text" class="form-control" placeholder="Tìm kiếm ..." name="search" value="<?php echo (!empty($keyword))? $keyword : '';?>">
+                                <div class="input-group col-md-5 col-ms-12">
+                                    <input type="text" class="form-control" placeholder="Tìm kiếm theo tên tiêu đề..." name="search" value="<?php echo (!empty($keyword))? $keyword : '';?>">
                                     <span class="input-group-btn">
                                         <input type="submit" class="btn btn-block btn-primary" value="Tìm kiếm">
                                     </span>
@@ -101,17 +109,17 @@
                                         </td>
                                         <td>
                                             <a href="<?php echo base_url('admin/'.$controller.'/detail/'.$value['id']) ?>"
-                                            <button class="btn btn-default btn-sm" type="button" data-toggle="collapse" data-target="#collapse_1" aria-expanded="false" aria-controls="collapse_1">See Detail</button>
+                                            <button class="btn btn-default btn-sm" type="button" data-toggle="collapse" data-target="#collapse_1" aria-expanded="false" aria-controls="collapse_1">Xem chi tiết</button>
                                         </td>
                                         <td>
                                             <?php if ($value['is_activated'] == 0): ?>
-                                                <a href="javascript:void(0);" onclick="deactive('<?php echo $controller; ?>', <?php echo $value['id'] ?>, 'Chăc chắn tắt')" class="dataActionDelete" title="Tắt danh mục"><i class="fa fa-low-vision" aria-hidden="true"></i> </a>
+                                                <a href="javascript:void(0);" onclick="deactive('<?php echo $controller; ?>', <?php echo $value['id'] ?>, 'Chăc chắn tắt')" class="dataActionDelete" title="Tắt tour"><i class="fa fa-low-vision" aria-hidden="true"></i> </a>
                                             <?php else: ?>
-                                                <a href="javascript:void(0);" onclick="active('<?php echo $controller; ?>', <?php echo $value['id'] ?>, 'Chăc chắn bật')" class="dataActionDelete" title="Bật danh mục"><i class="fa fa-eye" aria-hidden="true"></i> </a>
+                                                <a href="javascript:void(0);" onclick="active('<?php echo $controller; ?>', <?php echo $value['id'] ?>, 'Chăc chắn bật')" class="dataActionDelete" title="Bật tour"><i class="fa fa-eye" aria-hidden="true"></i> </a>
                                             <?php endif ?>
-                                            <a href="<?php echo base_url('admin/'.$controller.'/edit/'. $value['id']) ?>" class="dataActionEdit"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
+                                            <a href="<?php echo base_url('admin/'.$controller.'/edit/'. $value['id']) ?>" class="dataActionEdit" title="Sửa tour"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
                                             &nbsp&nbsp&nbsp
-                                            <a href="javascript:void(0);" onclick="remove('<?php echo $controller; ?>', <?php echo $value['id'] ?>)" class="dataActionDelete"><i class="fa fa-remove" aria-hidden="true"></i> </a>
+                                            <a href="javascript:void(0);" onclick="remove('<?php echo $controller; ?>', <?php echo $value['id'] ?>)" class="dataActionDelete" title="Xóa tour"><i class="fa fa-remove" aria-hidden="true"></i> </a>
 
                                             <!-- <a href="<?php echo base_url('admin/'.$controller.'/remove/'.$value['id']); ?>" class="dataActionDelete"><i class="fa fa-remove" aria-hidden="true"></i> </a> -->
                                         </td>

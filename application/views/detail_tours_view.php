@@ -370,7 +370,7 @@
 									</div>
 
 									<div class="col-xs-12">
-										<input id="bookingsubmit" class="btn btn-primary" type="button" value="Book Now!">
+										<input id="bookingsubmit" class="btn btn-primary" type="button" value="<?php echo $this->lang->line('booking'); ?>">
 									</div>
 
                                     <?php echo form_close(); ?>
@@ -493,7 +493,7 @@
                                         ?>
 									</div>
 									<div class="col-xs-12">
-										<input id="customizesubmit" class="btn btn-primary" type="button" value="Book Now!">
+										<input id="customizesubmit" class="btn btn-primary" type="button" value="<?php echo $this->lang->line('booking');?>">
 									</div>
                                     <?php echo form_close(); ?>
 								</div>

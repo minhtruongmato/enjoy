@@ -66,8 +66,6 @@
                                     <div class="detail-info col-sm-12">
                                         <div class="table-responsive">
                                             <label>Thông tin</label>
-                                            <?php echo ($detail['is_top'] == 1)? '<h3>TOP 10 Tour</h3>' : '' ?>
-                                            
                                             <table class="table table-striped">
                                                 <tr>
                                                     <th>Đánh Giá</th>
@@ -87,8 +85,16 @@
                                                     <td><i class="<?php echo ($detail['hot'] == 1)?'glyphicon glyphicon-ok':'glyphicon glyphicon-remove'; ?>"></i></td>
                                                 </tr>
                                                 <tr>
+                                                    <th>Top 10 Tour</th>
+                                                    <td><i class="<?php echo ($detail['is_top'] == 1)?'glyphicon glyphicon-ok':'glyphicon glyphicon-remove'; ?>"></i></td>
+                                                </tr>
+                                                <tr>
                                                     <th>Hiển thị khuyến mãi</th>
                                                     <td><i class="<?php echo ($detail['showpromotion'] == 1)?'glyphicon glyphicon-ok':'glyphicon glyphicon-remove'; ?>"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Hiển thị trên banner</th>
+                                                    <td><i class="<?php echo ($detail['is_banner'] == 1)?'glyphicon glyphicon-ok':'glyphicon glyphicon-remove'; ?>"></i></td>
                                                 </tr>
                                                 <tr>
                                                     <th>Slug</th>

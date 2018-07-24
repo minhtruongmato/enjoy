@@ -168,3 +168,7 @@ $lang['weather_city']['tinh_kien_giang'] = '富国岛';
 
 
 
+$lang['booking_success'] = '成功游览请等待确认';
+$lang['booking_errors'] = '不能预订新的旅游请稍等';
+$lang['create_errors_email'] = '请输入相同的电子邮件和电子邮件确认字段';
+$lang['booking_require'] = '请输入完整信息';

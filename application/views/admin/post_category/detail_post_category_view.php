@@ -7,14 +7,22 @@
         <h1>
             Chi tiết
             <small>
-                Danh Mục
+                <?php if (isset($detail['post_category_id'])): ?>
+                    Bài viết
+                <?php else: ?>
+                    Danh Mục
+                <?php endif ?>
             </small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li><a href="#"><i class="fa fa-dashboard"></i> Chi tiết</a></li>
             <li class="active">
-                Danh Mục
+                <?php if (isset($detail['post_category_id'])): ?>
+                    Bài viết
+                <?php else: ?>
+                    Danh Mục
+                <?php endif ?>
             </li>
         </ol>
     </section>

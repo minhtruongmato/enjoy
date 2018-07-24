@@ -172,4 +172,12 @@ $lang['weather_city']['nha_trang'] = 'Nha Trang – Khanh Hoa';
 $lang['weather_city']['tinh_kien_giang'] = 'Phu Quoc Island';
 
 
+$lang['booking_success'] = 'Make a successful tour please wait for confirmation';
+$lang['booking_errors'] = 'Can not book a new tour please wait a moment';
+$lang['create_errors_email'] = 'Please enter the same email and email confirmation fields';
+$lang['booking_require'] = 'Please enter full information';
+
+
+
+
 
