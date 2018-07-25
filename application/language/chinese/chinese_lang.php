@@ -104,6 +104,9 @@ $lang['customize-change'] = 'Your Change';
 $lang['insert-code'] = 'Enter the code';
 $lang['evaluate'] = 'Evaluate';
 
+//comment
+$lang['comments'] = '註釋';
+$lang['first-and-last-name'] = '名字和姓氏';
 //Forms
 
 $lang['form-title'] = '標題';
@@ -175,3 +178,8 @@ $lang['booking_errors'] = '不能預訂新的旅遊請稍等';
 $lang['create_errors_email'] = '請輸入相同的電子郵件和電子郵件確認字段';
 $lang['booking_require'] = '請輸入完整信息';
 
+
+$lang['there-are-no-comments-for-this-tour-yet'] = '此旅遊還沒有評論';
+$lang['see-more-comments'] = '查看更多評論';
+$lang['send-comments'] = '評論';
+$lang['promotion'] = '提升';

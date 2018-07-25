@@ -109,6 +109,7 @@
                             <ul class="nav nav-tabs" role="tablist" id="nav-product">
                                 <a class="btn btn-primary" id="go-back" onclick="history.back(-1);" >Go back</a>
                                 <input type="submit" name="submit_shared" id="submit-shared" value="OK" class="btn btn-primary">
+
                             </ul>
                             </div>
                         </div>
@@ -127,7 +128,8 @@
           return false;
        return true;
     }
-</script><script>
+</script>
+<script>
   $(function () {
     //Date picker
     $('#datepicker').datepicker({

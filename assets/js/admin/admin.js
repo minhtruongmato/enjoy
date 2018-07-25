@@ -1,14 +1,14 @@
 var csrf_hash = $("input[name='csrf_myielts_token']").val();
 switch(window.location.origin){
-    case 'http://myielts.vn':
-        var HOSTNAME = 'http://enjoy.vn/';
+    case 'http://enjoyvietnam.tours':
+        var HOSTNAME = 'http://enjoyvietnam.tours/';
         break;
     default:
         var HOSTNAME = 'http://localhost/enjoy/';
 }
 switch(window.location.origin){
-    case 'http://enjoy.com':
-        var HOSTNAMEADMIN = 'http://enjoy.com/admin';
+    case 'http://enjoyvietnam.tours':
+        var HOSTNAMEADMIN = 'http://enjoyvietnam.tours/admin';
         break;
     default:
         var HOSTNAMEADMIN = 'http://localhost/enjoy/admin';
@@ -33,7 +33,7 @@ $("#go-back").css("display","inline");
 $("#nav-product li#add-date").css("float","right");
 $("#nav-product li#add-date").click(function(){
 	$.validator.setDefaults({
-		ignore: ":hidden:not('.title-content-date.date input')"
+		ignore: ":hidden:not('.col-xs-12.date input')"
 	});
 	$('#register-form').validate({
 		errorElement: 'span',
@@ -188,9 +188,6 @@ $("#submit-shared,#content-home").click(function(event) {
 	$.validator.addMethod("vehicles", function(value, element) {
 		return this.optional(element) || (value>0);
 	}, "Bạn phải chọn phương tiện.");
-	$.validator.setDefaults({
-		ignore: ":hidden:not('.title-content-date.date input')"
-	});
 	$('#register-form').validate({
 		highlight: function(element, errorClass, validClass) {
 			$(element).closest('.col-xs-12').addClass("has-errors");

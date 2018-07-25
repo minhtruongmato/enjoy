@@ -112,7 +112,7 @@
 			</ul>
 
 			<div class="copyright text-center">
-				<b>&copy; 2018 Diamond Tour</b> | All Rights Reversed
+				<b>&copy; 2018 Enjoy Vietnam</b> | All Rights Reversed
 			</div>
 		</div>
 	</div>

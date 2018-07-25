@@ -8,7 +8,13 @@ $(function () {
     	// ri.rateit('readonly', true);
 	});
 });
-
+var language = $("#language").val();
+var ratings = {
+        thank:{cn:'感謝您的評論！', sc:'感谢您的评论！', en:'Thanks for your review!'},
+        thank_you:{cn:'您已經對此產品進行了評分，您無法添加它。謝謝！', sc:'您已经对此产品进行了评分，您无法添加它。谢谢！', en:'You have already rated this product, you can not add it. Thank you!'},
+        please:{cn:'請進入這所學校', sc:'请进入这所学校', en:'Please enter this school'},
+        code_error:{cn:'代碼不正確，請再次檢查', sc:'代码不正确，请再次检查', en:'Incorrect code, please check again'},
+    };
 $(document).ready(function(){
     var url_captcha = $('.created_captcha').val();
     var url_rating = $('.created_rating').val();
@@ -57,18 +63,18 @@ $(document).ready(function(){
     			},
     			success: function(res) {
     				if(res.isExits == true){
-    					alert('Cám ơn bạn đã đánh giá!');
+    					alert(ratings.thank[language]);
     					window.location.reload(true);
     				}else{
-    					alert('Bạn đã đánh giá cho sản phẩm này rồi, không thể đánh giá thêm. Cảm ơn!');
+    					alert(ratings.thank_you[language]);
     				}
     			}
     		});
     	}else{
     		if($('#captcha').val() == ''){
-    			$('.message').text('Vui Lòng Nhập Trường Này');
+    			$('.message').text(ratings.please[language]);
     		}else{
-    			$('.message').text('Mã không đúng, vui lòng kiểm tra lại');
+    			$('.message').text(ratings.code_error[language]);
     		}
     	}
     	

@@ -105,6 +105,11 @@ $lang['condition-general'] = 'Tour General Conditions';
 $lang['customize-program'] = 'Daily Program';
 $lang['customize-change'] = 'Your Change';
 
+//comment
+$lang['comments'] = 'Comments';
+$lang['first-and-last-name'] = 'First and last name';
+$lang['insert-code'] = 'Insert code';
+
 //Forms
 $lang['form-title'] = 'Title';
 $lang['form-first-name'] = 'First Name';
@@ -180,4 +185,9 @@ $lang['booking_require'] = 'Please enter full information';
 
 
 
+$lang['there-are-no-comments-for-this-tour-yet'] = 'There are no comments for this tour yet';
+$lang['see-more-comments'] = 'See more comments';
+$lang['send-comments'] = 'Comment';
+
+$lang['promotion'] = 'SO';
 
