@@ -1,13 +1,13 @@
 switch(window.location.origin){
-    case 'http://myielts.vn':
-        var HOSTNAME = 'http://enjoy.vn/';
+    case 'http://enjoyvietnam.tours':
+        var HOSTNAME = 'http://enjoyvietnam.tours/';
         break;
     default:
         var HOSTNAME = 'http://localhost/enjoy/';
 }
 switch(window.location.origin){
-    case 'http://enjoy.com':
-        var HOSTNAMEADMIN = 'http://enjoy.com/admin';
+    case 'http://enjoyvietnam.tours':
+        var HOSTNAMEADMIN = 'http://enjoyvietnam.tours/admin';
         break;
     default:
         var HOSTNAMEADMIN = 'http://localhost/enjoy/admin';

@@ -102,6 +102,9 @@ $lang['condition-general'] = 'Tour General Conditions';
 $lang['customize-program'] = 'Daily Program';
 $lang['customize-change'] = 'Your Change';
 
+//comment
+$lang['comments'] = '注释';
+$lang['first-and-last-name'] = '名字和姓氏';
 //Forms
 
 $lang['form-title'] = '标题';
@@ -172,3 +175,9 @@ $lang['booking_success'] = '成功游览请等待确认';
 $lang['booking_errors'] = '不能预订新的旅游请稍等';
 $lang['create_errors_email'] = '请输入相同的电子邮件和电子邮件确认字段';
 $lang['booking_require'] = '请输入完整信息';
+
+$lang['there-are-no-comments-for-this-tour-yet'] = '此旅游还没有评论';
+$lang['see-more-comments'] = '查看更多评论';
+$lang['send-comments'] = '评论';
+
+$lang['promotion'] = '提升';
