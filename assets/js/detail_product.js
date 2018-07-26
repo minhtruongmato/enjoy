@@ -93,7 +93,7 @@ $('.submit-comment').click(function(e){
             	$.each(comment, function(key, value) {
             		html = '<div class="media cmt">'
             		+ '<div class="media-left">'
-            		+ '<img class="media-object" src="' + location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + '/tourist1/assets/img/comment_ava.png" alt="Comment Avatar" width="64">'
+            		+ '<img class="media-object" src="' + HOSTNAME+'assets/img/comment_ava.png" alt="Comment Avatar" width="64">'
             		+ '</div>'
             		+ '<div class="media-body">'
             		+ '<h3 class="media-heading" style="color: #f4aa1c">'+ value.name +':</h3>'

@@ -103,14 +103,23 @@
 						<div class="mask">
 							<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']); ?>" alt="slide 2">
 						</div>
-						<div class="carousel-caption">
+						<div class="carousel-caption">									
 							<div class="big-title">
 								<h4 class="subtitle">
                                     <?php echo $value['parent_title']; ?>
 								</h4>
+								<br>
+                                <?php if (!empty($value['hot'])): ?>
+									<span class="badge "><i class="fa fa-location-arrow" aria-hidden="true"></i><?php echo $this->lang->line('tour-hot-short') ?></span>
+                                <?php endif ?>
+                                <?php if (!empty($value['bestselling'])): ?>
+									<span class="badge "><i class="fa fa-star" aria-hidden="true"></i><?php echo $this->lang->line('tour-best-sell-short') ?></span>
+                                <?php endif ?>
+                                <?php if (!empty($value['showpromotion']) && !empty($value['percen']) && !empty($value['pricepromotion'])): ?>
+									<span class="badge "><i class="fa fa-tags" aria-hidden="true"></i><?php echo $this->lang->line('tour-discount-short') ?></span>
+                                <?php endif ?>
 								<h1 class="title">
 									<?php echo $value['title']; ?>
-
 								</h1>
 								<ul class="list-inline">
 									<li>
@@ -233,7 +242,7 @@
 										<!--BADGE DISCOUNT -->
                                         <?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
 											<div class="badge badge-discount">
-												<div class="content">KM<br>-<?php echo $value['percen']; ?>%</div>
+												<div class="content"><?php echo $this->lang->line('promotion'); ?><br>-<?php echo $value['percen']; ?>%</div>
 											</div>
                                         <?php endif ?>
 
@@ -373,7 +382,7 @@
 										<!--BADGE DISCOUNT -->
                                         <?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
 											<div class="badge badge-discount">
-												<div class="content">KM<br>-<?php echo $value['percen']; ?>%</div>
+												<div class="content"><?php echo $this->lang->line('promotion'); ?><br>-<?php echo $value['percen']; ?>%</div>
 											</div>
                                         <?php endif ?>
 

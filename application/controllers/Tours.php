@@ -197,19 +197,6 @@ class Tours extends Public_Controller {
             redirect('/', 'refresh');
         }
     }
-    // protected function build_parent_title($parent_id){
-    //     $sub = $this->product_category_model->get_by_id($parent_id, array('title'));
-
-    //     if($parent_id != 0){
-    //         $title = explode('|||', $sub['product_category_title']);
-    //         $sub['title_en'] = $title[0];
-    //         $sub['title_vi'] = $title[1];
-    //         $title = $sub['title_vi'];
-    //     }else{
-    //         $title = 'Danh mục gốc';
-    //     }
-    //     return $sub;
-    // }
 
     public function created_rating(){
         $isExits = false;
