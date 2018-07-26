@@ -18,7 +18,7 @@ $lang['mice'] = 'Mice';
 $lang['services'] = 'Services';
 $lang['visa'] = 'Visa';
 $lang['blogs'] = 'Blogs';
-$lang['location'] = 'Location';
+$lang['location'] = '位置';
 $lang['register'] = 'Register Now!';
 
 //Sub Nav
@@ -183,3 +183,9 @@ $lang['there-are-no-comments-for-this-tour-yet'] = '暫時沒有評論。';
 $lang['see-more-comments'] = '查看更多評論';
 $lang['send-comments'] = '評論';
 $lang['promotion'] = '提升';
+
+
+$lang['next'] = '下一個';
+$lang['last'] = '持續';
+$lang['first'] = '第一';
+$lang['prev'] = '上一頁';

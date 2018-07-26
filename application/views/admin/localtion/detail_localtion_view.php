@@ -71,10 +71,10 @@
                                                     <th>Khu vực</th>
                                                     <td><?php echo $detail['area'] ?></td>
                                                 </tr>
-                                                <tr>
+                                                <!-- <tr>
                                                     <th>Vị trí</th>
                                                     <td><?php echo $detail['localtion'] ?></td>
-                                                </tr>
+                                                </tr> -->
 
                                             </table>
                                         </div>
@@ -108,6 +108,11 @@
                                                                             <tr>
                                                                                 <th style="width: 120px">Tiêu đề: </th>
                                                                                 <td><?php echo $detail['title_'. $key] ?></td>
+                                                                            </tr>
+                                                                        <?php elseif($k == 'description' && in_array($k, $request_language_template)): ?>
+                                                                            <tr>
+                                                                                <th style="width: 120px">Nội dung: </th>
+                                                                                <td><?php echo $detail['description_'. $key] ?></td>
                                                                             </tr>
                                                                         <?php elseif($k == 'content' && in_array($k, $request_language_template)): ?>
                                                                             <tr>

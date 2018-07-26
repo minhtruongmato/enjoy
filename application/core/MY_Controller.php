@@ -27,12 +27,14 @@ class MY_Controller extends CI_Controller {
         }
     }
 
-    protected function pagination_config($base_url, $total_rows, $per_page, $uri_segment) {
+    protected function pagination_config($base_url, $total_rows, $per_page, $uri_segment,$next = 'Next',$prev = 'Prev',$last = 'Last',$first = 'First') {
         $config['base_url'] = $base_url;
         $config['per_page'] = $per_page;
         $config['uri_segment'] = $uri_segment;
-        $config['prev_link'] = 'Prev';
-        $config['next_link'] = 'Next';
+        $config['prev_link'] = $prev;
+        $config['next_link'] = $next;
+        $config['last_link'] = $last;
+        $config['first_link'] = $first;
         $config['total_rows'] = $total_rows;
         $config['reuse_query_string'] = true;
         return $config;
@@ -322,7 +324,7 @@ class Public_Controller extends MY_Controller {
         $this->data['backpack_menu'] = $this->product_category_model->get_parent_id(FIXED_BACKPACK_TRAVEL_CATEGORY_ID,$this->session->userdata('langAbbreviation'),6);
         $this->data['vietnam_menu'] = $this->post_category_model->get_parent_id(FIXED_VIETNAM_CATEGORY_ID,$this->session->userdata('langAbbreviation'),5);
         $this->data['blog_menu'] = $this->post_category_model->get_parent_id(FIXED_BLOG,$this->session->userdata('langAbbreviation'),2);
-        $this->data['location_menu'] = $this->localtion_model->get_all_with_pagination_search('desc', $this->session->userdata('langAbbreviation'), 3, 0);
+        $this->data['location_menu'] = $this->localtion_model->get_all_with_pagination_searchs('desc', $this->session->userdata('langAbbreviation'), 3, 0);
         $this->get_all_menu_param('packages_menu');
         $this->get_all_menu_param('backpack_menu');
         $this->get_all_product_with_category_id($this->category_all,FIXED_TOUR_PACKAGES_CATEGORY_ID,$this->id_array_packages);

@@ -191,3 +191,10 @@ $lang['send-comments'] = 'Comment';
 
 $lang['promotion'] = 'SO';
 
+
+$lang['next'] = 'Next';
+$lang['last'] = 'Last';
+$lang['first'] = 'First';
+$lang['prev'] = 'Prev';
+
+

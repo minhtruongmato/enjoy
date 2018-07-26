@@ -778,7 +778,7 @@ footer.footer {
     position: absolute;
     top: 0;
     left: 50%;
-    padding-top: 300px;
+    padding-top: 270px;
     z-index: 990;
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
@@ -994,7 +994,14 @@ footer.footer {
       #detail .container .row .right .row .item .wrapper .head h2.post-title {
         font-weight: 700;
         margin-top: 0;
-        font-size: 1.25em; }
+        font-size: 1.25em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-height: 1.168;
+        height: 2.3em;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical; }
     #detail .container .row .right .row .item .wrapper .body {
       color: #999;
       padding-left: 15px;
@@ -1002,8 +1009,11 @@ footer.footer {
       #detail .container .row .right .row .item .wrapper .body p.post-description {
         overflow: hidden;
         line-height: 1.5;
-        max-height: 4.5em;
-        -webkit-line-clamp: 3; }
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        height: 4.5em;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical; }
     #detail .container .row .right .row .item .wrapper .foot {
       padding-left: 15px;
       padding-right: 15px; }
@@ -1067,7 +1077,7 @@ footer.footer {
     position: relative; }
     #head-slider-section .container {
       width: 100%;
-      padding-top: 170px; }
+      padding-top: 150px; }
       #head-slider-section .container .big-title {
         width: 100%; }
         #head-slider-section .container .big-title h1.title {

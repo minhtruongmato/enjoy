@@ -334,16 +334,7 @@ HEADER STYLE
                       font-size: 1.25em;
                       border-bottom: 1px solid #dadada; }
                       #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand .row .left > ul > li.menu-href {
-                        cursor: pointer;
-                        background-color: #eaeaea; }
-                        #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand .row .left > ul > li.menu-href > ul {
-                          display: block;
-                          padding-left: 5px; }
-                      #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand .row .left > ul > li:hover {
-                        background-color: #eaeaea; }
-                        #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand .row .left > ul > li:hover > ul {
-                          display: block;
-                          padding-left: 5px; }
+                        cursor: pointer; }
                       #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand .row .left > ul > li > ul {
                         position: absolute;
                         top: 0;
@@ -370,6 +361,11 @@ HEADER STYLE
                             color: #999; }
                             #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand .row .left > ul > li > ul > li a:hover {
                               color: #333; }
+                      #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand .row .left > ul > li.active {
+                        background-color: #eaeaea; }
+                        #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand .row .left > ul > li.active > ul {
+                          display: block;
+                          padding-left: 5px; }
                   #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand .row .right {
                     padding: 15px; }
                     #page header nav .container .row .right > ul > li.menu-tabs .menu-tabs-expand .row .right .item .mask {

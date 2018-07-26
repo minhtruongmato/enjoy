@@ -695,7 +695,7 @@ class Product extends Admin_Controller{
         $detail = $this->localtion_model->get_by_slug_localtion($area);
         $result = '';
         foreach ($this->localtion_model->get_by_area($detail['area']) as $key => $value) {
-            $result .= '<option value="'.$value['id'].'">'.$value['localtion'].'</option>';
+            $result .= '<option value="'.$value['id'].'">'.$value['title'].'</option>';
         }
         $reponse = array(
             'csrf_hash' => $this->security->get_csrf_hash(),

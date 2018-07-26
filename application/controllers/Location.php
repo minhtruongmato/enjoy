@@ -16,14 +16,14 @@ class Location extends Public_Controller {
         $base_url = base_url('location/index');
         $uri_segment = 3;
         $per_page = 9;
-        foreach ($this->pagination_config($base_url, $total_rows, $per_page, $uri_segment) as $key => $value) {
+        foreach ($this->pagination_config($base_url, $total_rows, $per_page, $uri_segment,$this->lang->line('next'),$this->lang->line('prev'),$this->lang->line('last'),$this->lang->line('first')) as $key => $value) {
             $config[$key] = $value;
         }
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
         $this->data['page'] = ($this->uri->segment($uri_segment)) ? $this->uri->segment($uri_segment) : 0;
 
-        $this->data['result'] = $this->localtion_model->get_all_with_pagination_search('desc', $this->data['lang'], $per_page, $this->data['page']);
+        $this->data['result'] = $this->localtion_model->get_all_with_pagination_searchs('desc', $this->data['lang'], $per_page, $this->data['page']);
         $this->render('location_view');
     }
     public function get_multiple_posts_with_category_id($categories, $parent_id = 0, &$id_array){

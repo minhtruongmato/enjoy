@@ -273,3 +273,5 @@ defined('MESSAGE_CHECK_BANNER_ERROR') OR define('MESSAGE_CHECK_BANNER_ERROR', 'H
 defined('MESSAGE_CHANGE_LANGUAGE_SUCCESS') OR define('MESSAGE_CHANGE_LANGUAGE_SUCCESS', 'changed');
 defined('MESSAGE_CHANGE_LANGUAGE_FAIL') OR define('MESSAGE_CHANGE_LANGUAGE_FAIL', 'keep');
 defined('NO_DATA') OR define('NO_DATA', 'Không có dữ liệu');
+
+defined('UNIT_MONEY') OR define('UNIT_MONEY', 'USD');
