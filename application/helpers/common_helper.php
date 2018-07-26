@@ -53,7 +53,12 @@ if (!function_exists('handle_common_author_data')) {
 }
 
 //build array for dropdown form template
-if (!function_exists('handle_common_author_data')) {
+if (!function_exists('build_array_for_dropdown')) {
+    /**
+     * @param array $data
+     * @param null $id
+     * @return array
+     */
     function build_array_for_dropdown($data = array(), $id = null){
         $new_data = array(0 => 'Danh mục gốc');
         foreach ($data as $key => $value) {
@@ -63,7 +68,13 @@ if (!function_exists('handle_common_author_data')) {
         unset($new_data[$id]);
         return $new_data;
     }
+}
 
+if (!function_exists('build_array_by_slug_for_dropdown')) {
+    /**
+     * @param array $data
+     * @return array
+     */
     function build_array_by_slug_for_dropdown($data = array()){
         $new_data = array('' => 'Click để chọn');
         foreach ($data as $key => $value) {
@@ -79,7 +90,10 @@ if (!function_exists('handle_common_author_data')) {
 }
 
 //build title for input
-if (!function_exists('handle_common_author_data')) {
+if (!function_exists('build_template')) {
+    /**
+     * @return array
+     */
     function build_template(){
         $template = array(
             'en' => array(
@@ -106,26 +120,7 @@ if (!function_exists('handle_common_author_data')) {
                 'content' => 'Nội Dung',
                 'tripnodes' => 'Ghi chú chuyến đi',
                 'detailsprice' => 'Chi tiết giá'
-            ),
-            // 'cn' => array(
-            //     'title' => 'Tiêu đề (Phồn thể)',
-            //     'metakeywords' => 'Từ khóa Meta (Phồn thể)',
-            //     'metadescription' => 'Mô tả Meta (Phồn thể)',
-            //     'description' => 'Giới Thiệu (Phồn thể)',
-            //     'content' => 'Nội Dung (Phồn thể)',
-            //     'tripnodes' => 'Ghi chú chuyến đi (Phồn thể)',
-            //     'detailsprice' => 'Chi tiết giá (Phồn thể)'
-            // ),
-
-            // 'sc' => array(
-            //     'title' => 'Tiêu đề (Giản thể)',
-            //     'metakeywords' => 'Từ khóa Meta (Giản thể)',
-            //     'metadescription' => 'Mô tả Meta (Giản thể)',
-            //     'description' => 'Giới Thiệu (Giản thể)',
-            //     'content' => 'Nội Dung (Giản thể)',
-            //     'tripnodes' => 'Ghi chú chuyến đi (Giản thể)',
-            //     'detailsprice' => 'Chi tiết giá (Giản thể)'
-            // ),
+            )
         );
         return $template;
     }
@@ -136,7 +131,14 @@ if (!function_exists('handle_common_author_data')) {
     - $page_languages = array('vi', 'en', 'cn' ...);
  */
 
-if (!function_exists('handle_common_author_data')) {
+if (!function_exists('build_language')) {
+    /**
+     * @param $controller
+     * @param $detail
+     * @param array $select
+     * @param $page_languages
+     * @return mixed
+     */
     function build_language($controller, $detail, $select = array(), $page_languages){
         foreach ($select as $key => $value) {
             $result = explode('|||', $detail[$controller .'_'. $value]);
