@@ -30,8 +30,6 @@ class Comment extends CI_Controller{
 				);
 		$this->comment_model->common_insert($data);
 
-//        $this->load->model('count_comment_model');
-//        $this->count_comment_model->save($data);
 
         $comment = '<div class="media cmt">';
         $comment .= '<div class="media-left">';
@@ -44,7 +42,6 @@ class Comment extends CI_Controller{
         $comment .= '</div>';
         $comment .= '</div>';
 
-//		$comment = '<p><span style="color: red">'.$name.' :</span style="color: red"> <span>'.$content.'</span> <span style="float: right; font-size: 10px">'.date("d/m/Y").'</span></p>';
 
 		$this->output->set_status_header(200)->set_output(json_encode(array('comment' => $comment)));
 

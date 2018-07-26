@@ -176,7 +176,7 @@ $lang['booking_errors'] = '不能预订新的旅游请稍等';
 $lang['create_errors_email'] = '请输入相同的电子邮件和电子邮件确认字段';
 $lang['booking_require'] = '请输入完整信息';
 
-$lang['there-are-no-comments-for-this-tour-yet'] = '此旅游还没有评论';
+$lang['there-are-no-comments-for-this-tour-yet'] = '暂时没有评论。';
 $lang['see-more-comments'] = '查看更多评论';
 $lang['send-comments'] = '评论';
 

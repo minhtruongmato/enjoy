@@ -179,7 +179,7 @@ $lang['create_errors_email'] = '請輸入相同的電子郵件和電子郵件確
 $lang['booking_require'] = '請輸入完整信息';
 
 
-$lang['there-are-no-comments-for-this-tour-yet'] = '此旅遊還沒有評論';
+$lang['there-are-no-comments-for-this-tour-yet'] = '暫時沒有評論。';
 $lang['see-more-comments'] = '查看更多評論';
 $lang['send-comments'] = '評論';
 $lang['promotion'] = '提升';

@@ -591,12 +591,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<div class="foot">
 					<ul>
 						<li>
-							<a href="" class="change-language" data-language="vi">
-								<img src="<?php echo site_url('assets/img/vn@2x.png') ?>" alt="flag Vietnam"> Tiếng Việt
-						</a>
-						<li>
 							<a href="" class="change-language" data-language="en">
-								<img src="<?php echo site_url('assets/img/gb@2x.png') ?>" alt="flag GB"> English
+								<!-- <img src="<?php echo site_url('assets/img/gb@2x.png') ?>" alt="flag Vietnam">  -->
+								English
+							</a>
+						</li>
+						<li>
+							<a href="" class="change-language" data-language="cn">
+								<!-- <img src="<?php echo site_url('assets/img/gb@2x.png') ?>" alt="flag GB">  -->
+								繁體中文
+							</a>
+						</li>
+						<li>
+							<a href="" class="change-language" data-language="sc">
+								<!-- <img src="<?php echo site_url('assets/img/gb@2x.png') ?>" alt="flag GB">  -->
+								简体中文
 							</a>
 						</li>
 					</ul>
