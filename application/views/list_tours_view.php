@@ -8,7 +8,7 @@
                     <?php echo $detail['sub'][count($detail['sub'])-1]['title']; ?>
 				</h4>
             <?php endif ?>
-			<h1 class="title">
+			<h1 class="title" style="height: auto;">
                 <?php echo $detail['title'] ?>
 			</h1>
 		</div>
@@ -98,13 +98,17 @@
 							</div>
 							<div class="head">
 								<h4 class="post-subtitle"><?php echo $product_array[$i]['parent_title'] ?></h4>
-								<h2 class="post-title"><?php echo $product_array[$i]['title'] ?></h2>
+								<h2 class="post-title" title="<?php echo $product_array[$i]['title']; ?>"><?php echo $product_array[$i]['title'] ?></h2>
 								<h3 class="price">
-									<?php if (!empty($product_array[$i]['pricepromotion']) && !empty($product_array[$i]['percen']) && !empty($product_array[$i]['showpromotion'])): ?>
-										<?php echo number_format($product_array[$i]['pricepromotion']); ?> vnd
-										<small class="price-original"><del><?php echo number_format($product_array[$i]['price']);?> vnd</del></small>
+									<?php if (!empty($product_array[$i]['price'])): ?>
+										<?php if (!empty($product_array[$i]['pricepromotion']) && !empty($product_array[$i]['percen']) && !empty($product_array[$i]['showpromotion'])): ?>
+											<?php echo number_format($product_array[$i]['pricepromotion']); ?> <?php echo UNIT_MONEY;?>
+											<small class="price-original"><del><?php echo number_format($product_array[$i]['price']);?> <?php echo UNIT_MONEY;?></del></small>
+										<?php else: ?>
+											<?php echo number_format($product_array[$i]['price']); ?> <?php echo UNIT_MONEY;?>
+										<?php endif ?>
 									<?php else: ?>
-										<?php echo number_format($product_array[$i]['price']); ?> vnd
+										<span style="font-weight: 505;"><?php echo $this->lang->line('price');?>:</span> <?php echo $this->lang->line('contact');?>
 									<?php endif ?>
 								</h3>
 							</div>

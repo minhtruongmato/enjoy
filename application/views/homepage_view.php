@@ -118,7 +118,7 @@
                                 <?php if (!empty($value['showpromotion']) && !empty($value['percen']) && !empty($value['pricepromotion'])): ?>
 									<span class="badge "><i class="fa fa-tags" aria-hidden="true"></i><?php echo $this->lang->line('tour-discount-short') ?></span>
                                 <?php endif ?>
-								<h1 class="title">
+								<h1 class="title" title="<?php echo $value['title']; ?>">
 									<?php echo $value['title']; ?>
 								</h1>
 								<ul class="list-inline">
@@ -155,7 +155,7 @@
 					<div class="mask"  style="height: 20vh;">
 						<img src="<?php echo base_url('/assets/upload/product/'.$value['slug'].'/'.$value['image']); ?>" alt="slide 2">
 						<div class="banner">
-							<h3 class="post-subtitle"><?php echo $value['title']; ?></h3>
+							<h3 class="post-subtitle" title="<?php echo $value['title']; ?>"><?php echo $value['title']; ?></h3>
 							<p class="post-title"><?php echo $value['description']; ?></p>
 						</div>
 					</div>
@@ -273,13 +273,18 @@
 											<?php endif ?>
 										</div>
 										<div class="col-md-12">
-											<h2 class="post-title"><?php echo $value['title']; ?></h2>
+											<h2 class="post-title" title="<?php echo $value['title']; ?>"><?php echo $value['title']; ?></h2>
 											<h3 class="price">
-												<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
-													<?php echo number_format($value['pricepromotion']); ?> vnd
-													<small class="price-original"><del><?php echo number_format($value['price']);?> vnd</del></small>
+
+												<?php if (!empty($value['price'])): ?>
+													<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+														<?php echo number_format($value['pricepromotion']); ?> <?php echo UNIT_MONEY;?>
+														<small class="price-original"><del><?php echo number_format($value['price']);?> <?php echo UNIT_MONEY;?></del></small>
+													<?php else: ?>
+														<?php echo number_format($value['price']); ?> <?php echo UNIT_MONEY;?>
+													<?php endif ?>
 												<?php else: ?>
-													<?php echo number_format($value['price']); ?> vnd
+													<span style="font-weight: 505;"><?php echo $this->lang->line('price');?>:</span> <?php echo $this->lang->line('contact');?>
 												<?php endif ?>
 											</h3>
 										</div>
@@ -413,15 +418,18 @@
 											<?php endif ?>
 										</div>
 										<div class="col-md-12">
-											<h2 class="post-title"><?php echo $value['title']; ?></h2>
+											<h2 class="post-title" title="<?php echo $value['title']; ?>"><?php echo $value['title']; ?></h2>
 											<h3 class="price">
-												<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
-													<?php echo number_format($value['pricepromotion']); ?> vnd
-													<small class="price-original"><del><?php echo number_format($value['price']);?> vnd</del></small>
+												<?php if (!empty($value['price'])): ?>
+													<?php if (!empty($value['pricepromotion']) && !empty($value['percen']) && !empty($value['showpromotion'])): ?>
+														<?php echo number_format($value['pricepromotion']); ?> <?php echo UNIT_MONEY;?>
+														<small class="price-original"><del><?php echo number_format($value['price']);?> <?php echo UNIT_MONEY;?></del></small>
+													<?php else: ?>
+														<?php echo number_format($value['price']); ?> <?php echo UNIT_MONEY;?>
+													<?php endif ?>
 												<?php else: ?>
-													<?php echo number_format($value['price']); ?> vnd
+													<span style="font-weight: 505;"><?php echo $this->lang->line('price');?>:</span> <?php echo $this->lang->line('contact');?>
 												<?php endif ?>
-												
 											</h3>
 										</div>
 									</div>

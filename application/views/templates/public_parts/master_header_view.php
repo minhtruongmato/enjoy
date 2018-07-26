@@ -383,20 +383,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<div class="menu-dropdown-expand menu-expand">
 										<div class="row">
 												<div class="media col-sm-4 col-xs-12">
-													<div class="media-left">
-														<div class="mask">
-															<img class="media-object" src="<?php echo base_url('assets/upload/localtion/'.$location_menu[0]['slug'].'/'.$location_menu[0]['image']); ?>" alt="service air tickets">
-														</div>
-													</div>
-													<div class="media-body">
-														<a href="<?php echo base_url('location'); ?>">
-															<h3 class="media-heading"><?php echo $this->lang->line('location') ?></h3>
-														</a>
-														<p><?php echo $location_menu[0]['content'];?></p>
-														<a href="<?php echo base_url('location'); ?>" class="btn btn-primary" role="button">
-					                                        <?php echo $this->lang->line('explore') ?>
-														</a>
-													</div>
+													<?php foreach ($location_menu as $key => $value): ?>
+														<?php if (!empty($value['image'])): ?>
+															<div class="media-left">
+																<div class="mask">
+																	<img class="media-object" src="<?php echo base_url('assets/upload/localtion/'.$value['slug'].'/'.$value['image']); ?>" alt="service air tickets">
+																</div>
+															</div>
+															<div class="media-body">
+																<a href="<?php echo base_url('location'); ?>">
+																	<h3 class="media-heading"><?php echo $this->lang->line('location') ?></h3>
+																</a>
+																<p><?php echo $value['content'];?></p>
+																<a href="<?php echo base_url('location'); ?>" class="btn btn-primary" role="button">
+							                                        <?php echo $this->lang->line('explore') ?>
+																</a>
+															</div>
+															<?php break; ?>
+														<?php else: ?>
+															<?php if ($key == 2): ?>
+																<div class="media-left">
+																	<div class="mask">
+																		<img class="media-object" src="<?php echo base_url('assets/upload/localtion/'.$value['slug'].'/'.$value['image']); ?>" alt="service air tickets">
+																	</div>
+																</div>
+																<div class="media-body">
+																	<a href="<?php echo base_url('location'); ?>">
+																		<h3 class="media-heading"><?php echo $this->lang->line('location') ?></h3>
+																	</a>
+																	<p><?php echo $value['content'];?></p>
+																	<a href="<?php echo base_url('location'); ?>" class="btn btn-primary" role="button">
+								                                        <?php echo $this->lang->line('explore') ?>
+																	</a>
+																</div>
+															<?php endif ?>
+														<?php endif ?>
+													<?php endforeach ?>
 												</div>
 											<?php foreach ($blog_menu as $key => $value): ?>
 												<div class="media col-sm-4 col-xs-12">

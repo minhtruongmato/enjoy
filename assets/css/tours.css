@@ -1002,8 +1002,11 @@ footer.footer {
       #detail .container .row .right .row .item .wrapper .body p.post-description {
         overflow: hidden;
         line-height: 1.5;
-        max-height: 4.5em;
-        -webkit-line-clamp: 3; }
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        height: 4.5em;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical; }
     #detail .container .row .right .row .item .wrapper .foot {
       padding-left: 15px;
       padding-right: 15px; }

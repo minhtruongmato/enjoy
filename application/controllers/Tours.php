@@ -61,7 +61,7 @@ class Tours extends Public_Controller {
             $base_url = base_url('tours/category/'.$slug);
             $uri_segment = 4;
             $per_page = 9;
-            foreach ($this->pagination_config($base_url, $total_rows, $per_page, $uri_segment) as $key => $value) {
+            foreach ($this->pagination_config($base_url, $total_rows, $per_page, $uri_segment,$this->lang->line('next'),$this->lang->line('prev'),$this->lang->line('last'),$this->lang->line('first')) as $key => $value) {
                 $config[$key] = $value;
             }
             $this->pagination->initialize($config);

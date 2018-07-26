@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Localtion extends Admin_Controller {
 
     private $request_language_template = array(
-        'title', 'content'
+        'title', 'description','content'
     );
     private $author_data = array();
 
@@ -85,7 +85,7 @@ class Localtion extends Admin_Controller {
         $this->render('admin/localtion/create_localtion_view');
     }
     public function edit($id = null){
-        $detail = $this->localtion_model->get_by_id($id,array('title', 'content'));
+        $detail = $this->localtion_model->get_by_id($id,array('title', 'description','content'));
         if(empty($detail['id'])){
             redirect('admin/localtion/index','refresh');
         }
@@ -167,7 +167,7 @@ class Localtion extends Admin_Controller {
         $this->data['page_links'] = $this->pagination->create_links();
         $this->data['comments'] = $this->comment_model->get_all_by_product_id($id , $per_page, $this->data['page'],2);
 
-        $detail = $this->localtion_model->get_by_id($id,array('title', 'content'));
+        $detail = $this->localtion_model->get_by_id($id,array('title', 'description','content'));
         $detail = build_language('localtion', $detail, $this->request_language_template, $this->page_languages);
         $this->data['detail'] = $detail;
 

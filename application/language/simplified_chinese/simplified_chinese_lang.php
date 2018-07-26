@@ -18,7 +18,7 @@ $lang['mice'] = 'Mice';
 $lang['services'] = 'Services';
 $lang['visa'] = 'Visa';
 $lang['blogs'] = 'Blogs';
-$lang['location'] = 'Location';
+$lang['location'] = '位置';
 $lang['registef'] = 'Registef Now!';
 
 //Sub Nav
@@ -181,3 +181,9 @@ $lang['see-more-comments'] = '查看更多评论';
 $lang['send-comments'] = '评论';
 
 $lang['promotion'] = '提升';
+
+
+$lang['next'] = '下一个';
+$lang['last'] = '持续';
+$lang['first'] = '第一';
+$lang['prev'] = '上一页';
