@@ -120,7 +120,7 @@ class Localtion_model extends MY_Model {
         return $this->db->get()->row_array();
     }
     public function get_all_localtion_area($area,$id,$limit = '',$lang){
-        $this->db->select('localtion.*, localtion_lang.title as title, localtion_lang.content as content,  localtion_lang.language as language');
+        $this->db->select('localtion.*, localtion_lang.title as title, localtion_lang.description as description, localtion_lang.content as content,  localtion_lang.language as language');
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang . '.' . $this->table . '_id = ' . $this->table . '.id');
         $this->db->where($this->table . '.is_deleted', 0);

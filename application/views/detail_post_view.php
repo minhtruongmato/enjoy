@@ -14,7 +14,7 @@
                         <h4 class="subtitle">
                             <?php echo $detail['parent_title'] ?>
                         </h4>
-                        <h1 class="title">
+                        <h1 class="title" title="<?php echo $detail['title'] ?>">
                             <?php echo $detail['title'] ?>
                         </h1>
                     </div>
@@ -106,7 +106,7 @@
                                         </div>
                                         <div class="head">
                                             <h4 class="post-subtitle"><?php echo $value['parent_title']; ?></h4>
-                                            <h2 class="post-title"><?php echo $value['title'];?></h2>
+                                            <h2 class="post-title" title="<?php echo $value['title'];?>"><?php echo $value['title'];?></h2>
                                         </div>
                                         <div class="body">
                                             <p class="post-description"><?php echo $value['content'];?></p>
