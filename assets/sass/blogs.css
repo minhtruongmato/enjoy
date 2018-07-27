@@ -893,9 +893,12 @@ footer.footer {
       padding-right: 15px; }
       #detail-post .container .row .right .row .item .wrapper .body p.post-description {
         overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
         line-height: 1.5;
-        max-height: 4.5em;
-        -webkit-line-clamp: 3; }
+        height: 4.5em;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical; }
     #detail-post .container .row .right .row .item .wrapper .foot {
       padding-left: 15px;
       padding-right: 15px; }

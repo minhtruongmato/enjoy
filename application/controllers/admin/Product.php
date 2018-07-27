@@ -439,7 +439,8 @@ class Product extends Admin_Controller{
                     'vehicles' => json_encode($this->input->post('vehicles')),
                     'librarylocaltion' => json_encode($this->input->post('librarylocaltion')),
                     'is_top' => $this->input->post('is_top'),
-                    'is_banner' => $this->input->post('is_banner')
+                    'is_banner' => $this->input->post('is_banner'),
+                    'date' => '',
                 );
                 if($unique_slug != $this->data['detail']['slug']){
                     $shared_request['slug'] = $unique_slug;

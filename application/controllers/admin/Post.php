@@ -82,6 +82,7 @@ class Post extends Admin_Controller{
                 }
             	$slug = $this->input->post('slug_shared');
                 $unique_slug = $this->post_model->build_unique_slug($slug);
+                $image = '';
                 if(!empty($_FILES['image_shared']['name'])){
                     $image = $this->upload_image('image_shared', $_FILES['image_shared']['name'], 'assets/upload/'. $this->controller, 'assets/upload/'.$this->controller.'/thumb');
                 }
@@ -183,7 +184,7 @@ class Post extends Admin_Controller{
                     'updated_at' => $this->author_data['updated_at'],
                     'updated_by' => $this->author_data['updated_by']
                 );
-                if($image){
+                if(isset($image)){
                     $shared_request['image'] = $image;
                 }
                 $this->db->trans_begin();
@@ -204,7 +205,7 @@ class Post extends Admin_Controller{
                 } else {
                     $this->db->trans_commit();
                     $this->session->set_flashdata('message_success', MESSAGE_EDIT_SUCCESS);
-                    if($image != '' && $image != $detail['image'] && file_exists('assets/upload/'. $this->controller .'/'.$detail['image'])){
+                    if(isset($image) && $image != $detail['image'] && file_exists('assets/upload/'. $this->controller .'/'.$detail['image'])){
                         unlink('assets/upload/'. $this->controller .'/'.$detail['image']);
                     }
                     redirect('admin/'. $this->controller .'', 'refresh');
