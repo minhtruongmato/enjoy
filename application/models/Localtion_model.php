@@ -61,6 +61,7 @@ class Localtion_model extends MY_Model {
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id', 'left');
         $this->db->where('is_deleted', 0);
+        $this->db->where($this->table . '.area_id', $area);
         $this->db->where_not_in($this->table . '.id', $notlibrarylocaltion);
         $this->db->where($this->table_lang . '.language', $lang);
         return $result = $this->db->get()->result_array();
