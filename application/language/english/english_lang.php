@@ -197,4 +197,7 @@ $lang['last'] = 'Last';
 $lang['first'] = 'First';
 $lang['prev'] = 'Prev';
 
+$lang['search-by-area-name'] = 'Search by area name';
+$lang['search'] = 'Search';
+
 

@@ -13,6 +13,7 @@ class Localtion extends Admin_Controller {
         parent::__construct();
         $this->load->model('localtion_model');
         $this->load->model('product_model');
+        $this->load->model('area_model');
         $this->load->helper('common');
         $this->data['template'] = build_template();
         $this->data['request_language_template'] = $this->request_language_template;
@@ -23,21 +24,27 @@ class Localtion extends Admin_Controller {
 
     public function index() {
         $this->data['keyword'] = '';
+        $this->data['area_id'] = '';
         if($this->input->get('search')){
             $this->data['keyword'] = $this->input->get('search');
         }
+        if($this->input->get('area_id')){
+            $this->data['area_id'] = $this->input->get('area_id');
+        }
         $this->load->library('pagination');
         $per_page = 10;
-        $total_rows  = $this->localtion_model->count_search($this->data['keyword']);
+        $total_rows  = $this->localtion_model->count_searchs($this->data['keyword'],$this->data['area_id'],'en');
         $config = $this->pagination_config(base_url('admin/'.$this->data['controller'].'/index'), $total_rows, $per_page, 4);
         $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
-        $this->data['result'] = $this->localtion_model->get_all_with_pagination_search('desc','en' , $per_page, $this->data['page'], $this->data['keyword']);
+        $this->data['result'] = $this->localtion_model->get_all_with_pagination_searchs('desc','en' , $per_page, $this->data['page'], $this->data['keyword'],$this->data['area_id']);
+        $this->data['area'] = $this->area_model->get_all_area();
         $this->render('admin/localtion/list_localtion_view');
     }
     public function create(){
         $this->load->helper('form');
+        $this->data['area'] = $this->area_model->get_all_area();
         if($this->input->post()){
             $this->load->library('form_validation');
             $this->form_validation->set_rules('title_cn', 'Tiêu đề (Phồn thể)', 'required');
@@ -58,8 +65,7 @@ class Localtion extends Admin_Controller {
                 }
                 $localtion_request = array(
                     'slug' => $unique_slug,
-                    'area' => mb_convert_case($this->input->post('area'), MB_CASE_TITLE, "UTF-8"),
-                    'localtion' => $this->input->post('localtion'),
+                    'area_id' => $this->input->post('area_id'),
                 );
                 if(isset($localtionimage)){
                     $localtion_request['image'] = $localtionimage;
@@ -72,12 +78,14 @@ class Localtion extends Admin_Controller {
                 }
                 if ($this->db->trans_status() === false) {
                     $this->db->trans_rollback();
-                    $this->render('admin/'. $this->data['controller'] .'/edit_localtion_view');
+                    $this->session->set_flashdata('message_error', 'Thêm mới thất bại!');
+                    $this->render('admin/'. $this->data['controller'] .'/create_localtion_view');
                 } else {
                     $this->db->trans_commit();
                     $reponse = array(
                         'csrf_hash' => $this->security->get_csrf_hash()
                     );
+                    $this->session->set_flashdata('message_success', 'Thêm mới thành công!');
                     redirect('admin/'. $this->data['controller'] .'', 'refresh');
                 }
             }
@@ -91,6 +99,7 @@ class Localtion extends Admin_Controller {
         }
         $detail = build_language('localtion', $detail, $this->request_language_template, $this->page_languages);
         $this->data['detail'] = $detail;
+        $this->data['area'] = $this->area_model->get_all_area();
         $this->load->helper('form');
         $this->load->library('form_validation');
 
@@ -111,9 +120,7 @@ class Localtion extends Admin_Controller {
                     $localtionimage = $this->upload_image('image_localtion', $_FILES['image_localtion']['name'], 'assets/upload/localtion/'.$unique_slug, 'assets/upload/localtion/'.$unique_slug.'/thumb');
                 }
                 $localtion_request = array(
-
-                    'area' => mb_convert_case($this->input->post('area'), MB_CASE_TITLE, "UTF-8"),
-                    'localtion' => $this->input->post('localtion')
+                    'area_id' => $this->input->post('area_id'),
                 );
                 if($unique_slug != $this->data['detail']['slug']){
                     $localtion_request['slug'] = $unique_slug;
@@ -170,7 +177,7 @@ class Localtion extends Admin_Controller {
         $detail = $this->localtion_model->get_by_id($id,array('title', 'description','content'));
         $detail = build_language('localtion', $detail, $this->request_language_template, $this->page_languages);
         $this->data['detail'] = $detail;
-
+        $this->data['area'] = $this->area_model->get_by_id_area($detail['area_id']);
         $this->render('admin/localtion/detail_localtion_view');
     }
     function remove(){

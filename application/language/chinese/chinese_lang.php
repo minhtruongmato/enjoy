@@ -189,3 +189,6 @@ $lang['next'] = '下一個';
 $lang['last'] = '持續';
 $lang['first'] = '第一';
 $lang['prev'] = '上一頁';
+
+$lang['search-by-area-name'] = '按地區名稱搜索';
+$lang['search'] = '搜索';

@@ -16,11 +16,29 @@
             <div class="left col-xs-12">
                 <div class="section-header">
                     <div class="row">
-                        <div class="left col-xs-12">
+                        <div class="left col-md-3">
                             <h1><?php echo $this->lang->line('point-to') ?></h1>
                         </div>
-                        <!-- <div class="right col-xs-4">
-                        </div> -->
+                        <div class="col-md-9">
+                            <form action="<?php echo base_url('location') ?>" method="get">
+                                <div class="col-sm-5" style="padding-bottom: 10px;">
+                                    <select name="category" class="form-control">
+                                        <option value=""><?php echo $this->lang->line('search-by-area-name'); ?></option>
+                                        <?php foreach ($area as $key => $value): ?>
+                                            <option value="<?php echo $value['id']; ?>" <?php echo ($category == $value['id'])?'selected':''; ?>><?php echo $value[$lang]; ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                </div>
+                                <div class="col-sm-7">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="<?php echo $this->lang->line('search'); ?> ..." name="search" value="<?php echo $keyword ?>">
+                                        <span class="input-group-btn">
+                                            <input type="submit" class="btn btn-block btn-primary" value="<?php echo $this->lang->line('search'); ?>" style="margin: 0px;">
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
 
@@ -38,7 +56,7 @@
                                     </a>
                                 </div>
                                 <div class="head">
-                                    <h4 class="post-subtitle"><?php echo $val['area']; ?></h4>
+                                    <h4 class="post-subtitle"><?php echo $val[$lang]; ?></h4>
                                     <h2 class="post-title" title="<?php echo $val['title']; ?>"><?php echo $val['title']; ?></h2>
                                 </div>
                                 <div class="body">

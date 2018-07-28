@@ -67,14 +67,6 @@
                                                     <th>Slug</th>
                                                     <td><?php echo $detail['slug'] ?></td>
                                                 </tr>
-                                                <tr>
-                                                    <th>Khu vực</th>
-                                                    <td><?php echo $detail['area'] ?></td>
-                                                </tr>
-                                                <!-- <tr>
-                                                    <th>Vị trí</th>
-                                                    <td><?php echo $detail['localtion'] ?></td>
-                                                </tr> -->
 
                                             </table>
                                         </div>
@@ -104,6 +96,12 @@
                                                             <div class="table-responsive">
                                                                 <table class="table table-striped">
                                                                     <tbody>
+                                                                        <?php if ($k == 'title' && in_array($k, $request_language_template)): ?>
+                                                                            <tr>
+                                                                                <th style="width: 120px">Khu vực: </th>
+                                                                                <td><?php echo $area[$key] ?></td>
+                                                                            </tr>
+                                                                        <?php endif ?>
                                                                         <?php if ($k == 'title' && in_array($k, $request_language_template)): ?>
                                                                             <tr>
                                                                                 <th style="width: 120px">Tiêu đề: </th>

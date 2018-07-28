@@ -6,7 +6,7 @@
         <h1>
             Danh sách
             <small>
-                Location
+                Địa điểm
             </small>
         </h1>
     </section>
@@ -32,21 +32,31 @@
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">
-                            Location
+                            Địa điểm
                         </h3>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <a href="<?php echo base_url('admin/'.$controller.'/create') ?>" class="btn btn-primary" role="button">Thêm mới</a>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-9">
                             <form action="<?php echo base_url('admin/'.$controller.'/index') ?>" method="get">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Tìm kiếm theo tên tiêu đề..." name="search" value="">
-                                    <span class="input-group-btn">
-                                        <input type="submit" class="btn btn-block btn-primary" value="Tìm kiếm">
-                                    </span>
+                                <div class="col-md-5">
+                                        <select name="area_id" class="form-control">
+                                            <option value="">Tìm kiếm theo khu vực</option>
+                                            <?php foreach ($area as $key => $value): ?>
+                                                <option value="<?php echo $value['id']; ?>" <?php echo ($area_id == $value['id'])?'selected':''; ?>><?php echo $value['en']; ?></option>
+                                            <?php endforeach ?>
+                                        </select>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Tìm kiếm theo tên tiêu đề..." name="search" value="<?php echo $keyword; ?>">
+                                        <span class="input-group-btn">
+                                            <input type="submit" class="btn btn-block btn-primary" value="Tìm kiếm">
+                                        </span>
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -83,7 +93,7 @@
                                             </div>
                                         </td>
                                         <td><?php echo $value['title'] ?></td>
-                                        <td><?php echo $value['area'] ?></td>
+                                        <td><?php echo $value['en'] ?></td>
                                         <td>
                                             <a href="<?php echo base_url('admin/'.$controller.'/detail/'.$value['id']) ?>"
                                             <button class="btn btn-default btn-sm" type="button" data-toggle="collapse" data-target="#collapse_1" aria-expanded="false" aria-controls="collapse_1">Xem chi tiết</button>

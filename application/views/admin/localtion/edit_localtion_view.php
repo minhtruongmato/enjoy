@@ -55,17 +55,14 @@
                                 </div>
                                 <div class="col-xs-12" style="margin-bottom: 5px;">
                                     <?php
-                                    echo form_label('Tên khu vực đến', 'area');
-                                    echo form_error('area');
-                                    echo form_input('area', $detail['area'], 'class="form-control" id="area" placeholder ="VD:Hà Nội"');
+                                    echo form_label('Tên khu vực đến', 'area_id');
+                                    echo form_error('area_id');
                                     ?>
-                                </div>
-                                <div class="col-xs-12" style="margin-bottom: 5px;display: none;">
-                                    <?php
-                                    echo form_label('Tên vị trí đến trong khu vực', 'localtion');
-                                    echo form_error('localtion');
-                                    echo form_input('localtion', $detail['localtion'], 'class="form-control" id="localtion" placeholder ="VD:Nguyễn Bỉnh Khiêm"');
-                                    ?>
+                                    <select name="area_id" class="form-control">
+                                        <?php foreach ($area as $key => $value): ?>
+                                            <option value="<?php echo $value['id']; ?>" <?php echo ($detail['area_id'] == $value['id'])?'selected':'';?>><?php echo $value['en']; ?></option>
+                                        <?php endforeach ?>
+                                    </select>
                                 </div>
                                 <div>
                                     <div class="col-xs-12">
