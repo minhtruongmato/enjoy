@@ -28,6 +28,15 @@ class Localtion_model extends MY_Model {
         $this->db->where('is_deleted', 0);
         $this->db->where('slug', $slug);
         return $result = $this->db->get()->row_array();
+    }    
+    public function get_by_area_id($area_id='',$lang='en') {
+        $this->db->select($this->table . '.*, '. $this->table_lang . '.title as title');
+        $this->db->from($this->table);
+        $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id', 'left');
+        $this->db->where('is_deleted', 0);
+        $this->db->where('area_id', $area_id);
+        $this->db->where($this->table_lang . '.language', $lang);
+        return $result = $this->db->get()->result_array();
     }
     public function get_by_area($area='',$lang = 'en') {
         $this->db->select($this->table . '.*, '. $this->table_lang . '.title as title');
@@ -38,19 +47,22 @@ class Localtion_model extends MY_Model {
         $this->db->where($this->table_lang . '.language', $lang);
         return $result = $this->db->get()->result_array();
     }
-    public function get_librarylocaltion_by_id_array($librarylocaltion = array()){
-        $this->db->select('*');
+    public function get_librarylocaltion_by_id_array($librarylocaltion = array(), $lang ='en'){
+        $this->db->select($this->table . '.*, ' . $this->table_lang . '.title as title');
         $this->db->from($this->table);
+        $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id', 'left');
         $this->db->where('is_deleted', 0);
-        $this->db->where_in('id', $librarylocaltion);
+        $this->db->where_in($this->table . '.id', $librarylocaltion);
+        $this->db->where($this->table_lang . '.language', $lang);
         return $result = $this->db->get()->result_array();
     }
-    public function get_librarylocaltion_by_not_id_array($notlibrarylocaltion = array(),$area){
-        $this->db->select('*');
+    public function get_librarylocaltion_by_not_id_array($notlibrarylocaltion = array(),$area, $lang ='en'){
+        $this->db->select($this->table . '.*, ' . $this->table_lang . '.title as title');
         $this->db->from($this->table);
-        $this->db->where('area', $area);
+        $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id', 'left');
         $this->db->where('is_deleted', 0);
-        $this->db->where_not_in('id', $notlibrarylocaltion);
+        $this->db->where_not_in($this->table . '.id', $notlibrarylocaltion);
+        $this->db->where($this->table_lang . '.language', $lang);
         return $result = $this->db->get()->result_array();
     }
     public function get_by_id_array($id, $select = array('title','content'), $lang = '') {
@@ -120,56 +132,60 @@ class Localtion_model extends MY_Model {
         return $this->db->get()->row_array();
     }
     public function get_all_localtion_area($area,$id,$limit = '',$lang){
-        $this->db->select('localtion.*, localtion_lang.title as title, localtion_lang.description as description, localtion_lang.content as content,  localtion_lang.language as language');
+        $this->db->select('localtion.*, localtion_lang.title as title, localtion_lang.description as description, localtion_lang.content as content,  localtion_lang.language as language, area.' . $lang . ' as ' . $lang);
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang . '.' . $this->table . '_id = ' . $this->table . '.id');
+        $this->db->join('area', 'area.id = '.$this->table .'.'. 'area_id');
         $this->db->where($this->table . '.is_deleted', 0);
         $this->db->where($this->table_lang .'.language', $lang);
-        $this->db->where($this->table.'.area', $area);
+        $this->db->where($this->table.'.area_id', $area);
         $this->db->where($this->table.'.id !=', $id);
         $this->db->limit($limit);
         return $result = $this->db->get()->result_array();
     }
     public function fetch_row_by_slugs($slug, $lang){
-        $this->db->select('localtion.*, localtion_lang.title as title, localtion_lang.description as description, localtion_lang.content as content, localtion_lang.language as language')
+        $this->db->select('localtion.*, localtion_lang.title as title, localtion_lang.description as description, localtion_lang.content as content, localtion_lang.language as language, area.' . $lang . ' as ' . $lang)
             ->from($this->table)
             ->join($this->table_lang, $this->table_lang . '.' . $this->table . '_id = ' . $this->table . '.id')
+            ->join('area', 'area.id = '.$this->table .'.'. 'area_id')
             ->where($this->table . '.is_deleted', 0)
             ->where($this->table_lang .'.language', $lang)
             ->where($this->table .'.slug', $slug);
 
         return $this->db->get()->row_array();
     }
-    public function get_all_with_pagination_searchs($order = 'desc',$lang = '', $limit = NULL, $start = NULL, $keywords = '',$bestselling = '',$hot = '',$promotion = '',$product_category_id = array(),$banner = '') {
-        $this->db->select($this->table .'.*, '. $this->table_lang .'.title, '. $this->table_lang .'.description, '. $this->table_lang .'.content');
+    public function get_all_with_pagination_searchs($order = 'desc',$lang = '', $limit = NULL, $start = NULL, $keywords = '',$area_id = '') {
+        $this->db->select($this->table .'.*, '. $this->table_lang .'.title as title,'. $this->table_lang .'.description,'. $this->table_lang .'.content, area.en as en, area.cn as cn, area.sc as sc');
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id');
+        $this->db->join('area', 'area.id = '.$this->table .'.'. 'area_id');
+        if($lang != ''){
+            $this->db->where($this->table_lang .'.language', $lang);
+        }
         $this->db->like($this->table_lang .'.title', $keywords);
         $this->db->where($this->table .'.is_deleted', 0);
-        if($bestselling != ''){
-            $this->db->where($this->table .'.bestselling', $bestselling);
+        if($area_id != ''){
+            $this->db->where($this->table .'.area_id', $area_id);
         }
-        if($hot != ''){
-            $this->db->where($this->table .'.hot', $hot);
-        }
-        if($promotion != '' && $promotion == 1){
-            $this->db->where($this->table .'.percen !=', 0);
-            $this->db->where($this->table .'.pricepromotion !=', 0);
-        }
-        if(!empty($product_category_id)){
-            $this->db->where($this->table .'.is_top', 1);
-            $this->db->where_in($this->table .'.product_category_id', $product_category_id);
-        }
-        if($banner != ''){
-            $this->db->where($this->table .'.is_banner', $banner);
+        $this->db->limit($limit, $start);
+        $this->db->order_by($this->table .".id", $order);
+
+        return $this->db->get()->result_array();
+    }
+    public function count_searchs($keyword = '',$area_id = '',$lang = ''){
+        $this->db->select($this->table . '.*');
+        $this->db->from($this->table);
+        $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id');
+        $this->db->join('area', 'area.id = '.$this->table .'.'. 'area_id');
+        $this->db->like($this->table_lang .'.title', $keyword);
+        if($area_id != ''){
+            $this->db->where($this->table .'.area_id', $area_id);
         }
         if($lang != ''){
             $this->db->where($this->table_lang .'.language', $lang);
         }
-        $this->db->limit($limit, $start);
-        $this->db->group_by($this->table_lang .'.'. $this->table .'_id');
-        $this->db->order_by($this->table .".id", $order);
+        $this->db->where($this->table .'.is_deleted', 0);
 
-        return $result = $this->db->get()->result_array();
+        return $this->db->get()->num_rows();
     }
 }
