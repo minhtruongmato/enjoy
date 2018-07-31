@@ -58,6 +58,13 @@
                                         <?php endforeach ?>
                                     </select>
                                 </div>
+                                <div class="col-xs-12">
+                                    <div class="checkbox" style="padding-top: 10px;padding-bottom: 10px;">
+                                        <label>
+                                            <input type="checkbox" id="hot" name="is_hot"> Nổi bật
+                                        </label>
+                                    </div>
+                                </div>
                                 <div>
                                     <div class="col-xs-12">
                                         <ul class="col-xs-12 nav nav-pills nav-justified language" role="tablist">

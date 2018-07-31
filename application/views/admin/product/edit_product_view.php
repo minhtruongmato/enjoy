@@ -75,9 +75,9 @@
                                 </div>
                                 <div class="col-xs-12">
                                     <?php
-                                    echo form_label('Giá tour  ( Đơn vị tiền: VNĐ )', 'price');
+                                    echo form_label('Giá tour  ( Đơn vị tiền: USD )', 'price');
                                     echo form_error('price');
-                                    echo form_input('price', trim($detail['price']), 'class="form-control" id="price" placeholder ="Đơn vị tiền: VNĐ" onkeypress=" return isNumberKey(event)"');
+                                    echo form_input('price', trim($detail['price']), 'class="form-control" id="price" placeholder ="Đơn vị tiền: USD" onkeypress=" return isNumberKey(event)"');
                                     ?>
                                 </div>
                                 <div class="col-xs-12">
@@ -129,7 +129,7 @@
                                     <?php
                                     echo form_label('Giá tour sau khi giảm giá', 'pricepromotion');
                                     echo form_error('pricepromotion');
-                                    echo form_input('pricepromotion', trim($detail['pricepromotion']), 'class="form-control" id="pricepromotion" placeholder ="Đơn vị tiền: VNĐ" onkeypress=" return isNumberKey(event)"');
+                                    echo form_input('pricepromotion', trim($detail['pricepromotion']), 'class="form-control" id="pricepromotion" placeholder ="Đơn vị tiền: USD" onkeypress=" return isNumberKey(event)"');
                                     ?>
                                     <div class="checkbox">
                                         <label style="padding-right: 10px;padding-bottom: 10px;">

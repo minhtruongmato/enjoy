@@ -124,7 +124,7 @@
                                                 </tr>
                                                 <tr>
                                                     <th>Giá</th>
-                                                    <td><?php echo number_format($detail['price']); ?> VND</td>
+                                                    <td><?php echo number_format($detail['price']); ?> USD</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Giảm giá</th>
@@ -132,7 +132,7 @@
                                                 </tr>
                                                 <tr>
                                                     <th>Giá sau khi giảm giá</th>
-                                                    <td><?php echo number_format(($detail['pricepromotion'] != 0)?$detail['pricepromotion']:$detail['price']); ?> VND</td>
+                                                    <td><?php echo number_format(($detail['pricepromotion'] != 0)?$detail['pricepromotion']:$detail['price']); ?> USD</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Những nơi đi</th>
