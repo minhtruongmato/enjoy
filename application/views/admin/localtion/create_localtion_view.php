@@ -94,7 +94,7 @@
                                                         }elseif($k == 'description' && in_array($k, $request_language_template)){
                                                             echo form_label($val, $k .'_'. $key);
                                                             echo form_error($k .'_'. $key);
-                                                            echo form_textarea($k .'_'. $key, set_value($k .'_'. $key, '', false), 'class="tinymce-area form-control" rows="5" ');
+                                                            echo form_textarea($k .'_'. $key, set_value($k .'_'. $key, '', false), 'class="form-control" ');
                                                         }elseif($k == 'content' && in_array($k, $request_language_template)){
                                                             echo form_label($val, $k .'_'. $key);
                                                             echo form_error($k .'_'. $key);

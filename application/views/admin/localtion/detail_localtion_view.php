@@ -113,7 +113,7 @@
                                                                             </tr>
                                                                         <?php elseif($k == 'description' && in_array($k, $request_language_template)): ?>
                                                                             <tr>
-                                                                                <th style="width: 120px">Nội dung: </th>
+                                                                                <th style="width: 120px">Mô tả: </th>
                                                                                 <td><?php echo $detail['description_'. $key] ?></td>
                                                                             </tr>
                                                                         <?php elseif($k == 'content' && in_array($k, $request_language_template)): ?>

@@ -394,7 +394,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 																<a href="<?php echo base_url('location'); ?>">
 																	<h3 class="media-heading"><?php echo $this->lang->line('location') ?></h3>
 																</a>
-																<p><?php echo $value['content'];?></p>
+																<p><?php echo $value['description'];?></p>
 																<a href="<?php echo base_url('location'); ?>" class="btn btn-primary" role="button">
 							                                        <?php echo $this->lang->line('explore') ?>
 																</a>
