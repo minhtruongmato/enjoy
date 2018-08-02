@@ -95,7 +95,7 @@ class Product_category_model extends MY_Model{
         return $this->db->get()->result_array();
     }
     public function get_by_slug_lang($slug, $lang = 'en',$order="asc") {
-        $this->db->select($this->table .'.*, product_category_lang.title as title, product_category_lang.content as content');
+        $this->db->select($this->table .'.*, product_category_lang.title as title, product_category_lang.content as content, product_category_lang.metadescription as metadescription, product_category_lang.metakeywords as metakeywords');
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id', 'left');
         if($lang != ''){
