@@ -82,7 +82,7 @@ class Post_category_model extends MY_Model{
         return $this->db->count_all_results($this->table);
     }
     public function fetch_row_by_slug($slug, $lang = ''){
-        $this->db->select('*');
+        $this->db->select('*, '.$this->table_lang.'.title,'.$this->table_lang.'.metakeywords,'.$this->table_lang.'.metadescription');
         $this->db->from($this->table);
         $this->db->join($this->table_lang, $this->table_lang .'.'. $this->table .'_id = '. $this->table .'.id');
         $this->db->where($this->table .'.is_deleted', 0);
