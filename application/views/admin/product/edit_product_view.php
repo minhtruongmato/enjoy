@@ -298,7 +298,12 @@
                                                                     </div>
                                                                     <div class="col-md-5" style="padding:0px;">
                                                                         <b>Hình ảnh ngày <?php echo $i+1;?> đang sử dụng</b>
-                                                                        <img src="<?php echo base_url('assets/upload/'. $controller .'/'. $detail['slug'] .'/'. json_decode($detail['dateimg'])[$i]); ?>" style="width: 95%; height: 220px;padding-top: 6px;">
+                                                                        <?php if(count(json_decode($detail['dateimg'])) == 1 && json_decode($detail['dateimg'])[0] == ''): ?>
+                                                                            <?php $image = ''; ?>
+                                                                        <?php else: ?>
+                                                                            <?php $image = isset(json_decode($detail['dateimg'])[$i]) ?json_decode($detail['dateimg'])[$i] : ''; ?>
+                                                                        <?php endif; ?>
+                                                                        <img src="<?php echo base_url('assets/upload/'. $controller .'/'. $detail['slug'] .'/'. $image); ?>" style="width: 95%; height: 220px;padding-top: 6px;">
                                                                     </div>
                                                                 </div>
                                                                 <div style="margin-top: 10px;">
